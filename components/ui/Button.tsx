@@ -19,13 +19,13 @@ function cn(...values: Array<string | undefined>) {
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-semibold tracking-[0.02em] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
+  "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold tracking-[0.02em] transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 relative overflow-hidden group";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-[#0F3D2E] text-white hover:bg-[#154b39] focus-visible:ring-[#0F3D2E] focus-visible:ring-offset-[#0E0E0E]",
+    "bg-[#A67C52] text-[#F4F1E8] hover:bg-[#B58B5F] focus-visible:ring-[#A67C52] focus-visible:ring-offset-[#071f19] shadow-[0_8px_16px_rgba(166,124,82,0.2)] hover:shadow-[0_12px_32px_rgba(166,124,82,0.32)] hover:-translate-y-0.5",
   secondary:
-    "border border-white/30 bg-transparent text-white hover:border-white/50 hover:bg-white/10 focus-visible:ring-white focus-visible:ring-offset-[#0E0E0E]"
+    "border border-[#F4F1E8]/40 bg-transparent text-[#F4F1E8] hover:border-[#A67C52] hover:bg-[#A67C52]/10 focus-visible:ring-[#F4F1E8] focus-visible:ring-offset-[#071f19] transition-all duration-300 hover:shadow-[0_8px_16px_rgba(166,124,82,0.15)] hover:-translate-y-0.5"
 };
 
 export default function Button({

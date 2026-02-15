@@ -1,6 +1,6 @@
 "use client";
 
-import { ElementType, ReactNode, useEffect, useRef, useState } from "react";
+import { CSSProperties, ElementType, ReactNode, useEffect, useRef, useState } from "react";
 
 type SectionProps = {
   as?: ElementType;
@@ -10,6 +10,7 @@ type SectionProps = {
   children: ReactNode;
   delayMs?: number;
   reveal?: boolean;
+  staggerChildren?: boolean;
 };
 
 function cn(...values: Array<string | undefined>) {
@@ -23,7 +24,8 @@ export default function Section({
   containerClassName,
   children,
   delayMs = 0,
-  reveal = true
+  reveal = true,
+  staggerChildren = true
 }: SectionProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(!reveal);
@@ -68,13 +70,17 @@ export default function Section({
       <div
         ref={containerRef}
         data-reveal={isVisible ? "in" : "out"}
+        data-stagger={staggerChildren ? "on" : "off"}
         style={
           prefersReducedMotion || !reveal
             ? undefined
-            : { transitionDelay: `${delayMs}ms` }
+            : ({
+                transitionDelay: `${delayMs}ms`,
+                "--section-reveal-delay": `${delayMs}ms`
+              } as CSSProperties)
         }
         className={cn(
-          "mx-auto w-full max-w-[1200px] px-6 md:px-10",
+          "mx-auto w-full max-w-[1280px] px-6 md:px-10",
           containerClassName
         )}
       >

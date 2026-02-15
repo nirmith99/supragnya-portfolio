@@ -13,7 +13,7 @@ const projects = [
     description:
       "A rapid-response product designed for speed, alignment, and confident operational decisions.",
     href: "/projects/emergency-response",
-    imageSrc: "/images/emergency-thumbnail.png",
+    imageSrc: "/images/projects/emergency-real.png",
     imageAlt: "Emergency Response App thumbnail"
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     description:
       "A focused fintech experience helping users build clarity and momentum around financial behavior.",
     href: "/projects/rupeerise",
-    imageSrc: "/images/rupeerise-thumbnail.png",
+    imageSrc: "/images/projects/rupeerise-real.png",
     imageAlt: "RupeeRise thumbnail"
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     description:
       "A structured platform concept for career readiness with guided pathways and progress visibility.",
     href: "/projects/udyoga-pramoda",
-    imageSrc: "/images/udyoga-thumbnail.png",
+    imageSrc: "/images/projects/udyoga-real.png",
     imageAlt: "Udyoga Pramoda thumbnail"
   }
 ];
@@ -45,16 +45,16 @@ export default function OtherProjectsSection({
   return (
     <Section
       delayMs={delayMs}
-      className="bg-[#F5F1E8] py-24 md:py-28"
-      containerClassName="space-y-12"
+      className="bg-[#F5F1E8] py-20 md:py-28"
+      containerClassName="space-y-16"
     >
-      <header className="space-y-3">
-        <p className="text-sm uppercase tracking-[0.14em] text-[#5A5A5A]">Other Projects</p>
-        <h2 className="text-[32px] font-semibold leading-tight text-[#141414]">
+      <header className="space-y-4">
+        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#5a5a5a] font-semibold">Other Projects</p>
+        <h2 className="max-w-[800px] text-4xl md:text-5xl font-bold leading-[1.15] text-[#141414]">
           Explore related case studies.
         </h2>
       </header>
-      <div className="border-b border-black/15">
+      <div className="space-y-0 divide-y divide-[#ddd]">
         {otherProjects.map((project) => (
           <ThumbnailCard
             key={project.slug}

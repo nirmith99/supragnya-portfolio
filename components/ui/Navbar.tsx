@@ -3,125 +3,95 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { MouseEvent, useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform, useMotionValueEvent, Transition } from "framer-motion";
 import Modal from "@/components/ui/Modal";
+// Removed missing import '@/utils/cn'; using local definition below.
+import clsx from "clsx";
+import { twMerge } from "tailwind-merge";
 
-const HERO_ID = "hero-section";
-const WORK_SECTION_ID = "selected-work";
-const NAVBAR_HEIGHT = 72;
-
-function shouldReduceMotion() {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function cn(...inputs: (string | undefined | null | false)[]) {
+  return twMerge(clsx(inputs));
 }
+
+const HERO_SECTION_ID = "hero-section";
+const WORK_SECTION_ID = "selected-work";
 
 export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isPastHero, setIsPastHero] = useState(pathname !== "/");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    if (pathname !== "/") {
-      setIsPastHero(true);
-      return;
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const isPastThreshold = latest > 50;
+    if (isPastThreshold !== isScrolled) {
+      setIsScrolled(isPastThreshold);
     }
-
-    const heroSection = document.getElementById(HERO_ID);
-    if (!heroSection) {
-      setIsPastHero(true);
-      return;
-    }
-
-    let frame = 0;
-
-    const updateNavbarState = () => {
-      const heroBottom = heroSection.getBoundingClientRect().bottom;
-      setIsPastHero(heroBottom <= NAVBAR_HEIGHT);
-    };
-
-    const onScrollOrResize = () => {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(updateNavbarState);
-    };
-
-    updateNavbarState();
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
-    window.addEventListener("resize", onScrollOrResize);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScrollOrResize);
-      window.removeEventListener("resize", onScrollOrResize);
-    };
-  }, [pathname]);
+  });
 
   const handleWorkClick = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();
-
       if (pathname !== "/") {
         router.push("/#selected-work");
         return;
       }
-
       const selectedWorkSection = document.getElementById(WORK_SECTION_ID);
-      if (!selectedWorkSection) {
-        return;
+      if (selectedWorkSection) {
+        selectedWorkSection.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-
-      selectedWorkSection.scrollIntoView({
-        behavior: shouldReduceMotion() ? "auto" : "smooth",
-        block: "start"
-      });
     },
     [pathname, router]
   );
 
-  const baseTextClasses = isPastHero ? "text-[#1A1A1A]" : "text-white";
+  const isLightPage = pathname === "/about";
+
+  // Spring configuration for that "physics-based" feel
+  const springConfig = { type: "spring" as const, stiffness: 120, damping: 20, mass: 1 };
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,border-color,color] duration-300 ease-out motion-reduce:transition-none ${
-          isPastHero
-            ? "border-[#101010]/10 bg-[#F5F1E8]"
-            : "border-transparent bg-transparent"
-        }`}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={springConfig}
+        className={cn(
+          "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
+          isScrolled
+            ? "bg-[#071f19]/90 backdrop-blur-md border-b border-[#a7f36f]/10 shadow-lg"
+            : "bg-transparent border-b border-transparent"
+        )}
       >
-        <div className="mx-auto flex h-[72px] w-full max-w-[1280px] items-center justify-between px-8">
-          <Link
-            href="/"
-            className={`${baseTextClasses} text-[1rem] font-medium transition-colors duration-300 ease-out motion-reduce:transition-none`}
-          >
+        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-10 h-[var(--nav-height)] flex items-center justify-between">
+          <Link href="/" className="text-[#F4F1E8] font-medium text-[0.96rem] tracking-[0.012em]">
             Supragnya Purohith
           </Link>
-          <nav aria-label="Primary" className="flex items-center gap-8">
+          <nav aria-label="Primary" className="flex items-center gap-6 md:gap-10">
             <button
-              type="button"
               onClick={handleWorkClick}
-              className={`${baseTextClasses} text-[0.95rem] transition-colors duration-300 ease-out hover:opacity-75 motion-reduce:transition-none`}
+              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
             >
               Work
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
             </button>
             <Link
               href="/about"
-              className={`${baseTextClasses} text-[0.95rem] transition-colors duration-300 ease-out hover:opacity-75 motion-reduce:transition-none`}
+              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
             >
               About
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
             </Link>
             <button
-              type="button"
               onClick={() => setIsContactModalOpen(true)}
-              className={`${baseTextClasses} text-[0.95rem] transition-colors duration-300 ease-out hover:opacity-75 motion-reduce:transition-none`}
+              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
             >
               Contact
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
             </button>
           </nav>
         </div>
-      </header>
+      </motion.header>
       <Modal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </>
   );

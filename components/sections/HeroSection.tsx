@@ -1,13 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, memo } from "react";
+import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
 import Section from "@/components/ui/Section";
 
-export default function HeroSection() {
+const HeroSection = memo(function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const scrollToSelectedWork = () => {
@@ -17,56 +18,107 @@ export default function HeroSection() {
     }
   };
 
+  // Kinetic Typography Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring" as const,
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
   return (
     <>
       <Section
         id="hero-section"
         reveal={false}
-        className="grain-overlay relative flex min-h-screen items-center overflow-hidden bg-[#0B1F1A] text-white [background-image:radial-gradient(120%_120%_at_20%_12%,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_56%)]"
-        containerClassName="relative z-10 flex min-h-screen items-center px-8 py-20 md:px-10"
+        staggerChildren={false}
+        className="hero text-[#F4F1E8]"
+        containerClassName="hero-inner flex items-start px-8 md:px-10"
       >
-        <div className="grid w-full gap-14 lg:grid-cols-[1.06fr_0.94fr] lg:items-center">
-          <div className="space-y-8">
-            <p className="text-sm uppercase tracking-[0.14em] text-white/75">
+        {/* On mobile: Text comes first naturally in DOM. Grid layout changes on lg to 2 columns. 
+            Mobile: Stacked (Text top, Image bottom) is standard and correct rhythm here. */}
+        <div className="hero-layout grid w-full lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+          <motion.div
+            className="hero-copy space-y-6 md:space-y-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.p
+              variants={itemVariants}
+              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold"
+            >
               UX/UI Designer | Product Designer
-            </p>
-            <h1 className="max-w-[1100px] text-[clamp(36px,5vw,64px)] font-bold leading-[1.1] tracking-[-0.02em] text-white [overflow-wrap:anywhere]">
-              Designing <span className="text-[#1F6F5A]">clarity</span> for complex digital
-              systems.
-            </h1>
-            <p className="max-w-[680px] text-[1.06rem] leading-relaxed text-[#B8C2BD]">
+            </motion.p>
+            <motion.h1
+              variants={itemVariants}
+              className="hero-title max-w-[18ch] text-[clamp(40px,5vw,72px)] font-black leading-[1.0] tracking-[-0.03em] text-[#F4F1E8]"
+            >
+              Designing <span className="block bg-gradient-to-r from-[#a7f36f] to-[#b8ff80] bg-clip-text text-transparent">clarity</span> for complex digital systems.
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[#C9D2CC] font-light"
+            >
               I bridge curiosity and logic to craft structured, user-centered experiences that
               help teams ship with confidence.
-            </p>
-            <div className="flex flex-wrap gap-4">
+            </motion.p>
+            <motion.div
+              variants={itemVariants}
+              className="hero-actions flex flex-wrap gap-4 pt-1"
+            >
               <Button
-                className="bg-[#124A3B] hover:bg-[#1A604D] focus-visible:ring-[#1A604D] focus-visible:ring-offset-[#0B1F1A] transition-all duration-300 ease-out"
                 onClick={scrollToSelectedWork}
               >
                 View Work
               </Button>
               <Button
                 variant="secondary"
-                className="border-white/30 text-white/95 hover:border-white/55 hover:bg-white/10 focus-visible:ring-offset-[#0B1F1A] transition-all duration-300 ease-out"
                 onClick={() => setIsModalOpen(true)}
               >
                 Contact Me
               </Button>
-            </div>
-          </div>
-          <div className="mx-auto flex w-full max-w-[440px] items-center justify-center lg:mx-0 lg:justify-end">
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1], delay: 0.4 }}
+            className="hero-image-wrap hidden lg:flex mx-auto w-full max-w-[520px] items-center justify-center lg:mx-0 lg:justify-end"
+          >
             <Image
               src="/images/avatar.png"
               alt="Portrait of Supragnya Purohith"
               width={760}
               height={980}
-              className="h-auto w-full rounded-[10px] object-cover"
+              className="hero-image h-auto w-full object-contain filter brightness-95 contrast-105"
+              priority
             />
-          </div>
+          </motion.div>
         </div>
         <ScrollIndicator />
       </Section>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
-}
+});
+
+export default HeroSection;

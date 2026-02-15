@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Sora } from "next/font/google";
 import Navbar from "@/components/ui/Navbar";
+import InteractiveGrid from "@/components/visuals/InteractiveGrid";
 import "./globals.css";
 
 const bodyFont = Plus_Jakarta_Sans({
@@ -29,8 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bodyFont.variable} ${headingFont.variable} bg-[#F5F1E8] text-[#101010] antialiased`}
+        className={`${bodyFont.variable} ${headingFont.variable} text-[#F4F1E8] antialiased`}
       >
+        <InteractiveGrid />
         <Navbar />
         {children}
       </body>

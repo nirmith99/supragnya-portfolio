@@ -39,9 +39,9 @@ export default function ScrollIndicator() {
       className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2"
       aria-hidden="true"
     >
-      <div className="relative h-14 w-px bg-white/35">
+      <div className="relative flex h-11 w-6 items-start justify-center rounded-full border border-[#F4F1E8]/40 p-1.5">
         <span
-          className={`absolute left-1/2 top-2 h-2 w-2 -translate-x-1/2 rounded-full bg-white/80 ${
+          className={`h-2 w-2 rounded-full bg-[#F4F1E8]/85 ${
             prefersReducedMotion ? "" : "scroll-dot-animate"
           }`}
         />

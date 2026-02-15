@@ -6,32 +6,35 @@ export default function FooterSection() {
     <Section
       reveal={false}
       as="footer"
-      className="bg-[#121212] py-12 text-[#E8E8E8]"
-      containerClassName="space-y-8"
+      className="py-16 md:py-20 border-t border-[#C9D2CC]/10"
+      containerClassName="space-y-10"
     >
-      <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-        <p className="text-sm uppercase tracking-[0.14em] text-white/65">
+      <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
           Supragnya Purohith
         </p>
-        <nav className="flex flex-wrap items-center gap-5 text-sm text-white/85">
-          <Link href="/" className="transition-colors hover:text-white">
+        <nav className="flex flex-wrap items-center gap-6 md:gap-8 text-sm text-[#C9D2CC]">
+          <Link href="/" className="transition-colors duration-250 hover:text-[#a7f36f] hover:font-medium">
             Home
           </Link>
-          <Link href="/about" className="transition-colors hover:text-white">
+          <Link href="/about" className="transition-colors duration-250 hover:text-[#a7f36f] hover:font-medium">
             About
           </Link>
-          <Link href="/projects/emergency-response" className="transition-colors hover:text-white">
+          <Link
+            href="/projects/emergency-response"
+            className="transition-colors duration-250 hover:text-[#a7f36f] hover:font-medium"
+          >
             Work
           </Link>
           <a
             href="mailto:hello@supragnyapurohith.com"
-            className="transition-colors hover:text-white"
+            className="transition-colors duration-250 hover:text-[#a7f36f] hover:font-medium"
           >
             Contact
           </a>
         </nav>
       </div>
-      <p className="text-xs text-white/55">(c) {new Date().getFullYear()} All rights reserved.</p>
+      <p className="text-xs text-[#C9D2CC]/60">(c) {new Date().getFullYear()} All rights reserved.</p>
     </Section>
   );
 }
