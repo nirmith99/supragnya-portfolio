@@ -105,8 +105,3 @@ export default function ThumbnailCard({
     </Link>
   );
 }
-        </div>
-      </article>
-    </Link>
-  );
-}
