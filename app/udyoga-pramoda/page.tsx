@@ -53,40 +53,57 @@ export default function UdyogaPramodaPage() {
                 </section>
 
                 {/* Funnel Visualization */}
-                <section className="bg-[#022c22]/30 p-8 rounded-2xl border border-[#a7f36f]/10 text-center">
-                    <h3 className="text-xl font-bold text-[#F4F1E8] mb-8">The Readiness Funnel</h3>
-                    <div className="grid md:grid-cols-3 gap-8 items-center justify-center">
-                        <div className="space-y-2">
-                            <span className="text-5xl font-bold text-[#F4F1E8] block">150</span>
-                            <span className="text-[#a7f36f] text-sm uppercase tracking-wider block">Aspirants Onboarded</span>
+                {/* Funnel Visualization */}
+                <section className="bg-[#022c22]/30 p-8 md:p-12 rounded-3xl border border-[#a7f36f]/10 text-center relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#a7f36f]/20 to-transparent"></div>
+                    <h3 className="text-xl md:text-2xl font-bold text-[#F4F1E8] mb-12">The Readiness Funnel</h3>
+
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 relative z-10">
+                        {/* Stage 1 */}
+                        <div className="relative group">
+                            <div className="w-48 h-48 rounded-full border border-[#a7f36f]/20 bg-[#a7f36f]/5 flex flex-col items-center justify-center backdrop-blur-sm group-hover:border-[#a7f36f]/40 transition-colors duration-300">
+                                <span className="text-5xl font-bold text-[#F4F1E8]">150</span>
+                                <span className="text-[#a7f36f] text-xs uppercase tracking-widest mt-2">Aspirants</span>
+                            </div>
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[#cadcd5]/60 text-xs whitespace-nowrap">Input</div>
                         </div>
 
-                        <div className="hidden md:block text-[#a7f36f]/30">
-                            <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 10H38M38 10L30 2M38 10L30 18" stroke="currentColor" strokeWidth="2" />
-                            </svg>
+                        {/* Connector 1 */}
+                        <div className="h-12 w-[1px] md:h-[1px] md:w-24 bg-gradient-to-b md:bg-gradient-to-r from-[#a7f36f]/10 via-[#a7f36f]/50 to-[#a7f36f]/10 relative">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#064034] text-[#a7f36f] text-[10px] px-2 py-1 rounded-full border border-[#a7f36f]/20">
+                                Readiness Gap
+                            </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <span className="text-5xl font-bold text-[#F4F1E8] block">50</span>
-                            <span className="text-[#a7f36f] text-sm uppercase tracking-wider block">Mentor Validated</span>
-                            <span className="text-[#cadcd5] text-xs block">(Job Ready)</span>
+                        {/* Stage 2 */}
+                        <div className="relative group">
+                            <div className="w-40 h-40 rounded-full border-2 border-[#a7f36f]/40 bg-[#a7f36f]/10 flex flex-col items-center justify-center backdrop-blur-md shadow-[0_0_30px_-5px_rgba(167,243,111,0.15)]">
+                                <span className="text-4xl font-bold text-[#F4F1E8]">50</span>
+                                <span className="text-[#a7f36f] text-xs uppercase tracking-widest mt-2">Validated</span>
+                            </div>
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[#a7f36f] text-xs font-semibold whitespace-nowrap">Mentor Approved</div>
                         </div>
 
-                        <div className="hidden md:block text-[#a7f36f]/30">
-                            <svg width="40" height="20" viewBox="0 0 40 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 10H38M38 10L30 2M38 10L30 18" stroke="currentColor" strokeWidth="2" />
-                            </svg>
+                        {/* Connector 2 */}
+                        <div className="h-12 w-[1px] md:h-[1px] md:w-24 bg-gradient-to-b md:bg-gradient-to-r from-[#a7f36f]/10 via-[#a7f36f]/50 to-[#a7f36f]/10 relative">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#064034] text-[#a7f36f] text-[10px] px-2 py-1 rounded-full border border-[#a7f36f]/20">
+                                ~50% Conversion
+                            </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <span className="text-5xl font-bold text-[#a7f36f] block">25+</span>
-                            <span className="text-[#a7f36f] text-sm uppercase tracking-wider block">Placements</span>
-                            <span className="text-[#cadcd5] text-xs block">(~50% Conversion)</span>
+                        {/* Stage 3 */}
+                        <div className="relative group">
+                            <div className="w-32 h-32 rounded-full border-2 border-[#a7f36f] bg-[#a7f36f]/20 flex flex-col items-center justify-center backdrop-blur-xl shadow-[0_0_40px_-5px_rgba(167,243,111,0.3)]">
+                                <span className="text-3xl font-bold text-[#fff]">25+</span>
+                                <span className="text-[#fff] text-xs uppercase tracking-widest mt-1">Placed</span>
+                            </div>
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[#fff] text-xs font-semibold whitespace-nowrap">Output</div>
                         </div>
                     </div>
-                    <p className="text-[#cadcd5] mt-8 text-sm max-w-2xl mx-auto">
-                        Average Salary: ~₹7.5 LPA. The core value of this funnel was visibility: moving from anecdotal success to trackable conversion rates.
+
+                    <p className="text-[#cadcd5] mt-16 text-sm max-w-2xl mx-auto border-t border-[#a7f36f]/10 pt-6">
+                        Average Salary: <span className="text-[#F4F1E8] font-semibold">~₹7.5 LPA</span>.
+                        The core value was visibility: moving from anecdotal success to trackable conversion rates.
                     </p>
                 </section>
 

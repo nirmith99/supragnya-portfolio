@@ -132,21 +132,40 @@ export default function RupeeRisePage() {
                         </div>
 
                         {/* Pillar 4 */}
-                        <div className="grid md:grid-cols-[2fr_1fr] gap-6">
+                        <div className="col-span-1 md:col-span-3 gap-6">
                             <div>
-                                <h3 className="text-xl font-bold text-[#a7f36f] mb-2">4️⃣ Adaptive Guardrails</h3>
-                                <p className="text-[#cadcd5] mb-2">
-                                    The system adjusts friction based on behavioural maturity:
+                                <h3 className="text-xl font-bold text-[#a7f36f] mb-4">4️⃣ Adaptive Guardrails</h3>
+                                <p className="text-[#cadcd5] mb-6 max-w-2xl">
+                                    The system adjusts friction based on behavioural maturity. Instead of a static interface, the UI evolves to match the user&apos;s demonstrated competence.
                                 </p>
-                                <ul className="list-disc pl-5 text-[#cadcd5] mb-2 space-y-1">
-                                    <li><strong>Guarded Mode</strong>: Higher friction, strict caps.</li>
-                                    <li><strong>Guided Mode</strong>: Moderate friction.</li>
-                                    <li><strong>Autonomous Mode</strong>: Lower friction, critical alerts remain active.</li>
-                                </ul>
-                                <p className="text-sm text-[#a7f36f]/80 uppercase tracking-wide">Purpose: Encourage independence without removing safety.</p>
-                            </div>
-                            <div>
-                                <GlassImagePlaceholder label="Guardrails & Modes UI" />
+
+                                <div className="grid md:grid-cols-3 gap-4">
+                                    {/* Mode 1 */}
+                                    <div className="bg-[#022c22]/40 border border-[#a7f36f]/20 p-6 rounded-xl relative group hover:bg-[#022c22]/60 transition-colors">
+                                        <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-red-400 shadow-[0_0_10px_rgba(248,113,113,0.5)]"></div>
+                                        <h4 className="text-[#F4F1E8] font-bold mb-2">Guarded Mode</h4>
+                                        <p className="text-[#cadcd5] text-sm mb-4">High friction. Strict caps on transaction volume. Mandatory cooling periods.</p>
+                                        <div className="text-xs text-[#a7f36f]/60 uppercase tracking-wide font-mono">For Beginners</div>
+                                    </div>
+
+                                    {/* Mode 2 */}
+                                    <div className="bg-[#022c22]/40 border border-[#a7f36f]/20 p-6 rounded-xl relative group hover:bg-[#022c22]/60 transition-colors">
+                                        <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-yellow-400 shadow-[0_0_10px_rgba(250,204,21,0.5)]"></div>
+                                        <h4 className="text-[#F4F1E8] font-bold mb-2">Guided Mode</h4>
+                                        <p className="text-[#cadcd5] text-sm mb-4">Moderate friction. Nudges appear before high-risk actions. Caps relaxed.</p>
+                                        <div className="text-xs text-[#a7f36f]/60 uppercase tracking-wide font-mono">Validation Stage</div>
+                                    </div>
+
+                                    {/* Mode 3 */}
+                                    <div className="bg-[#022c22]/40 border border-[#a7f36f]/20 p-6 rounded-xl relative group hover:bg-[#022c22]/60 transition-colors">
+                                        <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-[#a7f36f] shadow-[0_0_10px_rgba(167,243,111,0.5)]"></div>
+                                        <h4 className="text-[#F4F1E8] font-bold mb-2">Autonomous Mode</h4>
+                                        <p className="text-[#cadcd5] text-sm mb-4">Low friction. Critical alerts remain, but decision speed is unhindered.</p>
+                                        <div className="text-xs text-[#a7f36f]/60 uppercase tracking-wide font-mono">Trusted User</div>
+                                    </div>
+                                </div>
+
+                                <p className="text-sm text-[#a7f36f]/80 uppercase tracking-wide mt-6">Purpose: Encourage independence without removing safety.</p>
                             </div>
                         </div>
                     </div>
