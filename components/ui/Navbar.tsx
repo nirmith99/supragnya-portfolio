@@ -64,7 +64,16 @@ export default function Navbar() {
         )}
       >
         <div className="mx-auto w-full max-w-[1280px] px-6 md:px-10 h-[var(--nav-height)] flex items-center justify-between">
-          <Link href="/" className="text-[#F4F1E8] font-medium text-[0.96rem] tracking-[0.012em]">
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="text-[#F4F1E8] font-medium text-[0.96rem] tracking-[0.012em]"
+          >
             Supragnya Purohith
           </Link>
           <nav aria-label="Primary" className="flex items-center gap-6 md:gap-10">
@@ -75,13 +84,23 @@ export default function Navbar() {
               Work
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
             </button>
-            <Link
-              href="/about"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                if (pathname !== "/") {
+                  router.push("/#about");
+                  return;
+                }
+                const aboutSection = document.getElementById("about");
+                if (aboutSection) {
+                  aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
               className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
             >
               About
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
-            </Link>
+            </button>
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"

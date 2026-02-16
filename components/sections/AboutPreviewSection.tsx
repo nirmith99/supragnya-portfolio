@@ -9,6 +9,7 @@ type AboutPreviewSectionProps = {
 const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: AboutPreviewSectionProps) {
   return (
     <Section
+      id="about"
       delayMs={delayMs}
       className="section-block py-20 md:py-24"
       containerClassName="space-y-8"
@@ -18,21 +19,16 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
           About
         </p>
         <h2 className="max-w-[900px] text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-[#F4F1E8]">
-          I design for teams that need <span className="bg-gradient-to-r from-[#a7f36f] to-[#b8ff80] bg-clip-text text-transparent">structure</span>, momentum, and confidence.
+          I design for teams that need <span className="bg-gradient-to-r from-[#a7f36f] to-[#b8ff80] bg-clip-text text-transparent">behavior-first</span> thinking.
         </h2>
       </div>
-      <p className="max-w-[700px] text-base md:text-lg leading-relaxed text-[#C9D2CC] font-light">
-        My practice combines systems thinking, strategic framing, and detail-driven interaction
-        design. I focus on making complexity understandable so teams can move faster with fewer
-        blind spots.
-      </p>
-      <div className="pt-4">
-        <Button
-          href="/about"
-          className="transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(167,243,111,0.24)] focus-visible:ring-offset-[#061F18]"
-        >
-          About Me
-        </Button>
+      <div className="max-w-[700px] text-base md:text-lg leading-relaxed text-[#C9D2CC] font-light space-y-6">
+        <p>
+          With 1 year and 11 months of experience, my practice combines systems thinking, strategic framing, and detail-driven interaction design.
+        </p>
+        <p>
+          I focus on making complexity understandable so teams can move faster with fewer blind spots.
+        </p>
       </div>
     </Section>
   );

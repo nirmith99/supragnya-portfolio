@@ -23,7 +23,7 @@ const projects: Project[] = [
     title: "RupeeRise",
     description:
       "A financial learning companion designed to help young earners build confidence with money before taking financial risks. Prioritizes learning, habit formation, and controlled exposure to financial tools over transactions or dense dashboards.",
-    href: "/projects/rupeerise",
+    href: "/rupeerise",
     imageSrc: "/images/projects/rupeerise-real.png",
     imageAlt: "RupeeRise - Financial Learning & Habit Building"
   },
@@ -31,7 +31,7 @@ const projects: Project[] = [
     title: "Udyoga Pramoda",
     description:
       "A high-impact, charity-led platform focused on professional growth for graduates. Emphasizes successful placements, mentorship connectivity, and building trust in career progression.",
-    href: "/projects/udyoga-pramoda",
+    href: "/udyoga-pramoda",
     imageSrc: "/images/projects/udyoga-real.png",
     imageAlt: "Udyoga Pramoda - Career Growth & Mentorship"
   },
@@ -39,7 +39,7 @@ const projects: Project[] = [
     title: "Emergency Response App",
     description:
       "A high-stakes, high-utility tool for cardiovascular emergencies. Designed for speed, clarity, and life-saving interactions with an extreme focus on immediate 'Next Actions' and critical data hierarchy.",
-    href: "/projects/emergency-response",
+    href: "/emergency-app",
     imageSrc: "/images/projects/emergency-real.png",
     imageAlt: "Emergency Response - Critical Care Interface"
   }
