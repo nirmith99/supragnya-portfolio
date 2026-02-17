@@ -75,12 +75,12 @@ export default function Section({
           prefersReducedMotion || !reveal
             ? undefined
             : ({
-                transitionDelay: `${delayMs}ms`,
-                "--section-reveal-delay": `${delayMs}ms`
-              } as CSSProperties)
+              transitionDelay: `${delayMs}ms`,
+              "--section-reveal-delay": `${delayMs}ms`
+            } as CSSProperties)
         }
         className={cn(
-          "mx-auto w-full max-w-[1280px] px-6 md:px-10",
+          "mx-auto w-full px-5 md:px-[60px]",
           containerClassName
         )}
       >

@@ -49,11 +49,9 @@ const HeroSection = memo(function HeroSection() {
         id="hero-section"
         reveal={false}
         staggerChildren={false}
-        className="hero text-[#F4F1E8]"
-        containerClassName="hero-inner flex items-start px-8 md:px-10"
+        className="hero text-white"
+        containerClassName="hero-inner flex items-start"
       >
-        {/* On mobile: Text comes first naturally in DOM. Grid layout changes on lg to 2 columns. 
-            Mobile: Stacked (Text top, Image bottom) is standard and correct rhythm here. */}
         <div className="hero-layout grid w-full lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
           <motion.div
             className="hero-copy space-y-6 md:space-y-8"
@@ -63,19 +61,19 @@ const HeroSection = memo(function HeroSection() {
           >
             <motion.p
               variants={itemVariants}
-              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold"
+              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold"
             >
               UX/UI Designer | Product Designer
             </motion.p>
             <motion.h1
               variants={itemVariants}
-              className="hero-title max-w-[18ch] text-[clamp(40px,5vw,72px)] font-black leading-[1.0] tracking-[-0.03em] text-[#F4F1E8]"
+              className="hero-title max-w-[18ch] text-[clamp(40px,5vw,72px)] font-black leading-[1.0] tracking-[-0.03em] text-white font-heading"
             >
-              Designing <span className="block bg-gradient-to-r from-[#a7f36f] to-[#b8ff80] bg-clip-text text-transparent">clarity</span> for complex digital systems.
+              Designing <span className="block text-[#a7f36f]">clarity</span> for complex digital systems.
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[#C9D2CC] font-light"
+              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[#BDBDBD] font-light"
             >
               I bridge curiosity and logic to craft structured, user-centered experiences that
               help teams ship with confidence.
@@ -109,7 +107,7 @@ const HeroSection = memo(function HeroSection() {
               alt="Portrait of Supragnya Purohith"
               width={760}
               height={980}
-              className="hero-image h-auto w-full object-contain filter brightness-95 contrast-105"
+              className="hero-image h-auto w-full object-contain filter grayscale contrast-110 brightness-95"
               priority
             />
           </motion.div>

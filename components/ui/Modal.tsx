@@ -97,9 +97,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/65 px-6 transition-opacity duration-200 ${
-        isOpen ? "opacity-100" : "opacity-0"
-      }`}
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/65 px-6 transition-opacity duration-200 ${isOpen ? "opacity-100" : "opacity-0"
+        }`}
       onClick={(event) => {
         if (event.target === event.currentTarget) {
           onClose();
@@ -112,9 +111,8 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
         role="dialog"
         aria-modal="true"
         aria-label="Contact Supragnya"
-        className={`w-full max-w-md rounded-xl bg-[#111111] p-8 text-white transition-all duration-200 ${
-          isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
-        }`}
+        className={`w-full max-w-md rounded-xl bg-[#1E1E1E] p-8 text-white transition-all duration-200 ${isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+          }`}
       >
         <p className="mb-6 text-base text-[#D4D4D4]">
           Let&apos;s build thoughtful products together.

@@ -1,7 +1,6 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
 import Section from "@/components/ui/Section";
 
 const steps = [
@@ -18,7 +17,7 @@ const steps = [
     {
         number: "03",
         title: "Interface Craft",
-        description: "I apply the visual language. This is where 'Deep Emerald' meets interaction physics—creating a UI that feels premium, tactile, and confident.",
+        description: "I apply the visual language. This is where clarity meets interaction physics—creating a UI that feels premium, tactile, and confident.",
     },
     {
         number: "04",
@@ -31,37 +30,37 @@ const ProcessSection = memo(function ProcessSection() {
     return (
         <Section
             id="process-section"
-            className="process-section section-block border-y border-[#a7f36f]/10 bg-[#022c22]/50 backdrop-blur-sm"
+            className="process-section section-block border-y border-white/5 bg-[#1E1E1E]/20 backdrop-blur-sm"
             containerClassName="space-y-16 md:space-y-20"
         >
             <div className="max-w-3xl space-y-4">
-                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
+                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold">
                     The Methodology
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black leading-tight text-[#F4F1E8]">
+                <h2 className="text-4xl md:text-5xl font-black leading-tight text-white font-heading">
                     From Chaos to <span className="text-[#a7f36f]">Clarity.</span>
                 </h2>
-                <p className="text-lg text-[#C9D2CC] font-light max-w-xl">
+                <p className="text-lg text-[#BDBDBD] font-light max-w-xl">
                     A structured approach to solving complex product challenges, ensuring every design decision is rooted in logic.
                 </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
                 {/* Connector Line (Desktop) */}
-                <div className="hidden lg:block absolute top-12 left-0 right-0 h-[1px] bg-gradient-to-r from-[#a7f36f]/0 via-[#a7f36f]/30 to-[#a7f36f]/0 z-0" />
+                <div className="hidden lg:block absolute top-12 left-0 right-0 h-[1px] bg-gradient-to-r from-white/0 via-white/10 to-white/0 z-0" />
 
                 {steps.map((step, index) => (
                     <div
                         key={index}
                         className="relative z-10 group"
                     >
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#064034] border border-[#a7f36f]/20 flex items-center justify-center text-[#a7f36f] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(167,243,111,0.1)] group-hover:bg-[#a7f36f] group-hover:text-[#022c22] transition-colors duration-300">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#121212] border border-white/10 flex items-center justify-center text-[#A67C52] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:bg-[#a7f36f] group-hover:text-[#121212] transition-colors duration-300">
                             {step.number}
                         </div>
-                        <h3 className="text-xl font-bold text-[#F4F1E8] mb-3 group-hover:text-[#a7f36f] transition-colors duration-300">
+                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#a7f36f] transition-colors duration-300 font-heading">
                             {step.title}
                         </h3>
-                        <p className="text-sm md:text-base leading-relaxed text-[#cadcd5]">
+                        <p className="text-sm md:text-base leading-relaxed text-[#BDBDBD]">
                             {step.description}
                         </p>
                     </div>

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { MouseEvent, useCallback, useEffect, useState } from "react";
-import { AnimatePresence, motion, useScroll, useTransform, useMotionValueEvent, Transition } from "framer-motion";
+import { MouseEvent, useCallback, useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Modal from "@/components/ui/Modal";
 // Removed missing import '@/utils/cn'; using local definition below.
 import clsx from "clsx";
@@ -13,7 +13,6 @@ function cn(...inputs: (string | undefined | null | false)[]) {
   return twMerge(clsx(inputs));
 }
 
-const HERO_SECTION_ID = "hero-section";
 const WORK_SECTION_ID = "selected-work";
 
 export default function Navbar() {
@@ -45,8 +44,6 @@ export default function Navbar() {
     [pathname, router]
   );
 
-  const isLightPage = pathname === "/about";
-
   // Spring configuration for that "physics-based" feel
   const springConfig = { type: "spring" as const, stiffness: 120, damping: 20, mass: 1 };
 
@@ -59,11 +56,11 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
           isScrolled
-            ? "bg-[#071f19]/90 backdrop-blur-md border-b border-[#a7f36f]/10 shadow-lg"
+            ? "bg-[#121212]/95 backdrop-blur-md border-b border-white/10 shadow-sm"
             : "bg-transparent border-b border-transparent"
         )}
       >
-        <div className="mx-auto w-full max-w-[1280px] px-6 md:px-10 h-[var(--nav-height)] flex items-center justify-between">
+        <div className="mx-auto w-full px-5 md:px-[60px] h-[var(--nav-height)] flex items-center justify-between">
           <Link
             href="/"
             onClick={(e) => {
@@ -72,17 +69,17 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="text-[#F4F1E8] font-medium text-[0.96rem] tracking-[0.012em]"
+            className="text-white font-bold text-[1rem] tracking-tight font-heading"
           >
             Supragnya Purohith
           </Link>
           <nav aria-label="Primary" className="flex items-center gap-6 md:gap-10">
             <button
               onClick={handleWorkClick}
-              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
+              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
             >
               Work
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </button>
             <button
               onClick={(e) => {
@@ -96,17 +93,17 @@ export default function Navbar() {
                   aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
-              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
+              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
             >
               About
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </button>
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="text-[#F4F1E8] text-[0.96rem] hover:text-[#a7f36f] transition-colors relative group"
+              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
             >
               Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#a7f36f] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           </nav>
         </div>
