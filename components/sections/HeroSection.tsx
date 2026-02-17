@@ -50,7 +50,8 @@ const HeroSection = memo(function HeroSection() {
         reveal={false}
         staggerChildren={false}
         className="hero text-white"
-        containerClassName="hero-inner flex items-start"
+        /* Added pt-32 md:pt-48 to clear fixed navbar and provide breathing room */
+        containerClassName="hero-inner flex items-start pt-32 md:pt-48"
       >
         <div className="hero-layout grid w-full lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
           <motion.div
@@ -61,7 +62,7 @@ const HeroSection = memo(function HeroSection() {
           >
             <motion.p
               variants={itemVariants}
-              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold"
+              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold"
             >
               UX/UI Designer | Product Designer
             </motion.p>
@@ -73,7 +74,7 @@ const HeroSection = memo(function HeroSection() {
             </motion.h1>
             <motion.p
               variants={itemVariants}
-              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[#BDBDBD] font-light"
+              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[#C0C0C0] font-normal"
             >
               I bridge curiosity and logic to craft structured, user-centered experiences that
               help teams ship with confidence.
@@ -96,12 +97,14 @@ const HeroSection = memo(function HeroSection() {
             </motion.div>
           </motion.div>
 
+          {/* Placeholder for Hero Image - Matched to new theme (grayscale/matte) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1], delay: 0.4 }}
             className="hero-image-wrap hidden lg:flex mx-auto w-full max-w-[520px] items-center justify-center lg:mx-0 lg:justify-end"
           >
+            {/* Using existing image but could optionally apply grayscale filter via class */}
             <Image
               src="/images/avatar.png"
               alt="Portrait of Supragnya Purohith"

@@ -100,7 +100,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
     <article
       ref={ref}
       className={cn(
-        "group py-20 lg:py-32 border-b border-white/10 last:border-0 relative",
+        "group py-20 lg:py-32 border-b border-white/5 last:border-0 relative",
         "transition-all duration-700 ease-out",
         isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
       )}
@@ -111,9 +111,9 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
       )}>
         {/* Text Content */}
         <div className="flex-1 space-y-6 lg:space-y-8 w-full">
-          <div className="flex items-center gap-4 text-[#A67C52] font-mono text-sm tracking-wider opacity-90">
+          <div className="flex items-center gap-4 text-[#a7f36f] font-mono text-sm tracking-wider opacity-90">
             <span>0{index + 1}</span>
-            <span className="h-[1px] w-12 bg-[#A67C52]/40"></span>
+            <span className="h-[1px] w-12 bg-[#a7f36f]/40"></span>
             <span className="uppercase tracking-[0.16em]">Case Study</span>
           </div>
 
@@ -123,7 +123,7 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
             </Link>
           </h3>
 
-          <p className="max-w-xl text-lg leading-relaxed text-[#BDBDBD] font-light">
+          <p className="max-w-xl text-lg leading-relaxed text-[#C0C0C0] font-normal">
             {project.description}
           </p>
 
@@ -137,19 +137,27 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
           </div>
         </div>
 
-        {/* Image Content */}
-        <div className="flex-1 w-full aspect-[16/10] relative group/image rounded-lg overflow-hidden border border-white/5 bg-[#1E1E1E]">
-          <Link href={project.href} className="block w-full h-full">
-            <Image
-              src={project.imageSrc}
-              alt={project.imageAlt}
-              fill
-              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover/image:scale-[1.03]"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-            {/* Subtle matte highlight on top */}
-            <div className="absolute inset-0 bg-white/0 group-hover/image:bg-white/5 transition-colors duration-500 pointer-events-none"></div>
-          </Link>
+        {/* Image Content - "Photo on Desk" Style */}
+        <div className="flex-1 w-full aspect-[16/10] relative group/image">
+          {/* The container acts as the "Desk Surface" or a Card container */}
+          <div className="absolute inset-0 bg-[#1E1E1E] rounded-xl border border-white/5 shadow-2xl transition-all duration-500 group-hover/image:scale-[1.01] group-hover/image:shadow-[#a7f36f]/10" />
+
+          {/* Inner padding to frame the image */}
+          <div className="relative h-full w-full p-6 md:p-8">
+            <div className="relative h-full w-full overflow-hidden rounded-lg shadow-inner bg-[#121212]">
+              <Link href={project.href} className="block w-full h-full">
+                <Image
+                  src={project.imageSrc}
+                  alt={project.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover/image:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Subtle matte highlight over the image */}
+                <div className="absolute inset-0 bg-white/0 group-hover/image:bg-white/5 transition-colors duration-500 pointer-events-none"></div>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </article>
@@ -170,7 +178,7 @@ const SelectedWorkSection = memo(function SelectedWorkSection({ delayMs = 0 }: S
       containerClassName="space-y-20 md:space-y-24"
     >
       <header className="space-y-5">
-        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold">Selected Work</p>
+        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">Selected Work</p>
         <h2 className="max-w-[1000px] text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-white font-heading">
           Products shaped with <span className="text-[#a7f36f]">rigor</span>, empathy, and execution focus.
         </h2>

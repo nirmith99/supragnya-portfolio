@@ -10,10 +10,10 @@ export default function FooterSection() {
       containerClassName="space-y-10"
     >
       <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold">
+        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
           Supragnya Purohith
         </p>
-        <nav className="flex flex-wrap items-center gap-6 md:gap-8 text-sm text-[#BDBDBD]">
+        <nav className="flex flex-wrap items-center gap-6 md:gap-8 text-sm text-[#C0C0C0]">
           <Link href="/" className="transition-colors duration-250 hover:text-white hover:font-medium">
             Home
           </Link>
@@ -34,7 +34,7 @@ export default function FooterSection() {
           </a>
         </nav>
       </div>
-      <p className="text-xs text-[#BDBDBD]/60">(c) {new Date().getFullYear()} All rights reserved.</p>
+      <p className="text-xs text-[#C0C0C0]/60">(c) {new Date().getFullYear()} All rights reserved.</p>
     </Section>
   );
 }

@@ -46,28 +46,28 @@ export default function CaseStudyTemplate({
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-white/10 pt-8">
                     <div className="md:col-span-3">
-                        <span className="block text-[#A67C52] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
                             Role
                         </span>
                         <span className="text-white text-lg font-medium">{role}</span>
                     </div>
 
                     <div className="md:col-span-3">
-                        <span className="block text-[#A67C52] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
                             Timeline
                         </span>
                         <span className="text-white text-lg font-medium">{timeline}</span>
                     </div>
 
                     <div className="md:col-span-6">
-                        <span className="block text-[#A67C52] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
                             Stack & Context
                         </span>
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1 border border-white/10 text-[#BDBDBD] text-xs rounded-full"
+                                    className="px-3 py-1 border border-white/10 text-[#C0C0C0] text-xs rounded-full"
                                 >
                                     {tag}
                                 </span>

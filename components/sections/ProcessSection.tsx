@@ -34,13 +34,13 @@ const ProcessSection = memo(function ProcessSection() {
             containerClassName="space-y-16 md:space-y-20"
         >
             <div className="max-w-3xl space-y-4">
-                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#A67C52] font-semibold">
+                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
                     The Methodology
                 </p>
                 <h2 className="text-4xl md:text-5xl font-black leading-tight text-white font-heading">
                     From Chaos to <span className="text-[#a7f36f]">Clarity.</span>
                 </h2>
-                <p className="text-lg text-[#BDBDBD] font-light max-w-xl">
+                <p className="text-lg text-[#C0C0C0] font-normal max-w-xl">
                     A structured approach to solving complex product challenges, ensuring every design decision is rooted in logic.
                 </p>
             </div>
@@ -54,13 +54,13 @@ const ProcessSection = memo(function ProcessSection() {
                         key={index}
                         className="relative z-10 group"
                     >
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#121212] border border-white/10 flex items-center justify-center text-[#A67C52] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:bg-[#a7f36f] group-hover:text-[#121212] transition-colors duration-300">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#121212] border border-white/10 flex items-center justify-center text-[#a7f36f] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:bg-[#a7f36f] group-hover:text-[#121212] transition-colors duration-300">
                             {step.number}
                         </div>
                         <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#a7f36f] transition-colors duration-300 font-heading">
                             {step.title}
                         </h3>
-                        <p className="text-sm md:text-base leading-relaxed text-[#BDBDBD]">
+                        <p className="text-sm md:text-base leading-relaxed text-[#C0C0C0]">
                             {step.description}
                         </p>
                     </div>
