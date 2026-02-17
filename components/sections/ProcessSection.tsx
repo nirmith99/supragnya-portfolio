@@ -45,7 +45,7 @@ const ProcessSection = memo(function ProcessSection() {
                 mass: 1
             } as any
         }
-    };
+    } as any;
 
     const simpleVariants = {
         hidden: { opacity: 0, y: 20 },

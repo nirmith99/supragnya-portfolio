@@ -66,7 +66,7 @@ function ProjectCard({ project, index, shouldReduceMotion }: { project: Project;
         delay: index * 0.1
       }
     }
-  };
+  } as any;
 
   const simpleVariants = {
     hidden: { opacity: 0, y: 20 },

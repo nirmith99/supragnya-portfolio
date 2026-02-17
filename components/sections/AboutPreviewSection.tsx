@@ -19,7 +19,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
       x: 0,
       transition: { duration: 0.6, ease: "easeOut" }
     }
-  };
+  } as any;
 
   const imageVariants = {
     hidden: { opacity: 0, scale: 0.95, rotate: -2 },
@@ -29,7 +29,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
       rotate: 0,
       transition: { duration: 0.8, ease: "easeOut" }
     }
-  };
+  } as any;
 
   return (
     <Section

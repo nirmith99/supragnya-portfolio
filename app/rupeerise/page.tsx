@@ -19,7 +19,7 @@ export default function RupeeRisePage() {
                 stiffness: 100,
                 damping: 20,
                 mass: 1
-            }
+            } as any
         }
     };
 
@@ -31,7 +31,7 @@ export default function RupeeRisePage() {
         }
     };
 
-    const sectionVariants = shouldReduceMotion ? reducedVariants : standardVariants;
+    const sectionVariants: any = shouldReduceMotion ? reducedVariants : standardVariants;
 
     return (
         <CaseStudyTemplate
@@ -62,7 +62,7 @@ export default function RupeeRisePage() {
                             Behavioral Instability, Not Knowledge Deficit.
                         </h2>
                         <p className="text-[#BDBDBD] text-lg leading-relaxed">
-                            Impulsive investing, fear of irreversible loss, and overconfidence influenced by short-term gain narratives. The issue wasn't access to tools, but the <span className="text-white">lack of guardrails</span>.
+                            Impulsive investing, fear of irreversible loss, and overconfidence influenced by short-term gain narratives. The issue wasn&apos;t access to tools, but the <span className="text-white">lack of guardrails</span>.
                         </p>
                     </div>
                 </motion.section>

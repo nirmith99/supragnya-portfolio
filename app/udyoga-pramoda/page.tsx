@@ -19,7 +19,7 @@ export default function UdyogaPramodaPage() {
                 stiffness: 100,
                 damping: 20,
                 mass: 1
-            }
+            } as any
         }
     };
 
@@ -31,7 +31,7 @@ export default function UdyogaPramodaPage() {
         }
     };
 
-    const sectionVariants = shouldReduceMotion ? reducedVariants : standardVariants;
+    const sectionVariants: any = shouldReduceMotion ? reducedVariants : standardVariants;
 
     return (
         <CaseStudyTemplate
@@ -184,7 +184,7 @@ export default function UdyogaPramodaPage() {
                     </div>
                     <div className="mt-8 pt-8 border-t border-black/10">
                         <p className="text-lg font-medium">
-                            "Reduced coordination ambiguity and improved readiness-to-placement visibility."
+                            &quot;Reduced coordination ambiguity and improved readiness-to-placement visibility.&quot;
                         </p>
                     </div>
                 </motion.section>

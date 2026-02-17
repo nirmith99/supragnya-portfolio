@@ -38,7 +38,7 @@ const TestimonialsSection = memo(function TestimonialsSection({ delayMs = 0 }: T
         damping: 20
       } as any
     }
-  };
+  } as any;
 
   const simpleVariants = {
     hidden: { opacity: 0, y: 20 },

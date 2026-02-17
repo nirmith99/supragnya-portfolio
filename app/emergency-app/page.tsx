@@ -31,7 +31,7 @@ export default function EmergencyAppPage() {
         }
     };
 
-    const sectionVariants = shouldReduceMotion ? reducedVariants : standardVariants;
+    const sectionVariants: any = shouldReduceMotion ? reducedVariants : standardVariants;
 
     return (
         <CaseStudyTemplate
