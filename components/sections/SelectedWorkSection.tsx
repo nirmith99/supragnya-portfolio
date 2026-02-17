@@ -4,191 +4,155 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState, memo } from "react";
 import Section from "@/components/ui/Section";
-
-
-type SelectedWorkSectionProps = {
-  delayMs?: number;
-};
+import { motion, useReducedMotion } from "framer-motion";
 
 type Project = {
   title: string;
+  subtitle: string;
   description: string;
+  stats: string; // "sub-30s response", "25+ placements", etc.
   href: string;
   imageSrc: string;
   imageAlt: string;
+  colSpan: string; // tailored for bento
 };
 
 const projects: Project[] = [
   {
+    title: "Emergency Response App",
+    subtitle: "Alert → Scan → Act",
+    description: "Simplifying critical care at 2 AM. A mobile system designed to separate scanning from acting, achieving a consistent sub-30-second response target.",
+    stats: "<30s Response",
+    href: "/emergency-app",
+    imageSrc: "/images/projects/emergency-real.png",
+    imageAlt: "Emergency Response App - Critical Care Interface",
+    colSpan: "md:col-span-2" // Large feature
+  },
+  {
     title: "RupeeRise",
-    description:
-      "A financial learning companion designed to help young earners build confidence with money before taking financial risks. Prioritizes learning, habit formation, and controlled exposure to financial tools over transactions or dense dashboards.",
+    subtitle: "Adaptive Financial Guardrails",
+    description: " shifting focus from literacy to behavior. A fintech app that builds confidence through simulation and dynamic friction.",
+    stats: "Behavior First",
     href: "/rupeerise",
     imageSrc: "/images/projects/rupeerise-real.png",
-    imageAlt: "RupeeRise - Financial Learning & Habit Building"
+    imageAlt: "RupeeRise - Behavioral Fintech",
+    colSpan: "md:col-span-1"
   },
   {
     title: "Udyoga Pramoda",
-    description:
-      "A high-impact, charity-led platform focused on professional growth for graduates. Emphasizes successful placements, mentorship connectivity, and building trust in career progression.",
+    subtitle: "Mentor-Gated Progression",
+    description: "Structuring the invisible funnel. A career platform that validated 150+ aspirants and secured 25+ placements through transparent tracking.",
+    stats: "25+ Placements",
     href: "/udyoga-pramoda",
     imageSrc: "/images/projects/udyoga-real.png",
-    imageAlt: "Udyoga Pramoda - Career Growth & Mentorship"
-  },
-  {
-    title: "Emergency Response App",
-    description:
-      "A high-stakes, high-utility tool for cardiovascular emergencies. Designed for speed, clarity, and life-saving interactions with an extreme focus on immediate 'Next Actions' and critical data hierarchy.",
-    href: "/emergency-app",
-    imageSrc: "/images/projects/emergency-real.png",
-    imageAlt: "Emergency Response - Critical Care Interface"
+    imageAlt: "Udyoga Pramoda - Career Platform",
+    colSpan: "md:col-span-1"
   }
 ];
 
-function cn(...values: Array<string | undefined>) {
-  return values.filter(Boolean).join(" ");
-}
-
-function useRevealOnScroll<T extends HTMLElement>(threshold = 0.2) {
-  const ref = useRef<T | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches);
-
-    updatePreference();
-    mediaQuery.addEventListener("change", updatePreference);
-    return () => mediaQuery.removeEventListener("change", updatePreference);
-  }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      setIsVisible(true);
-      return;
+function ProjectCard({ project, index, shouldReduceMotion }: { project: Project; index: number; shouldReduceMotion: boolean }) {
+  const cardVariants = {
+    hidden: { opacity: 0, rotateX: 15, scale: 0.95, y: 50 },
+    visible: {
+      opacity: 1,
+      rotateX: 0,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        mass: 1,
+        delay: index * 0.1
+      }
     }
+  };
 
-    const node = ref.current;
-    if (!node) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [prefersReducedMotion, threshold]);
-
-  return { ref, isVisible, prefersReducedMotion };
-}
-
-function ProjectItem({ project, index }: { project: Project; index: number }) {
-  const { ref, isVisible, prefersReducedMotion } = useRevealOnScroll<HTMLElement>(0.15);
-  const isRevealed = prefersReducedMotion || isVisible;
-  const isEven = index % 2 === 0;
+  const simpleVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
 
   return (
-    <article
-      ref={ref}
-      className={cn(
-        "group py-20 lg:py-32 border-b border-white/5 last:border-0 relative",
-        "transition-all duration-700 ease-out",
-        isRevealed ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      )}
+    <motion.article
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={shouldReduceMotion ? simpleVariants : cardVariants}
+      className={`group relative bg-[#1E1E1E] rounded-xl border border-white/5 overflow-hidden flex flex-col ${project.colSpan}`}
     >
-      <div className={cn(
-        "flex flex-col-reverse gap-12 lg:gap-24 items-center",
-        isEven ? "lg:flex-row-reverse" : "lg:flex-row"
-      )}>
-        {/* Text Content */}
-        <div className="flex-1 space-y-6 lg:space-y-8 w-full">
-          <div className="flex items-center gap-4 text-[#a7f36f] font-mono text-sm tracking-wider opacity-90">
-            <span>0{index + 1}</span>
-            <span className="h-[1px] w-12 bg-[#a7f36f]/40"></span>
-            <span className="uppercase tracking-[0.16em]">Case Study</span>
+      <Link href={project.href} className="flex-1 flex flex-col h-full outline-none focus-visible:ring-2 focus-visible:ring-[#a7f36f]">
+
+        {/* Image Area */}
+        <div className="relative w-full aspect-[16/9] md:aspect-auto md:h-[300px] lg:h-[400px] overflow-hidden">
+          <Image
+            src={project.imageSrc}
+            alt={project.imageAlt}
+            fill
+            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+
+          {/* Overlay Stats */}
+          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+            <span className="text-[#a7f36f] text-xs font-bold uppercase tracking-wider">{project.stats}</span>
           </div>
+        </div>
 
-          <h3 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.1] text-white group-hover:text-[#a7f36f] transition-colors duration-300 font-heading">
-            <Link href={project.href} className="outline-none focus-visible:text-[#a7f36f]">
+        {/* Content Area */}
+        <div className="p-6 md:p-8 flex flex-col flex-1 bg-[#1E1E1E] transition-colors duration-300 group-hover:bg-[#1E1E1E]/80">
+          <div className="mb-4">
+            <span className="text-xs font-mono text-[#888] uppercase tracking-widest">{project.subtitle}</span>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mt-1 group-hover:text-[#a7f36f] transition-colors font-heading">
               {project.title}
-            </Link>
-          </h3>
-
-          <p className="max-w-xl text-lg leading-relaxed text-[#C0C0C0] font-normal">
+            </h3>
+          </div>
+          <p className="text-[#C0C0C0] text-sm md:text-base leading-relaxed flex-1">
             {project.description}
           </p>
-
-          <div className="pt-6">
-            <Link
-              href={project.href}
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 text-white font-semibold tracking-wide uppercase text-sm hover:bg-white hover:text-black hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
-            >
-              View Case Study
-            </Link>
+          <div className="mt-6 pt-6 border-t border-white/5 flex items-center gap-2 text-white/50 text-sm group-hover:text-white transition-colors">
+            <span className="uppercase tracking-widest text-xs font-bold">Read Case Study</span>
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
-
-        {/* Image Content - "Photo on Desk" Style */}
-        <div className="flex-1 w-full aspect-[16/10] relative group/image">
-          {/* The container acts as the "Desk Surface" or a Card container */}
-          <div className="absolute inset-0 bg-[#1E1E1E] rounded-xl border border-white/5 shadow-2xl transition-all duration-500 group-hover/image:scale-[1.01] group-hover/image:shadow-[#a7f36f]/10" />
-
-          {/* Inner padding to frame the image */}
-          <div className="relative h-full w-full p-6 md:p-8">
-            <div className="relative h-full w-full overflow-hidden rounded-lg shadow-inner bg-[#121212]">
-              <Link href={project.href} className="block w-full h-full">
-                <Image
-                  src={project.imageSrc}
-                  alt={project.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover/image:scale-[1.03]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                {/* Subtle matte highlight over the image */}
-                <div className="absolute inset-0 bg-white/0 group-hover/image:bg-white/5 transition-colors duration-500 pointer-events-none"></div>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </article>
+      </Link>
+    </motion.article>
   );
 }
 
-const SelectedWorkSection = memo(function SelectedWorkSection({ delayMs = 0 }: SelectedWorkSectionProps) {
-  if (!projects.length) {
-    return null;
-  }
+const SelectedWorkSection = memo(function SelectedWorkSection({ delayMs = 0 }: { delayMs?: number }) {
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <Section
       id="selected-work"
-      delayMs={delayMs}
-      staggerChildren={false}
-      className="selected-work section-block scroll-mt-[var(--nav-height)] py-20 md:py-24"
-      containerClassName="space-y-20 md:space-y-24"
+      reveal={false}
+      className="selected-work py-20 md:py-32"
+      containerClassName="space-y-12"
     >
-      <header className="space-y-5">
-        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">Selected Work</p>
+      <header className="space-y-5 px-[var(--layout-padding)]">
+        <div className="flex items-center gap-4">
+          <div className="h-[1px] w-12 bg-[#a7f36f]/60"></div>
+          <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">Selected Work</p>
+        </div>
         <h2 className="max-w-[1000px] text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-white font-heading">
-          Products shaped with <span className="text-[#a7f36f]">rigor</span>, empathy, and execution focus.
+          Data-Driven <span className="text-[#a7f36f]">Storytelling</span>.
         </h2>
       </header>
 
-      {/* Editorial Stream: Alternating Layout */}
-      <div className="flex flex-col">
-        {projects.map((project, index) => (
-          <ProjectItem key={project.href} project={project} index={index} />
-        ))}
+      {/* Bento Grid Layout - Full Width with Padding */}
+      <div className="layout-padding">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.href}
+              project={project}
+              index={index}
+              shouldReduceMotion={!!shouldReduceMotion}
+            />
+          ))}
+        </div>
       </div>
     </Section>
   );

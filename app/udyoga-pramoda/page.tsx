@@ -1,154 +1,196 @@
+"use client";
+
 import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import GlassImagePlaceholder from "@/components/ui/GlassImagePlaceholder";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function UdyogaPramodaPage() {
+    const shouldReduceMotion = useReducedMotion();
+
+    const standardVariants = {
+        hidden: { opacity: 0, rotateX: 15, scale: 0.95, y: 50 },
+        visible: {
+            opacity: 1,
+            rotateX: 0,
+            scale: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+                mass: 1
+            }
+        }
+    };
+
+    const reducedVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const sectionVariants = shouldReduceMotion ? reducedVariants : standardVariants;
+
     return (
         <CaseStudyTemplate
             title="Udyoga Pramoda"
-            role="Lead Designer"
-            timeline="Volunteer Initiative"
-            tags={["EdTech", "Service Design", "Operational Governance"]}
+            role="Product Designer"
+            timeline="Live Production"
+            tags={["EdTech", "Community Platform", "Web System"]}
         >
-            <div className="space-y-24">
-                {/* 1. Context & The "Why" - Editorial Layout */}
-                <section className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-                    <div className="md:col-span-7 space-y-8">
-                        <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight font-heading">
-                            &quot;This was not a UI polish problem. It was an operational governance problem.&quot;
+            <div className="space-y-32">
+                {/* 1. Context & Problem */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={sectionVariants}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24"
+                >
+                    <div className="space-y-6">
+                        <h3 className="text-[#a7f36f] text-xs font-mono uppercase tracking-widest">Context</h3>
+                        <p className="text-[#BDBDBD] text-lg leading-relaxed">
+                            A community-led career initiative. Senior professionals mentor early-career aspirants.
+                            Functional culturally, but governance became fragile as it scaled beyond 150 aspirants.
+                        </p>
+                    </div>
+                    <div className="space-y-6">
+                        <h3 className="text-[#ef4444] text-xs font-mono uppercase tracking-widest">The Problem</h3>
+                        <h2 className="text-3xl font-bold text-white leading-tight font-heading">
+                            Informal Validation & Invisible Funnel.
                         </h2>
-                        <div className="text-[#BDBDBD] text-lg leading-relaxed space-y-6">
-                            <p>
-                                Udyoga Pramoda is a community-led career initiative where senior professionals mentor early-career aspirants.
-                            </p>
-                            <p>
-                                As participation scaled to <strong>150+ active aspirants</strong>, coordination relied heavily on WhatsApp. Readiness validation was anecdotal, and placements were untrackable.
-                            </p>
-                            <p>
-                                I designed a lightweight <strong>mentor-gated progression system</strong> that structured informal validation into a measurable readiness funnel—without increasing mentor burden.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="md:col-span-1 hidden md:block border-r border-white/10"></div>
-                    <div className="md:col-span-4 space-y-12">
-                        <div>
-                            <h3 className="text-[#A67C52] text-xs uppercase tracking-widest mb-4">The Challenge</h3>
-                            <p className="text-[#BDBDBD] text-sm leading-relaxed">
-                                How might we make mentor-controlled readiness visible while preserving the flexibility of a volunteer-driven ecosystem?
-                            </p>
-                        </div>
-                        <div>
-                            <h3 className="text-[#A67C52] text-xs uppercase tracking-widest mb-4">The Constraint</h3>
-                            <p className="text-[#BDBDBD] text-sm leading-relaxed">
-                                Mentors are volunteers. The system must <strong>never increase mentor effort per aspirant</strong>.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 2. The Key Insight - Dark "Feature" Box */}
-                <section className="bg-[#1E1E1E] rounded-none md:rounded-lg p-8 md:p-16 border border-white/5 relative overflow-hidden group">
-                    {/* Subtle noise or gradient only */}
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2"></div>
-
-                    <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <div className="flex items-center gap-3 mb-6">
-                                <div className="w-2 h-2 rounded-full bg-[#a7f36f] shadow-[0_0_10px_#a7f36f]"></div>
-                                <span className="text-[#a7f36f] text-xs uppercase tracking-widest font-mono">Key Insight</span>
-                            </div>
-                            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight font-heading">
-                                Placement strongly correlated with <span className="text-[#a7f36f]">mentor-validated readiness</span>.
-                            </h3>
-                            <p className="text-[#BDBDBD] text-lg">
-                                The bottleneck was not placement matching. The bottleneck was readiness conversion (150 → 50).
-                            </p>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-black/20 p-8 border border-white/10">
-                                <div className="text-5xl font-bold text-white mb-2 font-heading">50</div>
-                                <div className="text-[#BDBDBD] text-xs uppercase tracking-wide">Validated as<br />Job-Ready</div>
-                            </div>
-                            <div className="bg-black/20 p-8 border border-white/10">
-                                <div className="text-5xl font-bold text-white mb-2 font-heading">~50%</div>
-                                <div className="text-[#BDBDBD] text-xs uppercase tracking-wide">Conversion to<br />Placement</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 3. The Solution: Funnel Visualization */}
-                <section className="space-y-12">
-                    <div className="max-w-2xl">
-                        <h2 className="text-3xl font-bold text-white mb-6 font-heading">Structuring the Flow</h2>
-                        <p className="text-[#BDBDBD] text-lg">
-                            We moved from informal WhatsApp coordination to a structured, visible readiness funnel.
+                        <p className="text-[#BDBDBD] text-lg leading-relaxed">
+                            Mentor validation lived in WhatsApp threads. No centralized tracking. Placements were anecdotal. The challenge was structuring progression without increasing mentor workload.
                         </p>
                     </div>
+                </motion.section>
 
-                    <div className="bg-[#1E1E1E] p-12 md:p-20 border border-white/5 text-center relative overflow-hidden">
+                {/* 2. The Logic (Bento Grid) */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={sectionVariants}
+                    className="space-y-12"
+                >
+                    <div className="border-b border-white/10 pb-6">
+                        <h2 className="text-4xl font-bold text-white font-heading">The Logic: Mentor-Gated Progression</h2>
+                    </div>
 
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-12 relative z-10">
-                            {/* Input */}
-                            <div className="flex flex-col items-center gap-4">
-                                <div className="w-40 h-40 rounded-full border border-white/10 bg-white/5 flex flex-col items-center justify-center backdrop-blur-sm">
-                                    <span className="text-4xl font-bold text-white font-heading">150</span>
-                                    <span className="text-[#BDBDBD] text-xs uppercase tracking-widest mt-1">Aspirants</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {/* Logic Item 1: Core Insight (Wide) */}
+                        <div className="md:col-span-2 bg-[#1E1E1E] border border-white/5 p-8 rounded-xl flex flex-col justify-center relative overflow-hidden group hover:border-[#a7f36f]/30 transition-all">
+                            <h4 className="text-[#a7f36f] text-sm uppercase tracking-widest mb-4 font-mono">Core Insight</h4>
+                            <p className="text-2xl font-bold text-white leading-relaxed font-heading">
+                                Mentors already controlled progression informally. The platform simply <span className="text-[#a7f36f]">structured and surfaced</span> that control through visible state transitions.
+                            </p>
+                        </div>
+
+                        {/* Logic Item 2: The Flow */}
+                        <div className="md:col-span-1 bg-[#121212] border border-white/10 p-8 rounded-xl flex flex-col justify-center">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-8 h-8 rounded-full bg-[#333] flex items-center justify-center text-xs font-bold">1</div>
+                                    <p className="text-[#BDBDBD] text-sm">Aspirant submits task</p>
                                 </div>
-                                <span className="text-[#BDBDBD]/60 text-xs">Unfiltered Input</span>
-                            </div>
-
-                            {/* Filter Logic */}
-                            <div className="hidden md:flex flex-col items-center gap-2">
-                                <div className="h-[1px] w-24 bg-white/10"></div>
-                                <div className="bg-black text-[#a7f36f] text-[10px] px-3 py-1 rounded-full border border-white/10">
-                                    Mentor Validation
+                                <div className="h-4 w-0.5 bg-white/10 ml-4"></div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-8 h-8 rounded-full bg-[#333] flex items-center justify-center text-xs font-bold">2</div>
+                                    <p className="text-[#BDBDBD] text-sm">Mentor Reviews</p>
                                 </div>
-                            </div>
-
-                            {/* Validated */}
-                            <div className="flex flex-col items-center gap-4">
-                                <div className="w-36 h-36 rounded-full border-2 border-[#a7f36f]/40 bg-[#a7f36f]/10 flex flex-col items-center justify-center backdrop-blur-md">
-                                    <span className="text-3xl font-bold text-white font-heading">50</span>
-                                    <span className="text-[#a7f36f] text-xs uppercase tracking-widest mt-1">Ready</span>
+                                <div className="h-4 w-0.5 bg-white/10 ml-4"></div>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-8 h-8 rounded-full bg-[#a7f36f] text-black flex items-center justify-center text-xs font-bold">3</div>
+                                    <p className="text-white font-bold text-sm">State Change: Reliable</p>
                                 </div>
-                                <span className="text-[#a7f36f] text-xs font-semibold">Job-Ready Pool</span>
-                            </div>
-
-                            {/* Filter Logic */}
-                            <div className="hidden md:flex flex-col items-center gap-2">
-                                <div className="h-[1px] w-24 bg-white/10"></div>
-                                <div className="bg-black text-[#a7f36f] text-[10px] px-3 py-1 rounded-full border border-white/10">
-                                    Placement Drive
-                                </div>
-                            </div>
-
-                            {/* Output */}
-                            <div className="flex flex-col items-center gap-4">
-                                <div className="w-32 h-32 rounded-full border-2 border-[#a7f36f] bg-[#a7f36f]/20 flex flex-col items-center justify-center backdrop-blur-xl">
-                                    <span className="text-3xl font-bold text-white font-heading">25+</span>
-                                    <span className="text-white text-xs uppercase tracking-widest mt-1">Placed</span>
-                                </div>
-                                <span className="text-white text-xs font-semibold">Success</span>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                {/* 4. Outcomes & Reflection Grid */}
-                <section className="grid md:grid-cols-3 gap-8">
-                    <div className="md:col-span-1 bg-white/5 p-12 border border-white/10 flex flex-col justify-center text-center">
-                        <div className="text-6xl font-bold text-white mb-4 font-heading">~7.5</div>
-                        <div className="text-[#A67C52] text-sm uppercase tracking-widest">LPA Avg Salary</div>
+                        {/* Logic Item 3: System Architecture */}
+                        <div className="md:col-span-3 bg-[#1E1E1E] border border-white/5 p-8 rounded-xl relative overflow-hidden">
+                            <h4 className="text-[#BDBDBD] text-sm uppercase tracking-widest mb-6 font-mono">Start → Validated → Placed</h4>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="bg-black/40 p-4 rounded border border-white/10 text-center">
+                                    <span className="block text-2xl font-bold text-white mb-1">150</span>
+                                    <span className="text-xs text-[#888] uppercase">Aspirants Onboarded</span>
+                                </div>
+                                <div className="bg-black/40 p-4 rounded border border-white/10 text-center">
+                                    <span className="block text-2xl font-bold text-[#a7f36f] mb-1">50</span>
+                                    <span className="text-xs text-[#888] uppercase">Mentor Validated</span>
+                                </div>
+                                <div className="bg-black/40 p-4 rounded border border-white/10 text-center">
+                                    <span className="block text-2xl font-bold text-white mb-1">25+</span>
+                                    <span className="text-xs text-[#888] uppercase">Secured Placements</span>
+                                </div>
+                            </div>
+                            <p className="mt-4 text-center text-sm text-[#BDBDBD] opacity-70">
+                                ~50% conversion from validated pool.
+                            </p>
+                        </div>
                     </div>
-                    <div className="md:col-span-2 bg-[#1E1E1E] p-12 border border-white/10">
-                        <h3 className="text-[#a7f36f] font-semibold text-lg mb-6">Reflection</h3>
-                        <p className="text-[#BDBDBD] leading-relaxed text-lg">
-                            The core value of this project was not in interface design, but in structuring informal mentor-driven progression into a scalable, trackable system.
-                            <br /><br />
-                            Future opportunity lies in improving readiness conversion (the 150 → 50 drop-off) through better pre-validation and clearer guidance, without increasing mentor burden.
+                </motion.section>
+
+                {/* 3. UI Showcase */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={sectionVariants}
+                    className="space-y-12"
+                >
+                    <div className="border-b border-white/10 pb-6">
+                        <h2 className="text-4xl font-bold text-white font-heading">Interface Design</h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="space-y-4">
+                            <div className="aspect-[4/3] bg-[#1E1E1E] rounded-xl border border-white/5 p-2">
+                                <GlassImagePlaceholder label="Aspirant Dashboard" className="w-full h-full rounded-lg" />
+                            </div>
+                            <p className="text-sm text-[#888] text-center">Transparent status tracking for aspirants</p>
+                        </div>
+                        <div className="space-y-4">
+                            <div className="aspect-[4/3] bg-[#1E1E1E] rounded-xl border border-white/5 p-2">
+                                <GlassImagePlaceholder label="Mentor Validation View" className="w-full h-full rounded-lg" />
+                            </div>
+                            <p className="text-sm text-[#888] text-center">Quick-action validation tools for mentors</p>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* 4. Impact */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={sectionVariants}
+                    className="bg-white text-black rounded-2xl p-8 md:p-16"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div>
+                            <span className="block text-5xl font-black font-heading mb-2">25+</span>
+                            <span className="text-sm font-bold uppercase tracking-widest opacity-60">Placements Secured</span>
+                        </div>
+                        <div>
+                            <span className="block text-5xl font-black font-heading mb-2">~7.5</span>
+                            <span className="text-sm font-bold uppercase tracking-widest opacity-60">LPA Avg Salary</span>
+                        </div>
+                        <div>
+                            <span className="block text-5xl font-black font-heading mb-2">33%</span>
+                            <span className="text-sm font-bold uppercase tracking-widest opacity-60">Validation Rate</span>
+                        </div>
+                    </div>
+                    <div className="mt-8 pt-8 border-t border-black/10">
+                        <p className="text-lg font-medium">
+                            "Reduced coordination ambiguity and improved readiness-to-placement visibility."
                         </p>
                     </div>
-                </section>
+                </motion.section>
+
+                {/* Hard Stop Footer */}
+                <div className="h-24 bg-[#121212]"></div>
             </div>
         </CaseStudyTemplate>
     );

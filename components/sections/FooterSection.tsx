@@ -6,8 +6,8 @@ export default function FooterSection() {
     <Section
       reveal={false}
       as="footer"
-      className="py-16 md:py-20 border-t border-white/10"
-      containerClassName="space-y-10"
+      className="py-16 md:py-24 bg-black text-white border-t border-white/10"
+      containerClassName="space-y-12"
     >
       <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">

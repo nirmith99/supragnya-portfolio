@@ -19,7 +19,12 @@
   --accent-lime: #a7f36f;
   /* RupeeRise Green - Semantic Highlight */
 
-  /* Mappings */
+  /* Adaptive Layout (Pencil Logic) */
+  --layout-padding: clamp(40px, 5vw, 80px);
+  /* 40px min, scaling to 80px */
+  --layout-padding-wide: clamp(40px, 8vw, 120px);
+  /* Scaling to 8% on ultra-wide */
+
   --bg-base: var(--bg-charcoal);
   --ink: var(--text-primary);
   --muted: var(--text-secondary);
@@ -27,6 +32,43 @@
 
   --surface: rgba(255, 255, 255, 0.03);
   --surface-border: rgba(255, 255, 255, 0.1);
+}
+
+/* 3D Assembly Entrance Animation */
+@keyframes assembly3d {
+  0% {
+    opacity: 0;
+    transform: rotateX(15deg) scale(0.95) translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg) scale(1) translateY(0);
+  }
+}
+
+.animate-assembly {
+  animation: assembly3d 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  /* Spring Physics via bezier */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-assembly {
+    animation: fade-in 0.8s ease-out forwards;
+    transform: none !important;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 html {
@@ -44,6 +86,21 @@ body {
   background-attachment: fixed;
   opacity: 1;
   /* Ensure opacity is normal */
+}
+
+
+@keyframes scroll-indicate {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicate 2s linear infinite;
 }
 
 /* Navbar Global Overrides */
@@ -76,8 +133,15 @@ p {
 
 /* Layout Utilities */
 .layout-padding {
-  padding-left: 60px;
-  padding-right: 60px;
+  padding-left: var(--layout-padding);
+  padding-right: var(--layout-padding);
+}
+
+@media (min-width: 1920px) {
+  .layout-padding {
+    padding-left: var(--layout-padding-wide);
+    padding-right: var(--layout-padding-wide);
+  }
 }
 
 /* NEW: Global vertical rhythm for sections */
@@ -95,9 +159,10 @@ p {
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile override handled by clamp() in CSS variable */
+/* @media (max-width: 768px) {
   .layout-padding {
     padding-left: 20px;
     padding-right: 20px;
   }
-}
+} */

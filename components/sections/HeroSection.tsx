@@ -49,13 +49,13 @@ const HeroSection = memo(function HeroSection() {
         id="hero-section"
         reveal={false}
         staggerChildren={false}
-        className="hero text-white"
-        /* Added pt-32 md:pt-48 to clear fixed navbar and provide breathing room */
-        containerClassName="hero-inner flex items-start pt-32 md:pt-48"
+        className="hero text-white relative min-h-screen flex flex-col justify-center"
+        /* Adaptive padding handled by layout-padding utility */
+        containerClassName="hero-inner flex flex-col lg:flex-row items-center pt-32 md:pt-48 pb-20 layout-padding"
       >
-        <div className="hero-layout grid w-full lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
+        <div className="hero-layout grid w-full lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-8 items-center">
           <motion.div
-            className="hero-copy space-y-6 md:space-y-8"
+            className="hero-copy space-y-6 md:space-y-8 animate-assembly"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -68,9 +68,9 @@ const HeroSection = memo(function HeroSection() {
             </motion.p>
             <motion.h1
               variants={itemVariants}
-              className="hero-title max-w-[18ch] text-[clamp(40px,5vw,72px)] font-black leading-[1.0] tracking-[-0.03em] text-white font-heading"
+              className="hero-title max-w-[15ch] text-[clamp(40px,6vw,84px)] font-black leading-[0.95] tracking-[-0.03em] text-white font-heading"
             >
-              Designing <span className="block text-[#a7f36f]">clarity</span> for complex digital systems.
+              Designing <span className="block text-[#a7f36f]">Clarity</span>
             </motion.h1>
             <motion.p
               variants={itemVariants}
@@ -97,25 +97,36 @@ const HeroSection = memo(function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Placeholder for Hero Image - Matched to new theme (grayscale/matte) */}
+          {/* Avatar Integration - "Avatar" Rule */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1], delay: 0.4 }}
-            className="hero-image-wrap hidden lg:flex mx-auto w-full max-w-[520px] items-center justify-center lg:mx-0 lg:justify-end"
+            initial={{ opacity: 0, scale: 0.9, rotateX: 15 }}
+            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="hero-image-wrap flex mx-auto w-full max-w-[480px] lg:max-w-[640px] items-end justify-center lg:justify-end relative perspective-1000"
           >
-            {/* Using existing image but could optionally apply grayscale filter via class */}
-            <Image
-              src="/images/avatar.png"
-              alt="Portrait of Supragnya Purohith"
-              width={760}
-              height={980}
-              className="hero-image h-auto w-full object-contain filter grayscale contrast-110 brightness-95"
-              priority
-            />
+            <div className="relative w-full aspect-[4/5] lg:aspect-square">
+              <Image
+                src="/images/avatar.png"
+                alt="Supragnya Purohith - Designing Clarity"
+                fill
+                className="object-contain object-bottom filter contrast-110"
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </div>
           </motion.div>
         </div>
-        <ScrollIndicator />
+
+        {/* Animated Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-white/40">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-[#a7f36f] to-transparent bg-[length:100%_200%] animate-scroll-indicator"></div>
+        </motion.div>
       </Section>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>

@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { MouseEvent, useCallback, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Modal from "@/components/ui/Modal";
+import HamburgerMenu from "@/components/ui/HamburgerMenu";
 // Removed missing import '@/utils/cn'; using local definition below.
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -60,7 +61,7 @@ export default function Navbar() {
             : "bg-transparent border-b border-transparent"
         )}
       >
-        <div className="mx-auto w-full px-5 md:px-[60px] h-[var(--nav-height)] flex items-center justify-between">
+        <div className="mx-auto w-full layout-padding h-[var(--nav-height)] flex items-center justify-between">
           <Link
             href="/"
             onClick={(e) => {
@@ -69,11 +70,13 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="text-white font-bold text-[1rem] tracking-tight font-heading"
+            className="text-white font-bold text-[1rem] tracking-tight font-heading z-50 relative"
           >
             Supragnya Purohith
           </Link>
-          <nav aria-label="Primary" className="flex items-center gap-6 md:gap-10">
+
+          {/* Desktop Nav */}
+          <nav aria-label="Primary" className="hidden lg:flex items-center gap-10">
             <button
               onClick={handleWorkClick}
               className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
@@ -106,6 +109,9 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
             </button>
           </nav>
+
+          {/* Mobile Nav */}
+          <HamburgerMenu onContactClick={() => setIsContactModalOpen(true)} />
         </div>
       </motion.header>
       <Modal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
