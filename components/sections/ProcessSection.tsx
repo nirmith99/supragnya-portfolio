@@ -85,10 +85,10 @@ const ProcessSection = memo(function ProcessSection() {
                         transition={{ delay: index * 0.1 }}
                         className="relative z-10 group"
                     >
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#121212] border border-white/10 flex items-center justify-center text-[#a7f36f] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.05)] group-hover:bg-[#a7f36f] group-hover:text-[#121212] transition-colors duration-300 relative z-20">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-black/10 flex items-center justify-center text-[var(--accent)] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(0,0,0,0.05)] group-hover:bg-[var(--accent)] group-hover:text-white transition-colors duration-300 relative z-20">
                             {step.number}
                         </div>
-                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#a7f36f] transition-colors duration-300 font-heading">
+                        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 font-heading">
                             {step.title}
                         </h3>
                         <p className="text-sm md:text-base leading-relaxed text-[#C0C0C0]">

@@ -24,7 +24,7 @@ const projects: Project[] = [
     description: "Simplifying critical care at 2 AM. A mobile system designed to separate scanning from acting, achieving a consistent sub-30-second response target.",
     stats: "<30s Response",
     href: "/emergency-app",
-    imageSrc: "/images/projects/emergency-real.png",
+    imageSrc: "/images/thumbnails/emergency-real.png",
     imageAlt: "Emergency Response App - Critical Care Interface",
     colSpan: "md:col-span-2" // Large feature
   },
@@ -34,7 +34,7 @@ const projects: Project[] = [
     description: " shifting focus from literacy to behavior. A fintech app that builds confidence through simulation and dynamic friction.",
     stats: "Behavior First",
     href: "/rupeerise",
-    imageSrc: "/images/projects/rupeerise-real.png",
+    imageSrc: "/images/thumbnails/rupeerise-real.png",
     imageAlt: "RupeeRise - Behavioral Fintech",
     colSpan: "md:col-span-1"
   },
@@ -44,7 +44,7 @@ const projects: Project[] = [
     description: "Structuring the invisible funnel. A career platform that validated 150+ aspirants and secured 25+ placements through transparent tracking.",
     stats: "25+ Placements",
     href: "/udyoga-pramoda",
-    imageSrc: "/images/projects/udyoga-real.png",
+    imageSrc: "/images/thumbnails/udyoga-real.png",
     imageAlt: "Udyoga Pramoda - Career Platform",
     colSpan: "md:col-span-1"
   }
@@ -101,17 +101,17 @@ function ProjectCard({ project, index, shouldReduceMotion }: { project: Project;
         </div>
 
         {/* Content Area */}
-        <div className="p-6 md:p-8 flex flex-col flex-1 bg-[#1E1E1E] transition-colors duration-300 group-hover:bg-[#1E1E1E]/80">
+        <div className="p-6 md:p-8 flex flex-col flex-1 bg-[var(--bg-surface)] transition-colors duration-300 group-hover:bg-[var(--bg-surface)]/80">
           <div className="mb-4">
             <span className="text-xs font-mono text-[#888] uppercase tracking-widest">{project.subtitle}</span>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mt-1 group-hover:text-[#a7f36f] transition-colors font-heading">
+            <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mt-1 group-hover:text-[#a7f36f] transition-colors font-heading">
               {project.title}
             </h3>
           </div>
           <p className="text-[#C0C0C0] text-sm md:text-base leading-relaxed flex-1">
             {project.description}
           </p>
-          <div className="mt-6 pt-6 border-t border-white/5 flex items-center gap-2 text-white/50 text-sm group-hover:text-white transition-colors">
+          <div className="mt-6 pt-6 border-t border-black/5 flex items-center gap-2 text-[var(--text-secondary)] text-sm group-hover:text-[var(--text-primary)] transition-colors">
             <span className="uppercase tracking-widest text-xs font-bold">Read Case Study</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </div>

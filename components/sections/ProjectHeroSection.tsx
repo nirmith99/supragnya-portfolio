@@ -14,10 +14,10 @@ export default function ProjectHeroSection({
   return (
     <Section
       reveal={false}
-      className="bg-[#0E0E0E] py-24 text-white md:py-28"
+      className="bg-[var(--bg-charcoal)] py-24 text-[var(--text-primary)] md:py-28"
       containerClassName="space-y-6"
     >
-      <p className="text-sm uppercase tracking-[0.14em] text-white/70">{meta}</p>
+      <p className="text-sm uppercase tracking-[0.14em] text-[var(--text-secondary)]">{meta}</p>
       <h1 className="max-w-[960px] text-[clamp(2.3rem,6vw,3.9rem)] font-semibold leading-[1.04] tracking-[-0.02em]">
         {title}
       </h1>

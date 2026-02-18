@@ -16,7 +16,7 @@ export default function ProjectCaseStudySection({
   return (
     <Section
       delayMs={delayMs}
-      className="bg-[#F5F1E8] py-16 md:py-20"
+      className="bg-[var(--bg-surface)] py-16 md:py-20"
       containerClassName="grid gap-8 md:grid-cols-[0.36fr_0.64fr]"
     >
       <h2 className="text-[2rem] font-semibold leading-tight text-[#111111]">{heading}</h2>

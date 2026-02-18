@@ -13,7 +13,7 @@ const projects = [
     description:
       "A rapid-response product designed for speed, alignment, and confident operational decisions.",
     href: "/projects/emergency-response",
-    imageSrc: "/images/projects/emergency-real.png",
+    imageSrc: "/images/thumbnails/emergency-real.png",
     imageAlt: "Emergency Response App thumbnail"
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     description:
       "A focused fintech experience helping users build clarity and momentum around financial behavior.",
     href: "/projects/rupeerise",
-    imageSrc: "/images/projects/rupeerise-real.png",
+    imageSrc: "/images/thumbnails/rupeerise-real.png",
     imageAlt: "RupeeRise thumbnail"
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     description:
       "A structured platform concept for career readiness with guided pathways and progress visibility.",
     href: "/projects/udyoga-pramoda",
-    imageSrc: "/images/projects/udyoga-real.png",
+    imageSrc: "/images/thumbnails/udyoga-real.png",
     imageAlt: "Udyoga Pramoda thumbnail"
   }
 ];
@@ -45,7 +45,7 @@ export default function OtherProjectsSection({
   return (
     <Section
       delayMs={delayMs}
-      className="bg-[#F5F1E8] py-20 md:py-28"
+      className="bg-[var(--bg-surface)] py-20 md:py-28"
       containerClassName="space-y-16"
     >
       <header className="space-y-4">

@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --nav-height: 94px;
 
   /* DESIGN SYSTEM TOKENS - REPLIT INSPIRED DOSSIER STYLE */
-  /* High-Contrast Dark Mode */
-  --bg-charcoal: #121212;
-  --bg-surface: #1E1E1E;
+  /* Ivory White / Light Mode */
+  --bg-charcoal: #FFFFF0; /* Ivory White */
+  --bg-surface: #F5F5DC; /* Beige */
 
-  --text-primary: #FFFFFF;
-  /* Pure White for Headings */
-  --text-secondary: #C0C0C0;
-  /* Light Silver for Body - Increased brightness for legibility */
+  --text-primary: #121212;
+  /* Charcoal for Headings */
+  --text-secondary: #333333;
+  /* Dark Gray for Body */
 
-  --accent-lime: #a7f36f;
-  /* RupeeRise Green - Semantic Highlight */
+  --accent-lime: #022c22;
+  /* Deep Forest Green - Contrast against Ivory */
 
   /* Adaptive Layout (Pencil Logic) */
   --layout-padding: clamp(40px, 5vw, 80px);
@@ -30,8 +30,8 @@
   --muted: var(--text-secondary);
   --accent: var(--accent-lime);
 
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-border: rgba(255, 255, 255, 0.1);
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-border: rgba(0, 0, 0, 0.1);
 }
 
 /* 3D Assembly Entrance Animation */
@@ -105,8 +105,8 @@ body {
 
 /* Navbar Global Overrides */
 .navbar {
-  background: rgba(18, 18, 18, 0.95);
-  /* High opacity for dossier feel */
+  background: rgba(255, 255, 240, 0.95);
+  /* High opacity Ivory for dossier feel */
   border-bottom: 1px solid var(--surface-border);
   backdrop-filter: blur(8px);
 }

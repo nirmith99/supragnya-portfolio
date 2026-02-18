@@ -69,14 +69,14 @@ const TestimonialsSection = memo(function TestimonialsSection({ delayMs = 0 }: T
             transition={{ delay: index * 0.1 }}
             className="bg-white/5 backdrop-blur-md p-8 rounded-xl border-l-[3px] border-[#a7f36f] transition-all duration-300 hover:bg-white/10 hover:shadow-lg group"
           >
-            <p className="text-lg md:text-xl leading-relaxed text-white font-light opacity-90">&ldquo;{testimonial.quote}&rdquo;</p>
+            <p className="text-lg md:text-xl leading-relaxed text-[var(--text-secondary)] font-light opacity-90">&ldquo;{testimonial.quote}&rdquo;</p>
             <footer className="mt-8 flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-[#a7f36f] flex items-center justify-center text-black font-bold text-sm">
+              <div className="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-white font-bold text-sm">
                 {testimonial.name.charAt(0)}
               </div>
               <div>
-                <p className="font-semibold text-white text-sm">{testimonial.name}</p>
-                <p className="text-xs text-[#C0C0C0] uppercase tracking-wider">{testimonial.role}</p>
+                <p className="font-semibold text-[var(--text-primary)] text-sm">{testimonial.name}</p>
+                <p className="text-xs text-[var(--text-tertiary)] uppercase tracking-wider">{testimonial.role}</p>
               </div>
             </footer>
           </motion.blockquote>

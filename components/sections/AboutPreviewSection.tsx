@@ -66,7 +66,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
 
         <div className="pt-4">
           {/* Reusing the Button style or component directly if available, else standard link style */}
-          <a href="mailto:hello@supragnyapurohith.com" className="inline-block border-b border-[#a7f36f] text-white pb-1 hover:text-[#a7f36f] hover:border-white transition-colors">
+          <a href="mailto:hello@supragnyapurohith.com" className="inline-block border-b border-[var(--accent)] text-[var(--accent)] pb-1 hover:text-[var(--text-primary)] hover:border-[var(--text-primary)] transition-colors">
             Get in touch
           </a>
         </div>
@@ -78,7 +78,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
         variants={imageVariants}
-        className="order-1 md:order-2 relative aspect-square bg-[#1E1E1E] rounded-full overflow-hidden border border-white/5"
+        className="order-1 md:order-2 relative aspect-square bg-[var(--bg-surface)] rounded-full overflow-hidden border border-black/5"
       >
         {/* Abstract Circle or Profile Image Placeholder */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#121212] via-[#1E1E1E] to-[#333]"></div>
