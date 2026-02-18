@@ -9,16 +9,21 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          green: "#022c22", // Updated Deep Forest
-          dark: "#0E0E0E",
-          body: "#F5F1E8", // Antique Cream
-          muted: "#B3B3B3",
-          brown: "#D4A373",
-          // Re-mapped standard colors 
-          "deep-forest": "#022c22",
-          "warm-brown": "#A67C52",
-          "antique-cream": "#F4F1E8"
+          brown: "#8B5E3C", // Rich Bronze Brown
+          dark: "#121212", // Primary Text
+          white: "#FFFFFF", // Background
+          muted: "#F5F5F5", // Light Gray for differentiation
+          // Legacy mappings to prevent breakage immediately, can be cleaned up later
+          green: "#8B5E3C",
+          body: "#FFFFFF",
+          "deep-forest": "#121212",
+          "antique-cream": "#FFFFFF"
         }
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-outfit)", "sans-serif"],
+        serif: ["var(--font-playfair)", "serif"]
       }
     }
   },

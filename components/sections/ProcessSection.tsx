@@ -56,42 +56,44 @@ const ProcessSection = memo(function ProcessSection() {
         <Section
             id="process-section"
             reveal={false}
-            className="process-section border-y border-white/5 bg-[#1E1E1E]/20 backdrop-blur-sm py-24"
+            className="process-section py-20 md:py-32"
             containerClassName="space-y-16 md:space-y-20"
         >
-            <div className="layout-padding space-y-4">
-                <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
+            <div className="w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-20" /> {/* Section Divider */}
+
+            <div className="layout-padding space-y-4 text-center">
+                <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">
                     The Methodology
                 </p>
-                <h2 className="text-4xl md:text-5xl font-black leading-tight text-white font-heading">
-                    From Chaos to <span className="text-[#a7f36f]">Clarity.</span>
+                <h2 className="text-4xl md:text-5xl font-black leading-tight text-[#121212] font-heading">
+                    From Chaos to <span className="font-serif-italic font-normal text-[#8B5E3C]">Clarity.</span>
                 </h2>
-                <p className="text-lg text-[#C0C0C0] font-normal max-w-xl">
+                <p className="text-lg text-[var(--text-secondary)] font-normal max-w-xl mx-auto">
                     A structured approach to solving complex product challenges, ensuring every design decision is rooted in logic.
                 </p>
             </div>
 
             <div className="layout-padding grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-                {/* Connector Line (Desktop) */}
-                <div className="hidden lg:block absolute top-[28px] left-0 right-0 h-[1px] bg-gradient-to-r from-white/0 via-white/10 to-white/0 z-0" />
+                {/* Connector Line (Desktop) - Updated Color */}
+                <div className="hidden lg:block absolute top-[28px] left-0 right-0 h-[1px] bg-[#8B5E3C]/20 z-0" />
 
                 {steps.map((step, index) => (
                     <motion.div
                         key={index}
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, margin: "-50px" }}
+                        viewport={{ once: true, margin: "-10%" }}
                         variants={shouldReduceMotion ? simpleVariants : cardVariants}
                         transition={{ delay: index * 0.1 }}
                         className="relative z-10 group"
                     >
-                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-black/10 flex items-center justify-center text-[var(--accent)] font-mono font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(0,0,0,0.05)] group-hover:bg-[var(--accent)] group-hover:text-white transition-colors duration-300 relative z-20">
+                        <div className="w-10 h-10 md:w-14 md:h-14 rounded-full bg-white border border-[#8B5E3C]/20 flex items-center justify-center text-[#8B5E3C] font-mono font-bold text-sm md:text-base mb-6 shadow-sm group-hover:bg-[#8B5E3C] group-hover:text-white transition-colors duration-300 relative z-20">
                             {step.number}
                         </div>
-                        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors duration-300 font-heading">
+                        <h3 className="text-xl font-bold text-[#121212] mb-3 group-hover:text-[#8B5E3C] transition-colors duration-300 font-heading">
                             {step.title}
                         </h3>
-                        <p className="text-sm md:text-base leading-relaxed text-[#C0C0C0]">
+                        <p className="text-sm md:text-base leading-relaxed text-[var(--text-secondary)]">
                             {step.description}
                         </p>
                     </motion.div>

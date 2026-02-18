@@ -39,6 +39,8 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
       className="section-block py-20 md:py-32"
       containerClassName="layout-padding grid md:grid-cols-2 gap-12 md:gap-24 items-center"
     >
+      <div className="md:col-span-2 w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-20 md:mb-0" /> {/* Section Divider for mobile/top */}
+
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -47,15 +49,15 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
         className="space-y-8 order-2 md:order-1"
       >
         <div className="space-y-4">
-          <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">
+          <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">
             About
           </p>
-          <h2 className="text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.035em] text-white font-heading">
-            I design for teams that need <span className="text-[#a7f36f]">behavior-first</span> thinking.
+          <h2 className="text-4xl md:text-5xl font-black leading-[1.05] tracking-[-0.035em] text-[#121212] font-heading">
+            I design for teams that need <span className="font-serif-italic font-normal text-[#8B5E3C]">behavior-first</span> thinking.
           </h2>
         </div>
 
-        <div className="text-base md:text-lg leading-relaxed text-[#C0C0C0] font-normal space-y-6">
+        <div className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-normal space-y-6">
           <p>
             With 1 year and 11 months of experience, my practice combines systems thinking, strategic framing, and detail-driven interaction design.
           </p>
@@ -65,8 +67,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
         </div>
 
         <div className="pt-4">
-          {/* Reusing the Button style or component directly if available, else standard link style */}
-          <a href="mailto:hello@supragnyapurohith.com" className="inline-block border-b border-[var(--accent)] text-[var(--accent)] pb-1 hover:text-[var(--text-primary)] hover:border-[var(--text-primary)] transition-colors">
+          <a href="mailto:hello@supragnyapurohith.com" className="inline-block border-b border-[#8B5E3C] text-[#8B5E3C] pb-1 hover:text-[#121212] hover:border-[#121212] transition-colors font-medium">
             Get in touch
           </a>
         </div>
@@ -80,10 +81,10 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
         variants={imageVariants}
         className="order-1 md:order-2 relative aspect-square bg-[var(--bg-surface)] rounded-full overflow-hidden border border-black/5"
       >
-        {/* Abstract Circle or Profile Image Placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#121212] via-[#1E1E1E] to-[#333]"></div>
-        <div className="absolute inset-4 rounded-full border border-white/5 bg-[url('/images/noise.png')] opacity-20"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#a7f36f]/20 font-heading font-bold text-9xl">S</div>
+        {/* Simple geometric placeholder until image is provided */}
+        <div className="absolute inset-0 bg-[#F9F9F9]"></div>
+        <div className="absolute inset-12 rounded-full border border-[#8B5E3C]/10"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#8B5E3C]/20 font-heading font-bold text-9xl">S</div>
       </motion.div>
     </Section>
   );

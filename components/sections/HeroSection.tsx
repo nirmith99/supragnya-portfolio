@@ -50,82 +50,63 @@ const HeroSection = memo(function HeroSection() {
         reveal={false}
         staggerChildren={false}
         className="hero text-[var(--text-primary)] relative min-h-screen flex flex-col justify-center"
-        /* Adaptive padding handled by layout-padding utility */
-        containerClassName="hero-inner flex flex-col lg:flex-row items-center pt-32 md:pt-48 pb-20 layout-padding"
+        containerClassName="hero-inner flex flex-col items-center justify-center pt-32 md:pt-48 pb-20 layout-padding text-center"
       >
-        <div className="hero-layout grid w-full lg:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-8 items-center">
+        <div className="max-w-5xl mx-auto relative">
+          {/* Decorative Floating Elements (Optional - kept simple for now) */}
+
           <motion.div
-            className="hero-copy space-y-6 md:space-y-8 animate-assembly"
+            className="hero-copy space-y-12 animate-assembly"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            <motion.p
-              variants={itemVariants}
-              className="hero-kicker text-xs md:text-sm uppercase tracking-[0.16em] text-[var(--accent)] font-semibold"
-            >
-              UX/UI Designer | Product Designer
-            </motion.p>
+            {/* Primary Headline */}
             <motion.h1
               variants={itemVariants}
-              className="hero-title max-w-[15ch] text-[clamp(40px,6vw,84px)] font-black leading-[0.95] tracking-[-0.03em] text-[var(--text-primary)] font-heading"
+              className="hero-title text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] tracking-tight font-heading font-bold text-[#121212]"
             >
-              Designing <span className="block text-[var(--accent)]">Clarity</span>
+              Designer driven by <span className="font-serif-italic font-normal">precision</span>, where logical structure meets <span className="font-serif-italic font-normal">user instinct</span>, building systems that actually scale.
             </motion.h1>
+
+            {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="hero-description max-w-[600px] text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-normal"
+              className="hero-description max-w-2xl mx-auto text-lg md:text-xl leading-relaxed text-[var(--text-secondary)] font-normal"
             >
-              I bridge curiosity and logic to craft structured, user-centered experiences that
-              help teams ship with confidence.
+              Focusing on making complex systems feel simple through behavior-first design and technical clarity.
             </motion.p>
+
             <motion.div
               variants={itemVariants}
-              className="hero-actions flex flex-wrap gap-4 pt-1"
+              className="hero-actions flex flex-wrap justify-center gap-6 pt-4"
             >
               <Button
                 onClick={scrollToSelectedWork}
+                className="bg-[#8B5E3C] text-white hover:bg-[#70482B] rounded-full px-8 py-4 text-lg"
               >
                 View Work
               </Button>
               <Button
                 variant="secondary"
                 onClick={() => setIsModalOpen(true)}
+                className="bg-transparent text-[#121212] border border-[#121212]/20 hover:border-[#8B5E3C] hover:text-[#8B5E3C] rounded-full px-8 py-4 text-lg"
               >
                 Contact Me
               </Button>
             </motion.div>
           </motion.div>
-
-          {/* Avatar Integration - "Avatar" Rule */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotateX: 15 }}
-            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="hero-image-wrap flex mx-auto w-full max-w-[480px] lg:max-w-[640px] items-end justify-center lg:justify-end relative perspective-1000"
-          >
-            <div className="relative w-full aspect-[4/5] lg:aspect-square">
-              <Image
-                src="/images/avatar.png"
-                alt="Supragnya Purohith - Designing Clarity"
-                fill
-                className="object-contain object-bottom filter contrast-110"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </motion.div>
         </div>
 
-        {/* Animated Scroll Indicator */}
+        {/* Animated Scroll Indicator - Updated Colors */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
         >
-          <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-secondary)]">Scroll</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-[var(--accent)] to-transparent bg-[length:100%_200%] animate-scroll-indicator"></div>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[var(--text-tertiary)] font-medium">Scroll</span>
+          <div className="w-[1px] h-16 bg-gradient-to-b from-[#8B5E3C] to-transparent bg-[length:100%_200%] animate-scroll-indicator"></div>
         </motion.div>
       </Section>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -6,69 +6,35 @@
   color-scheme: light;
   --nav-height: 94px;
 
-  /* DESIGN SYSTEM TOKENS - REPLIT INSPIRED DOSSIER STYLE */
-  /* Ivory White / Light Mode */
-  --bg-charcoal: #FFFFF0; /* Ivory White */
-  --bg-surface: #F5F5DC; /* Beige */
+  /* DESIGN SYSTEM TOKENS - EDITORIAL STYLE */
+  /* Palette */
+  --bg-white: #FFFFFF;
+  --bg-surface: #F9F9F9;
+  /* Very light gray for cards */
 
   --text-primary: #121212;
-  /* Charcoal for Headings */
-  --text-secondary: #333333;
-  /* Dark Gray for Body */
+  /* Black */
+  --text-secondary: #4A4A4A;
+  /* Dark Gray */
+  --text-tertiary: #6E6E6E;
+  /* Medium Gray */
 
-  --accent-lime: #022c22;
-  /* Deep Forest Green - Contrast against Ivory */
+  --accent-brown: #8B5E3C;
+  /* Rich Bronze Brown */
+  --accent-contrast: #FFFFFF;
+  /* Text on Brown */
 
-  /* Adaptive Layout (Pencil Logic) */
-  --layout-padding: clamp(40px, 5vw, 80px);
-  /* 40px min, scaling to 80px */
-  --layout-padding-wide: clamp(40px, 8vw, 120px);
-  /* Scaling to 8% on ultra-wide */
-
-  --bg-base: var(--bg-charcoal);
+  /* Aliases */
+  --bg-base: var(--bg-white);
   --ink: var(--text-primary);
   --muted: var(--text-secondary);
-  --accent: var(--accent-lime);
+  --accent: var(--accent-brown);
 
-  --surface: rgba(0, 0, 0, 0.03);
-  --surface-border: rgba(0, 0, 0, 0.1);
-}
+  /* Layout */
+  --layout-padding: clamp(40px, 5vw, 80px);
+  --layout-padding-wide: clamp(40px, 8vw, 120px);
 
-/* 3D Assembly Entrance Animation */
-@keyframes assembly3d {
-  0% {
-    opacity: 0;
-    transform: rotateX(15deg) scale(0.95) translateY(20px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: rotateX(0deg) scale(1) translateY(0);
-  }
-}
-
-.animate-assembly {
-  animation: assembly3d 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  /* Spring Physics via bezier */
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-assembly {
-    animation: fade-in 0.8s ease-out forwards;
-    transform: none !important;
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
+  --surface-border: rgba(0, 0, 0, 0.08);
 }
 
 html {
@@ -77,41 +43,13 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-inter), sans-serif;
   color: var(--ink);
   background-color: var(--bg-base);
-  /* Flat, technical background with very subtle noise if desired, but mostly clean */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  background-blend-mode: overlay;
-  background-attachment: fixed;
   opacity: 1;
-  /* Ensure opacity is normal */
 }
 
-
-@keyframes scroll-indicate {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  100% {
-    background-position: 0% 100%;
-  }
-}
-
-.animate-scroll-indicator {
-  animation: scroll-indicate 2s linear infinite;
-}
-
-/* Navbar Global Overrides */
-.navbar {
-  background: rgba(255, 255, 240, 0.95);
-  /* High opacity Ivory for dossier feel */
-  border-bottom: 1px solid var(--surface-border);
-  backdrop-filter: blur(8px);
-}
-
-/* Typography Overrides */
+/* Typography Defaults */
 h1,
 h2,
 h3,
@@ -119,16 +57,27 @@ h4,
 h5,
 h6 {
   color: var(--text-primary);
-  font-family: var(--font-heading), serif;
+  font-family: var(--font-outfit), sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
+}
+
+.font-serif-italic {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 p {
   color: var(--text-secondary);
   line-height: 1.6;
-  font-weight: 400;
-  /* Increased weight for legibility on dark background */
+}
+
+/* Navbar Global Overrides */
+.navbar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid var(--surface-border);
+  backdrop-filter: blur(8px);
 }
 
 /* Layout Utilities */
@@ -144,25 +93,27 @@ p {
   }
 }
 
-/* NEW: Global vertical rhythm for sections */
+/* Global Vertical Rhythm */
 .section-block {
-  padding-top: 6rem;
-  /* 96px */
-  padding-bottom: 6rem;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 @media (min-width: 768px) {
   .section-block {
-    padding-top: 9rem;
-    /* 144px - Airy dossier feel */
-    padding-bottom: 9rem;
+    padding-top: 160px;
+    /* Requested 160px */
+    padding-bottom: 160px;
   }
 }
 
-/* Mobile override handled by clamp() in CSS variable */
-/* @media (max-width: 768px) {
-  .layout-padding {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-} */
+/* Section Divider */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--accent-brown);
+  /* Rich Bronze Brown */
+  opacity: 0.2;
+  /* Subtle */
+  margin: 0;
+}

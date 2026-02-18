@@ -20,56 +20,60 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Emergency Response App",
-    subtitle: "Alert → Scan → Act",
-    description: "Simplifying critical care at 2 AM. A mobile system designed to separate scanning from acting, achieving a consistent sub-30-second response target.",
+    subtitle: "Simplifying critical workflows for cardiovascular care through architectural logic.",
+    description: "A mobile system designed to separate scanning from acting, achieving a consistent sub-30-second response target.",
     stats: "<30s Response",
     href: "/emergency-app",
     imageSrc: "/images/thumbnails/emergency-real.png",
     imageAlt: "Emergency Response App - Critical Care Interface",
-    colSpan: "md:col-span-2" // Large feature
+    colSpan: "md:col-span-2" // Full Width
   },
   {
     title: "RupeeRise",
-    subtitle: "Adaptive Financial Guardrails",
-    description: " shifting focus from literacy to behavior. A fintech app that builds confidence through simulation and dynamic friction.",
+    subtitle: "A habit-first approach to wealth management",
+    description: "A fintech app that builds confidence through simulation and dynamic friction.",
     stats: "Behavior First",
     href: "/rupeerise",
     imageSrc: "/images/thumbnails/rupeerise-real.png",
     imageAlt: "RupeeRise - Behavioral Fintech",
-    colSpan: "md:col-span-1"
+    colSpan: "md:col-span-1" // Split
   },
   {
     title: "Udyoga Pramoda",
-    subtitle: "Mentor-Gated Progression",
-    description: "Structuring the invisible funnel. A career platform that validated 150+ aspirants and secured 25+ placements through transparent tracking.",
+    subtitle: "Connecting graduates to mentorship and career opportunities",
+    description: "A career platform that validated 150+ aspirants and secured 25+ placements.",
     stats: "25+ Placements",
     href: "/udyoga-pramoda",
     imageSrc: "/images/thumbnails/udyoga-real.png",
     imageAlt: "Udyoga Pramoda - Career Platform",
-    colSpan: "md:col-span-1"
+    colSpan: "md:col-span-1" // Split
   }
 ];
 
 function ProjectCard({ project, index, shouldReduceMotion }: { project: Project; index: number; shouldReduceMotion: boolean }) {
+  // Bierika-style Unfolding Animation
   const cardVariants = {
-    hidden: { opacity: 0, rotateX: 15, scale: 0.95, y: 50 },
+    hidden: {
+      opacity: 0,
+      clipPath: "inset(10% 0 10% 0)",
+      scaleY: 0.9,
+      y: 50
+    },
     visible: {
       opacity: 1,
-      rotateX: 0,
-      scale: 1,
+      clipPath: "inset(0% 0 0% 0)",
+      scaleY: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-        mass: 1,
+        duration: 0.8,
+        ease: [0.25, 1, 0.5, 1], // Cubic bezier for smooth unfolding
         delay: index * 0.1
       }
     }
   } as any;
 
   const simpleVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
@@ -77,14 +81,14 @@ function ProjectCard({ project, index, shouldReduceMotion }: { project: Project;
     <motion.article
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-10%" }}
       variants={shouldReduceMotion ? simpleVariants : cardVariants}
-      className={`group relative bg-[#1E1E1E] rounded-xl border border-white/5 overflow-hidden flex flex-col ${project.colSpan}`}
+      className={`group relative bg-[var(--bg-surface)] rounded-[24px] border border-black/5 overflow-hidden flex flex-col ${project.colSpan} hover:shadow-xl transition-shadow duration-500`}
     >
-      <Link href={project.href} className="flex-1 flex flex-col h-full outline-none focus-visible:ring-2 focus-visible:ring-[#a7f36f]">
+      <Link href={project.href} className="flex-1 flex flex-col h-full outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C]">
 
         {/* Image Area */}
-        <div className="relative w-full aspect-[16/9] md:aspect-auto md:h-[300px] lg:h-[400px] overflow-hidden">
+        <div className="relative w-full aspect-[16/9] md:h-[400px] lg:h-[480px] overflow-hidden">
           <Image
             src={project.imageSrc}
             alt={project.imageAlt}
@@ -92,27 +96,27 @@ function ProjectCard({ project, index, shouldReduceMotion }: { project: Project;
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
-          <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
 
           {/* Overlay Stats */}
-          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-            <span className="text-[#a7f36f] text-xs font-bold uppercase tracking-wider">{project.stats}</span>
+          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-sm">
+            <span className="text-[#8B5E3C] text-xs font-bold uppercase tracking-wider">{project.stats}</span>
           </div>
         </div>
 
         {/* Content Area */}
-        <div className="p-6 md:p-8 flex flex-col flex-1 bg-[var(--bg-surface)] transition-colors duration-300 group-hover:bg-[var(--bg-surface)]/80">
+        <div className="p-8 md:p-10 flex flex-col flex-1 bg-[var(--bg-surface)]">
           <div className="mb-4">
-            <span className="text-xs font-mono text-[#888] uppercase tracking-widest">{project.subtitle}</span>
-            <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] mt-1 group-hover:text-[#a7f36f] transition-colors font-heading">
+            <h3 className="text-2xl md:text-4xl font-bold text-[#121212] mt-1 group-hover:text-[#8B5E3C] transition-colors font-heading">
               {project.title}
             </h3>
+            <p className="text-sm md:text-base text-[var(--text-tertiary)] mt-2 font-medium leading-relaxed max-w-prose">
+              {project.subtitle}
+            </p>
           </div>
-          <p className="text-[#C0C0C0] text-sm md:text-base leading-relaxed flex-1">
-            {project.description}
-          </p>
-          <div className="mt-6 pt-6 border-t border-black/5 flex items-center gap-2 text-[var(--text-secondary)] text-sm group-hover:text-[var(--text-primary)] transition-colors">
-            <span className="uppercase tracking-widest text-xs font-bold">Read Case Study</span>
+
+          <div className="mt-auto pt-8 border-t border-black/5 flex items-center gap-3 text-[var(--text-secondary)] text-sm font-semibold group-hover:text-[#8B5E3C] transition-colors">
+            <span className="uppercase tracking-widest text-xs">View Case Study</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
@@ -131,13 +135,11 @@ const SelectedWorkSection = memo(function SelectedWorkSection({ delayMs = 0 }: {
       className="selected-work py-20 md:py-32"
       containerClassName="space-y-12"
     >
-      <header className="space-y-5 px-[var(--layout-padding)]">
-        <div className="flex items-center gap-4">
-          <div className="h-[1px] w-12 bg-[#a7f36f]/60"></div>
-          <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#a7f36f] font-semibold">Selected Work</p>
-        </div>
-        <h2 className="max-w-[1000px] text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-white font-heading">
-          Data-Driven <span className="text-[#a7f36f]">Storytelling</span>.
+      <div className="w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-20" /> {/* Section Divider */}
+      <header className="space-y-5 px-[var(--layout-padding)] text-center">
+        <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">Selected Work</p>
+        <h2 className="max-w-[1000px] mx-auto text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-[#121212] font-heading">
+          Data-Driven <span className="font-serif-italic font-normal text-[#8B5E3C]">Storytelling</span>.
         </h2>
       </header>
 

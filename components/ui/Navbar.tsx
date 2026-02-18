@@ -57,7 +57,7 @@ export default function Navbar() {
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-colors duration-300",
           isScrolled
-            ? "bg-[#121212]/95 backdrop-blur-md border-b border-white/10 shadow-sm"
+            ? "bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm"
             : "bg-transparent border-b border-transparent"
         )}
       >
@@ -70,19 +70,32 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="text-white font-bold text-[1rem] tracking-tight font-heading z-50 relative"
+            className="text-[#121212] font-bold text-[1rem] tracking-tight font-heading z-50 relative"
           >
             Supragnya Purohith
           </Link>
 
           {/* Desktop Nav */}
           <nav aria-label="Primary" className="hidden lg:flex items-center gap-10">
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
+            </Link>
             <button
               onClick={handleWorkClick}
-              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
+              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
             >
               Work
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
             </button>
             <button
               onClick={(e) => {
@@ -96,17 +109,16 @@ export default function Navbar() {
                   aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
                 }
               }}
-              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
+              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
             >
               About
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
             </button>
             <button
               onClick={() => setIsContactModalOpen(true)}
-              className="text-[#BDBDBD] text-[0.96rem] hover:text-white transition-colors relative group font-medium"
+              className="bg-[#8B5E3C] text-white px-6 py-2 rounded-full text-[0.96rem] hover:bg-[#70482B] transition-colors font-medium shadow-sm"
             >
-              Contact
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full" />
+              Contact Me
             </button>
           </nav>
 

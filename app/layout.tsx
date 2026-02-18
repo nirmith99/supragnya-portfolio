@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Sora } from "next/font/google";
+import { Inter, Outfit, Playfair_Display } from "next/font/google";
 import Navbar from "@/components/ui/Navbar";
 import InteractiveGrid from "@/components/visuals/InteractiveGrid";
 import "./globals.css";
 
-const bodyFont = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-body",
+  variable: "--font-inter",
   display: "swap"
 });
 
-const headingFont = Sora({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-outfit", // Replacing Aventa
   display: "swap"
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+  style: ["normal", "italic"]
 });
 
 export const metadata: Metadata = {
@@ -30,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bodyFont.variable} ${headingFont.variable} text-[#F4F1E8] antialiased`}
+        className={`${inter.variable} ${outfit.variable} ${playfair.variable} text-[#121212] antialiased bg-white`}
       >
         <InteractiveGrid />
         <Navbar />

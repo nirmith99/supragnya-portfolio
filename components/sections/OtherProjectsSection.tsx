@@ -45,16 +45,17 @@ export default function OtherProjectsSection({
   return (
     <Section
       delayMs={delayMs}
-      className="bg-[var(--bg-surface)] py-20 md:py-28"
+      className="bg-[var(--bg-base)] py-20 md:py-28"
       containerClassName="space-y-16"
     >
+      <div className="w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-12" /> {/* Section Divider */}
       <header className="space-y-4">
-        <p className="text-xs md:text-sm uppercase tracking-[0.16em] text-[#5a5a5a] font-semibold">Other Projects</p>
-        <h2 className="max-w-[800px] text-4xl md:text-5xl font-bold leading-[1.15] text-[#141414]">
+        <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">Other Projects</p>
+        <h2 className="max-w-[800px] text-4xl md:text-5xl font-bold leading-[1.15] text-[#121212] font-heading">
           Explore related case studies.
         </h2>
       </header>
-      <div className="space-y-0 divide-y divide-[#ddd]">
+      <div className="space-y-0 divide-y divide-black/10">
         {otherProjects.map((project) => (
           <ThumbnailCard
             key={project.slug}
