@@ -23,9 +23,9 @@ const baseStyles =
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-white text-black hover:bg-[#a7f36f] hover:text-black focus-visible:ring-white focus-visible:ring-offset-[#121212] shadow-[0_8px_16px_rgba(255,255,255,0.1)] hover:shadow-[0_12px_32px_rgba(167,243,111,0.2)] hover:-translate-y-0.5",
+    "bg-[#2D1B0D] text-white hover:bg-[#8B5E3C] hover:text-white focus-visible:ring-offset-[#2D1B0D] shadow-[0_8px_16px_rgba(45,27,13,0.1)] hover:shadow-[0_12px_32px_rgba(139,94,60,0.2)] hover:-translate-y-0.5",
   secondary:
-    "border border-white/20 bg-transparent text-white hover:border-[#a7f36f] hover:text-[#a7f36f] hover:bg-[#a7f36f]/10 focus-visible:ring-[#a7f36f] focus-visible:ring-offset-[#121212] transition-all duration-300 hover:shadow-[0_8px_16px_rgba(167,243,111,0.1)] hover:-translate-y-0.5"
+    "border border-[#2D1B0D]/20 bg-transparent text-[#2D1B0D] hover:border-[#8B5E3C] hover:text-[#8B5E3C] hover:bg-[#8B5E3C]/10 focus-visible:ring-[#8B5E3C] focus-visible:ring-offset-white transition-all duration-300 hover:shadow-[0_8px_16px_rgba(139,94,60,0.1)] hover:-translate-y-0.5"
 };
 
 export default function Button({

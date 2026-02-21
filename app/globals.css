@@ -9,15 +9,15 @@
   /* DESIGN SYSTEM TOKENS - EDITORIAL STYLE */
   /* Palette */
   --bg-white: #FFFFFF;
-  --bg-surface: #F9F9F9;
-  /* Very light gray for cards */
+  --bg-surface: #FFFFFF;
+  /* Forced White */
 
-  --text-primary: #121212;
-  /* Black */
-  --text-secondary: #4A4A4A;
-  /* Dark Gray */
-  --text-tertiary: #6E6E6E;
-  /* Medium Gray */
+  --text-primary: #2D1B0D;
+  /* Deep Espresso */
+  --text-secondary: #5C4B3F;
+  /* Muted Espresso/Brown */
+  --text-tertiary: #8C7B6F;
+  /* Light Espresso/Brown */
 
   --accent-brown: #8B5E3C;
   /* Rich Bronze Brown */
@@ -34,7 +34,8 @@
   --layout-padding: clamp(40px, 5vw, 80px);
   --layout-padding-wide: clamp(40px, 8vw, 120px);
 
-  --surface-border: rgba(0, 0, 0, 0.08);
+  --surface-border: rgba(45, 27, 13, 0.08);
+  /* Espresso border */
 }
 
 html {
@@ -43,7 +44,7 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-geist), sans-serif;
   color: var(--ink);
   background-color: var(--bg-base);
   opacity: 1;
@@ -57,13 +58,13 @@ h4,
 h5,
 h6 {
   color: var(--text-primary);
-  font-family: var(--font-outfit), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-heading), sans-serif;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
 .font-serif-italic {
-  font-family: var(--font-playfair), serif;
+  font-family: var(--font-instrument), serif;
   font-style: italic;
   font-weight: 400;
 }

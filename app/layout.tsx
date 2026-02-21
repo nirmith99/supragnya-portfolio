@@ -1,26 +1,30 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, Playfair_Display } from "next/font/google";
+import { Inter, Instrument_Serif, Manrope } from "next/font/google"; // Instrument Serif (Italic) & Inter (as Geist fallback)
 import Navbar from "@/components/ui/Navbar";
 import InteractiveGrid from "@/components/visuals/InteractiveGrid";
 import "./globals.css";
 
-const inter = Inter({
+// Body/UI Font (Inter as Geist fallback)
+const geist = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap"
 });
 
-const outfit = Outfit({
+// Editorial Italic Font
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  style: "italic",
   subsets: ["latin"],
-  variable: "--font-outfit", // Replacing Aventa
+  variable: "--font-instrument",
   display: "swap"
 });
 
-const playfair = Playfair_Display({
+// Primary Heading Font (Manrope) - Technical/Precision
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-playfair",
+  variable: "--font-heading",
   display: "swap",
-  style: ["normal", "italic"]
 });
 
 export const metadata: Metadata = {
@@ -37,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${outfit.variable} ${playfair.variable} text-[#121212] antialiased bg-white`}
+        className={`${geist.variable} ${manrope.variable} ${instrumentSerif.variable} text-[#2D1B0D] antialiased bg-white font-sans`}
       >
         <InteractiveGrid />
         <Navbar />

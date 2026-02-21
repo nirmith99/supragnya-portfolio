@@ -2,19 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState, memo } from "react";
+import { memo, useRef } from "react";
 import Section from "@/components/ui/Section";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
 type Project = {
   title: string;
   subtitle: string;
   description: string;
-  stats: string; // "sub-30s response", "25+ placements", etc.
+  stats: string;
   href: string;
   imageSrc: string;
   imageAlt: string;
-  colSpan: string; // tailored for bento
+  bgColor: string;
 };
 
 const projects: Project[] = [
@@ -26,7 +26,7 @@ const projects: Project[] = [
     href: "/emergency-app",
     imageSrc: "/images/thumbnails/emergency-real.png",
     imageAlt: "Emergency Response App - Critical Care Interface",
-    colSpan: "md:col-span-2" // Full Width
+    bgColor: "#FFFFFF"
   },
   {
     title: "RupeeRise",
@@ -36,7 +36,7 @@ const projects: Project[] = [
     href: "/rupeerise",
     imageSrc: "/images/thumbnails/rupeerise-real.png",
     imageAlt: "RupeeRise - Behavioral Fintech",
-    colSpan: "md:col-span-1" // Split
+    bgColor: "#FFFFFF"
   },
   {
     title: "Udyoga Pramoda",
@@ -46,82 +46,87 @@ const projects: Project[] = [
     href: "/udyoga-pramoda",
     imageSrc: "/images/thumbnails/udyoga-real.png",
     imageAlt: "Udyoga Pramoda - Career Platform",
-    colSpan: "md:col-span-1" // Split
+    bgColor: "#FFFFFF"
   }
 ];
 
-function ProjectCard({ project, index, shouldReduceMotion }: { project: Project; index: number; shouldReduceMotion: boolean }) {
-  // Bierika-style Unfolding Animation
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      clipPath: "inset(10% 0 10% 0)",
-      scaleY: 0.9,
-      y: 50
-    },
-    visible: {
-      opacity: 1,
-      clipPath: "inset(0% 0 0% 0)",
-      scaleY: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 1, 0.5, 1], // Cubic bezier for smooth unfolding
-        delay: index * 0.1
-      }
-    }
-  } as any;
+function ProjectCard({ project, index, total, shouldReduceMotion }: { project: Project; index: number; total: number; shouldReduceMotion: boolean }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "start start"]
+  });
 
-  const simpleVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
+  // Calculate top offset for stacking effect
+  // Base offset + index * increment
+  const topOffset = 120 + (index * 40);
+
+  // Subtle Scale effect on enter (optional 2026 trend "Liquid Motion")
+  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [shouldReduceMotion ? 1 : 0.8, 1]);
 
   return (
-    <motion.article
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-10%" }}
-      variants={shouldReduceMotion ? simpleVariants : cardVariants}
-      className={`group relative bg-[var(--bg-surface)] rounded-[24px] border border-black/5 overflow-hidden flex flex-col ${project.colSpan} hover:shadow-xl transition-shadow duration-500`}
+    <motion.div
+      ref={containerRef}
+      className="sticky w-full mb-[10vh] last:mb-0" // Spacing to allow scroll duration
+      style={{
+        top: `${topOffset}px`,
+        scale: shouldReduceMotion ? 1 : scale,
+        opacity: opacity,
+        zIndex: index + 10
+      }}
     >
-      <Link href={project.href} className="flex-1 flex flex-col h-full outline-none focus-visible:ring-2 focus-visible:ring-[#8B5E3C]">
+      <article
+        className="relative bg-white rounded-[32px] border border-[#2D1B0D]/10 overflow-hidden shadow-2xl shadow-black/5 flex flex-col md:flex-row h-[70vh] md:h-[600px]"
+      >
+        {/* Content Side */}
+        <div className={`p-8 md:p-12 lg:p-16 flex flex-col justify-between w-full md:w-5/12 h-full bg-white z-20 
+          ${index % 2 === 1 ? 'md:order-2' : ''} 
+          ${index === 0 ? 'order-1 md:order-none' : 'order-2 md:order-none'}
+        `}>
+          <div className="space-y-6">
+            <span className="inline-block px-3 py-1 rounded-full border border-[#2D1B0D]/10 text-xs font-bold uppercase tracking-wider text-[#8B5E3C]">
+              {project.stats}
+            </span>
+            <h3 className="text-3xl md:text-5xl font-heading font-semibold text-[#2D1B0D] leading-tight">
+              {project.title}
+            </h3>
+            <p className="text-lg text-[var(--text-secondary)] leading-relaxed font-medium">
+              {project.subtitle}
+            </p>
+            <p className="text-base text-[var(--text-tertiary)] leading-relaxed">
+              {project.description}
+            </p>
+          </div>
 
-        {/* Image Area */}
-        <div className="relative w-full aspect-[16/9] md:h-[400px] lg:h-[480px] overflow-hidden">
+          <Link
+            href={project.href}
+            className="inline-flex items-center gap-3 text-[#2D1B0D] font-bold uppercase tracking-widest text-xs group/link mt-8"
+          >
+            <span>View Case Study</span>
+            <span className="bg-[#2D1B0D] text-white w-8 h-8 rounded-full flex items-center justify-center group-hover/link:bg-[#8B5E3C] transition-colors">
+              →
+            </span>
+          </Link>
+        </div>
+
+        {/* Image Side */}
+        <div className={`relative w-full md:w-7/12 h-full bg-gray-50
+           ${index % 2 === 1 ? 'md:order-1' : ''}
+           ${index === 0 ? 'order-2 md:order-none' : 'order-1 md:order-none'}
+        `}>
           <Image
             src={project.imageSrc}
             alt={project.imageAlt}
             fill
-            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 60vw"
+            priority={index === 0}
           />
-          <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
-
-          {/* Overlay Stats */}
-          <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-sm">
-            <span className="text-[#8B5E3C] text-xs font-bold uppercase tracking-wider">{project.stats}</span>
-          </div>
+          <div className="absolute inset-0 bg-black/5" />
         </div>
-
-        {/* Content Area */}
-        <div className="p-8 md:p-10 flex flex-col flex-1 bg-[var(--bg-surface)]">
-          <div className="mb-4">
-            <h3 className="text-2xl md:text-4xl font-bold text-[#121212] mt-1 group-hover:text-[#8B5E3C] transition-colors font-heading">
-              {project.title}
-            </h3>
-            <p className="text-sm md:text-base text-[var(--text-tertiary)] mt-2 font-medium leading-relaxed max-w-prose">
-              {project.subtitle}
-            </p>
-          </div>
-
-          <div className="mt-auto pt-8 border-t border-black/5 flex items-center gap-3 text-[var(--text-secondary)] text-sm font-semibold group-hover:text-[#8B5E3C] transition-colors">
-            <span className="uppercase tracking-widest text-xs">View Case Study</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </div>
-        </div>
-      </Link>
-    </motion.article>
+      </article>
+    </motion.div>
   );
 }
 
@@ -132,29 +137,30 @@ const SelectedWorkSection = memo(function SelectedWorkSection({ delayMs = 0 }: {
     <Section
       id="selected-work"
       reveal={false}
-      className="selected-work py-20 md:py-32"
-      containerClassName="space-y-12"
+      className="selected-work w-full relative"
+      containerClassName="max-w-[1920px] mx-auto px-5 md:px-[60px]"
     >
-      <div className="w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-20" /> {/* Section Divider */}
-      <header className="space-y-5 px-[var(--layout-padding)] text-center">
-        <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">Selected Work</p>
-        <h2 className="max-w-[1000px] mx-auto text-5xl md:text-6xl font-black leading-[1.05] tracking-[-0.035em] text-[#121212] font-heading">
-          Data-Driven <span className="font-serif-italic font-normal text-[#8B5E3C]">Storytelling</span>.
+      {/* Curated Work Anchor Header */}
+      <header className="mb-20 md:mb-32 mt-20 md:mt-40 text-left border-t border-[#8B5E3C]/20 pt-10">
+        <h2 className="text-sm md:text-base font-heading font-semibold text-[#2D1B0D] tracking-wide uppercase mb-2">
+          Curated Work
         </h2>
+        <p className="text-2xl md:text-3xl font-serif-italic text-[var(--text-secondary)]">
+          A selection of projects focusing on healthcare, fintech, and community impact.
+        </p>
       </header>
 
-      {/* Bento Grid Layout - Full Width with Padding */}
-      <div className="layout-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={project.href}
-              project={project}
-              index={index}
-              shouldReduceMotion={!!shouldReduceMotion}
-            />
-          ))}
-        </div>
+      {/* Stacking Card Container */}
+      <div className="relative pb-40"> {/* Logic for pb is to allow scrolling past last card */}
+        {projects.map((project, index) => (
+          <ProjectCard
+            key={project.href}
+            project={project}
+            index={index}
+            total={projects.length}
+            shouldReduceMotion={!!shouldReduceMotion}
+          />
+        ))}
       </div>
     </Section>
   );

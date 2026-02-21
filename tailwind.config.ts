@@ -10,20 +10,20 @@ const config: Config = {
       colors: {
         brand: {
           brown: "#8B5E3C", // Rich Bronze Brown
-          dark: "#121212", // Primary Text
+          dark: "#2D1B0D", // Deep Espresso (updated from #121212)
           white: "#FFFFFF", // Background
           muted: "#F5F5F5", // Light Gray for differentiation
-          // Legacy mappings to prevent breakage immediately, can be cleaned up later
+          // Legacy mappings
           green: "#8B5E3C",
           body: "#FFFFFF",
-          "deep-forest": "#121212",
+          "deep-forest": "#2D1B0D",
           "antique-cream": "#FFFFFF"
         }
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
-        heading: ["var(--font-outfit)", "sans-serif"],
-        serif: ["var(--font-playfair)", "serif"]
+        sans: ["var(--font-geist)", "sans-serif"],
+        heading: ["var(--font-heading)", "sans-serif"],
+        serif: ["var(--font-instrument)", "serif"]
       }
     }
   },

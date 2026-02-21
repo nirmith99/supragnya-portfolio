@@ -1,18 +1,14 @@
-import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
-import FooterSection from "@/components/sections/FooterSection";
 import HeroSection from "@/components/sections/HeroSection";
 import SelectedWorkSection from "@/components/sections/SelectedWorkSection";
-import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ProcessSection from "@/components/sections/ProcessSection";
+import AboutPreviewSection from "@/components/sections/AboutPreviewSection";
+import FooterSection from "@/components/sections/FooterSection";
 
 export default function HomePage() {
   return (
-    <main>
+    <main className="relative bg-[#FFFFFF] text-[#2D1B0D] flex flex-col gap-[160px] pb-[160px]">
       <HeroSection />
-      <ProcessSection />
-      <SelectedWorkSection delayMs={100} />
-      <TestimonialsSection delayMs={200} />
-      <AboutPreviewSection delayMs={300} />
+      <SelectedWorkSection />
+      <AboutPreviewSection />
       <FooterSection />
     </main>
   );

@@ -70,13 +70,14 @@ export default function Navbar() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="text-[#121212] font-bold text-[1rem] tracking-tight font-heading z-50 relative"
+            className="text-[#2D1B0D] font-semibold text-[1rem] tracking-tight font-heading z-50 relative"
           >
             Supragnya Purohith
           </Link>
 
           {/* Desktop Nav */}
-          <nav aria-label="Primary" className="hidden lg:flex items-center gap-10">
+          <div className="flex items-center gap-4 lg:gap-8">
+            {/* Home Link - Always Visible */}
             <Link
               href="/"
               onClick={(e) => {
@@ -85,45 +86,51 @@ export default function Navbar() {
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }
               }}
-              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
+              className="text-[#2D1B0D] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium font-sans"
             >
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
             </Link>
-            <button
-              onClick={handleWorkClick}
-              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
-            >
-              Work
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
-            </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault();
-                if (pathname !== "/") {
-                  router.push("/#about");
-                  return;
-                }
-                const aboutSection = document.getElementById("about");
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
-              }}
-              className="text-[#121212] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium"
-            >
-              About
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
-            </button>
+
+            {/* Desktop Nav - Middle Items */}
+            <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
+              <button
+                onClick={handleWorkClick}
+                className="text-[#2D1B0D] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium font-sans"
+              >
+                Work
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (pathname !== "/") {
+                    router.push("/#about");
+                    return;
+                  }
+                  const aboutSection = document.getElementById("about");
+                  if (aboutSection) {
+                    aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
+                className="text-[#2D1B0D] text-[0.96rem] hover:text-[#8B5E3C] transition-colors relative group font-medium font-sans"
+              >
+                About
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#8B5E3C] transition-all duration-300 group-hover:w-full" />
+              </button>
+            </nav>
+
+            {/* Contact Button - Always Visible */}
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="bg-[#8B5E3C] text-white px-6 py-2 rounded-full text-[0.96rem] hover:bg-[#70482B] transition-colors font-medium shadow-sm"
             >
               Contact Me
             </button>
-          </nav>
 
-          {/* Mobile Nav */}
-          <HamburgerMenu onContactClick={() => setIsContactModalOpen(true)} />
+            {/* Mobile Nav Trigger */}
+            <HamburgerMenu onContactClick={() => setIsContactModalOpen(true)} />
+          </div>
         </div>
       </motion.header>
       <Modal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />

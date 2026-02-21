@@ -78,14 +78,14 @@ export default function ThumbnailCard({
 
   return (
     <Link href={href} className="block group">
-      <article className="grid items-center gap-10 border-t border-[#C9D2CC]/10 py-12 md:grid-cols-[1fr_minmax(320px,48%)] md:gap-12 transition-all duration-500">
+      <article className="grid items-center gap-10 border-t border-[#2D1B0D]/10 py-12 md:grid-cols-[1fr_minmax(320px,48%)] md:gap-12 transition-all duration-500">
         <div className="space-y-4 transition-all duration-500 group-hover:translate-x-0.5">
-          <h3 className="text-[1.375rem] font-semibold leading-tight text-[#F4F1E8] transition-colors duration-300 group-hover:text-[#a7f36f]">{title}</h3>
-          <p className="mt-4 max-w-[680px] text-base leading-relaxed text-[#C9D2CC] transition-colors duration-300">
+          <h3 className="text-[1.375rem] font-semibold leading-tight text-[#2D1B0D] transition-colors duration-300 group-hover:text-[#8B5E3C]">{title}</h3>
+          <p className="mt-4 max-w-[680px] text-base leading-relaxed text-[#5C4B3F] transition-colors duration-300">
             {description}
           </p>
         </div>
-        <div className="relative aspect-video overflow-hidden rounded-[16px] shadow-[0_16px_48px_rgba(0,0,0,0.28)] group-hover:shadow-[0_24px_64px_rgba(167,243,111,0.12)] transition-all duration-500 group-hover:-translate-y-2">
+        <div className="relative aspect-video overflow-hidden rounded-[16px] shadow-[0_16px_48px_rgba(0,0,0,0.28)] group-hover:shadow-[0_24px_64px_rgba(139,94,60,0.2)] transition-all duration-500 group-hover:-translate-y-2">
           <div
             ref={parallaxRef}
             className="h-full w-full transition-transform duration-300 ease-out will-change-transform"

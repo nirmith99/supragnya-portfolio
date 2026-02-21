@@ -61,7 +61,7 @@ export default function HamburgerMenu({ onContactClick }: HamburgerMenuProps) {
         <div className="lg:hidden">
             <button
                 onClick={toggleMenu}
-                className="relative z-50 p-2 text-white hover:text-[#a7f36f] transition-colors focus:outline-none"
+                className="relative z-50 p-2 text-[#2D1B0D] hover:text-[#8B5E3C] transition-colors focus:outline-none"
                 aria-label="Toggle Menu"
             >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -74,7 +74,7 @@ export default function HamburgerMenu({ onContactClick }: HamburgerMenuProps) {
                         animate="open"
                         exit="closed"
                         variants={menuVariants}
-                        className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#121212]/95 backdrop-blur-xl"
+                        className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-white/95 backdrop-blur-xl"
                     >
                         <nav className="flex flex-col items-center gap-8 text-center">
                             {menuItems.map((item) => (
@@ -85,7 +85,7 @@ export default function HamburgerMenu({ onContactClick }: HamburgerMenuProps) {
                                                 setIsOpen(false);
                                                 onContactClick();
                                             }}
-                                            className="text-4xl font-bold text-white hover:text-[#a7f36f] transition-colors font-heading"
+                                            className="text-4xl font-bold text-[#2D1B0D] hover:text-[#8B5E3C] transition-colors font-heading"
                                         >
                                             {item.label}
                                         </button>
@@ -93,7 +93,7 @@ export default function HamburgerMenu({ onContactClick }: HamburgerMenuProps) {
                                         <Link
                                             href={item.href}
                                             onClick={() => setIsOpen(false)}
-                                            className="text-4xl font-bold text-white hover:text-[#a7f36f] transition-colors font-heading"
+                                            className="text-4xl font-bold text-[#2D1B0D] hover:text-[#8B5E3C] transition-colors font-heading"
                                         >
                                             {item.label}
                                         </Link>
@@ -101,8 +101,8 @@ export default function HamburgerMenu({ onContactClick }: HamburgerMenuProps) {
                                 </motion.div>
                             ))}
                         </nav>
-                        {/* Decorative background element */}
-                        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-black/80 pointer-events-none" />
+                        {/* Decorative background element - Subtle gradient */}
+                        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-[#2D1B0D]/5 pointer-events-none" />
                     </motion.div>
                 )}
             </AnimatePresence>

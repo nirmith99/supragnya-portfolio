@@ -51,7 +51,7 @@ export default function OtherProjectsSection({
       <div className="w-full h-[1px] bg-[#8B5E3C] opacity-20 mb-12" /> {/* Section Divider */}
       <header className="space-y-4">
         <p className="text-xs md:text-sm uppercase tracking-[0.2em] text-[#8B5E3C] font-semibold">Other Projects</p>
-        <h2 className="max-w-[800px] text-4xl md:text-5xl font-bold leading-[1.15] text-[#121212] font-heading">
+        <h2 className="max-w-[800px] text-4xl md:text-5xl font-bold leading-[1.15] text-[#2D1B0D] font-heading">
           Explore related case studies.
         </h2>
       </header>
