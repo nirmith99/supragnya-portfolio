@@ -21,12 +21,12 @@ export default function CaseStudyTemplate({
     children,
 }: CaseStudyTemplateProps) {
     return (
-        <div className="min-h-screen pt-[var(--nav-height)] pb-32 bg-[#121212]">
+        <div className="min-h-screen pt-[var(--nav-height)] pb-32 bg-[var(--bg-white)]">
             {/* Navigation - Minimalist/Technical */}
             <div className="px-5 md:px-[60px] py-12">
                 <Link
                     href="/#selected-work"
-                    className="inline-flex items-center gap-2 text-[#888] hover:text-white transition-colors text-sm font-medium tracking-wide group"
+                    className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-black transition-colors text-sm font-medium tracking-wide group"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     INDEX / SELECTED WORK
@@ -40,34 +40,34 @@ export default function CaseStudyTemplate({
                 transition={{ duration: 0.6 }}
                 className="px-5 md:px-[60px] mb-24 max-w-[1400px]"
             >
-                <h1 className="text-5xl md:text-8xl font-bold mb-12 text-white tracking-tighter text-balance font-heading">
+                <h1 className="text-5xl md:text-8xl font-bold mb-12 text-[#2D1B0D] tracking-tighter text-balance font-heading">
                     {title}
                 </h1>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-white/10 pt-8">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 border-t border-[var(--surface-border)] pt-8">
                     <div className="md:col-span-3">
-                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#8B5E3C] text-xs font-mono uppercase tracking-widest mb-2">
                             Role
                         </span>
-                        <span className="text-white text-lg font-medium">{role}</span>
+                        <span className="text-[#2D1B0D] text-lg font-medium">{role}</span>
                     </div>
 
                     <div className="md:col-span-3">
-                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#8B5E3C] text-xs font-mono uppercase tracking-widest mb-2">
                             Timeline
                         </span>
-                        <span className="text-white text-lg font-medium">{timeline}</span>
+                        <span className="text-[#2D1B0D] text-lg font-medium">{timeline}</span>
                     </div>
 
                     <div className="md:col-span-6">
-                        <span className="block text-[#a7f36f] text-xs font-mono uppercase tracking-widest mb-2">
+                        <span className="block text-[#8B5E3C] text-xs font-mono uppercase tracking-widest mb-2">
                             Stack & Context
                         </span>
                         <div className="flex flex-wrap gap-2">
                             {tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1 border border-white/10 text-[#C0C0C0] text-xs rounded-full"
+                                    className="px-3 py-1 border border-[var(--surface-border)] text-[var(--text-secondary)] text-xs rounded-full bg-white"
                                 >
                                     {tag}
                                 </span>
@@ -87,6 +87,6 @@ export default function CaseStudyTemplate({
             >
                 {children}
             </motion.div>
-        </div>
+        </div >
     );
 }
