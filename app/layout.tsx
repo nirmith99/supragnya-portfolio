@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
+import { Ysabeau, Playfair_Display } from "next/font/google";
 import "./globals.css";
+
+// IMPORTING YSABEAU
+const ysabeau = Ysabeau({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-playfair",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
@@ -23,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${playfair.variable} ${jakarta.variable} font-sans antialiased bg-[#F9F7F2]`}>
+    <html lang="en" className={`${ysabeau.variable} ${playfair.variable} scroll-smooth`}>
+      <body className="font-sans antialiased bg-[#F9F7F2] text-[#2D1B0D]">
         {/* Global Noise Overlay */}
         <div className="pointer-events-none fixed inset-0 z-[9999] h-full w-full opacity-[0.12] mix-blend-multiply">
           <svg className="absolute inset-0 h-full w-full">
