@@ -157,7 +157,7 @@ export default function EmergencyAppPage() {
                             <div className="space-y-8 flex-1 border-t md:border-t-0 md:border-l border-[var(--surface-border)]/30 pt-8 md:pt-0 md:pl-12">
                                 <div>
                                     <p className="font-serif text-2xl italic leading-[1.6] mb-4 text-[#F4F1EA]">
-                                        "Staff described the experience as more comfortable than existing complex systems during emergency contexts."
+                                        &quot;Staff described the experience as more comfortable than existing complex systems during emergency contexts.&quot;
                                     </p>
                                     <p className="text-xs text-[var(--accent-gold)] uppercase tracking-widest font-bold block">— Ward Coordinator</p>
                                 </div>

@@ -62,7 +62,7 @@ export default function UdyogaPramodaPage() {
                             The fragility of trust at scale.
                         </p>
                         <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
-                            The core operation relied on a high-trust model: mentors validating an aspirant's "readiness" before they applied for jobs. As numbers grew, this validation lived in siloed chat logs, and overall funnel visibility vanished.
+                            The core operation relied on a high-trust model: mentors validating an aspirant&apos;s &quot;readiness&quot; before they applied for jobs. As numbers grew, this validation lived in siloed chat logs, and overall funnel visibility vanished.
                         </p>
                     </div>
                 </motion.section>
@@ -81,18 +81,18 @@ export default function UdyogaPramodaPage() {
                             <p className="text-xs font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-4">Insight 1: The Funnel Reality</p>
                             <ul className="space-y-3 font-medium text-[var(--text-primary)] pl-4 border-l border-[var(--surface-border)]">
                                 <li className="flex items-center gap-3">150 <span className="font-normal text-[var(--text-secondary)]">Active Aspirants</span></li>
-                                <li className="flex items-center gap-3">50 <span className="font-normal text-[var(--text-secondary)]">Mentor-validated as "Job-Ready"</span></li>
+                                <li className="flex items-center gap-3">50 <span className="font-normal text-[var(--text-secondary)]">Mentor-validated as &quot;Job-Ready&quot;</span></li>
                                 <li className="flex items-center gap-3 text-[var(--accent-gold)]">25+ <span className="font-normal text-[var(--text-secondary)]">Secured Placements</span></li>
                             </ul>
                             <p className="text-lg text-[var(--text-secondary)] leading-[1.8] mt-6">
-                                This revealed a <strong className="text-[var(--text-primary)]">50% placement conversion rate</strong> from validated aspirants. The bottleneck wasn't placement matching—it was the operational friction of getting users validated.
+                                This revealed a <strong className="text-[var(--text-primary)]">50% placement conversion rate</strong> from validated aspirants. The bottleneck wasn&apos;t placement matching—it was the operational friction of getting users validated.
                             </p>
                         </div>
 
                         <div>
                             <p className="text-xs font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-4">Insight 2: Cognitive Overload</p>
                             <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
-                                The MVP functions as a database viewer rather than a guided journey. It stacked eight widgets with equal visual weight. Aspirants lacked "visibility of system status"—they could not see their current stage or the next required action.
+                                The MVP functions as a database viewer rather than a guided journey. It stacked eight widgets with equal visual weight. Aspirants lacked &quot;visibility of system status&quot;—they could not see their current stage or the next required action.
                             </p>
                         </div>
                     </div>
@@ -150,7 +150,7 @@ export default function UdyogaPramodaPage() {
                         <div className="flex-1 space-y-6">
                             <h3 className="font-serif text-3xl text-[var(--text-primary)]">The Journey-First Dashboard</h3>
                             <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
-                                The new Aspirant Dashboard immediately orients the user to their current stage (e.g., "Stage 2: Skill Building") and presents the primary "Next Task" above all other content. Content is gated to prevent premature applications.
+                                The new Aspirant Dashboard immediately orients the user to their current stage (e.g., &quot;Stage 2: Skill Building&quot;) and presents the primary &quot;Next Task&quot; above all other content. Content is gated to prevent premature applications.
                             </p>
                         </div>
                         <div className="flex-1 w-full bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-3xl p-8 md:p-12 flex justify-center items-center shadow-sm">
@@ -194,7 +194,7 @@ export default function UdyogaPramodaPage() {
 
                     <div className="max-w-[720px] mx-auto mt-24">
                         <p className="text-xl md:text-2xl font-serif text-[var(--text-primary)] leading-relaxed italic text-center">
-                            "This project reinforced that meaningful product design often isn't about inventing new features, but about designing the <strong className="text-[var(--accent-gold)]">governance structure</strong> that makes a complex system work."
+                            &quot;This project reinforced that meaningful product design often isn&apos;t about inventing new features, but about designing the <strong className="text-[var(--accent-gold)]">governance structure</strong> that makes a complex system work.&quot;
                         </p>
                     </div>
                 </motion.section>
