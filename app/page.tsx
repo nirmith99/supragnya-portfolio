@@ -1,127 +1,213 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { MoveRight } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const AboutPreviewSection = dynamic(() => import("@/components/sections/AboutPreviewSection"), { ssr: true });
+const Testimonials = dynamic(() => import("@/components/ui/Testimonials"), { ssr: true });
+const HeroPencil = dynamic(() => import("@/components/HeroPencil"), { ssr: false });
+
+// Animation config for the premium feel
+const smoothSpring = {
+  type: "spring",
+  damping: 25,
+  stiffness: 100,
+};
+
+const fadeUp: any = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any // Custom easing for premium feel
+  }
+};
+
+const staggerContainer: any = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    }
+  }
+};
 
 export default function Home() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
+  const slowScroll = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
   return (
-    <main className="relative flex flex-col">
-
-      {/* 0. NAVIGATION */}
-      {/* Stretched to max-w-[1200px] for that wide premium look */}
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] bg-[#F9F7F2] text-[#80542B] px-6 py-3 rounded-full shadow-xl flex items-center justify-between w-[95%] max-w-[1200px] border border-[#80542B]/10">
-        
-        {/* LEFT: Name + Open to Opportunities */}
-        <div className="flex items-center gap-4">
-          <span className="font-serif font-bold text-lg tracking-wide">Supragnya Purohith</span>
-          <div className="hidden md:flex items-center gap-2 bg-[#80542B]/5 border border-[#80542B]/10 px-3 py-1.5 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-            <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-[#80542B]">Open to opportunities</span>
-          </div>
-        </div>
-
-        {/* CENTER: Navigation Links (Uppercase, letter-spaced) */}
-        <div className="hidden lg:flex items-center gap-8 font-sans text-xs font-bold uppercase tracking-widest absolute left-1/2 -translate-x-1/2">
-          <Link href="/" className="hover:opacity-70 transition-opacity">Home</Link>
-          <Link href="#about" className="hover:opacity-70 transition-opacity">About</Link>
-          <Link href="#projects" className="hover:opacity-70 transition-opacity">Projects</Link>
-        </div>
-
-        {/* RIGHT: Contact CTA */}
-        <div>
-          <Link href="#contact" className="bg-[#80542B] text-[#F9F7F2] px-6 py-2.5 rounded-full font-sans text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300 inline-block">
-            Contact Me
-          </Link>
-        </div>
-      </nav>
+    <main className="relative flex flex-col min-h-screen bg-[var(--bg-sage)] text-[var(--text-primary)]">
 
       {/* 1. HERO SECTION */}
-      <section className="relative h-screen w-full bg-[#80542B] flex items-center overflow-hidden">
-        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-20 pt-10 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <div className="lg:col-span-8 flex flex-col gap-10">
-              <h1 className="font-sans text-5xl lg:text-[3.5rem] leading-[1.15] tracking-tight text-[#F9F7F2] font-medium max-w-[1000px]">
-                Designer driven by precision, where logical structure meets user instinct, building systems that actually scale.
-              </h1>
-              
-              <p className="font-sans text-base lg:text-lg text-[#F9F7F2]/80 leading-relaxed max-w-[600px]">
-                Focusing on making complex systems feel simple through behavior-first design and technical clarity.
-              </p>
-              
-              {/* CLEANED UP HERO CTA - Just "View work" */}
-              <div className="mt-2">
-                <Link href="#projects" className="inline-block bg-[#F9F7F2] text-[#80542B] px-8 py-3.5 rounded-lg font-sans font-medium hover:bg-white transition-colors duration-300">
-                  View work
-                </Link>
-              </div>
-            </div>
+      <section className="relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden">
+        {/* Subtle Ambient Background Blob */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[var(--accent-gold)]/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="lg:col-span-4 flex justify-center lg:justify-end">
-              <img src="/images/avatar.png" alt="Supragnya Avatar" className="w-full max-w-[300px] lg:max-w-[360px] object-contain drop-shadow-2xl" />
-            </div>
-            
+        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-20 pt-20 flex flex-col justify-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-8 flex flex-col gap-8 lg:gap-10"
+            >
+              <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] tracking-tight font-medium max-w-[1000px] text-balance">
+                Designer driven by precision, where logical structure meets <span className="text-[var(--accent-gold)] italic font-serif pr-2">user instinct</span>, building systems that scale.
+              </motion.h1>
+
+              <motion.p variants={fadeUp} className="font-sans text-lg lg:text-xl text-[var(--text-secondary)] leading-relaxed max-w-[600px] text-balance">
+                Focusing on making complex systems feel simple through behavior-first design and technical clarity.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="mt-4">
+                <Link href="#projects" className="group flex items-center gap-3 w-fit text-[var(--accent-gold)] pb-1 border-b border-[var(--surface-border)] hover:border-[var(--accent-gold)] transition-all duration-300">
+                  <span className="font-sans text-sm tracking-widest uppercase font-bold">View Selected Work</span>
+                  <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 1.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-4 flex justify-center lg:justify-end"
+            >
+              <div className="relative group perspective-1000 w-full flex justify-center lg:justify-end min-h-[400px]">
+                <HeroPencil />
+              </div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
+
+
       {/* 2. PROJECT: EMERGENCY RESPONSE APP */}
-      <section id="projects" className="bg-[#F9F7F2] flex items-center overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)] py-32">
-        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              <h2 className="font-serif text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[#80542B]">Emergency Response App</h2>
-              <p className="font-sans text-xl lg:text-2xl opacity-80 leading-relaxed text-[#80542B] max-w-lg">
+      {/* We use a slightly lighter background block to separate sections softly within the dark mode */}
+      <section ref={containerRef} id="projects" className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-150px" }}
+          variants={staggerContainer}
+          className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+            <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col gap-8 order-2 lg:order-1">
+              <div className="flex flex-col gap-3">
+                <h3 className="font-sans text-[10px] tracking-widest uppercase font-bold text-[var(--accent-gold)]">Healthcare / Architecture</h3>
+                <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] tracking-tight">Emergency Response App</h2>
+              </div>
+              <p className="font-sans text-lg lg:text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                 Architectural logic and sub-30-second response times for cardiovascular care.
               </p>
-              <Link href="/emergency-app" className="bg-[#80542B] text-[#F9F7F2] px-8 py-4 rounded-full font-sans font-medium w-fit mt-4 hover:scale-105 transition-transform duration-300">
-                View Case Study
+              <Link href="/emergency-app" className="group flex items-center gap-3 w-fit mt-2 pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300">
+                <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
+                <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
-            </div>
-            <div className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[#80542B]/10 rounded-2xl flex items-center justify-center border border-[#80542B]/20 overflow-hidden relative">
-              <span className="font-sans font-bold tracking-widest uppercase text-sm opacity-50 text-[#80542B]">Cinematic Mockup Area</span>
-            </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              style={{ y: slowScroll }}
+              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-sage)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl order-1 lg:order-2"
+            >
+              {/* Image Placeholder or Actual Image */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. PROJECT: UDYOGA PRAMODA */}
-      <section className="bg-[#80542B] flex items-center overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.3)] py-32">
-        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 lg:order-2 flex flex-col gap-6">
-              <h2 className="font-serif text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[#F9F7F2]">Udyoga Pramoda</h2>
-              <p className="font-sans text-xl lg:text-2xl opacity-80 leading-relaxed text-[#F9F7F2] max-w-lg">
+      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-sage)]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-150px" }}
+          variants={staggerContainer}
+          className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+            <motion.div
+              variants={fadeUp}
+              style={{ y: slowScroll }}
+              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-surface)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl"
+            >
+              <div className="absolute inset-0 bg-gradient-to-bl from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col gap-8 lg:pl-10">
+              <div className="flex flex-col gap-3">
+                <h3 className="font-sans text-[10px] tracking-widest uppercase font-bold text-[var(--accent-gold)]">Community / Systems</h3>
+                <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] tracking-tight">Udyoga Pramoda</h2>
+              </div>
+              <p className="font-sans text-lg lg:text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                 Live-production mentor-gated community progression system.
               </p>
-              <Link href="/udyoga-pramoda" className="bg-[#F9F7F2] text-[#80542B] px-8 py-4 rounded-full font-sans font-medium w-fit mt-4 hover:scale-105 transition-transform duration-300">
-                View Case Study
+              <Link href="/udyoga-pramoda" className="group flex items-center gap-3 w-fit mt-2 pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300">
+                <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
+                <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
-            </div>
-            <div className="lg:col-span-7 lg:order-1 w-full h-[50vh] lg:h-[65vh] bg-[#F9F7F2]/10 rounded-2xl flex items-center justify-center border border-[#F9F7F2]/20 overflow-hidden relative">
-              <span className="font-sans font-bold tracking-widest uppercase text-sm opacity-50 text-[#F9F7F2]">Cinematic Mockup Area</span>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 4. PROJECT: RUPEERISE */}
-      <section className="bg-[#F9F7F2] flex items-center overflow-hidden shadow-[0_-20px_50px_rgba(0,0,0,0.1)] py-32">
-        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-5 flex flex-col gap-6">
-              <h2 className="font-serif text-5xl lg:text-6xl leading-[1.1] tracking-tight text-[#80542B]">RupeeRise</h2>
-              <p className="font-sans text-xl lg:text-2xl opacity-80 leading-relaxed text-[#80542B] max-w-lg">
+      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)]">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-150px" }}
+          variants={staggerContainer}
+          className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 flex flex-col justify-center"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+            <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col gap-8 order-2 lg:order-1">
+              <div className="flex flex-col gap-3">
+                <h3 className="font-sans text-[10px] tracking-widest uppercase font-bold text-[var(--accent-gold)]">Fintech / Habit Design</h3>
+                <h2 className="font-serif text-5xl lg:text-6xl leading-[1.05] tracking-tight">RupeeRise</h2>
+              </div>
+              <p className="font-sans text-lg lg:text-xl text-[var(--text-secondary)] leading-relaxed max-w-lg">
                 Habit-first wealth management designed in a 14-day sprint.
               </p>
-              <Link href="/rupeerise" className="bg-[#80542B] text-[#F9F7F2] px-8 py-4 rounded-full font-sans font-medium w-fit mt-4 hover:scale-105 transition-transform duration-300">
-                View Case Study
+              <Link href="/rupeerise" className="group flex items-center gap-3 w-fit mt-2 pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300">
+                <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
+                <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
-            </div>
-            <div className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[#80542B]/10 rounded-2xl flex items-center justify-center border border-[#80542B]/20 overflow-hidden relative">
-              <span className="font-sans font-bold tracking-widest uppercase text-sm opacity-50 text-[#80542B]">Cinematic Mockup Area</span>
-            </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              style={{ y: slowScroll }}
+              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-sage)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl order-1 lg:order-2"
+            >
+              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
+
+      {/* 5. ABOUT SECTION */}
+      <AboutPreviewSection />
+
+      {/* 6. TESTIMONIALS */}
+      <Testimonials />
 
     </main>
   );

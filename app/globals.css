@@ -3,39 +3,32 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --nav-height: 94px;
 
-  /* DESIGN SYSTEM TOKENS - EDITORIAL STYLE */
+  /* DESIGN SYSTEM TOKENS - ARCHITECTURAL SAGE */
   /* Palette */
-  --bg-white: #FFFFFF;
-  --bg-surface: #FFFFFF;
-  /* Forced White */
+  --bg-sage: #2B302A;           /* Deep muted forest/sage */
+  --bg-surface: #3A4038;        /* Lighter sage for elevation */
+  
+  --text-primary: #F4F1EA;      /* Soft Alabaster cream */
+  --text-secondary: #C8CACA;    /* Muted pale sage */
+  --text-tertiary: #9A9E9A;     /* Deeper muted sage */
 
-  --text-primary: #2D1B0D;
-  /* Deep Espresso */
-  --text-secondary: #5C4B3F;
-  /* Muted Espresso/Brown */
-  --text-tertiary: #8C7B6F;
-  /* Light Espresso/Brown */
-
-  --accent-brown: #8B5E3C;
-  /* Rich Bronze Brown */
-  --accent-contrast: #FFFFFF;
-  /* Text on Brown */
+  --accent-gold: #D1BFA0;       /* Muted, aged gold */
+  --accent-contrast: #2B302A;   /* Text on Gold */
 
   /* Aliases */
-  --bg-base: var(--bg-white);
+  --bg-base: var(--bg-sage);
   --ink: var(--text-primary);
   --muted: var(--text-secondary);
-  --accent: var(--accent-brown);
+  --accent: var(--accent-gold);
 
   /* Layout */
   --layout-padding: clamp(40px, 5vw, 80px);
   --layout-padding-wide: clamp(40px, 8vw, 120px);
 
-  --surface-border: rgba(45, 27, 13, 0.08);
-  /* Espresso border */
+  --surface-border: rgba(209, 191, 160, 0.2); /* Subtle gold rim */
 }
 
 html {
@@ -74,9 +67,10 @@ p {
 
 /* Navbar Global Overrides */
 .navbar {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(43, 48, 42, 0.85); /* Match sage base with blur */
   border-bottom: 1px solid var(--surface-border);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Layout Utilities */
@@ -110,9 +104,7 @@ p {
 .section-divider {
   width: 100%;
   height: 1px;
-  background-color: var(--accent-brown);
-  /* Rich Bronze Brown */
-  opacity: 0.2;
-  /* Subtle */
+  background-color: var(--accent-gold);
+  opacity: 0.15;
   margin: 0;
 }

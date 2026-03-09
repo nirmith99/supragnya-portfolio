@@ -1,22 +1,17 @@
 "use client";
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import CaseStudyTemplate from '@/components/templates/CaseStudyTemplate';
 import GlassImagePlaceholder from '@/components/ui/GlassImagePlaceholder';
 
 export default function UdyogaPramodaPage() {
-    const shouldReduceMotion = useReducedMotion();
-
     const sectionVariants = {
         hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: {
-                duration: 0.8,
-                ease: [0.25, 0.1, 0.25, 1],
-            } as any
+            transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } as any
         }
     };
 
@@ -27,336 +22,185 @@ export default function UdyogaPramodaPage() {
             timeline="Live Production"
             tags={["EdTech", "Community Platform", "Web System"]}
         >
-            <div className="space-y-24 md:space-y-32">
+            <div className="max-w-[1100px] mx-auto space-y-24 md:space-y-32">
 
                 {/* 1. Hero Section */}
-                <motion.section
-                    initial="hidden"
-                    animate="visible"
-                    variants={sectionVariants}
-                    className="space-y-8"
-                >
-                    <div className="space-y-4 max-w-4xl">
-                        <h1 className="text-4xl md:text-6xl font-bold font-heading text-[#2D1B0D] leading-tight">
-                            Udyoga Pramoda: Designing a Mentor-Gated Progression System
-                        </h1>
-                        <h2 className="text-xl md:text-2xl font-medium text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-                            Translating an informal mentorship culture into a structured, measurable operational system for 1,000+ users without increasing mentor burden.
-                        </h2>
-                    </div>
-
-                    <div className="mt-12 aspect-[16/9] md:aspect-[21/9] relative rounded-2xl overflow-hidden border border-[#2D1B0D]/10 shadow-lg bg-[#F5F5F5]">
-                        <GlassImagePlaceholder
-                            label="Hero composite showing the Redesigned Aspirant Dashboard, Mentor View, and Admin Funnel"
-                            className="w-full h-full rounded-2xl"
-                        />
-                    </div>
-                </motion.section>
-
-                {/* 2. Overview */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-12"
-                >
-                    <div className="md:col-span-2 space-y-4">
-                        <h3 className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">The Challenge</h3>
-                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                            Udyoga Pramoda, a community-led career initiative, scaled from a small group to over 1,046 active users. While the mentorship was impactful, the manual operations—coordinated largely via WhatsApp—collapsed under the scale. The challenge was to structure this informal process into a scalable digital product without turning it into a bureaucratic burden for busy volunteer mentors.
-                        </p>
-                    </div>
-                    <div className="space-y-8 md:col-span-1">
-                        <div className="space-y-4">
-                            <h3 className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">My Role</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                End-to-End Product Designer. I collaborated closely with an independent developer to audit live data, define the product strategy, create the information architecture, and design the final UI and design system.
-                            </p>
-                        </div>
-                        <div className="space-y-4">
-                            <h3 className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">Tools & Stack</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                Figma (UI & Design System), FigJam (IA & Flows), and collaboration with a developer using the shadcn component library.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 3. The Problem Space (Context) */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="max-w-3xl space-y-8"
-                >
-                    <div className="border-b border-[#2D1B0D]/10 pb-4">
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D]">
-                            The Problem Space (Context)
-                        </h2>
-                    </div>
-                    <div className="space-y-6">
-                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                            The initiative operated on a high-trust model: senior professionals volunteered their limited time outside of their full-time jobs to mentor aspirants. Only after a mentor explicitly validated an aspirant&apos;s &quot;readiness&quot; through tasks and workshops were they encouraged to apply for jobs.
-                        </p>
-                        <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                            As participation hit 1,000+ users, this trust-based coordination broke down. There was no centralized view of readiness, validation lived in siloed chat logs, and administrators had zero visibility into the overall placement funnel. The system was fragile and unmeasurable.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* 4. Discovery & Research (Auditing the Data) */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="space-y-12"
-                >
-                    <div className="border-b border-[#2D1B0D]/10 pb-4 max-w-3xl">
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D]">
-                            Discovery & Research
-                        </h2>
-                        <p className="text-xl text-[var(--text-secondary)] mt-4">Auditing the Data</p>
-                    </div>
-
-                    <p className="text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl">
-                        Instead of starting from scratch, we analyzed data from the initial users and conducted a heuristic audit of a functional MVP shipped to solve immediate database needs.
+                <motion.section initial="hidden" animate="visible" variants={sectionVariants} className="space-y-8 max-w-[720px]">
+                    <h2 className="text-3xl md:text-4xl font-heading text-[var(--text-secondary)] italic">
+                        Designing a Mentor-Gated Progression System
+                    </h2>
+                    <p className="text-xl text-[var(--text-tertiary)] pt-4 max-w-2xl">
+                        Translating an informal mentorship culture into a structured, measurable operational system for 1,000+ users without increasing mentor burden.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mt-8">
-                        {/* Insight 1 */}
-                        <div className="bg-[#F5F5F5] border border-[#2D1B0D]/10 p-8 rounded-2xl space-y-6">
-                            <h3 className="text-xl font-bold font-heading text-[#2D1B0D]">Key Insight 1: The Funnel Reality</h3>
-                            <p className="text-[var(--text-secondary)]">Initial data revealed a stark pattern:</p>
-                            <ul className="space-y-3 font-medium text-[#2D1B0D]">
-                                <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-[#8B5E3C]"></span> <span className="font-bold">150</span> Active Aspirants</li>
-                                <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-[#8B5E3C]"></span> <span className="font-bold">50</span> Mentor-validated as &quot;Job-Ready&quot;</li>
-                                <li className="flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-[#8B5E3C]"></span> <span className="font-bold">25+</span> Secured Placements</li>
+                    <div className="flex flex-wrap gap-2 pt-6">
+                        {["End-to-End Design", "Live Production", "Data-Driven Resign"].map((tag) => (
+                            <span key={tag} className="px-3 py-1 bg-[var(--bg-surface)] border border-[var(--surface-border)] text-[var(--text-secondary)] text-xs rounded-full font-medium tracking-wide">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </motion.section>
+
+                <motion.div initial="hidden" animate="visible" variants={sectionVariants}>
+                    <div className="w-full aspect-[21/9] md:aspect-[16/9] relative rounded-2xl overflow-hidden bg-[var(--bg-surface)] border border-[var(--surface-border)] shadow-xl hidden md:flex items-center justify-center p-8">
+                        <GlassImagePlaceholder label="Hero composite showing Redesigned Dashboards" className="w-[90%] h-[90%] opacity-50 mix-blend-luminosity hover:mix-blend-normal hover:opacity-100 transition-all duration-700" />
+                    </div>
+                </motion.div>
+
+                {/* 2. Challenge & Role */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[720px] space-y-12">
+                    <div className="space-y-6">
+                        <h2 className="font-serif text-4xl text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-4 tracking-tight">The Context & Challenge</h2>
+                        <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                            Udyoga Pramoda scaled from a small group to over 1,046 active users. While the mentorship was impactful, the manual operations—coordinated largely via WhatsApp—collapsed under the scale. The challenge was to structure this informal process into a scalable digital product without turning it into a bureaucratic burden for busy volunteer mentors.
+                        </p>
+                    </div>
+
+                    <div className="bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] p-8 rounded-r-2xl my-10 shadow-sm">
+                        <p className="font-serif text-2xl text-[var(--text-primary)] leading-tight mb-4">
+                            The fragility of trust at scale.
+                        </p>
+                        <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                            The core operation relied on a high-trust model: mentors validating an aspirant's "readiness" before they applied for jobs. As numbers grew, this validation lived in siloed chat logs, and overall funnel visibility vanished.
+                        </p>
+                    </div>
+                </motion.section>
+
+                {/* 3. Discovery & MVP Audit */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[720px] space-y-12">
+                    <div className="space-y-6">
+                        <h2 className="font-serif text-4xl text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-4 tracking-tight">Auditing the MVP</h2>
+                        <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                            Instead of starting from scratch, we analyzed data from the initial users and conducted a heuristic audit of a functional MVP shipped to solve immediate database needs.
+                        </p>
+                    </div>
+
+                    <div className="space-y-10">
+                        <div>
+                            <p className="text-xs font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-4">Insight 1: The Funnel Reality</p>
+                            <ul className="space-y-3 font-medium text-[var(--text-primary)] pl-4 border-l border-[var(--surface-border)]">
+                                <li className="flex items-center gap-3">150 <span className="font-normal text-[var(--text-secondary)]">Active Aspirants</span></li>
+                                <li className="flex items-center gap-3">50 <span className="font-normal text-[var(--text-secondary)]">Mentor-validated as "Job-Ready"</span></li>
+                                <li className="flex items-center gap-3 text-[var(--accent-gold)]">25+ <span className="font-normal text-[var(--text-secondary)]">Secured Placements</span></li>
                             </ul>
-                            <p className="text-[var(--text-secondary)] pt-4 border-t border-[#2D1B0D]/10">
-                                This revealed a <strong className="text-[#2D1B0D]">50% placement conversion rate</strong> from validated aspirants. The bottleneck wasn&apos;t placement matching—it was the operational friction of getting users validated.
+                            <p className="text-lg text-[var(--text-secondary)] leading-[1.8] mt-6">
+                                This revealed a <strong className="text-[var(--text-primary)]">50% placement conversion rate</strong> from validated aspirants. The bottleneck wasn't placement matching—it was the operational friction of getting users validated.
                             </p>
                         </div>
 
-                        {/* Insight 2 */}
-                        <div className="bg-white border border-[#2D1B0D]/10 p-8 rounded-2xl space-y-6 shadow-sm">
-                            <h3 className="text-xl font-bold font-heading text-[#2D1B0D]">Key Insight 2: Heuristic Failure of the MVP</h3>
-                            <p className="text-[var(--text-secondary)] leading-relaxed">
-                                An audit of the live MVP dashboard revealed it functioned as a database viewer rather than a guided journey. It stacked eight widgets (Jobs, Events, Mentors) with equal visual weight, causing cognitive overload.
-                            </p>
-                            <p className="text-[var(--text-secondary)] leading-relaxed">
-                                Aspirants lacked &quot;visibility of system status&quot;—they could not see their current stage or the next required action to achieve validation.
+                        <div>
+                            <p className="text-xs font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-4">Insight 2: Cognitive Overload</p>
+                            <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                                The MVP functions as a database viewer rather than a guided journey. It stacked eight widgets with equal visual weight. Aspirants lacked "visibility of system status"—they could not see their current stage or the next required action.
                             </p>
                         </div>
                     </div>
                 </motion.section>
 
-                {/* 5. Defining the Problem & Strategy */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="max-w-4xl space-y-12"
-                >
-                    <div className="border-b border-[#2D1B0D]/10 pb-4">
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D]">
-                            Defining the Problem & Strategy
-                        </h2>
+                {/* 4. Strategy & Principles */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="space-y-12 max-w-[900px]">
+                    <div className="border-b border-[var(--surface-border)] pb-8 mb-12">
+                        <p className="text-xs font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-6">The Pivot</p>
+                        <p className="font-serif text-3xl md:text-5xl text-[var(--text-primary)] leading-[1.2] tracking-tight text-balance">
+                            From a <em className="text-[var(--text-secondary)] not-italic line-through mr-2">Passive Content Platform</em> to an <em className="text-[var(--accent-gold)] not-italic">Active Progression System.</em>
+                        </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <div className="space-y-4 relative">
-                            <div className="absolute top-0 left-0 w-1 h-full bg-[#ef4444] rounded-full"></div>
-                            <h3 className="text-xl font-bold font-heading text-[#2D1B0D] pl-6">The Core Problem</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed pl-6">
-                                The platform lacked structured progression. The open-access nature of the MVP overwhelmed aspirants with options rather than guiding them toward readiness validation.
-                            </p>
-                        </div>
-                        <div className="space-y-4 relative">
-                            <div className="absolute top-0 left-0 w-1 h-full bg-[#8B5E3C] rounded-full"></div>
-                            <h3 className="text-xl font-bold font-heading text-[#2D1B0D] pl-6">The Strategy: Mentor-Gated Progression</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed pl-6">
-                                We shifted from a passive content platform to an active progression system. Access to the final stage (the Job Board) was &quot;gated&quot; behind a mentor&apos;s approval click, ensuring readiness reflected demonstrated capability, not just self-reporting.
-                            </p>
-                        </div>
+                        {[
+                            { title: "Respect Volunteer Capacity", desc: "Validation must be lightweight (one-click actions), not complex manual forms." },
+                            { title: "Progression Over Options", desc: "Guide sequentially. Don't distract un-validated aspirants with jobs they aren't ready for." },
+                            { title: "Unambiguous State", desc: "Strict visual indicators for status (Pending vs. Validated) to eliminate chaos." },
+                            { title: "Build for the Stack", desc: "Design using atomic, reproducible components mapped directly to shadcn." }
+                        ].map((item, idx) => (
+                            <div key={idx} className="space-y-3">
+                                <span className="text-[var(--accent-gold)] font-bold text-sm tracking-widest uppercase">Rule 0{idx + 1}</span>
+                                <h3 className="text-xl font-bold font-serif text-[var(--text-primary)]">{item.title}</h3>
+                                <p className="text-[var(--text-secondary)] leading-[1.6]">{item.desc}</p>
+                            </div>
+                        ))}
                     </div>
                 </motion.section>
 
-                {/* 6. Design Principles */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="space-y-12 bg-[#F5F5F5] -mx-5 md:-mx-[60px] px-5 md:px-[60px] py-20 rounded-3xl"
-                >
-                    <div className="max-w-4xl mx-auto space-y-12">
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D] text-center">
-                            Design Principles
-                        </h2>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[#2D1B0D]/10 shadow-sm space-y-3">
-                                <span className="text-[#8B5E3C] font-bold font-heading text-xl">01</span>
-                                <h3 className="text-lg font-bold text-[#2D1B0D]">Respect Volunteer Capacity</h3>
-                                <p className="text-[var(--text-secondary)]">Busy professionals need efficiency. Validation must be lightweight (one-click actions), not complex forms.</p>
-                            </div>
-                            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[#2D1B0D]/10 shadow-sm space-y-3">
-                                <span className="text-[#8B5E3C] font-bold font-heading text-xl">02</span>
-                                <h3 className="text-lg font-bold text-[#2D1B0D]">Progression Over Options</h3>
-                                <p className="text-[var(--text-secondary)]">Guide the user sequentially. Don&apos;t distract un-validated aspirants with job postings they aren&apos;t ready for.</p>
-                            </div>
-                            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[#2D1B0D]/10 shadow-sm space-y-3">
-                                <span className="text-[#8B5E3C] font-bold font-heading text-xl">03</span>
-                                <h3 className="text-lg font-bold text-[#2D1B0D]">Unambiguous System State</h3>
-                                <p className="text-[var(--text-secondary)]">Use strict visual indicators for status (Pending vs. Validated) to eliminate coordination chaos.</p>
-                            </div>
-                            <div className="bg-white p-6 md:p-8 rounded-2xl border border-[#2D1B0D]/10 shadow-sm space-y-3">
-                                <span className="text-[#8B5E3C] font-bold font-heading text-xl">04</span>
-                                <h3 className="text-lg font-bold text-[#2D1B0D]">Build for the Stack</h3>
-                                <p className="text-[var(--text-secondary)]">Design using atomic components that map cleanly to standard code libraries like <strong className="text-[#2D1B0D]">shadcn</strong>.</p>
-                            </div>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 7. Design Execution */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="space-y-24"
-                >
-                    <div className="border-b border-[#2D1B0D]/10 pb-4 max-w-2xl mx-auto text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D]">
-                            Design Execution
-                        </h2>
+                {/* 5. Execution (Images) */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="space-y-24 pt-16 border-t border-[var(--surface-border)]/50">
+                    <div className="max-w-[720px] text-center mx-auto space-y-4">
+                        <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-tight">Design Execution</h2>
+                        <p className="text-lg text-[var(--text-secondary)]">Information Architecture & Dashboard Unification.</p>
                     </div>
 
-                    {/* IA */}
-                    <div className="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+                    {/* Stack 1 */}
+                    <div className="flex flex-col md:flex-row items-center gap-12 md:gap-24">
                         <div className="flex-1 space-y-6">
-                            <h3 className="text-2xl font-bold font-heading text-[#2D1B0D]">Information Architecture (IA)</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                We restructured the ecosystem into distinct portals based on the user&apos;s role:
+                            <h3 className="font-serif text-3xl text-[var(--text-primary)]">Restructuring Portals</h3>
+                            <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                                The ecosystem was split by user role: <strong className="text-[var(--text-primary)]">Aspirant Portal</strong> (Stage Tracker & Tasks), <strong className="text-[var(--text-primary)]">Mentor Portal</strong> (Roster & Validation Center), and <strong className="text-[var(--text-primary)]">Admin Portal</strong> (Funnel Analytics).
                             </p>
-                            <ul className="space-y-4">
-                                <li className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                    <strong className="text-[#2D1B0D]">Aspirant Portal:</strong> Focused on the <strong className="text-[#2D1B0D]">Current Stage Tracker</strong> and Assigned Tasks. The Job Board remains locked until validation.
-                                </li>
-                                <li className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                    <strong className="text-[#2D1B0D]">Mentor Portal:</strong> A streamlined workspace focused on the <strong className="text-[#2D1B0D]">Aspirant Roster</strong> and a lightweight Validation Center.
-                                </li>
-                                <li className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                    <strong className="text-[#2D1B0D]">Admin Portal:</strong> Focused on high-level funnel analytics and capacity management.
-                                </li>
-                            </ul>
                         </div>
-                        <div className="flex-1 w-full bg-[#F5F5F5] rounded-2xl border border-[#2D1B0D]/10 p-6 aspect-square md:aspect-[4/3]">
-                            <GlassImagePlaceholder
-                                label="Information Architecture Diagram"
-                                className="w-full h-full rounded-xl"
-                            />
+                        <div className="flex-1 w-full bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-3xl p-8 md:p-12 flex justify-center items-center shadow-sm">
+                            <div className="relative w-full aspect-square md:aspect-[4/3]">
+                                <GlassImagePlaceholder label="Information Architecture Diagram" className="w-full h-full rounded-xl shadow-lg" />
+                            </div>
                         </div>
                     </div>
 
-                    {/* Visual Design */}
-                    <div className="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
-                        <div className="flex-1 w-full order-2 md:order-1 bg-[#F5F5F5] rounded-2xl border border-[#2D1B0D]/10 p-6 aspect-square md:aspect-[4/3]">
-                            <GlassImagePlaceholder
-                                label="Design System Components / Status Badges"
-                                className="w-full h-full rounded-xl"
-                            />
-                        </div>
-                        <div className="flex-1 space-y-6 order-1 md:order-2">
-                            <h3 className="text-2xl font-bold font-heading text-[#2D1B0D]">Visual Design & System (Figma to Code)</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                I created a robust design system in Figma centered around status indicators (Pending, Submitted, Validated). The UI prioritized clarity over visual flair, using standard component patterns that allowed for fast, reliable development.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Final UI */}
-                    <div className="flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+                    {/* Stack 2 */}
+                    <div className="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24 border-t border-[var(--surface-border)]/50 pt-24">
                         <div className="flex-1 space-y-6">
-                            <h3 className="text-2xl font-bold font-heading text-[#2D1B0D]">Final UI: The Redesigned Dashboards</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                The final designs focused on the journey. The new Aspirant Dashboard immediately orients the user to their current stage (e.g., &quot;Stage 2: Skill Building&quot;) and presents the primary &quot;Next Task&quot; above all other content.
+                            <h3 className="font-serif text-3xl text-[var(--text-primary)]">The Journey-First Dashboard</h3>
+                            <p className="text-lg text-[var(--text-secondary)] leading-[1.8]">
+                                The new Aspirant Dashboard immediately orients the user to their current stage (e.g., "Stage 2: Skill Building") and presents the primary "Next Task" above all other content. Content is gated to prevent premature applications.
                             </p>
                         </div>
-                        <div className="flex-1 w-full bg-[#F5F5F5] rounded-2xl border border-[#2D1B0D]/10 p-6 aspect-[16/9]">
-                            <GlassImagePlaceholder
-                                label="Side-by-Side comparison of MVP Dashboard vs. Final Redesign"
-                                className="w-full h-full rounded-xl"
-                            />
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 8. Results & Impact */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="max-w-5xl mx-auto space-y-12 border-t border-[#2D1B0D]/10 pt-20"
-                >
-                    <div className="text-center max-w-3xl mx-auto">
-                        <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#2D1B0D]">
-                            Results & Impact
-                        </h2>
-                    </div>
-
-                    <div className="bg-white border border-[#2D1B0D]/10 shadow-sm rounded-3xl p-8 md:p-12 relative overflow-hidden mt-8">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
-                            <div className="space-y-2">
-                                <span className="block text-4xl md:text-5xl font-black font-heading text-[#2D1B0D]">1,046</span>
-                                <span className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">Active Users</span>
-                                <p className="text-xs text-[var(--text-tertiary)] mt-2">managed on the platform</p>
-                            </div>
-                            <div className="space-y-2">
-                                <span className="block text-4xl md:text-5xl font-black font-heading text-[#2D1B0D]">50%</span>
-                                <span className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">Conversion</span>
-                                <p className="text-xs text-[var(--text-tertiary)] mt-2">for mentor-validated aspirants</p>
-                            </div>
-                            <div className="space-y-2">
-                                <span className="block text-4xl md:text-5xl font-black font-heading text-[#2D1B0D]">25+</span>
-                                <span className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">Placements</span>
-                                <p className="text-xs text-[var(--text-tertiary)] mt-2">successfully secured roles</p>
-                            </div>
-                            <div className="space-y-2">
-                                <span className="block text-4xl md:text-5xl font-black font-heading text-[#2D1B0D]">₹7.5</span>
-                                <span className="text-sm font-bold uppercase tracking-widest text-[#8B5E3C]">LPA Avg Salary</span>
-                                <p className="text-xs text-[var(--text-tertiary)] mt-2">achieved average</p>
+                        <div className="flex-1 w-full bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-3xl p-8 md:p-12 flex justify-center items-center shadow-sm">
+                            <div className="relative w-full aspect-[16/9]">
+                                <GlassImagePlaceholder label="MVP vs Redesign Comparison" className="w-full h-full rounded-xl shadow-lg" />
                             </div>
                         </div>
                     </div>
                 </motion.section>
 
-                {/* 9. Reflection */}
-                <motion.section
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="max-w-4xl mx-auto space-y-8 pt-12"
-                >
-                    <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#2D1B0D] text-center mb-8">
-                        Reflection
-                    </h2>
-                    <div className="bg-[#FFF8F5] border-l-4 border-[#8B5E3C] p-8 md:p-10 rounded-r-2xl">
-                        <p className="text-xl md:text-2xl font-heading text-[#2D1B0D] leading-relaxed italic">
-                            &quot;This project reinforced that meaningful product design often isn&apos;t about inventing new features, but about designing the <strong className="text-[#8B5E3C]">governance structure</strong> that makes a complex system work. Success came from identifying the operational constraint—busy volunteer capacity—and designing a progression system that respected it.&quot;
+                {/* 6. Results */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[1100px] pt-24 border-t border-[var(--surface-border)] mt-24">
+                    <div className="text-center mb-16">
+                        <h2 className="font-serif text-4xl text-[var(--text-primary)] tracking-tight">Real World Impact</h2>
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 relative z-10 p-8 md:p-16 rounded-[2rem] bg-[var(--text-primary)] text-[var(--bg-sage)] overflow-hidden shadow-2xl">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--accent-gold)]/10 rounded-full blur-[80px]"></div>
+
+                        <div className="space-y-4">
+                            <span className="block text-5xl md:text-6xl font-black font-heading text-[var(--accent-gold)]">1k+</span>
+                            <span className="text-xs font-bold uppercase tracking-widest block opacity-70">Active Users</span>
+                            <p className="text-sm font-medium mt-2 leading-[1.6]">managed on the platform without friction</p>
+                        </div>
+                        <div className="space-y-4">
+                            <span className="block text-5xl md:text-6xl font-black font-heading text-[var(--accent-gold)]">50%</span>
+                            <span className="text-xs font-bold uppercase tracking-widest block opacity-70">Conversion</span>
+                            <p className="text-sm font-medium mt-2 leading-[1.6]">for mentor-validated aspirants holding steady</p>
+                        </div>
+                        <div className="space-y-4">
+                            <span className="block text-5xl md:text-6xl font-black font-heading text-[var(--accent-gold)]">25+</span>
+                            <span className="text-xs font-bold uppercase tracking-widest block opacity-70">Placements</span>
+                            <p className="text-sm font-medium mt-2 leading-[1.6]">successfully secured roles through the system</p>
+                        </div>
+                        <div className="space-y-4">
+                            <span className="block text-5xl md:text-6xl font-black font-heading text-[var(--accent-gold)]">₹7.5L</span>
+                            <span className="text-xs font-bold uppercase tracking-widest block opacity-70">Average Salary</span>
+                            <p className="text-sm font-medium mt-2 leading-[1.6]">achieved across all verified placements</p>
+                        </div>
+                    </div>
+
+                    <div className="max-w-[720px] mx-auto mt-24">
+                        <p className="text-xl md:text-2xl font-serif text-[var(--text-primary)] leading-relaxed italic text-center">
+                            "This project reinforced that meaningful product design often isn't about inventing new features, but about designing the <strong className="text-[var(--accent-gold)]">governance structure</strong> that makes a complex system work."
                         </p>
                     </div>
                 </motion.section>
 
-                {/* Hard Stop Footer */}
-                <div className="h-24 bg-[#F5F5F5] -mx-5 md:-mx-[60px] px-5 md:px-[60px] mt-24"></div>
+                {/* Footer Spacer */}
+                <div className="h-24"></div>
             </div>
         </CaseStudyTemplate>
     );

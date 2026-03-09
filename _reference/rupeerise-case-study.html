@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RupeeRise — Supragnya Purohith</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brown-deep: #2D1B0D;
+      --brown-mid: #8B5E3C;
+      --brown-light: #C4956A;
+      --bg-base: #FAFAF8;
+      --bg-muted: #F5F3EF;
+      --text-primary: #2D1B0D;
+      --text-secondary: #5C4033;
+      --text-tertiary: #9E7B65;
+      --border: rgba(45, 27, 13, 0.1);
+      --border-mid: rgba(45, 27, 13, 0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN TEXTURE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250, 250, 248, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown-deep);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-tags {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      padding: 4px 12px;
+      border: 1px solid var(--border-mid);
+      border-radius: 999px;
+      background: var(--bg-muted);
+    }
+
+    /* ─── MAIN WRAPPER ─── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 120px 0 0;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.75s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: 160px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow-line {
+      width: 32px;
+      height: 2px;
+      background: var(--brown-mid);
+    }
+
+    .eyebrow-text {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--brown-deep);
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .hero-descriptor {
+      font-size: 1.15rem;
+      color: var(--text-tertiary);
+      max-width: 560px;
+      font-weight: 400;
+      margin-bottom: 36px;
+    }
+
+    .constraint-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 56px;
+    }
+
+    .constraint-tag {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border: 1px solid var(--border-mid);
+      border-radius: 999px;
+      background: var(--bg-muted);
+      color: var(--text-secondary);
+    }
+
+    /* ─── HERO IMAGE PLACEHOLDER ─── */
+    .hero-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .img-placeholder svg {
+      opacity: 0.3;
+    }
+
+    .img-placeholder span {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* ─── SECTION HEADINGS ─── */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.025em;
+      color: var(--brown-deep);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      color: var(--brown-deep);
+      margin-bottom: 16px;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--brown-deep);
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    strong { color: var(--brown-deep); font-weight: 600; }
+
+    em { font-style: italic; color: var(--brown-mid); }
+
+    /* ─── PROSE CONTAINER ─── */
+    .prose { max-width: 680px; }
+
+    /* ─── CALLOUT / BLOCKQUOTE ─── */
+    .callout {
+      background: var(--bg-muted);
+      border-left: 4px solid var(--brown-mid);
+      padding: 28px 32px;
+      border-radius: 0 14px 14px 0;
+      margin: 32px 0;
+    }
+
+    .callout h4 { margin-bottom: 14px; }
+
+    .callout ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .callout ul li {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      padding: 6px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .callout ul li::before {
+      content: '→';
+      color: var(--brown-mid);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── STAT ROW ─── */
+    .stat-row {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+
+    .stat-item {
+      flex: 1;
+      padding: 32px 28px;
+      background: white;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-value {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      color: var(--brown-deep);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+      font-weight: 500;
+    }
+
+    /* ─── COMPETITIVE TABLE ─── */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(45, 27, 13, 0.05);
+      margin: 32px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    thead tr {
+      background: var(--bg-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    thead th {
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    thead th.highlight {
+      color: var(--brown-mid);
+      background: white;
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      background: white;
+      transition: background 0.2s;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-muted); }
+
+    td {
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      color: var(--text-tertiary);
+    }
+
+    td:first-child {
+      font-weight: 500;
+      color: var(--brown-deep);
+    }
+
+    td.highlight {
+      font-weight: 700;
+      color: var(--brown-mid);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    /* ─── SYNTHESIS BOX ─── */
+    .synthesis {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      max-width: 720px;
+    }
+
+    /* ─── HMW / REFRAME ─── */
+    .reframe-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 2px 20px rgba(45, 27, 13, 0.06);
+      margin: 32px 0;
+    }
+
+    .reframe-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      margin-bottom: 16px;
+    }
+
+    .reframe-strike {
+      font-size: 1.15rem;
+      color: var(--text-tertiary);
+      text-decoration: line-through;
+      margin-bottom: 12px;
+    }
+
+    .reframe-new {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--brown-deep);
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+    }
+
+    /* ─── HYPOTHESIS ─── */
+    .hypothesis {
+      background: var(--brown-deep);
+      border-radius: 20px;
+      padding: 52px 60px;
+      position: relative;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+
+    .hypothesis::before {
+      content: '"';
+      position: absolute;
+      top: -40px;
+      left: 24px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 220px;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .hypothesis p {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      color: var(--bg-muted);
+      line-height: 1.55;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+
+    /* ─── SCORE INPUTS GRID ─── */
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .score-card {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 22px;
+    }
+
+    .score-card h4 { font-size: 0.95rem; margin-bottom: 6px; }
+    .score-card p { font-size: 0.9rem; color: var(--text-tertiary); margin: 0; }
+
+    /* ─── DESIGN DECISIONS ─── */
+    .decisions {
+      border-left: 2px solid var(--border-mid);
+      padding-left: 32px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .decision-item p { margin: 0; }
+
+    /* ─── TIER GRID ─── */
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .tier-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 18px;
+      background: white;
+    }
+
+    .tier-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      border: 1px solid var(--brown-mid);
+      border-radius: 999px;
+      padding: 3px 10px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .tier-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--brown-deep);
+      margin-bottom: 6px;
+    }
+
+    .tier-desc {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+      line-height: 1.5;
+    }
+
+    /* ─── MODULES ZIGZAG ─── */
+    .module-row {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      padding: 72px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .module-row:first-child { border-top: none; }
+
+    .module-text { flex: 1; }
+    .module-img { flex: 1; }
+
+    .module-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 14px;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      margin-bottom: 16px;
+    }
+
+    .module-text h3 { margin-bottom: 12px; }
+    .module-text p { margin: 0; }
+
+    .img-frame {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+
+    .img-mock {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 4/3;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(45, 27, 13, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--text-tertiary);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .img-mock svg { opacity: 0.25; }
+
+    /* Stack effect for insights */
+    .img-stack {
+      position: relative;
+      width: 100%;
+      height: 320px;
+    }
+
+    .img-stack .card-a, .img-stack .card-b {
+      position: absolute;
+      width: 200px;
+      aspect-ratio: 9/16;
+      max-height: 280px;
+      background: white;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(45,27,13,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: transform 0.5s ease;
+    }
+
+    .card-a {
+      left: 20px;
+      top: 20px;
+      transform: rotate(-6deg);
+      z-index: 1;
+    }
+
+    .card-b {
+      right: 20px;
+      top: 50px;
+      transform: rotate(3deg);
+      z-index: 2;
+    }
+
+    .img-stack:hover .card-a, .img-stack:hover .card-b {
+      transform: rotate(0deg);
+    }
+
+    /* ─── V1 GRID ─── */
+    .v1-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+      filter: grayscale(40%);
+      opacity: 0.8;
+      transition: filter 0.6s, opacity 0.6s;
+    }
+
+    .v1-grid:hover {
+      filter: grayscale(0);
+      opacity: 1;
+    }
+
+    .v1-card {
+      aspect-ratio: 9/16;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-tertiary);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      box-shadow: 0 4px 12px rgba(45,27,13,0.06);
+    }
+
+    /* ─── JURY QUOTE ─── */
+    .jury-quote {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 60px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(45,27,13,0.06);
+    }
+
+    .jury-quote::before {
+      content: '"';
+      position: absolute;
+      top: -50px;
+      left: 20px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 240px;
+      color: rgba(45,27,13,0.04);
+      line-height: 1;
+      user-select: none;
+    }
+
+    .jury-quote blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.4rem, 2.8vw, 2.1rem);
+      color: var(--brown-deep);
+      line-height: 1.5;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      margin: 0 0 20px;
+    }
+
+    .jury-attr {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+    }
+
+    /* ─── FUTURE SCOPE ─── */
+    .future-box {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+    }
+
+    .future-box h3 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .future-badge {
+      width: 32px;
+      height: 32px;
+      background: var(--brown-mid);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .future-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .future-list li {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+    }
+
+    .future-list li::before {
+      content: '→';
+      color: var(--brown-mid);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* ─── ETHICAL GUARDRAILS ─── */
+    .guardrails-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .guardrail-card {
+      background: var(--brown-deep);
+      color: rgba(250,250,248,0.85);
+      border-radius: 14px;
+      padding: 24px 22px;
+    }
+
+    .guardrail-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .guardrail-card h4 {
+      color: var(--bg-muted);
+      font-size: 0.88rem;
+      margin-bottom: 8px;
+    }
+
+    .guardrail-card p {
+      font-size: 0.82rem;
+      color: rgba(250,250,248,0.55);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      margin-top: 120px;
+      padding: 40px 60px;
+      background: var(--bg-muted);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown-deep);
+    }
+
+    .footer-meta {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ─── SCROLL PROGRESS ─── */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: var(--brown-mid);
+      z-index: 200;
+      width: 0%;
+      transition: width 0.1s;
+    }
+
+    /* ─── IA DIAGRAM ─── */
+    .ia-wrap {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      background: #f9f7f5;
+      border-top: 1px solid rgba(45,27,13,0.1);
+      border-bottom: 1px solid rgba(45,27,13,0.1);
+      padding: 48px 40px 56px;
+      margin-top: 60px;
+      overflow-x: auto;
+    }
+
+    .ia-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .ia-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9E7B65;
+      margin-bottom: 6px;
+    }
+
+    .ia-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--brown-deep);
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .ia-subheading {
+      font-size: 0.85rem;
+      color: #9E7B65;
+      margin-bottom: 32px;
+    }
+
+    .ia-legend-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+
+    .ia-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      color: #9E7B65;
+    }
+
+    .ia-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* root node */
+    .ia-root {
+      background: #2D1B0D;
+      border-radius: 10px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(45,27,13,0.25);
+      position: relative;
+      z-index: 2;
+    }
+
+    .ia-root-label {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+
+    .ia-root-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .ia-root-chips {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .ia-root-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .ia-root-chip.ia-accent {
+      background: #8B5E3C;
+      border-color: #8B5E3C;
+      color: white;
+    }
+
+    /* stems */
+    .ia-stem {
+      width: 2px;
+      background: rgba(45,27,13,0.2);
+      margin: 0 auto;
+    }
+
+    /* module grid */
+    .ia-modules {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      position: relative;
+      min-width: 900px;
+    }
+
+    .ia-modules::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(10% + 7px);
+      right: calc(10% + 7px);
+      height: 2px;
+      background: rgba(45,27,13,0.2);
+    }
+
+    .ia-module-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .ia-drop {
+      width: 2px;
+      height: 28px;
+      background: rgba(45,27,13,0.2);
+    }
+
+    .ia-card {
+      width: 100%;
+      background: white;
+      border: 1.5px solid rgba(45,27,13,0.15);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(45,27,13,0.06);
+    }
+
+    .ia-card.ia-card-featured {
+      border-color: #8B5E3C;
+    }
+
+    .ia-card-head {
+      padding: 10px 13px 8px;
+      border-bottom: 1px solid rgba(45,27,13,0.08);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .ia-card-head.ia-featured-head {
+      background: #FBF5EE;
+      border-bottom-color: rgba(139,94,60,0.2);
+    }
+
+    .ia-card-num {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4956A;
+      margin-bottom: 2px;
+    }
+
+    .ia-card-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #2D1B0D;
+      line-height: 1.2;
+    }
+
+    .ia-card-desc {
+      font-size: 0.65rem;
+      color: #9E7B65;
+      margin-top: 2px;
+    }
+
+    .ia-badge {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 2px 6px;
+      flex-shrink: 0;
+    }
+
+    .ia-badge-free { background: #F5EDE4; color: #8B5E3C; }
+    .ia-badge-premium { background: #fef3c7; color: #d97706; }
+    .ia-badge-lock { background: #f5f3ef; color: #9E7B65; }
+
+    .ia-card-body {
+      padding: 9px 12px 11px;
+    }
+
+    .ia-group {
+      margin-bottom: 8px;
+    }
+
+    .ia-group:last-child { margin-bottom: 0; }
+
+    .ia-group-label {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4956A;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(45,27,13,0.06);
+      margin-bottom: 5px;
+    }
+
+    .ia-group-label.ia-green { color: #8B5E3C; }
+    .ia-group-label.ia-amber { color: #d97706; }
+
+    .ia-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+      margin-bottom: 3px;
+    }
+
+    .ia-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #8B5E3C;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .ia-dot-amber { background: #d97706; }
+
+    .ia-item-text {
+      font-size: 0.69rem;
+      color: #5C4033;
+      line-height: 1.4;
+    }
+
+    .ia-item-text strong { color: #2D1B0D; font-weight: 600; }
+
+    .ia-unlock-tag {
+      background: #F5EDE4;
+      border: 1px solid rgba(139,94,60,0.25);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: #8B5E3C;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* interrupt */
+    .ia-interrupt {
+      background: #2D1B0D;
+      border-radius: 10px;
+      padding: 15px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      box-shadow: 0 1px 3px rgba(45,27,13,0.15);
+      flex-wrap: wrap;
+    }
+
+    .ia-interrupt-tag {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #ef4444;
+      background: rgba(239,68,68,0.12);
+      border-radius: 3px;
+      padding: 2px 6px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .ia-interrupt-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 2px;
+    }
+
+    .ia-interrupt-sub {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .ia-interrupt-cells {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      flex: 1;
+      min-width: 500px;
+    }
+
+    .ia-interrupt-cell {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+
+    .ia-interrupt-cell-label {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 3px;
+    }
+
+    .ia-interrupt-cell-text {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.4;
+    }
+
+    /* real exposure */
+    .ia-re {
+      background: #FBF5EE;
+      border: 1.5px solid rgba(139,94,60,0.25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .ia-re-tag {
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8B5E3C;
+      background: #F5EDE4;
+      border-radius: 3px;
+      padding: 2px 6px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .ia-re-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #2D1B0D;
+      margin-bottom: 2px;
+    }
+
+    .ia-re-sub {
+      font-size: 0.65rem;
+      color: #9E7B65;
+    }
+
+    .ia-re-chips {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .ia-re-chip {
+      background: white;
+      border: 1px solid rgba(139,94,60,0.2);
+      border-radius: 5px;
+      padding: 4px 10px;
+      font-size: 0.68rem;
+      color: #5C4033;
+    }
+
+    /* settings row */
+    .ia-settings {
+      background: white;
+      border: 1.5px solid rgba(45,27,13,0.15);
+      border-radius: 10px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .ia-settings-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #2D1B0D;
+      flex-shrink: 0;
+    }
+
+    .ia-settings-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(45,27,13,0.1);
+      flex-shrink: 0;
+    }
+
+    .ia-settings-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .ia-settings-chip {
+      background: #f9f7f5;
+      border: 1px solid rgba(45,27,13,0.1);
+      border-radius: 4px;
+      padding: 3px 9px;
+      font-size: 0.67rem;
+      color: #5C4033;
+    }
+
+    /* flow */
+    .ia-flow {
+      background: white;
+      border: 1.5px solid rgba(45,27,13,0.15);
+      border-radius: 10px;
+      padding: 18px 24px;
+    }
+
+    .ia-flow-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C4956A;
+      margin-bottom: 14px;
+    }
+
+    .ia-flow-nodes {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .ia-flow-node {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ia-flow-box {
+      background: #F5EDE4;
+      border: 1.5px solid rgba(139,94,60,0.25);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #8B5E3C;
+      white-space: nowrap;
+    }
+
+    .ia-flow-sub {
+      font-size: 0.6rem;
+      color: #9E7B65;
+      text-align: center;
+      line-height: 1.3;
+      max-width: 80px;
+    }
+
+    .ia-flow-arrow {
+      width: 28px;
+      height: 2px;
+      background: rgba(45,27,13,0.15);
+      flex-shrink: 0;
+      margin-bottom: 16px;
+    }
+
+    .ia-flow-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(45,27,13,0.06);
+    }
+
+    .ia-flow-footnote {
+      font-size: 0.65rem;
+      color: #9E7B65;
+      font-style: italic;
+    }
+
+    /* dashed divider label */
+    .ia-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      margin: 8px 0;
+    }
+
+    .ia-divider-line {
+      flex: 1;
+      height: 1px;
+      border-top: 1px dashed rgba(45,27,13,0.2);
+    }
+
+    .ia-divider-text {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9E7B65;
+      white-space: nowrap;
+      padding: 0 10px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      main { padding: 0 24px; }
+      .module-row { flex-direction: column; gap: 40px; }
+      .tier-grid { grid-template-columns: repeat(2, 1fr); }
+      .guardrails-grid { grid-template-columns: repeat(2, 1fr); }
+      .score-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-direction: column; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      footer { flex-direction: column; gap: 12px; padding: 32px 24px; }
+      .v1-grid { grid-template-columns: repeat(2, 1fr); }
+      .hypothesis { padding: 40px 32px; }
+      .jury-quote { padding: 40px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Supragnya Purohith</a>
+    <div class="nav-tags">
+      <span class="nav-tag">Fintech</span>
+      <span class="nav-tag">Behavioral Design</span>
+      <span class="nav-tag">14-Day Hackathon</span>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════════════════════════ HERO ════════════════════════ -->
+    <section class="hero visible">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Case Study · Lead Product Designer</span>
+      </div>
+
+      <h1>RupeeRise</h1>
+      <p class="hero-subtitle">Master the Art of Spending and Saving.</p>
+      <p class="hero-descriptor">A Financial Decision Stability System for Young Earners — designed in 14 days.</p>
+
+      <div class="constraint-tags">
+        <span class="constraint-tag">14-Day Timeline</span>
+        <span class="constraint-tag">Remote Collaboration</span>
+        <span class="constraint-tag">Clickable Prototype Only</span>
+        <span class="constraint-tag">No Live Trading</span>
+        <span class="constraint-tag">No Demat Integration</span>
+        <span class="constraint-tag">No Compliance Layer</span>
+      </div>
+
+      <div class="hero-img">
+        <div class="img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="18" height="18" rx="3"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="m21 15-5-5L5 21"/>
+          </svg>
+          <span>Simulation Lab Interface</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ CONTEXT ════════════════════════ -->
+    <section>
+      <div class="prose">
+        <h2>Context</h2>
+        <p>The hackathon brief asked us to close financial literacy gaps among Millennials and Gen Z. It's a well-worn prompt—most teams would reach for it and build another learn-and-earn app. Before committing to a direction, I wanted to understand if literacy was actually the problem.</p>
+
+        <h3>What the Research Actually Said</h3>
+        <p>Informal interviews with 20–28 year olds didn't surface ignorance — they surfaced <strong>behavioral contradiction</strong>. These were people who could explain credit card interest, who'd watched crypto crash documentaries, who knew the theory. And yet they were panic selling, trend-chasing, and misusing credit under pressure.</p>
+      </div>
+
+      <div class="callout">
+        <h4>Patterns Found in Research</h4>
+        <ul>
+          <li>Credit misuse despite knowing the math</li>
+          <li>Overconfidence after short-term wins</li>
+          <li>Trend-driven investing, not conviction-driven</li>
+          <li>Panic selling during volatility</li>
+        </ul>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-item">
+          <div class="stat-value">~60%</div>
+          <div class="stat-label">Young earners interested in a structured stability system</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">~30%</div>
+          <div class="stat-label">Mentors validated instability — not ignorance — as the core issue</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">45%+</div>
+          <div class="stat-label">Fintech users in India are already under 30. Access ≠ problem.</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Secondary sources confirmed it — NCFE FLIS, OECD/INFE, India Fintech Report. Financial awareness gaps persist, but awareness alone hasn't translated to behavioral change. <strong>Access to financial tools has increased faster than behavioral maturity to use them safely.</strong></p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ COMPETITIVE LANDSCAPE ════════════════════════ -->
+    <section>
+      <h2>Competitive Landscape</h2>
+      <p style="max-width:600px;margin-bottom:0;">Mapping the existing landscape confirmed the behavioral gap wasn't being addressed anywhere.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>StockGro</th>
+              <th>CRED</th>
+              <th>Jupiter / Fi</th>
+              <th>Jar</th>
+              <th class="highlight">RupeeRise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Market simulation</td><td>✓</td><td>—</td><td>—</td><td>—</td><td class="highlight">✓</td></tr>
+            <tr><td>Spending insights</td><td>—</td><td>—</td><td>✓</td><td>—</td><td class="highlight">✓</td></tr>
+            <tr><td>Behavioral gating</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="highlight">✓</td></tr>
+            <tr><td>Stability score</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="highlight">✓</td></tr>
+            <tr><td>Staged exposure control</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="highlight">✓</td></tr>
+            <tr><td>Profit excluded from score</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="highlight">✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="synthesis">
+        <p style="margin:0;"><strong>Synthesis:</strong> The problem was never knowledge — <em>it was decision stability under pressure.</em> No existing platform was designed to close that gap. Every competitor either gamified engagement or optimized for access. None regulated exposure based on demonstrated behavioral stability.</p>
+      </div>
+    </section>
+
+
+
+    <!-- ════════════════════════ REFRAME ════════════════════════ -->
+    <section>
+      <div class="prose">
+        <h2>Reframing the Problem</h2>
+        <p>The research made one thing clear: building another literacy product would miss the actual failure point. So I reframed the brief entirely.</p>
+      </div>
+
+      <div class="reframe-box">
+        <div class="reframe-label">The New HMW</div>
+        <p class="reframe-strike">How might we improve financial literacy among young earners?</p>
+        <p class="reframe-new">How might we build financial decision stability in high-access financial environments?</p>
+      </div>
+
+      <div class="hypothesis">
+        <p>If financial exposure is staged based on demonstrated behavioral stability, reactive financial decisions — and long-term financial damage — can be structurally reduced.</p>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ STABILITY SCORE ════════════════════════ -->
+    <section>
+      <div class="prose">
+        <h2>The Stability Score</h2>
+        <p>RupeeRise measures integrated behavioral stability — not knowledge, not returns. The score is a composite of four behavioral inputs, each tracking a different failure mode.</p>
+        <p>Profit is <strong>intentionally excluded.</strong> Rewarding profit directly contradicts the behavioral thesis — a lucky user could score well and earn exposure they haven't behaviorally demonstrated.</p>
+      </div>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <h4>Volatility Reaction Index</h4>
+          <p>How do you behave when markets move sharply? Panic selling and hype-buying both score low.</p>
+        </div>
+        <div class="score-card">
+          <h4>Trade Consistency</h4>
+          <p>Are your decisions predictable over time, or erratic and trend-driven?</p>
+        </div>
+        <div class="score-card">
+          <h4>Capital Discipline Score</h4>
+          <p>Do you meet EMIs, avoid credit overuse, and stay within your cashflow structure?</p>
+        </div>
+        <div class="score-card">
+          <h4>Diversification Health</h4>
+          <p>Are you concentrated in one bet, or distributing risk meaningfully across asset classes?</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:48px;">Risk Tiers & Exposure Control</h3>
+      <p style="max-width:600px;margin-bottom:24px;">Score thresholds map to four tiers. Exposure caps scale dynamically. Real capital is never force-liquidated — new exposure is throttled instead.</p>
+
+      <div class="tier-grid">
+        <div class="tier-card">
+          <div class="tier-badge">Tier 1</div>
+          <div class="tier-name">Restricted</div>
+          <div class="tier-desc">Simulation only. Foundation building required.</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge">Tier 2</div>
+          <div class="tier-name">Controlled</div>
+          <div class="tier-desc">Micro-exposure with mandatory thesis logging.</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge">Tier 3</div>
+          <div class="tier-name">Moderate</div>
+          <div class="tier-desc">Broader access with behavioral guardrails active.</div>
+        </div>
+        <div class="tier-card">
+          <div class="tier-badge">Tier 4</div>
+          <div class="tier-name">Advanced</div>
+          <div class="tier-desc">Full real exposure mode unlocked at 90%+ stability.</div>
+        </div>
+      </div>
+
+      <div class="decisions" style="margin-top:48px;">
+        <div class="decision-item">
+          <p><strong>No auto-liquidation.</strong> Forced selling punishes users during volatility — exactly when behavioral support is needed most. New exposure is throttled instead; real capital is never force-sold.</p>
+        </div>
+        <div class="decision-item">
+          <p><strong>Severity-based thresholds, not arbitrary counts.</strong> The score doesn't punish a user for three mistakes — it responds to the behavioral severity of each decision relative to their current tier.</p>
+        </div>
+        <div class="decision-item">
+          <p><strong>Informative friction, not punitive dead-ends.</strong> When a Tier 1 user hits their cap, the UI shows exactly how far they are from unlocking, what specific behaviors are holding the score back, and a direct path forward.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ IA DIAGRAM ════════════════════════ -->
+    <section style="padding-top:80px;">
+      <div class="prose" style="margin-bottom:0;">
+        <h2>Information Architecture</h2>
+        <p>Every module feeds into the Stability Engine — nothing is isolated. The IA is designed so that behavioral data from Foundation, Simulation, and Mentorship all converge into a single score that controls exposure.</p>
+      </div>
+
+      <div class="ia-wrap">
+        <div class="ia-inner">
+
+          <!-- legend -->
+          <div class="ia-legend-row">
+            <div class="ia-legend-item"><div class="ia-legend-dot" style="background:#F5EDE4;border:1.5px solid #8B5E3C;"></div>Free</div>
+            <div class="ia-legend-item"><div class="ia-legend-dot" style="background:#fef3c7;border:1.5px solid #d97706;"></div>Premium</div>
+            <div class="ia-legend-item"><div class="ia-legend-dot" style="background:#f5f3ef;border:1.5px solid rgba(45,27,13,0.2);"></div>Locked / Conditional</div>
+            <div class="ia-legend-item"><div class="ia-legend-dot" style="background:#2D1B0D;border:1.5px solid #2D1B0D;"></div>System Interrupt</div>
+          </div>
+
+          <!-- ROOT NODE -->
+          <div class="ia-root">
+            <div>
+              <div class="ia-root-label">0 · Global System Layer</div>
+              <div class="ia-root-title">Stability Engine</div>
+            </div>
+            <div class="ia-root-chips">
+              <div class="ia-root-chip ia-accent">Stability Score 0–100</div>
+              <div class="ia-root-chip">Risk Tier 1–4</div>
+              <div class="ia-root-chip">Exposure Cap</div>
+              <div class="ia-root-chip">Volatility Reaction Index</div>
+              <div class="ia-root-chip">Capital Discipline Score</div>
+              <div class="ia-root-chip">Trade Consistency</div>
+              <div class="ia-root-chip">Diversification Health</div>
+            </div>
+          </div>
+
+          <!-- STEM -->
+          <div class="ia-stem" style="height:28px;"></div>
+
+          <!-- MODULES -->
+          <div class="ia-modules">
+
+            <!-- 01 DASHBOARD -->
+            <div class="ia-module-col">
+              <div class="ia-drop"></div>
+              <div class="ia-card">
+                <div class="ia-card-head">
+                  <div>
+                    <div class="ia-card-num">01</div>
+                    <div class="ia-card-name">Dashboard</div>
+                    <div class="ia-card-desc">Control Centre</div>
+                  </div>
+                  <div class="ia-badge ia-badge-free">Free</div>
+                </div>
+                <div class="ia-card-body">
+                  <div class="ia-group">
+                    <div class="ia-group-label">Stability Overview</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Score ring <strong>0–100</strong></div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Current tier + badge</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">30-day trend graph</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Points to next tier</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Behavioral Alerts</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Overtrading flag</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Concentration warning</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Positive reinforcement</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Exposure Snapshot</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Active exposure %</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Emergency fund status</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 02 FOUNDATION -->
+            <div class="ia-module-col">
+              <div class="ia-drop"></div>
+              <div class="ia-card">
+                <div class="ia-card-head">
+                  <div>
+                    <div class="ia-card-num">02</div>
+                    <div class="ia-card-name">Foundation</div>
+                    <div class="ia-card-desc">Capital Discipline Layer</div>
+                  </div>
+                  <div class="ia-badge ia-badge-free">Free</div>
+                </div>
+                <div class="ia-card-body">
+                  <div class="ia-group">
+                    <div class="ia-group-label">Liquidity</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Emergency fund tracker</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Goal progress</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Liabilities</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Credit utilization %</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">EMI / debt monitor</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Debt-to-income ratio</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Score Output</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text"><strong>Capital Discipline Score</strong></div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Feeds Stability Score directly</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 03 SIMULATION -->
+            <div class="ia-module-col">
+              <div class="ia-drop"></div>
+              <div class="ia-card ia-card-featured">
+                <div class="ia-card-head ia-featured-head">
+                  <div>
+                    <div class="ia-card-num">03</div>
+                    <div class="ia-card-name">Simulation Lab</div>
+                    <div class="ia-card-desc">Learning Mode · 0–90%</div>
+                  </div>
+                  <div class="ia-badge ia-badge-free">Free</div>
+                </div>
+                <div class="ia-card-body">
+                  <div class="ia-group">
+                    <div class="ia-group-label">Scenario Context</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">2008 crash, 2017 crypto, pandemic</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Market phase + sentiment tags</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Tier cap shown upfront</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Decision Flow</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Risk-labelled asset grid</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Stability Guard panel</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text"><strong>Thesis Log</strong> (mandatory)</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Projected score impact</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Post-action feedback</div></div>
+                  </div>
+                  <span class="ia-unlock-tag">🔓 Unlocks Real Exposure at 90%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 04 INSIGHTS -->
+            <div class="ia-module-col">
+              <div class="ia-drop"></div>
+              <div class="ia-card">
+                <div class="ia-card-head">
+                  <div>
+                    <div class="ia-card-num">04</div>
+                    <div class="ia-card-name">Insights</div>
+                    <div class="ia-card-desc">Market & Behavioral Intel</div>
+                  </div>
+                </div>
+                <div class="ia-card-body">
+                  <div class="ia-group">
+                    <div class="ia-group-label ia-green">Free · Market Journal</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Macro signal of the week</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Sector spotlight</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Historical parallels</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Risk education snippets</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label ia-amber">Premium · Risk Intelligence</div>
+                    <div class="ia-item"><div class="ia-dot ia-dot-amber"></div><div class="ia-item-text">Macro + <strong>your exposure</strong></div></div>
+                    <div class="ia-item"><div class="ia-dot ia-dot-amber"></div><div class="ia-item-text">Hype cycle pattern</div></div>
+                    <div class="ia-item"><div class="ia-dot ia-dot-amber"></div><div class="ia-item-text">Stress test model</div></div>
+                    <div class="ia-item"><div class="ia-dot ia-dot-amber"></div><div class="ia-item-text">Recommended actions</div></div>
+                  </div>
+                  <div style="display:flex;gap:5px;margin-top:8px;">
+                    <div class="ia-badge ia-badge-free">Free</div>
+                    <div class="ia-badge ia-badge-premium">★ Premium</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 05 MENTORSHIP -->
+            <div class="ia-module-col">
+              <div class="ia-drop"></div>
+              <div class="ia-card">
+                <div class="ia-card-head">
+                  <div>
+                    <div class="ia-card-num">05</div>
+                    <div class="ia-card-name">Mentorship</div>
+                    <div class="ia-card-desc">Structured Reinforcement</div>
+                  </div>
+                  <div class="ia-badge ia-badge-free">Free</div>
+                </div>
+                <div class="ia-card-body">
+                  <div class="ia-group">
+                    <div class="ia-group-label">Always Visible</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Stability + tier snapshot</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text"><strong>Daily reflection</strong> (required to book)</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Triggered Mode</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Auto-triggers on score drop</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Debt optimization session</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Cashflow planning session</div></div>
+                  </div>
+                  <div class="ia-group">
+                    <div class="ia-group-label">Voluntary Mode</div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Risk calibration</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Long-term strategy</div></div>
+                    <div class="ia-item"><div class="ia-dot"></div><div class="ia-item-text">Reflection required to book</div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end ia-modules -->
+
+          <!-- STEM -->
+          <div class="ia-stem" style="height:28px;"></div>
+
+          <!-- SYSTEM INTERRUPT -->
+          <div class="ia-divider">
+            <div class="ia-divider-line"></div>
+            <div class="ia-divider-text">System Interrupt · Triggers from any module</div>
+            <div class="ia-divider-line"></div>
+          </div>
+
+          <div class="ia-interrupt">
+            <div>
+              <div class="ia-interrupt-tag">Global Interrupt</div>
+              <div class="ia-interrupt-title">Tier Adjustment Alert</div>
+              <div class="ia-interrupt-sub">Triggered when behavioral instability detected</div>
+            </div>
+            <div class="ia-interrupt-cells">
+              <div class="ia-interrupt-cell">
+                <div class="ia-interrupt-cell-label">Trigger</div>
+                <div class="ia-interrupt-cell-text">Rapid trade frequency spike or concentration breach</div>
+              </div>
+              <div class="ia-interrupt-cell">
+                <div class="ia-interrupt-cell-label">System Response</div>
+                <div class="ia-interrupt-cell-text">Tier downgraded, exposure cap reduced</div>
+              </div>
+              <div class="ia-interrupt-cell">
+                <div class="ia-interrupt-cell-label">User CTA</div>
+                <div class="ia-interrupt-cell-text">Review Reinforcement Plan → Mentorship</div>
+              </div>
+              <div class="ia-interrupt-cell">
+                <div class="ia-interrupt-cell-label">Constraint</div>
+                <div class="ia-interrupt-cell-text">Never auto-sells. New exposure throttled only.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- REAL EXPOSURE -->
+          <div class="ia-re" style="margin-top:10px;">
+            <div>
+              <div class="ia-re-tag">Post 90% · Tier 4 · Premium Only</div>
+              <div class="ia-re-title">Real Exposure Mode</div>
+              <div class="ia-re-sub">Same behavioral principles — now with real capital</div>
+            </div>
+            <div class="ia-re-chips">
+              <div class="ia-re-chip">Live macro context</div>
+              <div class="ia-re-chip">Exposure cap active</div>
+              <div class="ia-re-chip">Thesis log mandatory</div>
+              <div class="ia-re-chip">Stability impact preview</div>
+              <div class="ia-re-chip">Controlled execution only</div>
+            </div>
+          </div>
+
+          <!-- SETTINGS -->
+          <div class="ia-settings" style="margin-top:10px;">
+            <div class="ia-settings-title">Settings & Account</div>
+            <div class="ia-settings-sep"></div>
+            <div class="ia-settings-chips">
+              <div class="ia-settings-chip">Profile</div>
+              <div class="ia-settings-chip">Income Update</div>
+              <div class="ia-settings-chip">Risk Preferences</div>
+              <div class="ia-settings-chip">Tier Explanation</div>
+              <div class="ia-settings-chip">Subscription Plan</div>
+              <div class="ia-settings-chip">Demat Connection</div>
+              <div class="ia-settings-chip">Notifications</div>
+              <div class="ia-settings-chip">Help & FAQ</div>
+            </div>
+          </div>
+
+          <!-- FLOW SUMMARY -->
+          <div class="ia-flow" style="margin-top:24px;">
+            <div class="ia-flow-label">System Flow Summary — No isolated modules</div>
+            <div class="ia-flow-nodes">
+              <div class="ia-flow-node"><div class="ia-flow-box">Foundation</div><div class="ia-flow-sub">Builds capital discipline</div></div>
+              <div class="ia-flow-arrow"></div>
+              <div class="ia-flow-node"><div class="ia-flow-box">Simulation</div><div class="ia-flow-sub">Tests stability under pressure</div></div>
+              <div class="ia-flow-arrow"></div>
+              <div class="ia-flow-node"><div class="ia-flow-box">Insights</div><div class="ia-flow-sub">Contextualises risk before action</div></div>
+              <div class="ia-flow-arrow"></div>
+              <div class="ia-flow-node"><div class="ia-flow-box">Mentorship</div><div class="ia-flow-sub">Reinforces stable behaviour</div></div>
+              <div class="ia-flow-arrow"></div>
+              <div class="ia-flow-node"><div class="ia-flow-box">Real Exposure</div><div class="ia-flow-sub">Earned access at 90%+</div></div>
+            </div>
+            <div class="ia-flow-footer">
+              <div class="ia-flow-footnote">← Everything flows into Stability Score</div>
+              <div class="ia-flow-footnote">No shortcuts. No isolated modules. →</div>
+            </div>
+          </div>
+
+        </div><!-- end ia-inner -->
+      </div><!-- end ia-wrap -->
+    </section>
+
+    <!-- ════════════════════════ CORE MODULES ════════════════════════ -->
+    <section>
+      <div style="text-align:center;max-width:480px;margin:0 auto 60px;">
+        <h2 style="border-bottom:none;padding-bottom:0;margin-bottom:12px;">Core Modules</h2>
+        <p style="color:var(--text-tertiary);margin:0;">The architecture guiding stability, in sequence.</p>
+      </div>
+
+      <!-- Module 1: Foundation -->
+      <div class="module-row">
+        <div class="module-text">
+          <div class="module-tag">Module 1</div>
+          <h3>Foundation</h3>
+          <p>Before any investing — emergency fund, credit utilization awareness, debt-to-income visibility, cashflow structure. Credit misuse directly dents the Stability Score. Daily financial behavior <em>is</em> investment readiness.</p>
+        </div>
+        <div class="module-img">
+          <div class="img-frame">
+            <div class="img-mock">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+              Foundation Layer
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 2: Simulation Lab -->
+      <div class="module-row">
+        <div class="module-img">
+          <div class="img-frame">
+            <div class="img-mock">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Simulation Lab
+            </div>
+          </div>
+        </div>
+        <div class="module-text">
+          <div class="module-tag">Module 2</div>
+          <h3>Simulation Lab <span style="font-family:'DM Sans',sans-serif;font-weight:400;font-size:1.1rem;color:var(--text-tertiary);">(0–90%)</span></h3>
+          <p>Historical volatility scenarios — 2008 crash, 2017 crypto hype, pandemic dips. Every decision flows: Context → Asset Grid → Thesis Log → Stability Impact Feedback. No live trading, no real money.</p>
+        </div>
+      </div>
+
+      <!-- Module 3: Informative Friction -->
+      <div class="module-row">
+        <div class="module-text">
+          <div class="module-tag">Module 3</div>
+          <h3>Informative Friction</h3>
+          <p>When a Tier 1 user attempts an action beyond their cap, the UI doesn't show a dead-end. It shows how far away they are from unlocking, what behaviors are holding their score back, and a direct path to improve. <em>The friction is informative, not punitive.</em></p>
+        </div>
+        <div class="module-img">
+          <div class="img-frame">
+            <div class="img-mock">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Tier Downgrade Modal
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Module 4: Insights & Mentorship -->
+      <div class="module-row">
+        <div class="module-img">
+          <div class="img-frame">
+            <div class="img-stack">
+              <div class="card-a">Insights Journal</div>
+              <div class="card-b">Mentorship Hub</div>
+            </div>
+          </div>
+        </div>
+        <div class="module-text">
+          <div class="module-tag">Module 4</div>
+          <h3>Insights & Mentorship</h3>
+          <p>Free Journal Mode builds macro awareness. Premium Applied Risk Intelligence connects live signals to a user's own exposure history — contextualizing risk before they act on it. Mentorship is not a marketplace. Users must complete a reflection before booking. <em>Intentional friction.</em></p>
+        </div>
+      </div>
+
+      <!-- Module 5: Real Exposure -->
+      <div class="module-row">
+        <div class="module-text">
+          <div class="module-tag">Module 5</div>
+          <h3>Real Exposure Mode</h3>
+          <p>Unlocks post 90% Stability Score + Tier 4 eligibility. Premium only. Same behavioral principles from simulation — now with real capital. Exposure caps, thesis logging, and intervention logic remain active throughout.</p>
+        </div>
+        <div class="module-img">
+          <div class="img-frame">
+            <div class="img-mock">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Real Exposure Mode
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ ETHICAL GUARDRAILS ════════════════════════ -->
+    <section>
+      <div class="prose">
+        <h2>Ethical Guardrails</h2>
+        <p>A behavioral finance product can easily become its own harm. We designed around the most common failure modes in fintech UX.</p>
+      </div>
+
+      <div class="guardrails-grid">
+        <div class="guardrail-card">
+          <div class="guardrail-icon">🚫</div>
+          <h4>No Dopamine Loops</h4>
+          <p>No streaks, confetti, or reward mechanics tied to trading frequency.</p>
+        </div>
+        <div class="guardrail-card">
+          <div class="guardrail-icon">📵</div>
+          <h4>No Trending Feeds</h4>
+          <p>No "hot stocks" section. No real-time social sentiment. Context, not noise.</p>
+        </div>
+        <div class="guardrail-card">
+          <div class="guardrail-icon">🚫</div>
+          <h4>No Influencer Layer</h4>
+          <p>Mentorship is structured discipline reinforcement — not a marketplace of opinion.</p>
+        </div>
+        <div class="guardrail-card">
+          <div class="guardrail-icon">⚖️</div>
+          <h4>No Force Liquidation</h4>
+          <p>Real capital is never auto-sold. New exposure is throttled; existing positions are protected.</p>
+        </div>
+        <div class="guardrail-card">
+          <div class="guardrail-icon">📊</div>
+          <h4>Severity-Based Intervention</h4>
+          <p>Interventions are proportional to behavioral severity — not a punishment counter.</p>
+        </div>
+        <div class="guardrail-card">
+          <div class="guardrail-icon">💡</div>
+          <h4>Stability &gt; Profit</h4>
+          <p>Profit is intentionally excluded from scoring. This is the core ethical stance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════ OUTCOME ════════════════════════ -->
+    <section>
+      <h2>Outcome & What I'd Do Differently</h2>
+
+      <div class="jury-quote">
+        <blockquote>Market-ready concept — requires security hardening before production.</blockquote>
+        <div class="jury-attr">— Jury Feedback</div>
+      </div>
+
+      <div class="prose" style="margin-top:48px;">
+        <h3>What I Learned</h3>
+        <p>The shift from "how do we teach people about money" to "how do we structurally reduce behavioral damage" is not a small pivot. It changed the entire design model — from content delivery to behavioral gating. <strong>That reframe was the most important decision we made</strong>, and it only happened because we spent time in research before opening Figma.</p>
+        <p>The 14-day constraint also forced prioritization in a healthy way. Every feature had to earn its place inside the stability hypothesis. Anything that didn't connect to the behavioral architecture got cut.</p>
+      </div>
+
+      <div class="future-box" style="margin-top:40px;">
+        <h3>
+          <span class="future-badge">!</span>
+          Future Scope
+        </h3>
+        <ul class="future-list">
+          <li>Calibrate score weightings with real behavioral data from beta users.</li>
+          <li>Validate severity thresholds via controlled user testing.</li>
+          <li>Design for the edge case: the stable user with an urgent capital need.</li>
+          <li>Build the compliance and security layer required for real exposure mode.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Supragnya Purohith — RupeeRise</span>
+    <span class="footer-meta">Lead Product Designer · 14-Day Hackathon · Fintech, Behavioral Design</span>
+  </footer>
+
+  <script>
+    // ─── SCROLL PROGRESS BAR ───
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scroll = window.scrollY;
+      const height = document.body.scrollHeight - window.innerHeight;
+      bar.style.width = (scroll / height * 100) + '%';
+    });
+
+    // ─── SCROLL REVEAL ───
+    const sections = document.querySelectorAll('section:not(.hero)');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '-60px 0px' });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+</body>
+</html>
