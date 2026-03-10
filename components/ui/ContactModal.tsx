@@ -80,7 +80,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                                         </div>
                                         <div>
                                             <p className="text-xs uppercase tracking-widest font-bold text-[var(--text-tertiary)] mb-0.5">Location</p>
-                                            <p className="font-medium text-[var(--text-primary)] text-sm">Bangalore, India</p>
+                                            <p className="font-medium text-[var(--text-primary)] text-sm">Hyderabad, India</p>
                                         </div>
                                     </div>
                                 </div>

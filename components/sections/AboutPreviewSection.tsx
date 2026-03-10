@@ -34,7 +34,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
 
           <div className="text-base md:text-lg leading-relaxed text-[var(--text-secondary)] font-normal space-y-6">
             <p>
-              I&rsquo;m a Product & UX/UI Designer based in Bangalore. I bridge the gap between business goals and user needs — creating interfaces that are both beautiful and functionally robust.
+              I&rsquo;m a Product & UX/UI Designer based in Hyderabad. I bridge the gap between business goals and user needs — creating interfaces that are both beautiful and functionally robust.
             </p>
             <p>
               My process is rooted in research, rapid prototyping, and obsessive attention to micro-interactions — the invisible details that make a product feel alive.
@@ -58,7 +58,7 @@ const AboutPreviewSection = memo(function AboutPreviewSection({ delayMs = 0 }: A
                 <span className="text-xs font-semibold text-[var(--accent-gold)] uppercase tracking-wide">Open to work</span>
               </div>
               <div>
-                <h4 className="font-bold text-[var(--text-primary)] text-sm">Based in Bangalore, India</h4>
+                <h4 className="font-bold text-[var(--text-primary)] text-sm">Based in Hyderabad, India</h4>
                 <p className="text-xs text-[var(--text-tertiary)]">Available for new projects</p>
               </div>
             </div>
