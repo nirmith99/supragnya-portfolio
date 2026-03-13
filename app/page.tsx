@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useRef } from "react";
@@ -10,6 +11,7 @@ import dynamic from "next/dynamic";
 const AboutPreviewSection = dynamic(() => import("@/components/sections/AboutPreviewSection"), { ssr: true });
 const Testimonials = dynamic(() => import("@/components/ui/Testimonials"), { ssr: true });
 const HeroPencil = dynamic(() => import("@/components/HeroPencil"), { ssr: false });
+import { PhoneMockup, DesktopMockup } from "@/components/ui/mockups";
 
 // Animation config for the premium feel
 const smoothSpring = {
@@ -95,7 +97,7 @@ export default function Home() {
 
       {/* 2. PROJECT: EMERGENCY RESPONSE APP */}
       {/* We use a slightly lighter background block to separate sections softly within the dark mode */}
-      <section ref={containerRef} id="projects" className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)]">
+      <section ref={containerRef} id="projects" className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -121,18 +123,24 @@ export default function Home() {
             <motion.div
               variants={fadeUp}
               style={{ y: slowScroll }}
-              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-sage)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl order-1 lg:order-2"
+              className="lg:col-span-7 w-full flex items-center justify-center relative group cursor-pointer order-1 lg:order-2"
             >
-              {/* Image Placeholder or Actual Image */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
-              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+              <div className="relative z-10 transition-transform duration-700 ease-out group-hover:scale-105 w-full flex justify-center py-8">
+                  <PhoneMockup className="max-w-[260px] md:max-w-[300px]">
+                      <img
+                          src="/images/thumbnails/Emergency app - Alarm List (1).png"
+                          alt="Emergency Response App"
+                          className="w-full h-auto block"
+                      />
+                  </PhoneMockup>
+              </div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
       {/* 3. PROJECT: UDYOGA PRAMODA */}
-      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-sage)]">
+      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-sage)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -144,10 +152,17 @@ export default function Home() {
             <motion.div
               variants={fadeUp}
               style={{ y: slowScroll }}
-              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-surface)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl"
+              className="lg:col-span-7 w-full flex items-center justify-center relative group cursor-pointer"
             >
-              <div className="absolute inset-0 bg-gradient-to-bl from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
-              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+              <div className="relative z-10 w-full transition-transform duration-700 ease-out group-hover:scale-[1.02] flex justify-center">
+                  <DesktopMockup className="max-w-[800px] shadow-2xl">
+                      <img
+                          src="/images/thumbnails/Udyoga Pramoda Landing.png"
+                          alt="Udyoga Pramoda"
+                          className="w-full h-auto block"
+                      />
+                  </DesktopMockup>
+              </div>
             </motion.div>
 
             <motion.div variants={fadeUp} className="lg:col-span-5 flex flex-col gap-8 lg:pl-10">
@@ -168,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* 4. PROJECT: RUPEERISE */}
-      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)]">
+      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -194,10 +209,17 @@ export default function Home() {
             <motion.div
               variants={fadeUp}
               style={{ y: slowScroll }}
-              className="lg:col-span-7 w-full h-[50vh] lg:h-[65vh] bg-[var(--bg-sage)] rounded-2xl flex items-center justify-center border border-[var(--surface-border)] overflow-hidden relative group cursor-pointer shadow-2xl order-1 lg:order-2"
+              className="lg:col-span-7 w-full flex items-center justify-center relative group cursor-pointer order-1 lg:order-2"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-[var(--bg-sage)] to-[var(--bg-surface)] opacity-50 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
-              <span className="font-sans font-bold tracking-widest uppercase text-sm text-[var(--text-tertiary)] relative z-10 transition-transform duration-500 group-hover:scale-110">Cinematic Mockup Area</span>
+              <div className="relative z-10 transition-transform duration-700 ease-out group-hover:scale-105 w-full flex justify-center py-8">
+                  <PhoneMockup className="max-w-[260px] md:max-w-[300px]">
+                      <img
+                          src="/images/thumbnails/Rupeerise- dashboard.png"
+                          alt="RupeeRise"
+                          className="w-full h-auto block"
+                      />
+                  </PhoneMockup>
+              </div>
             </motion.div>
           </div>
         </motion.div>

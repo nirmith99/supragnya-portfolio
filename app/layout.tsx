@@ -17,7 +17,12 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Supragnya Purohith | UI/UX Designer",
   description: "Portfolio of Supragnya Purohith, UI/UX Designer",
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -26,14 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${ysabeau.variable} ${playfair.variable} scroll-smooth`}>
-      <body className="font-sans antialiased bg-[var(--bg-sage)] text-[var(--text-primary)]">
-        {/* Global Grid Overlay / Cheques */}
-        <div className="pointer-events-none fixed inset-0 z-[0] h-full w-full"
-          style={{
-            backgroundImage: "linear-gradient(to right, rgba(244,241,234,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(244,241,234,0.08) 1px, transparent 1px)",
-            backgroundSize: "48px 48px"
-          }}
-        />
+      <body className="font-sans antialiased bg-[var(--bg-sage)] bg-grid-pattern text-[var(--text-primary)]">
         {/* Global Noise Overlay */}
         <div className="pointer-events-none fixed inset-0 z-[9999] h-full w-full opacity-[0.12] mix-blend-multiply">
           <svg className="absolute inset-0 h-full w-full">
