@@ -27,7 +27,7 @@ export default function CaseStudyTemplate({
             {/* Navigation - Minimalist/Technical */}
             <div className="px-5 md:px-[60px] pt-8 pb-4">
                 <Link
-                    href="/#projects"
+                    href="/#work"
                     className="inline-flex items-center gap-2 text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors text-sm font-medium tracking-wide group"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />

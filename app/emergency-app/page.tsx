@@ -362,6 +362,26 @@ export default function EmergencyAppPage() {
                     </div>
                 </motion.section>
 
+                {/* CASE STUDY FOOTER */}
+                <section className="w-full border-t border-[var(--surface-border)] pt-16 pb-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+                        <div>
+                            <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-3">Next Case Study</p>
+                            <h3 className="font-serif text-[1.75rem] text-[var(--text-primary)] leading-[1.2]">RupeeRise</h3>
+                        </div>
+                        <a
+                            href="/rupeerise"
+                            className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
+                        >
+                            <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">View Case Study →</span>
+                        </a>
+                    </div>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-12">
+                        <a href="/#work" className="font-mono text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">← Back to Selected Work</a>
+                        <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                    </div>
+                </section>
+
             </div>
         </CaseStudyTemplate>
     );

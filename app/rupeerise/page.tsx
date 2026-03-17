@@ -65,36 +65,36 @@ export default function RupeeRise() {
 
                     {/* Left 2 */}
                     <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-3 w-[120px] h-[254px] md:w-[175px] md:h-[370px]" style={{ transform: 'translateY(80px) rotate(-8deg) translateX(30px)' }}>
-                        <div className="w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/rupeerise/InsightsJournal.png" alt="Insights Journal" fill className="object-cover object-top" />
+                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
+                            <Image src="/images/Rupeerise/insights.png" alt="Insights Journal" fill className="object-cover object-top" />
                         </div>
                     </div>
 
                     {/* Left 1 */}
                     <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-4 w-[138px] h-[290px] md:w-[200px] md:h-[420px]" style={{ transform: 'translateY(40px) rotate(-4deg) translateX(20px)' }}>
-                        <div className="w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/rupeerise/SimulationLab.png" alt="Simulation Lab" fill className="object-cover object-top" />
+                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
+                            <Image src="/images/Rupeerise/simulation.png" alt="Simulation Lab" fill className="object-cover object-top" />
                         </div>
                     </div>
 
                     {/* Center */}
                     <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-5 w-[160px] h-[340px] md:w-[230px] md:h-[490px]" style={{ transform: 'translateY(0px)' }}>
-                        <div className="w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/rupeerise/FoundationLayer.png" alt="Foundation Layer" fill className="object-cover object-top" />
+                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
+                            <Image src="/images/Rupeerise/fiundation.png" alt="Foundation Layer" fill className="object-cover object-top" />
                         </div>
                     </div>
 
                     {/* Right 1 */}
                     <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-4 w-[138px] h-[290px] md:w-[200px] md:h-[420px]" style={{ transform: 'translateY(40px) rotate(4deg) translateX(-20px)' }}>
-                        <div className="w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/rupeerise/TierDowngradeModal.png" alt="Tier Downgrade" fill className="object-cover object-top" />
+                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
+                            <Image src="/images/Rupeerise/tier adjustment modal.png" alt="Tier Downgrade" fill className="object-cover object-top" />
                         </div>
                     </div>
 
                     {/* Right 2 */}
                     <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-3 w-[120px] h-[254px] md:w-[175px] md:h-[370px]" style={{ transform: 'translateY(80px) rotate(8deg) translateX(-30px)' }}>
-                        <div className="w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/rupeerise/MentorshipHub.png" alt="Mentorship Hub" fill className="object-cover object-top" />
+                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
+                            <Image src="/images/Rupeerise/mentorship.png" alt="Mentorship Hub" fill className="object-cover object-top" />
                         </div>
                     </div>
                 </div>
@@ -242,9 +242,9 @@ export default function RupeeRise() {
 
             {/* Stability Score */}
             <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40">
-                <div className="max-w-[800px] mx-auto mb-20 text-center">
+                <div className="max-w-[800px] mb-20">
                     <h2 className="font-serif text-5xl mb-8 text-[var(--text-primary)] tracking-tight">The Stability Score</h2>
-                    <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-8">
+                    <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-[680px]">
                         RupeeRise measures integrated behavioral stability — not knowledge, not returns. The score is a composite of four behavioral inputs, each tracking a different failure mode.
                     </p>
                     <p className="text-sm uppercase tracking-widest text-[var(--accent-gold)] font-bold">
@@ -599,9 +599,9 @@ export default function RupeeRise() {
 
             {/* Core Modules in Detail */}
             <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40 px-5 md:px-[60px]">
-                <div className="max-w-[800px] mx-auto mb-32 text-center">
+                <div className="max-w-[800px] mb-32">
                     <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Core Modules</h2>
-                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed">
+                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed max-w-[680px]">
                         The architecture guiding stability, in sequence.
                     </p>
                 </div>
@@ -617,14 +617,14 @@ export default function RupeeRise() {
                             </p>
                         </div>
                         <div className="order-1 lg:order-2 w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/rupeerise/FoundationLayer.png" alt="Foundation Layer" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
+                            <Image src="/images/Rupeerise/fiundation.png" alt="Foundation Layer" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
                         </div>
                     </div>
 
                     {/* Module 2: Simulation Lab */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/rupeerise/SimulationLab.png" alt="Simulation Lab" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
+                            <Image src="/images/Rupeerise/simulation.png" alt="Simulation Lab" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
                         </div>
                         <div className="flex flex-col justify-center max-w-lg lg:pl-12">
                             <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 2</span>
@@ -648,18 +648,18 @@ export default function RupeeRise() {
                             </p>
                         </div>
                         <div className="order-1 lg:order-2 w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/rupeerise/TierDowngradeModal.png" alt="Informative Friction" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
+                            <Image src="/images/Rupeerise/tier adjustment modal.png" alt="Informative Friction" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
                         </div>
                     </div>
 
                     {/* Module 4: Insights & Mentorship (Stack) */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="w-full h-[600px] relative flex items-center justify-center">
-                            <div className="absolute top-0 left-0 w-3/4 h-[400px] z-10 bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:-translate-x-2">
-                                <Image src="/images/rupeerise/InsightsJournal.png" alt="Insights Journal" fill className="object-cover object-top" />
+                            <div className="absolute top-0 left-0 w-3/4 h-[400px] z-10 relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:-translate-x-2">
+                                <Image src="/images/Rupeerise/insights.png" alt="Insights Journal" fill className="object-cover object-top" />
                             </div>
-                            <div className="absolute bottom-0 right-0 w-3/4 h-[400px] z-20 bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:translate-x-2">
-                                <Image src="/images/rupeerise/MentorshipHub.png" alt="Mentorship Hub" fill className="object-cover object-top" />
+                            <div className="absolute bottom-0 right-0 w-3/4 h-[400px] z-20 relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:translate-x-2">
+                                <Image src="/images/Rupeerise/mentorship.png" alt="Mentorship Hub" fill className="object-cover object-top" />
                             </div>
                         </div>
                         <div className="flex flex-col justify-center max-w-lg lg:pl-12">
@@ -693,9 +693,9 @@ export default function RupeeRise() {
 
             {/* Ethical Guardrails */}
             <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40">
-                <div className="max-w-[800px] mx-auto mb-20 text-center">
+                <div className="max-w-[800px] mb-20">
                     <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Ethical Guardrails</h2>
-                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed">
+                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed max-w-[680px]">
                         A behavioral finance product can easily become its own harm. We designed around the most common failure modes in fintech UX.
                     </p>
                 </div>
@@ -764,6 +764,26 @@ export default function RupeeRise() {
                     </div>
                 </div>
             </motion.section>
+
+            {/* CASE STUDY FOOTER */}
+            <section className="w-full max-w-[1000px] mx-auto border-t border-[var(--surface-border)] pt-16 pb-8 px-5 md:px-[60px]">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+                    <div>
+                        <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-3">Next Case Study</p>
+                        <h3 className="font-serif text-[1.75rem] text-[var(--text-primary)] leading-[1.2]">Udyoga Pramoda</h3>
+                    </div>
+                    <a
+                        href="/udyoga-pramoda"
+                        className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
+                    >
+                        <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">View Case Study →</span>
+                    </a>
+                </div>
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-12">
+                    <a href="/#work" className="font-mono text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">← Back to Selected Work</a>
+                    <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                </div>
+            </section>
         </CaseStudyTemplate>
     );
 }

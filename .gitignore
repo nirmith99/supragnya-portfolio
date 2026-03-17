@@ -1,3 +1,14 @@
 node_modules
 
 .next/
+
+# Local reference materials (not part of the app)
+_reference/
+
+# Build artifacts
+build_error.log
+build_log.txt
+build_log_utf8.txt
+lint.json
+lint_log.txt
+tsconfig.tsbuildinfo

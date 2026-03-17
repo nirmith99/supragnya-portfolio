@@ -71,7 +71,7 @@ export default function Home() {
               </motion.p>
 
               <motion.div variants={fadeUp} className="mt-4">
-                <Link href="#projects" className="group flex items-center gap-3 w-fit text-[var(--accent-gold)] pb-1 border-b border-[var(--surface-border)] hover:border-[var(--accent-gold)] transition-all duration-300">
+                <Link href="#work" className="group flex items-center gap-3 w-fit text-[var(--accent-gold)] pb-1 border-b border-[var(--surface-border)] hover:border-[var(--accent-gold)] transition-all duration-300">
                   <span className="font-sans text-sm tracking-widest uppercase font-bold">View Selected Work</span>
                   <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -97,7 +97,7 @@ export default function Home() {
 
       {/* 2. PROJECT: EMERGENCY RESPONSE APP */}
       {/* We use a slightly lighter background block to separate sections softly within the dark mode */}
-      <section ref={containerRef} id="projects" className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)] bg-grid-pattern">
+      <section ref={containerRef} id="work" className="relative w-full flex items-center overflow-hidden py-20 bg-[var(--bg-surface)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -140,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* 3. PROJECT: UDYOGA PRAMODA */}
-      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-sage)] bg-grid-pattern">
+      <section className="relative w-full flex items-center overflow-hidden py-20 bg-[var(--bg-sage)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* 4. PROJECT: RUPEERISE */}
-      <section className="relative w-full flex items-center overflow-hidden py-32 bg-[var(--bg-surface)] bg-grid-pattern">
+      <section className="relative w-full flex items-center overflow-hidden py-20 bg-[var(--bg-surface)] bg-grid-pattern">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -230,6 +230,58 @@ export default function Home() {
 
       {/* 6. TESTIMONIALS */}
       <Testimonials />
+
+      {/* 7. FOOTER */}
+      <footer id="contact" className="relative w-full border-t border-[var(--surface-border)] bg-[var(--bg-sage)]">
+        <div className="w-full max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Left */}
+            <div className="flex flex-col gap-6">
+              <h2 className="font-serif text-5xl md:text-[3.25rem] leading-[1.1] tracking-tight text-[var(--text-primary)]">
+                Let&apos;s build something<br />
+                <em className="italic text-[var(--accent-gold)]">worth remembering.</em>
+              </h2>
+              <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed max-w-xs mt-4">
+                Available for full-time roles and select freelance projects. Based in Hyderabad, India.
+              </p>
+            </div>
+
+            {/* Right */}
+            <div className="flex flex-col gap-8 lg:pt-2">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-2">Email</p>
+                <a
+                  href="mailto:supragnyapurohith@gmail.com"
+                  className="font-sans text-[15px] text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors"
+                >
+                  supragnyapurohith@gmail.com
+                </a>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-2">LinkedIn</p>
+                <a
+                  href="https://linkedin.com/in/supragnya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-sans text-[15px] text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors"
+                >
+                  linkedin.com/in/supragnya
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-16">
+            <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+            <div className="flex items-center gap-6 font-mono text-[11px] text-[var(--text-tertiary)]">
+              <Link href="/" className="hover:text-[var(--text-primary)] transition-colors">Home</Link>
+              <Link href="#work" className="hover:text-[var(--text-primary)] transition-colors">Work</Link>
+              <Link href="#about" className="hover:text-[var(--text-primary)] transition-colors">About</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
 
     </main>
   );

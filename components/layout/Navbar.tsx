@@ -9,8 +9,8 @@ import { Menu, X } from "lucide-react";
 
 const mobileNavLinks = [
     { label: "Home", href: "/" },
-    { label: "Selected Work", href: "/#projects" },
-    { label: "About & Process", href: "/#about" },
+    { label: "Work", href: "/#work" },
+    { label: "About", href: "/#about" },
 ];
 
 export function Navbar() {
@@ -102,11 +102,14 @@ export function Navbar() {
                     <div className="hidden lg:flex items-center gap-8 font-sans text-xs font-bold uppercase tracking-widest"
                         style={{ color: "var(--text-secondary)" }}
                     >
-                        <Link href="/#projects" style={{ color: "var(--text-secondary)" }}>
-                            Selected Work
+                        <Link href="/" style={{ color: "var(--text-secondary)" }}>
+                            Home
+                        </Link>
+                        <Link href="/#work" style={{ color: "var(--text-secondary)" }}>
+                            Work
                         </Link>
                         <Link href="/#about" style={{ color: "var(--text-secondary)" }}>
-                            About &amp; Process
+                            About
                         </Link>
                     </div>
 

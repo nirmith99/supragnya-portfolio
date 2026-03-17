@@ -138,9 +138,9 @@ export default function UdyogaPramodaPage() {
 
                 {/* 5. Execution (Images) */}
                 <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="space-y-32 pt-16 border-t border-[var(--surface-border)]/50">
-                    <div className="max-w-[720px] text-center mx-auto space-y-8">
+                    <div className="max-w-[720px] space-y-8">
                         <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] tracking-tight leading-[1.1]">Design Execution</h2>
-                        <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">Information Architecture & Dashboard Unification.</p>
+                        <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87] max-w-[680px]">Information Architecture & Dashboard Unification.</p>
                     </div>
 
                     {/* Stack 1 */}
@@ -177,8 +177,8 @@ export default function UdyogaPramodaPage() {
                 </motion.section>
 
                 {/* 6. Results */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[1100px] pt-32 border-t border-[var(--surface-border)] mt-32">
-                    <div className="text-center mb-16">
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[1100px] pt-16 border-t border-[var(--surface-border)] mt-16">
+                    <div className="mb-16">
                         <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] tracking-tight leading-[1.1]">Real World Impact</h2>
                     </div>
 
@@ -207,15 +207,33 @@ export default function UdyogaPramodaPage() {
                         </div>
                     </div>
 
-                    <div className="max-w-[720px] mx-auto mt-32">
+                    <div className="max-w-[720px] mx-auto mt-12">
                         <p className="text-[1.25rem] md:text-[1.563rem] font-serif text-[var(--text-primary)] leading-[1.5] italic text-center opacity-[0.87]">
                             &quot;This project reinforced that meaningful product design often isn&apos;t about inventing new features, but about designing the <strong className="text-[var(--accent-gold)] opacity-100">governance structure</strong> that makes a complex system work.&quot;
                         </p>
                     </div>
                 </motion.section>
 
-                {/* Footer Spacer */}
-                <div className="h-32"></div>
+                {/* CASE STUDY FOOTER */}
+                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="w-full border-t border-[var(--surface-border)] pt-16 pb-8">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+                        <div>
+                            <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-3">Next Case Study</p>
+                            <h3 className="font-serif text-[1.75rem] text-[var(--text-primary)] leading-[1.2]">Emergency Response</h3>
+                        </div>
+                        <a
+                            href="/emergency-app"
+                            className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
+                        >
+                            <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">View Case Study →</span>
+                        </a>
+                    </div>
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-12">
+                        <a href="/#work" className="font-mono text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">← Back to Selected Work</a>
+                        <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                    </div>
+                </motion.section>
+
             </div>
         </CaseStudyTemplate>
     );
