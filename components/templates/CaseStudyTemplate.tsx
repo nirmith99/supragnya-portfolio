@@ -4,6 +4,37 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+function CaseStudyFooter() {
+    return (
+        <footer className="mt-32 border-t border-[var(--surface-border)] bg-[var(--bg-sage)]">
+            <div className="max-w-[1400px] mx-auto px-8 md:px-16 lg:px-24 py-12">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                    <div className="flex items-center gap-6 font-mono text-[11px] text-[var(--text-tertiary)]">
+                        <a
+                            href="mailto:supragnyapurohith@gmail.com"
+                            className="hover:text-[var(--accent-gold)] transition-colors"
+                        >
+                            Email
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/supragnya"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[var(--accent-gold)] transition-colors"
+                        >
+                            LinkedIn
+                        </a>
+                        <Link href="/#work" className="hover:text-[var(--text-primary)] transition-colors">
+                            Back to Work
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    );
+}
+
 interface CaseStudyTemplateProps {
     title: string;
     role: string;
@@ -23,7 +54,12 @@ export default function CaseStudyTemplate({
     children,
 }: CaseStudyTemplateProps) {
     return (
-        <div className="min-h-screen pt-[var(--nav-height)] pb-32 bg-[var(--bg-sage)]">
+        <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="min-h-screen pt-[var(--nav-height)] bg-[var(--bg-sage)]"
+        >
             {/* Navigation - Minimalist/Technical */}
             <div className="px-5 md:px-[60px] pt-8 pb-4">
                 <Link
@@ -81,8 +117,7 @@ export default function CaseStudyTemplate({
                 </motion.div>
             )}
 
-            {/* Main Content Area - Editorial/Document Style */}
-            {/* Strict 60px margins, no container box, direct editorial flow */}
+            {/* Main Content Area */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -91,6 +126,8 @@ export default function CaseStudyTemplate({
             >
                 {children}
             </motion.div>
-        </div >
+
+            <CaseStudyFooter />
+        </motion.div>
     );
 }

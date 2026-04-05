@@ -13,19 +13,12 @@ const Testimonials = dynamic(() => import("@/components/ui/Testimonials"), { ssr
 const HeroPencil = dynamic(() => import("@/components/HeroPencil"), { ssr: false });
 import { PhoneMockup, DesktopMockup } from "@/components/ui/mockups";
 
-// Animation config for the premium feel
-const smoothSpring = {
-  type: "spring",
-  damping: 25,
-  stiffness: 100,
-};
-
 const fadeUp: any = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any // Custom easing for premium feel
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } as any
   }
 };
 
@@ -38,6 +31,17 @@ const staggerContainer: any = {
       delayChildren: 0.2,
     }
   }
+};
+
+// Word-by-word headline animation
+const wordVariant: any = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } as any },
+};
+
+const headlineContainer: any = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
 };
 
 export default function Home() {
@@ -62,8 +66,18 @@ export default function Home() {
               animate="visible"
               className="lg:col-span-8 flex flex-col gap-8 lg:gap-10"
             >
-              <motion.h1 variants={fadeUp} className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] tracking-tight font-medium max-w-[1000px] text-balance">
-                Designer driven by precision, where logical structure meets <span className="text-[var(--accent-gold)] italic font-serif pr-2">user instinct</span>, building systems that scale.
+              <motion.h1
+                variants={headlineContainer}
+                className="font-serif text-5xl md:text-6xl lg:text-[4rem] leading-[1.1] tracking-tight font-medium max-w-[1000px]"
+              >
+                {["Designer", "driven", "by", "precision,", "where", "logical", "structure", "meets"].map((word) => (
+                  <motion.span key={word} variants={wordVariant} className="inline-block mr-[0.28em]">{word}</motion.span>
+                ))}
+                <motion.span variants={wordVariant} className="inline-block mr-[0.28em] text-[var(--accent-gold)] italic font-serif">user</motion.span>
+                <motion.span variants={wordVariant} className="inline-block mr-[0.28em] text-[var(--accent-gold)] italic font-serif">instinct,</motion.span>
+                {["building", "systems", "that", "scale."].map((word) => (
+                  <motion.span key={word} variants={wordVariant} className="inline-block mr-[0.28em]">{word}</motion.span>
+                ))}
               </motion.h1>
 
               <motion.p variants={fadeUp} className="font-sans text-lg lg:text-xl text-[var(--text-secondary)] leading-relaxed max-w-[600px] text-balance">

@@ -111,6 +111,13 @@ export function Navbar() {
                         <Link href="/#about" style={{ color: "var(--text-secondary)" }}>
                             About
                         </Link>
+                        <button
+                            onClick={() => setIsContactOpen(true)}
+                            className="font-sans text-xs font-bold uppercase tracking-widest transition-colors hover:text-[var(--accent-gold)]"
+                            style={{ color: "var(--text-secondary)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
+                        >
+                            Contact Me
+                        </button>
                     </div>
 
                     {/* RIGHT */}
