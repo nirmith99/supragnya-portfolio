@@ -132,6 +132,7 @@ export default function Home() {
                 <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
                 <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
+              <a href="#" data-prototype="emergency-app" className="font-sans text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors">View Prototype →</a>
             </motion.div>
 
             <motion.div
@@ -191,6 +192,7 @@ export default function Home() {
                 <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
                 <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
+              <a href="#" data-prototype="udyoga-pramoda" className="font-sans text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors">View Prototype →</a>
             </motion.div>
           </div>
         </motion.div>
@@ -218,6 +220,7 @@ export default function Home() {
                 <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">Read Case Study</span>
                 <MoveRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
               </Link>
+              <a href="#" data-prototype="rupeerise" className="font-sans text-xs text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors">View Prototype →</a>
             </motion.div>
 
             <motion.div

@@ -100,6 +100,39 @@ export default function RupeeRise() {
                 </div>
             </motion.section>
 
+            {/* COMPONENT ANNOTATION — Stability Score Widget */}
+            <motion.section
+                variants={sectionVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="w-full max-w-[1000px] mx-auto mb-40"
+            >
+                <div className="border-l-2 border-[var(--accent-gold)] pl-8 py-2">
+                    <div className="flex items-center gap-4 mb-8">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-gold)]">
+                            Component Breakdown
+                        </span>
+                        <span className="font-serif text-2xl text-[var(--text-primary)]">Stability Score Widget</span>
+                    </div>
+                    <div className="space-y-0">
+                        {[
+                            { label: "Score display", rationale: "Numeric + tier label — double encoding so meaning is clear without explanation." },
+                            { label: "Tier colour", rationale: "Maps to traffic light logic — no legend required." },
+                            { label: "Severity weighting", rationale: "Not a count, a behavioural weight — punishes reactive decisions, not volume." },
+                            { label: "Progress bar", rationale: "Directional — shows movement, not just state." },
+                            { label: "Tier unlock hint", rationale: "Contextual, not instructional — shows what's next, not how the system works." },
+                        ].map((item, i) => (
+                            <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-4 border-b border-[var(--surface-border)] py-6 last:border-0 last:pb-0">
+                                <span className="shrink-0 font-mono text-[var(--text-tertiary)] text-xs w-6">{String(i + 1).padStart(2, "0")}</span>
+                                <span className="shrink-0 font-bold text-[var(--text-primary)] text-sm min-w-[180px]">{item.label}</span>
+                                <span className="text-[var(--text-secondary)] text-sm leading-[1.6]">{item.rationale}</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </motion.section>
+
             {/* Context - Editorial Layout */}
             <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1000px] mx-auto mb-40">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -295,6 +328,42 @@ export default function RupeeRise() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </div>
+            </motion.section>
+
+            {/* Design Decisions — Stability Score */}
+            <motion.section
+                variants={sectionVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                className="w-full max-w-[1200px] mx-auto mb-40"
+            >
+                <div className="max-w-[800px] mb-20">
+                    <span className="text-xs uppercase tracking-widest font-bold text-[var(--text-tertiary)] mb-4 block">
+                        Design Decisions
+                    </span>
+                    <h2 className="font-serif text-5xl text-[var(--text-primary)] tracking-tight">
+                        What the Score Rules Out
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
+                    <div className="border-t border-[var(--surface-border)] pt-8">
+                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">01.</div>
+                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Score drops on behavior, not markets</h3>
+                        <p className="text-[var(--text-secondary)] leading-[1.6]">A user who makes a well-reasoned call that loses money doesn&apos;t get penalized. A user who panic-sells does. This prevents the score from becoming a proxy for luck. Jury feedback cited behavioral gating — not returns — as the differentiating structural decision, confirming that excluding market performance from scoring was correct.</p>
+                    </div>
+                    <div className="border-t border-[var(--surface-border)] pt-8">
+                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">02.</div>
+                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Tier downgrades are immediate, upgrades are gradual</h3>
+                        <p className="text-[var(--text-secondary)] leading-[1.6]">Behavioral instability appears fast. Recovery is a pattern, not an event. The asymmetry is intentional — it mirrors how trust works in real financial contexts. The asymmetry held up under jury scrutiny as market-ready structural thinking; it was called out specifically in feedback.</p>
+                    </div>
+                    <div className="border-t border-[var(--surface-border)] pt-8">
+                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">03.</div>
+                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Score is transparent, not gamified</h3>
+                        <p className="text-[var(--text-secondary)] leading-[1.6]">Every score change is traceable to a specific behavior with a specific impact. No surprise drops. No opaque algorithms. The transparency is itself a behavioral intervention. The 14-day constraint forced every traceable change to be justified against the stability hypothesis — no opaque mechanics survived the scope pressure.</p>
                     </div>
                 </div>
             </motion.section>

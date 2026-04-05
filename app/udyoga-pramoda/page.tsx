@@ -122,15 +122,16 @@ export default function UdyogaPramodaPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                         {[
-                            { title: "Respect Volunteer Capacity", desc: "Validation must be lightweight (one-click actions), not complex manual forms." },
-                            { title: "Progression Over Options", desc: "Guide sequentially. Don't distract un-validated aspirants with jobs they aren't ready for." },
-                            { title: "Unambiguous State", desc: "Strict visual indicators for status (Pending vs. Validated) to eliminate chaos." },
-                            { title: "Build for the Stack", desc: "Design using atomic, reproducible components mapped directly to shadcn." }
+                            { title: "Respect Volunteer Capacity", desc: "Validation must be lightweight (one-click actions), not complex manual forms.", closing: "This held in production: 25+ placements processed through the system without mentors reporting form-completion burden." },
+                            { title: "Progression Over Options", desc: "Guide sequentially. Don't distract un-validated aspirants with jobs they aren't ready for.", closing: "The sequenced flow supported 1k+ users reaching the appropriate stage without premature job application drop-offs." },
+                            { title: "Unambiguous State", desc: "Strict visual indicators for status (Pending vs. Validated) to eliminate chaos.", closing: "The Pending / Validated distinction eliminated the WhatsApp back-channel disambiguation that preceded this system." },
+                            { title: "Build for the Stack", desc: "Design using atomic, reproducible components mapped directly to shadcn.", closing: "Live production with 1k+ users validated that atomic shadcn-mapped components scaled without accumulated technical debt." }
                         ].map((item, idx) => (
                             <div key={idx} className="space-y-4">
                                 <span className="text-[var(--accent-gold)] font-bold text-[1rem] tracking-widest uppercase mb-4 block opacity-[0.87]">Rule 0{idx + 1}</span>
                                 <h3 className="text-[1.563rem] font-bold font-serif text-[var(--text-primary)] leading-[1.2]">{item.title}</h3>
                                 <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">{item.desc}</p>
+                                <p className="text-[0.875rem] text-[var(--accent-gold)]/70 mt-2 italic leading-[1.5]">{item.closing}</p>
                             </div>
                         ))}
                     </div>
@@ -172,6 +173,39 @@ export default function UdyogaPramodaPage() {
                             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg shadow-black/5 border border-[var(--surface-border)]">
                                 <Image src="/images/Udyoga pramoda/Udyoga Pramoda Landing (Flow Step) (1).png" alt="Journey-First Dashboard Flow" fill className="object-cover object-top" />
                             </div>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* COMPONENT ANNOTATION — Mentor Validation Gate */}
+                <motion.section
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={sectionVariants}
+                    className="max-w-[720px] space-y-8"
+                >
+                    <div className="bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] p-8 rounded-r-2xl border-t border-r border-b border-[var(--surface-border)]">
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-gold)]">
+                                Component Breakdown
+                            </span>
+                            <span className="font-serif text-xl text-[var(--text-primary)]">Mentor Validation Gate</span>
+                        </div>
+                        <div className="space-y-0">
+                            {[
+                                { label: "Locked state", rationale: "Aspirants see job listings exist but can't access — motivational, not punitive." },
+                                { label: "Validation badge", rationale: "Persistent on profile — signals readiness to mentors and peers." },
+                                { label: "Progress tracker", rationale: "Shows aspirant's position in the readiness arc — reduces uncertainty about readiness." },
+                                { label: "Mentor counter", rationale: "25+ mentors visible — establishes trust before first session." },
+                                { label: "Gate messaging", rationale: "Framed as readiness, not rejection — language tested against user frustration patterns." },
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-4 border-b border-[var(--surface-border)] py-6 last:border-0 last:pb-0">
+                                    <span className="shrink-0 font-mono text-[var(--text-tertiary)] text-xs w-6">{String(i + 1).padStart(2, "0")}</span>
+                                    <span className="shrink-0 font-bold text-[var(--text-primary)] text-sm min-w-[180px]">{item.label}</span>
+                                    <span className="text-[var(--text-secondary)] text-sm leading-[1.6]">{item.rationale}</span>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </motion.section>

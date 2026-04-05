@@ -273,6 +273,40 @@ export default function EmergencyAppPage() {
                 </motion.section>
 
 
+                {/* COMPONENT ANNOTATION — Alarm Card */}
+                <motion.section
+                    variants={sectionVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="w-full"
+                >
+                    <div className="bg-[#1A2116] border border-[#2A3423] rounded-[2.5rem] p-10 lg:p-14">
+                        <div className="flex items-center gap-4 mb-10">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-gold)] border border-[var(--accent-gold)]/30 px-3 py-1 rounded-full">
+                                Component Breakdown
+                            </span>
+                            <span className="font-serif text-2xl text-[#F4F1EA]">Alarm Card</span>
+                        </div>
+                        <div className="space-y-0">
+                            {[
+                                { label: "Patient name at top", rationale: "Institution deprioritised — emergency staff think in people, not facilities." },
+                                { label: "Bold red countdown", rationale: "Weight chosen to be readable in peripheral vision under motion." },
+                                { label: "Full-width status bar", rationale: "Colour-coded without requiring text read." },
+                                { label: "5-icon action row", rationale: "Always visible, no overflow menu, no secondary tap under stress." },
+                                { label: "STEMI FAB position", rationale: "Bottom-right, thumb-reachable, never obscured by card content." },
+                                { label: "Card scale", rationale: "Expanded from previous system to reduce accidental taps." },
+                            ].map((item, i) => (
+                                <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-4 border-b border-[#2A3423] py-8 last:border-0 last:pb-0">
+                                    <span className="shrink-0 font-mono text-[#AAB4A4] text-xs w-6">{String(i + 1).padStart(2, "0")}</span>
+                                    <span className="shrink-0 font-bold text-[#F4F1EA] text-sm min-w-[200px]">{item.label}</span>
+                                    <span className="text-[#AAB4A4] text-sm leading-[1.6]">{item.rationale}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </motion.section>
+
                 {/* 05 ARCHITECTURAL AXIOMS */}
                 <motion.section 
                     variants={sectionVariants} 
@@ -292,22 +326,22 @@ export default function EmergencyAppPage() {
                         <div className="border-t border-[var(--surface-border)] pt-8">
                             <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">01.</div>
                             <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Patient Over Institution</h3>
-                            <p className="text-[var(--text-secondary)] leading-[1.6]">The previous system led with hospital name. I shifted primary hierarchy to patient name — in an emergency list, staff are thinking about people, not facilities.</p>
+                            <p className="text-[var(--text-secondary)] leading-[1.6]">The previous system led with hospital name. I shifted primary hierarchy to patient name — in an emergency list, staff are thinking about people, not facilities. The &lt;30-second alert response target was met when staff located and acted on the right patient without scanning for hospital context.</p>
                         </div>
                         <div className="border-t border-[var(--surface-border)] pt-8">
                             <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">02.</div>
                             <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">The Timer Had To Shout</h3>
-                            <p className="text-[var(--text-secondary)] leading-[1.6]">The elapsed timer used to be light inline text. I made it large, primary, and bold red. Time elapsed is the most critical defining data point before intervention.</p>
+                            <p className="text-[var(--text-secondary)] leading-[1.6]">The elapsed timer used to be light inline text. I made it large, primary, and bold red. Time elapsed is the most critical defining data point before intervention. Nurses identified the countdown as the first element in prototype walkthroughs without prompting; the sub-30-second response target was met in live deployment.</p>
                         </div>
                         <div className="border-t border-[var(--surface-border)] pt-8">
                             <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">03.</div>
                             <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Surface, Don&apos;t Hide</h3>
-                            <p className="text-[var(--text-secondary)] leading-[1.6]">Actions were buried in an overflow menu. I moved them to a persistent 5-icon row on each card. Always one tap, always visible — no secondary hunting required.</p>
+                            <p className="text-[var(--text-secondary)] leading-[1.6]">Actions were buried in an overflow menu. I moved them to a persistent 5-icon row on each card. Always one tap, always visible — no secondary hunting required. Stakeholder concern about discoverability was raised and resolved after team review — the persistent row made all five actions findable without instruction.</p>
                         </div>
                         <div className="border-t border-[var(--surface-border)] pt-8">
                             <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">04.</div>
                             <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">The STEMI Exception</h3>
-                            <p className="text-[var(--text-secondary)] leading-[1.6]">A dedicated escape hatch was needed. A floating action button specifically for raising a STEMI alarm was created. No navigation to a chat thread required for top-tier emergencies.</p>
+                            <p className="text-[var(--text-secondary)] leading-[1.6]">A dedicated escape hatch was needed. A floating action button specifically for raising a STEMI alarm was created. No navigation to a chat thread required for top-tier emergencies. The FAB shipped live to hospitals; the direct escalation path was validated as a necessary exception to the single-tap rule for top-tier cardiac events.</p>
                         </div>
                     </div>
                 </motion.section>
