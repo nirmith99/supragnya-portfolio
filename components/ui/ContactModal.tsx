@@ -38,14 +38,15 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 z-[1000] bg-black/60 backdrop-blur-sm"
-                    />
+                        className="fixed inset-0 z-[1000] bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
+                    >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.96, y: 16 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.96, y: 16 }}
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[1001] w-full max-w-lg px-4"
+                        onClick={(e) => e.stopPropagation()}
+                        className="w-full max-w-lg"
                     >
                         <div className="bg-[var(--bg-surface)] border border-[var(--surface-border)] p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--accent-gold)]/5 rounded-full blur-[60px] pointer-events-none" />
@@ -107,6 +108,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                                 </p>
                             </div>
                         </div>
+                    </motion.div>
                     </motion.div>
                 </>
             )}
