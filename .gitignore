@@ -12,3 +12,4 @@ build_log_utf8.txt
 lint.json
 lint_log.txt
 tsconfig.tsbuildinfo
+.claude/

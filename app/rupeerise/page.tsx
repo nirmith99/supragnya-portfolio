@@ -1,858 +1,704 @@
 "use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import CaseStudyTemplate from '@/components/templates/CaseStudyTemplate';
-import { Activity, CheckCircle2 } from 'lucide-react';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
+import { PhoneMockup } from "@/components/ui/mockups";
+import { 
+    ArrowRight, 
+    CheckCircle2, 
+    AlertTriangle, 
+    Layers, 
+    BookOpen, 
+    Activity, 
+    SlidersHorizontal, 
+    Compass, 
+    TrendingUp, 
+    XCircle,
+    UserCheck,
+    Cpu,
+    HelpCircle,
+    RotateCcw
+} from "lucide-react";
 
-export default function RupeeRise() {
-    const sectionVariants = {
+export default function RupeeRisePage() {
+    const fadeUp = {
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } }
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } as any
+        }
     };
 
     return (
         <CaseStudyTemplate
             title="RupeeRise"
             role="Lead Product Designer"
-            timeline="14-Day Hackathon"
-            tags={["Fintech", "Behavioral Design"]}
+            timeline="14-Day Hackathon + Later Portfolio Redesign"
+            tags={["Fintech", "Behavioral Finance", "Mobile App", "Decision Systems"]}
             hideDefaultHero={true}
         >
-            {/* Custom Hero */}
-            <motion.section
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                className="mb-32 mt-4 md:mt-8 w-full max-w-[1400px] mx-auto"
-            >
-                <div className="flex items-center gap-4 mb-12">
-                    <div className="h-px w-12 bg-[var(--accent-gold)]/50" />
-                    <span className="text-[var(--accent-gold)] font-sans text-xs tracking-[0.2em] uppercase font-bold">Case Study · Lead Product Designer</span>
-                </div>
+            <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24">
+                
+                {/* ========================================================================= */}
+                {/* 1. HERO — CONTINUOUS STORY OPENING                                        */}
+                {/* ========================================================================= */}
+                <motion.section
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="relative pt-8 md:pt-16"
+                >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                        {/* 40% Text Column */}
+                        <div className="lg:col-span-5 space-y-5">
+                            <div className="inline-flex items-center gap-3">
+                                <span className="h-px w-6 bg-[var(--accent-gold)]" />
+                                <span className="text-[var(--accent-gold)] font-sans text-xs md:text-sm tracking-widest uppercase font-bold">
+                                    Case Study · Behavioral Finance
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] tracking-tight font-serif leading-[1.05]">
+                                Rupee<em className="italic text-[var(--accent-gold)] font-serif font-normal">Rise</em>
+                            </h1>
+                            
+                            <p className="font-serif text-xl sm:text-2xl text-[var(--text-primary)] leading-[1.3] italic font-normal">
+                                From financial literacy to more deliberate financial decisions
+                            </p>
 
-                <h1 className="text-6xl md:text-9xl font-bold mb-8 text-[var(--text-primary)] tracking-tighter text-balance font-serif">
-                    RupeeRise
-                </h1>
+                            <div className="space-y-3.5 text-[var(--text-secondary)] font-sans text-base md:text-lg leading-relaxed pt-1">
+                                <p>
+                                    RupeeRise began as a financial-literacy product for Gen Z and Millennials. The initial assumption was straightforward: <strong className="text-[var(--text-primary)] font-medium">young people make poor financial decisions because they don&apos;t know enough about money.</strong>
+                                </p>
+                                <p>
+                                    Later, while revisiting the project for my portfolio, I returned to the interview findings and conducted additional secondary research. That changed how I interpreted the problem.
+                                </p>
+                                <p>
+                                    The question shifted from <em>&ldquo;How do we give people more financial knowledge?&rdquo;</em> to: <strong className="text-[var(--text-primary)] font-medium">&ldquo;How might we help people make more deliberate decisions when information, uncertainty and emotion collide?&rdquo;</strong>
+                                </p>
+                            </div>
+                        </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16">
-                    <div className="lg:col-span-7">
-                        <p className="font-serif text-3xl md:text-5xl text-[var(--accent-gold)] mb-6 leading-[1.1]">
-                            Master the Art of Spending and Saving.
-                        </p>
-                        <p className="font-sans text-lg md:text-xl text-[var(--text-secondary)] mb-12 leading-relaxed max-w-2xl">
-                            A Financial Decision Stability System for Young Earners — designed entirely from ground zero in 14 days.
-                        </p>
-                    </div>
-                    <div className="lg:col-span-5 lg:pl-12 lg:border-l border-[var(--surface-border)]">
-                        <div className="flex flex-col gap-4">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-2">Project Constraints</span>
-                            {["14-Day Timeline", "Remote Collaboration", "Clickable Prototype Only", "No Live Trading", "No Demat Integration", "No Compliance Layer"].map(tag => (
-                                <div key={tag} className="flex items-center gap-3">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]/40" />
-                                    <span className="text-[var(--text-primary)] text-sm tracking-wide font-medium">
-                                        {tag}
-                                    </span>
+                        {/* 60% Visual Column (Dual Overlapping Phones) */}
+                        <div className="lg:col-span-7 flex justify-center lg:justify-end">
+                            <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
+                                <div className="relative z-20 w-[52%] max-w-[290px] transform -rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+                                    <PhoneMockup className="max-w-none w-full">
+                                        <img 
+                                            src="/images/Rupeerise/dashboard.png" 
+                                            alt="RupeeRise Behavioral Finance Dashboard" 
+                                            className="w-full h-auto block" 
+                                        />
+                                    </PhoneMockup>
+                                    <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-2.5">
+                                        Stability Score &amp; Decision Hub
+                                    </p>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
 
-                <div className="relative w-full h-[380px] md:h-[560px] flex items-end justify-center mt-24 mb-16 overflow-hidden md:overflow-visible">
-                    <div className="absolute bottom-[-60px] left-1/2 -translate-x-1/2 w-[600px] h-[200px] pointer-events-none z-0" style={{ background: 'radial-gradient(ellipse, rgba(74,92,63,0.35) 0%, transparent 70%)' }}></div>
-
-                    {/* Left 2 */}
-                    <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-3 w-[120px] h-[254px] md:w-[175px] md:h-[370px]" style={{ transform: 'translateY(80px) rotate(-8deg) translateX(30px)' }}>
-                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/Rupeerise/insights.png" alt="Insights Journal" fill className="object-cover object-top" />
-                        </div>
-                    </div>
-
-                    {/* Left 1 */}
-                    <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-4 w-[138px] h-[290px] md:w-[200px] md:h-[420px]" style={{ transform: 'translateY(40px) rotate(-4deg) translateX(20px)' }}>
-                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/Rupeerise/simulation.png" alt="Simulation Lab" fill className="object-cover object-top" />
+                                <div className="relative z-10 w-[48%] max-w-[270px] -ml-[12%] transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-xl opacity-90 hover:opacity-100">
+                                    <PhoneMockup className="max-w-none w-full">
+                                        <img 
+                                            src="/images/Rupeerise/insights.png" 
+                                            alt="RupeeRise Behavioral Insights Screen" 
+                                            className="w-full h-auto block" 
+                                        />
+                                    </PhoneMockup>
+                                    <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-2.5">
+                                        Behavioral Pattern Insights
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    {/* Center */}
-                    <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-5 w-[160px] h-[340px] md:w-[230px] md:h-[490px]" style={{ transform: 'translateY(0px)' }}>
-                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/Rupeerise/fiundation.png" alt="Foundation Layer" fill className="object-cover object-top" />
+                    {/* Metadata Row (Clean Editorial Grid, No Cards) */}
+                    <div className="mt-12 pt-6 border-t border-[var(--surface-border)]">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 gap-x-6 text-xs md:text-sm font-sans">
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Role</span>
+                                <span className="text-[var(--text-primary)] font-medium">Lead Product Designer</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Team</span>
+                                <span className="text-[var(--text-secondary)]">Designer + Developer</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Timeline</span>
+                                <span className="text-[var(--text-secondary)]">14-Day Hackathon + Redesign</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Platform</span>
+                                <span className="text-[var(--text-secondary)]">Mobile</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Original Output</span>
+                                <span className="text-[var(--text-secondary)]">Functional MVP + Prototype</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Current Status</span>
+                                <span className="text-[var(--text-primary)] font-medium">Conceptual redesign</span>
+                            </div>
+                        </div>
+
+                        {/* Two Phases Note */}
+                        <div className="mt-6 pt-4 border-t border-[var(--surface-border)]/60 text-xs md:text-sm font-sans text-[var(--text-secondary)] space-y-1">
+                            <p className="font-mono text-xs uppercase tracking-wider text-[var(--accent-gold)] font-semibold">
+                                A note on the redesign &amp; two distinct phases:
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                                <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">
+                                    <span className="font-bold text-[var(--text-primary)] block mb-0.5">Phase 01 · Hackathon:</span>
+                                    <span>Research → Original RupeeRise → Functional MVP → AI quiz generation → Presentation</span>
+                                </div>
+                                <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">
+                                    <span className="font-bold text-[var(--accent-gold)] block mb-0.5">Phase 02 · Portfolio Revisit:</span>
+                                    <span>Re-examined research → Secondary research → Reframed problem → Conceptual product redesign</span>
+                                </div>
+                            </div>
+                            <p className="text-xs text-[var(--text-tertiary)] italic pt-1">
+                                *The behavioral-finance experience shown later in this case study was not the product integrated into the hackathon MVP.
+                            </p>
                         </div>
                     </div>
+                </motion.section>
 
-                    {/* Right 1 */}
-                    <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-4 w-[138px] h-[290px] md:w-[200px] md:h-[420px]" style={{ transform: 'translateY(40px) rotate(4deg) translateX(-20px)' }}>
-                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/Rupeerise/tier adjustment modal.png" alt="Tier Downgrade" fill className="object-cover object-top" />
+                {/* ========================================================================= */}
+                {/* 2. 01 STARTING POINT & 02 V1: THE FIRST PRODUCT                           */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-10 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+                        {/* 01 Starting Point */}
+                        <div className="lg:col-span-5 space-y-4">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                01 — The Starting Point
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                The hackathon framed the problem around financial literacy
+                            </h2>
+                            <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    RupeeRise was created during the Udyog Pramoda 14-Day Job Ready Challenge. The &ldquo;Smart Finance for Gen Z &amp; Millennials&rdquo; brief focused on poor financial decisions and financial literacy across budgeting, investments, debt and savings.
+                                </p>
+                                <div className="p-3 border-l-2 border-[var(--accent-gold)] font-serif text-lg text-[var(--text-primary)] italic">
+                                    &ldquo;If young people are making poor financial decisions, they need better financial knowledge and tools.&rdquo;
+                                </div>
+                                <p>
+                                    I didn&apos;t have evidence yet that this was the complete problem. But it was a reasonable hypothesis to test.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 02 V1: The First Product */}
+                        <div className="lg:col-span-7 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed lg:border-l lg:border-[var(--surface-border)] lg:pl-12">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                02 — V1: The First Product
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                RupeeRise started as a broader personal-finance product
+                            </h2>
+                            <p>
+                                The first version tried to support several parts of the user&apos;s financial journey:
+                            </p>
+
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm pt-1">
+                                <div className="space-y-1">
+                                    <strong className="text-[var(--text-primary)] block font-mono text-xs uppercase text-[var(--accent-gold)]">Learn</strong>
+                                    <span>Read content, browse Fin Shots, take daily quizzes, learn basic investment concepts.</span>
+                                </div>
+                                <div className="space-y-1">
+                                    <strong className="text-[var(--text-primary)] block font-mono text-xs uppercase text-[var(--accent-gold)]">Manage</strong>
+                                    <span>See available balance, track monthly budget, create savings goals, set financial reminders.</span>
+                                </div>
+                                <div className="space-y-1">
+                                    <strong className="text-[var(--text-primary)] block font-mono text-xs uppercase text-[var(--accent-gold)]">Invest</strong>
+                                    <span>Discover investments, explore trending stocks, learn about opportunities.</span>
+                                </div>
+                                <div className="space-y-1">
+                                    <strong className="text-[var(--text-primary)] block font-mono text-xs uppercase text-[var(--accent-gold)]">Get guidance</strong>
+                                    <span>Browse mentors, explore specialties, compare ratings, access free classes.</span>
+                                </div>
+                            </div>
+
+                            <p className="font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                                Learn → Manage → Invest → Get guidance
+                            </p>
+
+                            <p className="font-serif text-xl text-[var(--text-primary)] italic">
+                                Does having more financial information actually lead to better financial decisions?
+                            </p>
                         </div>
                     </div>
+                </motion.section>
 
-                    {/* Right 2 */}
-                    <div className="relative shrink-0 transition-transform duration-500 ease-out hover:-translate-y-3 z-3 w-[120px] h-[254px] md:w-[175px] md:h-[370px]" style={{ transform: 'translateY(80px) rotate(8deg) translateX(-30px)' }}>
-                        <div className="relative w-full h-full rounded-[20px] md:rounded-[28px] overflow-hidden border-2 border-[var(--surface-border)] shadow-[0_32px_80px_rgba(0,0,0,0.7),0_0_0_1px_rgba(245,240,232,0.04)] bg-[var(--bg-surface)]">
-                            <Image src="/images/Rupeerise/mentorship.png" alt="Mentorship Hub" fill className="object-cover object-top" />
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* COMPONENT ANNOTATION — Stability Score Widget */}
-            <motion.section
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="w-full max-w-[1000px] mx-auto mb-40"
-            >
-                <div className="border-l-2 border-[var(--accent-gold)] pl-8 py-2">
-                    <div className="flex items-center gap-4 mb-8">
-                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-gold)]">
-                            Component Breakdown
+                {/* ========================================================================= */}
+                {/* 3. 03 RESEARCH & 04 THE ASSUMPTION I REVISITED                             */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-3">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            03 — Research Synthesis
                         </span>
-                        <span className="font-serif text-2xl text-[var(--text-primary)]">Stability Score Widget</span>
-                    </div>
-                    <div className="space-y-0">
-                        {[
-                            { label: "Score display", rationale: "Numeric + tier label — double encoding so meaning is clear without explanation." },
-                            { label: "Tier colour", rationale: "Maps to traffic light logic — no legend required." },
-                            { label: "Severity weighting", rationale: "Not a count, a behavioural weight — punishes reactive decisions, not volume." },
-                            { label: "Progress bar", rationale: "Directional — shows movement, not just state." },
-                            { label: "Tier unlock hint", rationale: "Contextual, not instructional — shows what's next, not how the system works." },
-                        ].map((item, i) => (
-                            <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-4 border-b border-[var(--surface-border)] py-6 last:border-0 last:pb-0">
-                                <span className="shrink-0 font-mono text-[var(--text-tertiary)] text-xs w-6">{String(i + 1).padStart(2, "0")}</span>
-                                <span className="shrink-0 font-bold text-[var(--text-primary)] text-sm min-w-[180px]">{item.label}</span>
-                                <span className="text-[var(--text-secondary)] text-sm leading-[1.6]">{item.rationale}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Context - Editorial Layout */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1000px] mx-auto mb-40">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                    <div className="md:col-span-4">
-                        <h2 className="font-serif text-5xl sticky top-32 text-[var(--text-primary)] tracking-tight">Context</h2>
-                    </div>
-                    <div className="md:col-span-8 prose prose-lg prose-invert text-[var(--text-secondary)]">
-                        <p className="text-xl leading-relaxed mb-12 text-[var(--text-primary)]">
-                            The hackathon brief asked us to close financial literacy gaps among Millennials and Gen Z. It&apos;s a well-worn prompt—most teams would reach for it and build another learn-and-earn app. Before committing to a direction, I wanted to understand if literacy was actually the problem.
-                        </p>
-
-                        <div className="h-px w-full bg-[var(--surface-border)] my-12" />
-
-                        <h3 className="font-serif text-3xl text-[var(--text-primary)] mb-8">What the Research Actually Said</h3>
-                        <p className="leading-relaxed mb-12">
-                            Informal interviews with 20–28 year olds didn&apos;t surface ignorance — they surfaced <strong className="text-[var(--accent-gold)] font-medium">behavioral contradiction</strong>. These were people who could explain credit card interest, who&apos;d watched crypto crash documentaries, who knew the theory. And yet they were panic selling, trend-chasing, and misusing credit under pressure.
-                        </p>
-
-                        <div className="border-l-2 border-[var(--accent-gold)] pl-8 py-2 my-16">
-                            <h4 className="font-serif text-xl text-[var(--text-primary)] mb-6 uppercase tracking-widest text-sm">Patterns Found in Research</h4>
-                            <ul className="space-y-6 m-0 p-0 list-none">
-                                {[
-                                    "Credit misuse despite knowing the math",
-                                    "Overconfidence after short-term wins",
-                                    "Trend-driven investing, not conviction-driven",
-                                    "Panic selling during volatility"
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 text-[var(--text-secondary)]">
-                                        <span className="font-mono text-[var(--text-tertiary)] text-sm mt-1">0{i + 1}</span>
-                                        <span className="text-lg">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Stat Row - Full Width */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full border-y border-[var(--surface-border)] py-24 mb-40 bg-[var(--bg-surface)]">
-                <div className="max-w-[1200px] mx-auto px-5 md:px-[60px]">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
-                        <div className="space-y-4">
-                            <div className="text-7xl font-serif text-[var(--accent-gold)] tracking-tighter">~60%</div>
-                            <div className="text-base font-sans tracking-wide text-[var(--text-secondary)] leading-relaxed max-w-xs">Young earners interested in a structured stability system</div>
-                        </div>
-                        <div className="space-y-4 md:border-l border-[var(--surface-border)] md:pl-12">
-                            <div className="text-7xl font-serif text-[var(--accent-gold)] tracking-tighter">~30%</div>
-                            <div className="text-base font-sans tracking-wide text-[var(--text-secondary)] leading-relaxed max-w-xs">Mentors validated instability — not ignorance — as the core issue</div>
-                        </div>
-                        <div className="space-y-4 md:border-l border-[var(--surface-border)] md:pl-12">
-                            <div className="text-7xl font-serif text-[var(--accent-gold)] tracking-tighter">45%+</div>
-                            <div className="text-base font-sans tracking-wide text-[var(--text-secondary)] leading-relaxed max-w-xs">Fintech users in India are already under 30. Access ≠ problem.</div>
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
-
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[800px] mx-auto mb-40 text-center">
-                <p className="text-2xl md:text-3xl font-serif leading-relaxed text-[var(--text-primary)]">
-                    Secondary sources confirmed it. Financial awareness gaps persist, but awareness alone hasn&apos;t translated to behavioral change. <br /><br />
-                    <em className="text-[var(--accent-gold)] not-italic border-b border-[var(--accent-gold)] pb-1">Access to financial tools has increased faster than behavioral maturity to use them safely.</em>
-                </p>
-            </motion.section>
-
-            {/* Competitive Landscape */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40">
-                <div className="mb-16">
-                    <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Competitive Landscape</h2>
-                    <p className="text-[var(--text-secondary)] text-xl max-w-2xl leading-relaxed">Mapping the existing landscape confirmed the behavioral gap wasn&apos;t being addressed anywhere.</p>
-                </div>
-
-                <div className="overflow-x-auto pb-4 mb-20">
-                    <table className="w-full text-left min-w-[800px] border-collapse bg-transparent">
-                        <thead>
-                            <tr className="border-b-2 border-[var(--surface-border)] text-xs uppercase tracking-widest font-semibold text-[var(--text-tertiary)]">
-                                <th className="py-6 px-4 font-semibold w-1/4">Feature</th>
-                                <th className="py-6 px-4 font-semibold">StockGro</th>
-                                <th className="py-6 px-4 font-semibold">CRED</th>
-                                <th className="py-6 px-4 font-semibold">Jupiter / Fi</th>
-                                <th className="py-6 px-4 font-semibold">Jar</th>
-                                <th className="py-6 px-4 font-semibold text-[var(--accent-gold)]">RupeeRise</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-sm font-medium">
-                            {[
-                                { f: "Market simulation", vals: [true, false, false, false, true] },
-                                { f: "Spending insights", vals: [false, false, true, false, true] },
-                                { f: "Behavioral gating", vals: [false, false, false, false, true] },
-                                { f: "Stability score", vals: [false, false, false, false, true] },
-                                { f: "Staged exposure control", vals: [false, false, false, false, true] },
-                                { f: "Profit excluded from score", vals: [false, false, false, false, true] },
-                            ].map((row, i) => (
-                                <tr key={i} className="border-b border-[var(--surface-border)] hover:bg-[var(--bg-surface)] transition-colors group">
-                                    <td className="py-5 px-4 text-[var(--text-primary)] text-base font-serif">{row.f}</td>
-                                    {row.vals.map((val, vi) => (
-                                        <td key={vi} className={`py-5 px-4 ${vi === 4 ? 'text-[var(--accent-gold)] bg-[var(--accent-gold)]/5' : 'text-[var(--text-tertiary)]'}`}>
-                                            {val ? <CheckCircle2 className={`w-5 h-5 ${vi === 4 ? 'text-[var(--accent-gold)]' : 'text-[var(--text-tertiary)]/50'}`} /> : <span>—</span>}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-
-                <div className="pl-8 border-l-2 border-[var(--accent-gold)] max-w-3xl">
-                    <span className="uppercase tracking-widest text-xs font-bold text-[var(--text-tertiary)] block mb-4">Synthesis</span>
-                    <p className="text-[var(--text-primary)] leading-relaxed m-0 text-2xl font-serif">
-                        The problem was never knowledge — <em className="text-[var(--accent-gold)] not-italic">it was decision stability under pressure.</em> No existing platform was designed to close that gap. Every competitor either gamified engagement or optimized for access.
-                    </p>
-                </div>
-            </motion.section>
-
-            {/* Reframing */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="max-w-[1000px] mx-auto mb-40">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                    <div className="md:col-span-4">
-                        <h2 className="font-serif text-5xl sticky top-32 text-[var(--text-primary)] tracking-tight">Reframing</h2>
-                    </div>
-                    <div className="md:col-span-8">
-                        <p className="text-[var(--text-secondary)] text-xl mb-16 leading-relaxed">
-                            The research made one thing clear: building another literacy product would miss the actual failure point. So I reframed the brief entirely.
-                        </p>
-
-                        <div className="mb-16">
-                            <div className="text-sm uppercase tracking-[0.2em] font-bold text-[var(--text-tertiary)] mb-6">The Old HMW</div>
-                            <p className="line-through text-[var(--text-tertiary)] text-2xl mb-12 decoration-[var(--surface-border)] decoration-2 font-serif">
-                                How might we improve financial literacy among young earners?
-                            </p>
-
-                            <div className="text-sm uppercase tracking-[0.2em] font-bold text-[var(--accent-gold)] mb-6">The New HMW</div>
-                            <p className="text-4xl md:text-5xl font-serif text-[var(--text-primary)] leading-tight tracking-tight">
-                                How might we build financial decision stability in high-access environments?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Stability Score */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40">
-                <div className="max-w-[800px] mb-20">
-                    <h2 className="font-serif text-5xl mb-8 text-[var(--text-primary)] tracking-tight">The Stability Score</h2>
-                    <p className="text-xl text-[var(--text-secondary)] leading-relaxed mb-8 max-w-[680px]">
-                        RupeeRise measures integrated behavioral stability — not knowledge, not returns. The score is a composite of four behavioral inputs, each tracking a different failure mode.
-                    </p>
-                    <p className="text-sm uppercase tracking-widest text-[var(--accent-gold)] font-bold">
-                        Profit is intentionally excluded from the score.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[var(--surface-border)] rounded-sm overflow-hidden mb-32">
-                    {[
-                        { t: "Volatility Reaction Index", p: "How do you behave when markets move sharply? Panic selling and hype-buying both score low." },
-                        { t: "Trade Consistency", p: "Are your decisions predictable over time, or erratic and trend-driven?" },
-                        { t: "Capital Discipline Score", p: "Do you meet EMIs, avoid credit overuse, and stay within your cashflow structure?" },
-                        { t: "Diversification Health", p: "Are you concentrated in one bet, or distributing risk meaningfully across asset classes?" }
-                    ].map((card, i) => (
-                        <div key={i} className="bg-[var(--bg-sage)] p-10 flex flex-col hover:bg-[var(--bg-surface)] transition-colors">
-                            <span className="text-[var(--text-tertiary)] font-mono text-sm mb-6">0{i + 1}</span>
-                            <h4 className="font-serif text-2xl text-[var(--text-primary)] mb-4">{card.t}</h4>
-                            <p className="text-base text-[var(--text-secondary)] leading-relaxed">{card.p}</p>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-                    <div className="md:col-span-5">
-                        <h3 className="font-serif text-4xl mb-6 text-[var(--text-primary)] leading-tight">Risk Tiers & Exposure Control</h3>
-                        <p className="text-[var(--text-secondary)] text-lg leading-relaxed">
-                            Score thresholds map to four tiers. Exposure caps scale dynamically. Real capital is never force-liquidated — new exposure is throttled instead.
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            I wanted to understand what was happening beyond the product screens
+                        </h2>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            I conducted approximately <strong className="text-[var(--text-primary)] font-medium">10 exploratory 1:1 interviews</strong> with Gen Z and Millennials in person at a café. The conversations were treated as exploratory qualitative research. Two patterns stood out:
                         </p>
                     </div>
-                    <div className="md:col-span-7">
-                        <div className="space-y-0 border-y border-[var(--surface-border)]">
-                            {[
-                                { b: "Tier 1", n: "Restricted", d: "Simulation only. Foundation building required." },
-                                { b: "Tier 2", n: "Controlled", d: "Micro-exposure with mandatory thesis logging." },
-                                { b: "Tier 3", n: "Moderate", d: "Broader access with behavioral guardrails active." },
-                                { b: "Tier 4", n: "Advanced", d: "Full real exposure mode unlocked at 90%+ stability." }
-                            ].map((tier, i) => (
-                                <div key={i} className="flex flex-col sm:flex-row sm:items-center py-8 border-b border-[var(--surface-border)] last:border-0 gap-6">
-                                    <div className="sm:w-32 shrink-0">
-                                        <div className="inline-block text-[var(--accent-gold)] text-xs font-bold tracking-[0.15em] uppercase px-3 py-1 border border-[var(--accent-gold)]/30 rounded-full">
-                                            {tier.b}
-                                        </div>
-                                    </div>
-                                    <div className="sm:w-48 shrink-0 font-serif text-2xl text-[var(--text-primary)]">{tier.n}</div>
-                                    <div className="text-[0.95rem] text-[var(--text-secondary)] leading-relaxed">
-                                        {tier.d}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </motion.section>
 
-            {/* Design Decisions — Stability Score */}
-            <motion.section
-                variants={sectionVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                className="w-full max-w-[1200px] mx-auto mb-40"
-            >
-                <div className="max-w-[800px] mb-20">
-                    <span className="text-xs uppercase tracking-widest font-bold text-[var(--text-tertiary)] mb-4 block">
-                        Design Decisions
-                    </span>
-                    <h2 className="font-serif text-5xl text-[var(--text-primary)] tracking-tight">
-                        What the Score Rules Out
-                    </h2>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-16">
-                    <div className="border-t border-[var(--surface-border)] pt-8">
-                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">01.</div>
-                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Score drops on behavior, not markets</h3>
-                        <p className="text-[var(--text-secondary)] leading-[1.6]">A user who makes a well-reasoned call that loses money doesn&apos;t get penalized. A user who panic-sells does. This prevents the score from becoming a proxy for luck. Jury feedback cited behavioral gating — not returns — as the differentiating structural decision, confirming that excluding market performance from scoring was correct.</p>
-                    </div>
-                    <div className="border-t border-[var(--surface-border)] pt-8">
-                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">02.</div>
-                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Tier downgrades are immediate, upgrades are gradual</h3>
-                        <p className="text-[var(--text-secondary)] leading-[1.6]">Behavioral instability appears fast. Recovery is a pattern, not an event. The asymmetry is intentional — it mirrors how trust works in real financial contexts. The asymmetry held up under jury scrutiny as market-ready structural thinking; it was called out specifically in feedback.</p>
-                    </div>
-                    <div className="border-t border-[var(--surface-border)] pt-8">
-                        <div className="text-[var(--accent-gold)] font-serif text-4xl mb-4 italic">03.</div>
-                        <h3 className="font-serif text-2xl text-[var(--text-primary)] mb-3">Score is transparent, not gamified</h3>
-                        <p className="text-[var(--text-secondary)] leading-[1.6]">Every score change is traceable to a specific behavior with a specific impact. No surprise drops. No opaque algorithms. The transparency is itself a behavioral intervention. The 14-day constraint forced every traceable change to be justified against the stability hypothesis — no opaque mechanics survived the scope pressure.</p>
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* IA Diagram - 100% Fidelity Port (Dark Mode Optimized) */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full">
-                <style dangerouslySetInnerHTML={{
-                    __html: `
-                    .ia-wrap { background: transparent; padding: 60px 0; margin: 40px 0; overflow-x: auto; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
-                    .ia-inner { min-width: 1000px; max-w-6xl; margin: 0 auto; font-family: var(--font-geist), sans-serif; padding: 0 40px; max-width: 1200px; }
-                    
-                    /* Custom Dark Mode Adjustments */
-                    .ia-legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-                    
-                    .ia-root { background: var(--bg-surface); border: 1px solid var(--surface-border); border-radius: 4px; padding: 24px 32px; display: inline-flex; align-items: center; gap: 32px; position: relative; z-index: 2; flex-wrap: wrap; }
-                    .ia-root-chip { background: transparent; border: 1px solid var(--surface-border); border-radius: 4px; padding: 6px 12px; font-size: 0.75rem; color: var(--text-secondary); font-weight: 500; }
-                    .ia-root-chip.ia-accent { background: rgba(209,191,160,0.1); border-color: var(--accent-gold); color: var(--accent-gold); font-weight: 600; }
-                    
-                    .ia-stem { width: 1px; background: var(--surface-border); margin: 0 auto; height: 32px; }
-                    .ia-drop { width: 1px; background: var(--surface-border); height: 32px; flex-shrink: 0; margin: 0 auto; }
-                    
-                    .ia-modules { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; position: relative; }
-                    .ia-modules::before { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: var(--surface-border); }
-                    
-                    .ia-card { background: var(--bg-sage); border: 1px solid var(--surface-border); border-radius: 4px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
-                    .ia-card.featured { border-color: var(--accent-gold); }
-                    .ia-card-head { padding: 16px; border-bottom: 1px solid var(--surface-border); display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-                    .ia-card-head.featured { background: rgba(209,191,160,0.03); border-bottom-color: rgba(209,191,160,0.2); }
-                    .ia-badge { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; padding: 4px 8px; flex-shrink: 0; }
-                    .ia-badge.free { background: rgba(255,255,255,0.05); color: var(--text-secondary); }
-                    .ia-badge.premium { background: rgba(209,191,160,0.1); color: var(--accent-gold); }
-                    
-                    .ia-card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
-                    .ia-group-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-gold); padding-bottom: 6px; border-bottom: 1px solid var(--surface-border); margin-bottom: 8px; }
-                    .ia-group-label.amber { color: var(--accent-gold); opacity: 0.8; }
-                    .ia-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
-                    .ia-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-tertiary); flex-shrink: 0; margin-top: 7px; opacity: 0.5; }
-                    .ia-dot.amber { background: var(--accent-gold); opacity: 0.8; }
-                    .ia-item-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
-                    .ia-item-text strong { color: var(--text-primary); font-weight: 600; }
-                    
-                    .ia-divider { display: flex; align-items: center; gap: 16px; width: 100%; margin: 24px 0; }
-                    .ia-divider-line { flex: 1; height: 1px; border-top: 1px dashed var(--surface-border); opacity: 0.5; }
-                    .ia-divider-text { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-tertiary); }
-                    
-                    .ia-interrupt { background: var(--bg-surface); border: 1px solid var(--surface-border); border-radius: 4px; padding: 24px 32px; display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 16px; }
-                    .ia-interrupt-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #ef4444; border: 1px solid rgba(239,68,68,0.3); border-radius: 2px; padding: 4px 10px; display: inline-block; margin-bottom: 12px; }
-                    .ia-interrupt-cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; flex: 1; min-width: 600px; }
-                    .ia-interrupt-cell { background: rgba(0,0,0,0.15); border: 1px solid var(--surface-border); border-radius: 4px; padding: 16px; }
-                    .ia-interrupt-cell-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 6px; }
-                    .ia-interrupt-cell-text { font-size: 0.8rem; color: var(--text-primary); line-height: 1.5; }
-                    
-                    .ia-flow { background: var(--bg-surface); border: 1px solid var(--surface-border); border-radius: 4px; padding: 32px 40px; }
-                    .ia-flow-box { background: transparent; border: 1px solid var(--accent-gold); border-radius: 4px; padding: 10px 20px; font-size: 0.85rem; font-weight: 500; color: var(--accent-gold); white-space: nowrap; margin-bottom: 8px; }
-                    .ia-flow-arrow { width: 40px; height: 1px; background: var(--surface-border); flex-shrink: 0; margin-bottom: 24px; position: relative; }
-                    .ia-flow-arrow::after { content: ''; position: absolute; right: 0; top: -3px; border-left: 6px solid var(--surface-border); border-top: 3px solid transparent; border-bottom: 3px solid transparent; }
-                `}} />
-
-                <div className="max-w-[1000px] mx-auto mb-12 px-5 md:px-[60px] text-center">
-                    <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Information Architecture</h2>
-                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed max-w-3xl mx-auto">
-                        Every module feeds into the Stability Engine — nothing is isolated. The IA is designed so that behavioral data from all modules converge into a single score that controls exposure.
-                    </p>
-                </div>
-
-                <div className="ia-wrap">
-                    <div className="ia-inner">
-                        <div className="flex gap-8 mb-12">
-                            <div className="flex items-center gap-3 text-[0.7rem] uppercase tracking-widest font-bold text-[var(--text-secondary)]"><div className="ia-legend-dot" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid var(--surface-border)' }}></div>Free</div>
-                            <div className="flex items-center gap-3 text-[0.7rem] uppercase tracking-widest font-bold text-[var(--text-secondary)]"><div className="ia-legend-dot" style={{ background: 'rgba(209,191,160,0.1)', border: '1px solid var(--accent-gold)' }}></div>Premium</div>
-                            <div className="flex items-center gap-3 text-[0.7rem] uppercase tracking-widest font-bold text-[var(--text-secondary)]"><div className="ia-legend-dot" style={{ border: '1px solid var(--surface-border)' }}></div>Locked / Conditional</div>
-                            <div className="flex items-center gap-3 text-[0.7rem] uppercase tracking-widest font-bold text-[var(--text-secondary)]"><div className="ia-legend-dot" style={{ background: 'rgba(0,0,0,0.3)' }}></div>System Interrupt</div>
-                        </div>
-
-                        {/* Root Node */}
-                        <div className="ia-root w-full">
-                            <div className="min-w-[250px]">
-                                <div className="text-[0.65rem] font-bold tracking-[0.15em] uppercase text-[var(--text-tertiary)] mb-2">0 · Global System Layer</div>
-                                <div className="text-3xl font-serif text-[var(--text-primary)] tracking-tight">Stability Engine</div>
-                            </div>
-                            <div className="flex gap-3 flex-wrap">
-                                <div className="ia-root-chip ia-accent">Stability Score 0–100</div>
-                                <div className="ia-root-chip">Risk Tier 1–4</div>
-                                <div className="ia-root-chip">Exposure Cap</div>
-                                <div className="ia-root-chip">Volatility Reaction Index</div>
-                                <div className="ia-root-chip">Capital Discipline Score</div>
-                                <div className="ia-root-chip">Trade Consistency</div>
-                                <div className="ia-root-chip">Diversification Health</div>
-                            </div>
-                        </div>
-
-                        <div className="ia-stem"></div>
-
-                        {/* Modules */}
-                        <div className="ia-modules">
-                            {/* 01 */}
-                            <div className="flex flex-col items-center">
-                                <div className="ia-drop"></div>
-                                <div className="ia-card w-full">
-                                    <div className="ia-card-head">
-                                        <div>
-                                            <div className="text-[0.65rem] font-bold tracking-[0.15em] text-[var(--text-tertiary)] mb-1">MODULE 01</div>
-                                            <div className="text-xl font-serif text-[var(--text-primary)]">Dashboard</div>
-                                            <div className="text-[0.75rem] text-[var(--text-secondary)] mt-1">Control Centre</div>
-                                        </div>
-                                        <div className="ia-badge free">Free</div>
-                                    </div>
-                                    <div className="ia-card-body">
-                                        <div>
-                                            <div className="ia-group-label">Stability Overview</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Score ring <strong>0–100</strong></div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Current tier + badge</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">30-day trend graph</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Points to next tier</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Behavioral Alerts</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Overtrading flag</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Concentration warning</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 02 */}
-                            <div className="flex flex-col items-center">
-                                <div className="ia-drop"></div>
-                                <div className="ia-card w-full">
-                                    <div className="ia-card-head">
-                                        <div>
-                                            <div className="text-[0.65rem] font-bold tracking-[0.15em] text-[var(--text-tertiary)] mb-1">MODULE 02</div>
-                                            <div className="text-xl font-serif text-[var(--text-primary)]">Foundation</div>
-                                            <div className="text-[0.75rem] text-[var(--text-secondary)] mt-1">Capital Discipline Layer</div>
-                                        </div>
-                                        <div className="ia-badge free">Free</div>
-                                    </div>
-                                    <div className="ia-card-body">
-                                        <div>
-                                            <div className="ia-group-label">Liquidity</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Emergency fund tracker</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Liabilities</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Credit utilization %</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">EMI / debt monitor</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Score Output</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text"><strong>Capital Discipline Score</strong></div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Feeds Stability Score directly</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 03 */}
-                            <div className="flex flex-col items-center">
-                                <div className="ia-drop"></div>
-                                <div className="ia-card w-full featured">
-                                    <div className="ia-card-head featured">
-                                        <div>
-                                            <div className="text-[0.65rem] font-bold tracking-[0.15em] text-[var(--accent-gold)] mb-1">MODULE 03</div>
-                                            <div className="text-xl font-serif text-[var(--text-primary)]">Simulation Lab</div>
-                                            <div className="text-[0.75rem] text-[var(--text-secondary)] mt-1">Learning Mode · 0–90%</div>
-                                        </div>
-                                    </div>
-                                    <div className="ia-card-body">
-                                        <div>
-                                            <div className="ia-group-label">Scenario Context</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Historical market phases</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Decision Flow</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Risk-labelled asset grid</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text"><strong>Thesis Log</strong> (mandatory)</div></div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Post-action feedback</div></div>
-                                        </div>
-                                        <div className="mt-auto border border-[var(--accent-gold)]/30 rounded p-3 text-[0.7rem] font-bold tracking-wide text-[var(--accent-gold)] text-center uppercase">
-                                            🔓 Unlocks Real Exposure
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 04 */}
-                            <div className="flex flex-col items-center">
-                                <div className="ia-drop"></div>
-                                <div className="ia-card w-full">
-                                    <div className="ia-card-head">
-                                        <div>
-                                            <div className="text-[0.65rem] font-bold tracking-[0.15em] text-[var(--text-tertiary)] mb-1">MODULE 04</div>
-                                            <div className="text-xl font-serif text-[var(--text-primary)]">Insights</div>
-                                            <div className="text-[0.75rem] text-[var(--text-secondary)] mt-1">Market Intel</div>
-                                        </div>
-                                    </div>
-                                    <div className="ia-card-body">
-                                        <div>
-                                            <div className="ia-group-label">Free · Journal</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Macro signal of the week</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label amber">Premium · Risk</div>
-                                            <div className="ia-item"><div className="ia-dot amber"></div><div className="ia-item-text">Macro + <strong>your exposure</strong></div></div>
-                                            <div className="ia-item"><div className="ia-dot amber"></div><div className="ia-item-text">Recommended actions</div></div>
-                                        </div>
-                                        <div className="flex gap-2 mt-auto">
-                                            <div className="ia-badge free">Free</div>
-                                            <div className="ia-badge premium">★ Premium</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* 05 */}
-                            <div className="flex flex-col items-center">
-                                <div className="ia-drop"></div>
-                                <div className="ia-card w-full">
-                                    <div className="ia-card-head">
-                                        <div>
-                                            <div className="text-[0.65rem] font-bold tracking-[0.15em] text-[var(--text-tertiary)] mb-1">MODULE 05</div>
-                                            <div className="text-xl font-serif text-[var(--text-primary)]">Mentorship</div>
-                                            <div className="text-[0.75rem] text-[var(--text-secondary)] mt-1">Reinforcement</div>
-                                        </div>
-                                        <div className="ia-badge free">Free</div>
-                                    </div>
-                                    <div className="ia-card-body">
-                                        <div>
-                                            <div className="ia-group-label">Always Visible</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text"><strong>Daily reflection</strong> (req)</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Triggered Mode</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Auto-triggers on score drop</div></div>
-                                        </div>
-                                        <div>
-                                            <div className="ia-group-label">Voluntary Mode</div>
-                                            <div className="ia-item"><div className="ia-dot"></div><div className="ia-item-text">Risk calibration</div></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="ia-stem"></div>
-
-                        {/* System Interrupt */}
-                        <div className="ia-divider">
-                            <div className="ia-divider-line"></div>
-                            <div className="ia-divider-text">System Interrupt · Triggers from any module</div>
-                            <div className="ia-divider-line"></div>
-                        </div>
-
-                        <div className="ia-interrupt">
-                            <div className="shrink-0 w-64 pt-2">
-                                <div className="ia-interrupt-tag">Global Interrupt</div>
-                                <div className="text-2xl font-serif text-[var(--text-primary)] mb-2 mt-2">Tier Adjustment Alert</div>
-                                <div className="text-sm text-[var(--text-secondary)] leading-relaxed">Triggered when behavioral instability is mathematically detected.</div>
-                            </div>
-                            <div className="ia-interrupt-cells">
-                                <div className="ia-interrupt-cell">
-                                    <div className="ia-interrupt-cell-label">Trigger</div>
-                                    <div className="ia-interrupt-cell-text">Rapid trade frequency spike or concentration breach</div>
-                                </div>
-                                <div className="ia-interrupt-cell">
-                                    <div className="ia-interrupt-cell-label">System Response</div>
-                                    <div className="ia-interrupt-cell-text">Tier downgraded, exposure cap reduced</div>
-                                </div>
-                                <div className="ia-interrupt-cell">
-                                    <div className="ia-interrupt-cell-label">User CTA</div>
-                                    <div className="ia-interrupt-cell-text">Review Reinforcement Plan → Mentorship</div>
-                                </div>
-                                <div className="ia-interrupt-cell">
-                                    <div className="ia-interrupt-cell-label">Constraint</div>
-                                    <div className="ia-interrupt-cell-text">Never auto-sells. New exposure throttled only.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Flow Summary */}
-                        <div className="ia-flow mt-16">
-                            <div className="text-[0.7rem] font-bold tracking-[0.15em] uppercase text-[var(--text-tertiary)] mb-10 text-center">System Flow Summary — No isolated modules</div>
-                            <div className="flex items-center">
-                                <div className="flex-1 flex flex-col items-center text-center gap-4"><div className="ia-flow-box">Foundation</div><div className="text-[0.8rem] text-[var(--text-secondary)] max-w-[120px] leading-snug">Builds capital discipline</div></div>
-                                <div className="ia-flow-arrow"></div>
-                                <div className="flex-1 flex flex-col items-center text-center gap-4"><div className="ia-flow-box">Simulation</div><div className="text-[0.8rem] text-[var(--text-secondary)] max-w-[120px] leading-snug">Tests stability under pressure</div></div>
-                                <div className="ia-flow-arrow"></div>
-                                <div className="flex-1 flex flex-col items-center text-center gap-4"><div className="ia-flow-box">Insights</div><div className="text-[0.8rem] text-[var(--text-secondary)] max-w-[120px] leading-snug">Contextualises risk before action</div></div>
-                                <div className="ia-flow-arrow"></div>
-                                <div className="flex-1 flex flex-col items-center text-center gap-4"><div className="ia-flow-box">Mentorship</div><div className="text-[0.8rem] text-[var(--text-secondary)] max-w-[120px] leading-snug">Reinforces stable behaviour</div></div>
-                                <div className="ia-flow-arrow"></div>
-                                <div className="flex-1 flex flex-col items-center text-center gap-4"><div className="ia-flow-box">Real Exposure</div><div className="text-[0.8rem] text-[var(--text-secondary)] max-w-[120px] leading-snug">Earned access at 90%+</div></div>
-                            </div>
-                            <div className="flex justify-between border-t border-[var(--surface-border)] pt-6 mt-12 text-[0.8rem] font-serif italic text-[var(--text-secondary)]">
-                                <div>← Everything flows into Stability Score</div>
-                                <div>No shortcuts. No isolated modules. →</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Core Modules in Detail */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40 px-5 md:px-[60px]">
-                <div className="max-w-[800px] mb-32">
-                    <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Core Modules</h2>
-                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed max-w-[680px]">
-                        The architecture guiding stability, in sequence.
-                    </p>
-                </div>
-
-                <div className="flex flex-col gap-32">
-                    {/* Module 1: Foundation */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 lg:order-1 flex flex-col justify-center max-w-lg">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 1</span>
-                            <h3 className="font-serif text-4xl text-[var(--text-primary)] mb-6">Foundation</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                Before any investing — emergency fund, credit utilization awareness, debt-to-income visibility, cashflow structure. Credit misuse directly dents the Stability Score. Daily financial behavior <em className="text-[var(--accent-gold)] not-italic">is</em> investment readiness.
-                            </p>
-                        </div>
-                        <div className="order-1 lg:order-2 w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/Rupeerise/fiundation.png" alt="Foundation Layer" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
-                        </div>
-                    </div>
-
-                    {/* Module 2: Simulation Lab */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/Rupeerise/simulation.png" alt="Simulation Lab" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
-                        </div>
-                        <div className="flex flex-col justify-center max-w-lg lg:pl-12">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 2</span>
-                            <h3 className="font-serif text-4xl text-[var(--text-primary)] mb-6 flex items-baseline gap-4">
-                                Simulation Lab
-                                <span className="font-sans text-xl text-[var(--text-tertiary)] tracking-normal">(0–90%)</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        {/* Pattern 01 */}
+                        <div className="space-y-3">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">
+                                PATTERN 01 · ≥ 6 PARTICIPANTS
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Financial information was already everywhere
                             </h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                Historical volatility scenarios — 2008 crash, 2017 crypto hype, pandemic dips. Every decision flows: Context → Asset Grid → Thesis Log → Stability Impact Feedback. No live trading, no real money.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Module 3: Informative Friction */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 lg:order-1 flex flex-col justify-center max-w-lg">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 3</span>
-                            <h3 className="font-serif text-4xl text-[var(--text-primary)] mb-6">Informative Friction</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                When a Tier 1 user attempts an action beyond their cap, the UI doesn&apos;t show a dead-end. It shows how far away they are from unlocking, what behaviors are holding their score back, and a direct path to improve. <em className="text-[var(--accent-gold)] not-italic border-b border-[var(--accent-gold)] pb-0.5">The friction is informative, not punitive.</em>
-                            </p>
-                        </div>
-                        <div className="order-1 lg:order-2 w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group">
-                            <Image src="/images/Rupeerise/tier adjustment modal.png" alt="Informative Friction" fill className="object-cover object-top opacity-90 group-hover:opacity-100 transition-transform duration-700 group-hover:scale-[1.02]" />
-                        </div>
-                    </div>
-
-                    {/* Module 4: Insights & Mentorship (Stack) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="w-full h-[600px] relative flex items-center justify-center">
-                            <div className="absolute top-0 left-0 w-3/4 h-[400px] z-10 relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:-translate-x-2">
-                                <Image src="/images/Rupeerise/insights.png" alt="Insights Journal" fill className="object-cover object-top" />
-                            </div>
-                            <div className="absolute bottom-0 right-0 w-3/4 h-[400px] z-20 relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:translate-x-2">
-                                <Image src="/images/Rupeerise/mentorship.png" alt="Mentorship Hub" fill className="object-cover object-top" />
+                            <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    At least 6 participants agreed that financial content from finfluencers can leave people with fragmented or incomplete financial knowledge, even while they continue to invest or trade.
+                                </p>
+                                <p>
+                                    They were already consuming information from creators and picking up advice. But individual pieces of information don&apos;t automatically create a complete understanding of what to do in a particular financial situation.
+                                </p>
                             </div>
                         </div>
-                        <div className="flex flex-col justify-center max-w-lg lg:pl-12">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 4</span>
-                            <h3 className="font-serif text-4xl text-[var(--text-primary)] mb-6">Insights & Mentorship</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                Free Journal Mode builds macro awareness. Premium Applied Risk Intelligence connects live signals to a user&apos;s own exposure history — contextualizing risk before they act on it. Mentorship is not a marketplace. Users must complete a reflection before booking. <em className="text-[var(--accent-gold)] not-italic border-b border-[var(--accent-gold)] pb-0.5">Intentional friction.</em>
-                            </p>
-                        </div>
-                    </div>
 
-                    {/* Module 5: Real Exposure Mode */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="order-2 lg:order-1 flex flex-col justify-center max-w-lg">
-                            <span className="text-xs uppercase tracking-[0.15em] font-bold text-[var(--text-tertiary)] mb-4">Module 5</span>
-                            <h3 className="font-serif text-4xl text-[var(--text-primary)] mb-6">Real Exposure Mode</h3>
-                            <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
-                                Unlocks post 90% Stability Score + Tier 4 eligibility. Premium only. Same behavioral principles from simulation — now with real capital. Exposure caps, thesis logging, and intervention logic remain active throughout.
-                            </p>
-                        </div>
-                        <div className="order-1 lg:order-2 w-full h-[500px] relative bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-sm overflow-hidden group flex items-center justify-center shadow-xl">
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(209,191,160,0.03)_0,transparent_100%)] pointer-events-none z-10" />
-                            <div className="relative z-20 flex flex-col items-center gap-6 text-[var(--accent-gold)]/50 transition-opacity duration-700 group-hover:opacity-100">
-                                <CheckCircle2 className="w-12 h-12" strokeWidth={1} />
-                                <span className="font-serif text-xl tracking-widest uppercase text-[var(--text-tertiary)]">Real Exposure Activated</span>
+                        {/* Pattern 02 */}
+                        <div className="space-y-3 md:border-l md:border-[var(--surface-border)] md:pl-10">
+                            <span className="font-mono text-xs font-bold text-[#ef4444] uppercase tracking-wider">
+                                PATTERN 02 · ≥ 4 PARTICIPANTS
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Some participants still struggled at the decision moment
+                            </h3>
+                            <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    At least 4 participants described difficulties such as <strong className="text-[var(--text-primary)] font-medium">FOMO, overtrading, difficulty judging risk, or hesitation/fear around investing</strong>.
+                                </p>
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic">
+                                    &ldquo;Knowing something about investing and making a stable decision in the moment are two different problems.&rdquo;
+                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </motion.section>
 
-            {/* Ethical Guardrails */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1200px] mx-auto mb-40">
-                <div className="max-w-[800px] mb-20">
-                    <h2 className="font-serif text-5xl mb-6 text-[var(--text-primary)] tracking-tight">Ethical Guardrails</h2>
-                    <p className="text-[var(--text-secondary)] text-xl leading-relaxed max-w-[680px]">
-                        A behavioral finance product can easily become its own harm. We designed around the most common failure modes in fintech UX.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
-                    {[
-                        { icon: "🚫", title: "No Dopamine Loops", desc: "No streaks, confetti, or reward mechanics tied to trading frequency." },
-                        { icon: "📵", title: "No Trending Feeds", desc: "No 'hot stocks' section. No real-time social sentiment. Context, not noise." },
-                        { icon: "🚫", title: "No Influencer Layer", desc: "Mentorship is structured discipline reinforcement — not a marketplace of opinion." },
-                        { icon: "⚖️", title: "No Force Liquidation", desc: "Real capital is never auto-sold. New exposure is throttled; existing positions are protected." },
-                        { icon: "📊", title: "Severity-Based", desc: "Interventions are proportional to behavioral severity — not a punishment counter." },
-                        { icon: "💡", title: "Stability > Profit", desc: "Profit is intentionally excluded from scoring. This is the core ethical stance." }
-                    ].map((idx, i) => (
-                        <div key={i} className="flex flex-col gap-4">
-                            <div className="text-3xl mb-2 opacity-80">{idx.icon}</div>
-                            <h4 className="font-serif text-2xl text-[var(--text-primary)]">{idx.title}</h4>
-                            <p className="text-base text-[var(--text-secondary)] leading-relaxed">{idx.desc}</p>
+                    {/* 04 The Assumption I Revisited */}
+                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)] max-w-3xl">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            04 — Reframing
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            Financial education wasn&apos;t wrong. It was incomplete.
+                        </h2>
+                        <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            <p>
+                                The research didn&apos;t tell me to remove financial education. A beginner genuinely needs financial concepts, budgeting, and savings goals. But once someone starts making investment decisions, they need <strong className="text-[var(--text-primary)] font-medium">context, risk awareness, a way to rehearse decisions, reflection before acting, and feedback on their own behavior</strong>.
+                            </p>
+                            <div className="space-y-2 pt-2">
+                                <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-[var(--surface-border)] font-mono text-xs text-[var(--text-secondary)]">
+                                    <span className="text-[#ef4444] line-through">Lack of financial knowledge → poor financial decisions</span>
+                                </div>
+                                <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-emerald-500/40 font-mono text-xs text-[var(--text-primary)] font-semibold">
+                                    <span className="text-emerald-400">Fragmented info + uncertainty + emotion → potentially unstable decisions</span>
+                                </div>
+                            </div>
+                            <p className="font-serif text-xl text-[var(--text-primary)] italic pt-1">
+                                &ldquo;How might we help young investors turn fragmented financial information into more deliberate financial decisions?&rdquo;
+                            </p>
                         </div>
-                    ))}
-                </div>
-            </motion.section>
-
-            {/* Outcome & Future Scope */}
-            <motion.section variants={sectionVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} className="w-full max-w-[1000px] mx-auto pb-32">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                    <div className="md:col-span-4">
-                        <h2 className="font-serif text-5xl sticky top-32 text-[var(--text-primary)] tracking-tight">Outcome</h2>
                     </div>
-                    <div className="md:col-span-8">
-                        <div className="border-l-2 border-[var(--accent-gold)] py-2 pl-8 my-12">
-                            <p className="text-2xl font-serif italic leading-relaxed m-0 text-[var(--text-primary)] mb-4">
-                                &quot;Market-ready concept — requires security hardening before production.&quot;
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 4. 05 LAYERED SYSTEM & 06 PRODUCT THESIS                                  */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-3">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            05 — Layered Architecture
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            From one product to a layered system
+                        </h2>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            I designed RupeeRise as a progression through different levels of financial decision-making:
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">
+                                Layer 01 · Foundation
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">Build financial knowledge</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Financial concepts, budgeting, savings goals, and structured financial basics.
                             </p>
-                            <span className="text-xs font-sans tracking-widest uppercase font-bold text-[var(--text-tertiary)]">— Jury Feedback</span>
                         </div>
 
-                        <div className="prose prose-lg prose-invert text-[var(--text-secondary)] mb-20">
-                            <h3 className="font-serif text-3xl text-[var(--text-primary)] mb-8">What I Learned</h3>
-                            <p className="mb-8 leading-relaxed">
-                                The shift from &quot;how do we teach people about money&quot; to &quot;how do we structurally reduce behavioral damage&quot; is not a small pivot. It changed the entire design model — from content delivery to behavioral gating. <strong className="text-[var(--accent-gold)] font-medium">That reframe was the most important decision we made</strong>, and it only happened because we spent time in research before opening Figma.
-                            </p>
-                            <p className="mb-0 leading-relaxed">
-                                The 14-day constraint also forced prioritization in a healthy way. Every feature had to earn its place inside the stability hypothesis. Anything that didn&apos;t connect to the behavioral architecture got cut.
+                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                            <span className="font-mono text-xs font-bold text-[#60a5fa] uppercase tracking-wider block">
+                                Layer 02 · Bridge
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">Prepare before real exposure</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Market context, historical scenarios, simulation lab, and risk awareness.
                             </p>
                         </div>
 
+                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                            <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+                                Layer 03 · Behavioral
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">Make decision patterns visible</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Stability Score, Thesis Log, Behavioral Insights, and contextual mentorship.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="pt-2">
+                        <p className="font-mono text-xs sm:text-sm text-center text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                            Learn → Understand → Simulate → Decide → Reflect
+                        </p>
+                    </div>
+
+                    {/* 06 The Product Thesis */}
+                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)] max-w-3xl">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            06 — The Product Thesis
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            Three core principles
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
+                            <div className="space-y-1">
+                                <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">01</span>
+                                <h3 className="font-serif text-lg text-[var(--text-primary)]">Measure behavior, not just outcomes</h3>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">Financial returns don&apos;t necessarily tell us whether a decision was disciplined.</p>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">02</span>
+                                <h3 className="font-serif text-lg text-[var(--text-primary)]">Add friction at the decision moment</h3>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">If impulsive behavior is part of the problem, removing every barrier works against the purpose.</p>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">03</span>
+                                <h3 className="font-serif text-lg text-[var(--text-primary)]">Reward discipline, not activity</h3>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">Rewarding trading frequency reinforces the behavior we aim to help control.</p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 5. 07 STABILITY SCORE, 08 SIMULATION LAB, 09 THESIS LOG, 10 INSIGHTS      */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-14 border-t border-[var(--surface-border)] pt-12"
+                >
+                    {/* 07 Stability Score */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div className="lg:col-span-6 space-y-4">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                07 — Stability Score
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                What if making money isn&apos;t the same as making a good decision?
+                            </h2>
+                            <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    I separated <strong className="text-[var(--text-primary)] font-medium">financial outcome</strong> from <strong className="text-[var(--text-primary)] font-medium">decision quality</strong>. Profit is deliberately excluded as the primary signal.
+                                </p>
+                                <p>
+                                    The Stability Score evaluates: <strong className="text-[var(--text-primary)] font-medium">Risk awareness · Decision consistency · Diversification · Reaction patterns · Financial discipline</strong>.
+                                </p>
+                                <p className="font-mono text-xs text-[var(--accent-gold)]">
+                                    Stability Score → What changed? → Which behavior contributed? → What can I improve?
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-6 flex justify-center">
+                            <div className="w-full max-w-[280px]">
+                                <PhoneMockup className="max-w-none w-full shadow-2xl">
+                                    <img src="/images/Rupeerise/dashboard.png" alt="Stability Score UI" className="w-full h-auto block" />
+                                </PhoneMockup>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 08 Simulation Lab & 09 Thesis Log */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-8 border-t border-[var(--surface-border)]">
+                        <div className="lg:col-span-6 flex justify-center order-2 lg:order-1">
+                            <div className="w-full max-w-[280px]">
+                                <PhoneMockup className="max-w-none w-full shadow-2xl">
+                                    <img src="/images/Rupeerise/simulation.png" alt="Simulation Lab UI" className="w-full h-auto block" />
+                                </PhoneMockup>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-6 space-y-4 order-1 lg:order-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                08 — Simulation Lab &amp; 09 — Thesis Log
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                The friction is the intervention
+                            </h2>
+                            <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    In the Simulation Lab, users encounter historical market scenarios and decide what they would do before taking greater exposure: <strong className="text-[var(--text-primary)] font-medium">Scenario → Decision → Outcome → Reflection</strong>.
+                                </p>
+                                <p>
+                                    For meaningful decisions, the user must articulate a written Thesis Log: <em>Why am I taking this position? Why now? What do I expect? What would make me exit?</em>
+                                </p>
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic pl-3 border-l-2 border-[var(--accent-gold)]">
+                                    &ldquo;The friction isn&apos;t a usability failure. It&apos;s the intervention.&rdquo;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 10 Behavioral Insights & 11 Contextual Mentorship */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center pt-8 border-t border-[var(--surface-border)]">
+                        <div className="lg:col-span-6 space-y-4">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                10 — Behavioral Insights &amp; 11 — Mentorship
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Don&apos;t just show what happened. Show how the user behaved.
+                            </h2>
+                            <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    Behavioral Insights connects decisions over time (e.g. repeated buying after rapid price movements $\rightarrow$ possible FOMO pattern $\rightarrow$ reflection). Rather than &ldquo;You made a bad decision,&rdquo; it surfaces: <em>&ldquo;This pattern appears repeatedly in your recent decisions.&rdquo;</em>
+                                </p>
+                                <p>
+                                    Mentorship transforms from a passive directory into an intervention triggered when a behavioral need is detected.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-6 flex justify-center">
+                            <div className="w-full max-w-[280px]">
+                                <PhoneMockup className="max-w-none w-full shadow-2xl">
+                                    <img src="/images/Rupeerise/insights.png" alt="Behavioral Insights Screen" className="w-full h-auto block" />
+                                </PhoneMockup>
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 6. 12 DECISION LOOP, 13 FIVE DECISIONS, 14 WHAT NOT TO BUILD              */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-3">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            12 &amp; 13 — System Loop &amp; Design Decisions
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            Five decisions that shaped the product
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">DECISION 01</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)]">Remove profit from the Stability Score</h3>
+                            <p>Measure behavioral stability instead of portfolio performance. A profitable decision can still be impulsive or poorly reasoned.</p>
+                        </div>
+
+                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-8">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">DECISION 02</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)]">Make the Thesis Log mandatory</h3>
+                            <p>Require reflection before meaningful simulated decisions. Optional reflection is easiest to skip when most needed.</p>
+                        </div>
+
+                        <div className="space-y-2 pt-4 border-t border-[var(--surface-border)]">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">DECISION 03</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)]">Reward discipline, not frequency</h3>
+                            <p>Progress signals reflection, consistency, risk awareness, and diversification—not trading volume.</p>
+                        </div>
+
+                        <div className="space-y-2 pt-4 border-t border-[var(--surface-border)] md:border-l md:border-[var(--surface-border)] md:pl-8">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">DECISION 04</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)]">Make the premium boundary contextual</h3>
+                            <p>Free answers &ldquo;How am I doing?&rdquo; while Premium answers &ldquo;Why am I behaving this way, and what should I do differently?&rdquo;</p>
+                        </div>
+
+                        <div className="space-y-2 pt-4 border-t border-[var(--surface-border)] md:col-span-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)]">DECISION 05</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)]">Inform, don&apos;t punish</h3>
+                            <p>Framed as information rather than punishment: What changed → Why it changed → What behavior contributed → What can I improve?</p>
+                        </div>
+                    </div>
+
+                    {/* 14 What I deliberately chose NOT to build */}
+                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)] max-w-3xl">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[#ef4444] font-semibold">
+                            14 — Deliberate Omissions
+                        </span>
+                        <h2 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)] leading-[1.2]">
+                            What I deliberately chose not to build
+                        </h2>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs sm:text-sm text-[var(--text-secondary)]">
+                            <li>• <strong className="text-[var(--text-primary)]">Trending-stock feeds:</strong> Could create urgency and FOMO.</li>
+                            <li>• <strong className="text-[var(--text-primary)]">Influencer marketplace:</strong> Could reinforce herd behavior.</li>
+                            <li>• <strong className="text-[var(--text-primary)]">Trading streaks:</strong> Could reward frequency over quality.</li>
+                            <li>• <strong className="text-[var(--text-primary)]">Profit leaderboards:</strong> Could confuse luck with skill.</li>
+                            <li>• <strong className="text-[var(--text-primary)]">Price-movement push alerts:</strong> Could create unnecessary urgency.</li>
+                            <li>• <strong className="text-[var(--text-primary)]">Automatic punitive restrictions:</strong> Removes user control.</li>
+                        </ul>
+                        <p className="font-serif text-lg text-[var(--text-primary)] italic pt-1">
+                            &ldquo;A financial product shouldn&apos;t optimize engagement at the expense of decision quality.&rdquo;
+                        </p>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 7. 15–20 SHIPPED, METRICS, LIMITATIONS & REFLECTION                       */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-2">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            16, 17 &amp; 18 — Delivery &amp; Proposed Metrics
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            What shipped &amp; validation targets
+                        </h2>
+                    </div>
+
+                    <div className="max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed space-y-3">
+                        <p>
+                            <strong className="text-[var(--text-primary)] font-medium">AI in the project:</strong> AI was part of the hackathon MVP for generating finance quizzes. When I reframed RupeeRise around behavioral decision-making, I didn&apos;t force AI into the redesign. I do not claim AI-powered behavioral analysis or risk scoring.
+                        </p>
+                        <p>
+                            <strong className="text-[var(--text-primary)] font-medium">Separating the MVP:</strong> During the hackathon, we built a functional MVP with rudimentary UI. My redesigned UI was not integrated into that build. The behavioral-finance system is a conceptual product redesign.
+                        </p>
+                    </div>
+
+                    {/* Proposed Metrics Targets */}
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4 border-t border-[var(--surface-border)]">
                         <div>
-                            <div className="flex items-center gap-4 mb-10">
-                                <div className="text-[var(--accent-gold)] font-serif text-xl border border-[var(--accent-gold)]/50 rounded-full w-8 h-8 flex items-center justify-center">!</div>
-                                <h3 className="font-serif text-3xl text-[var(--text-primary)] m-0">Future Scope</h3>
-                            </div>
-                            <ul className="space-y-6 m-0 p-0 list-none">
-                                {[
-                                    "Calibrate score weightings with real behavioral data from beta users.",
-                                    "Validate severity thresholds via controlled user testing.",
-                                    "Design for the edge case: the stable user with an urgent capital need.",
-                                    "Build the compliance and security layer required for real exposure mode."
-                                ].map((item, i) => (
-                                    <li key={i} className="flex items-start gap-6 text-[var(--text-secondary)] pb-6 border-b border-[var(--surface-border)] last:border-0 last:pb-0">
-                                        <span className="text-[0.7rem] font-bold tracking-[0.15em] uppercase text-[var(--accent-gold)] pt-1">0{i + 1}</span>
-                                        <span className="text-lg">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="font-serif text-4xl md:text-5xl text-[var(--text-primary)]">~70%</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">Thesis Log Target</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-4xl md:text-5xl text-[var(--text-primary)]">3+</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">Simulations Before Trade</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-4xl md:text-5xl text-[var(--text-primary)]">30-Day</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">Stability Direction</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-4xl md:text-5xl text-[var(--text-primary)]">~20%</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">Premium Hypothesis</div>
                         </div>
                     </div>
-                </div>
-            </motion.section>
 
-            {/* CASE STUDY FOOTER */}
-            <section className="w-full max-w-[1000px] mx-auto border-t border-[var(--surface-border)] pt-16 pb-8 px-5 md:px-[60px]">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-                    <div>
-                        <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-3">Next Case Study</p>
-                        <h3 className="font-serif text-[1.75rem] text-[var(--text-primary)] leading-[1.2]">Udyoga Pramoda</h3>
+                    {/* 19 Limitations & 20 What I Would Do Differently */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[var(--surface-border)]">
+                        <div className="space-y-2 font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
+                            <span className="font-mono text-xs font-bold text-[var(--text-tertiary)] uppercase tracking-wider block">19 / Limitations</span>
+                            <p>Small exploratory sample (~10 participants). I do not claim all young investors experience these problems or that the score has been live-validated.</p>
+                        </div>
+                        <div className="space-y-2 font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed md:border-l md:border-[var(--surface-border)] md:pl-8">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">20 / What I Would Do Differently</span>
+                            <p>Validate whether users recognize behavioral patterns and whether reflection actually changes their next decision before designing the score.</p>
+                        </div>
                     </div>
-                    <a
-                        href="/udyoga-pramoda"
-                        className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
-                    >
-                        <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">View Case Study →</span>
-                    </a>
-                </div>
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-12">
-                    <a href="/#work" className="font-mono text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">← Back to Selected Work</a>
-                    <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
-                </div>
-            </section>
+
+                    {/* Final Reflection */}
+                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)] max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            Reflection
+                        </span>
+                        <p>
+                            RupeeRise changed how I think about the difference between giving users information and helping users make decisions. People were already consuming financial information; the real challenge was applying it under uncertainty and emotion.
+                        </p>
+                        <div className="pt-2 border-l-2 border-[var(--accent-gold)] pl-4 font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                            &ldquo;When a user already knows enough, what can the product do at the exact moment knowledge needs to become a decision?&rdquo;
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 8. NEXT CASE STUDY NAVIGATION                                             */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="border-t border-[var(--surface-border)] pt-12 pb-6 space-y-8"
+                >
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div>
+                            <p className="font-mono text-xs uppercase tracking-widest text-[var(--text-tertiary)] mb-1">Next Case Study</p>
+                            <h3 className="font-serif text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight">Clinical Emergency Response</h3>
+                        </div>
+                        <Link
+                            href="/emergency-app"
+                            className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
+                        >
+                            <span className="font-sans text-sm md:text-base tracking-widest uppercase font-bold text-[var(--text-primary)]">
+                                View Case Study
+                            </span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
+                        </Link>
+                    </div>
+
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-5">
+                        <Link href="/#work" className="font-mono text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
+                            ← Back to Selected Work
+                        </Link>
+                        <span className="font-mono text-xs text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                    </div>
+                </motion.section>
+
+            </div>
         </CaseStudyTemplate>
     );
 }

@@ -23,11 +23,11 @@ type ProjectType = {
 
 const PROJECTS: ProjectType[] = [
     {
-        title: "STEMI Alarm App",
-        description: "A critical mobile alarm system ensuring timely intervention for heart attack patients, bridging the gap between paramedics and doctors.",
+        title: "Clinical Emergency Response",
+        description: "A mobile platform for tiered emergency alerts, clinical coordination, and response workflows for doctors and nurses.",
         image: "/images/thumbnails/Emergency app- Alarm List.png",
-        tags: ["Healthcare", "Mobile UI", "UX Strategy"],
-        link: "#", // Add link if available
+        tags: ["Healthcare UX", "Clinical Workflows", "ccm.ai"],
+        link: "/emergency-app",
         mockupType: "phone"
     },
     {

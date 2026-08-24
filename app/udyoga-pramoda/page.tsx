@@ -1,270 +1,651 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import CaseStudyTemplate from '@/components/templates/CaseStudyTemplate';
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
+import { DesktopMockup } from "@/components/ui/mockups";
+import { 
+    ArrowRight, 
+    CheckCircle2, 
+    UserCheck, 
+    Users, 
+    ShieldCheck, 
+    Briefcase,
+    Calendar,
+    GraduationCap,
+    MessageSquare,
+    TrendingUp,
+    Layers,
+    Clock,
+    Sparkles
+} from "lucide-react";
 
 export default function UdyogaPramodaPage() {
-    const sectionVariants = {
-        hidden: { opacity: 0, y: 32 },
+    const fadeUp = {
+        hidden: { opacity: 0, y: 20 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } as any
+            transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } as any
         }
     };
 
     return (
         <CaseStudyTemplate
             title="Udyoga Pramoda"
-            role="End-to-End Product Designer"
-            timeline="Live Production"
-            tags={["EdTech", "Community Platform", "Web System"]}
+            role="Product Designer — UX, UI & Product"
+            timeline="May–July 2025"
+            tags={["Career Community", "Mentorship Platform", "EdTech", "Web Product"]}
+            hideDefaultHero={true}
         >
-            <div className="max-w-[1100px] mx-auto space-y-24 md:space-y-32">
-
-                {/* 1. Hero Section */}
-                <motion.section initial="hidden" animate="visible" variants={sectionVariants} className="space-y-8 max-w-[720px]">
-                    <h2 className="text-[1.953rem] md:text-[2.441rem] font-serif text-[var(--text-secondary)] italic leading-[1.2]">
-                        Designing a Mentor-Gated Progression System
-                    </h2>
-                    <p className="text-[1.25rem] text-[var(--text-tertiary)] pt-8 max-w-2xl leading-[1.5] opacity-[0.87]">
-                        Translating an informal mentorship culture into a structured, measurable operational system for 1,000+ users without increasing mentor burden.
-                    </p>
-
-                    <div className="flex flex-wrap gap-8 pt-8">
-                        {["End-to-End Design", "Live Production", "Data-Driven Resign"].map((tag) => (
-                            <span key={tag} className="px-4 py-2 bg-[var(--bg-surface)] border border-[var(--surface-border)] text-[var(--text-secondary)] text-[1rem] rounded-full font-medium tracking-wide shadow-sm">
-                                {tag}
-                            </span>
-                        ))}
-                    </div>
-                </motion.section>
-
-                <motion.div initial="hidden" animate="visible" variants={sectionVariants}>
-                    <div className="w-full aspect-[21/9] md:aspect-[16/9] relative rounded-2xl overflow-hidden bg-[var(--bg-surface)] border border-[var(--surface-border)] shadow-xl hidden md:flex items-center justify-center p-8 bg-gradient-to-b from-[var(--bg-surface)] to-[var(--bg-surface-hover)]">
-                        <div className="relative w-full h-full overflow-hidden rounded-xl border border-[var(--surface-border)] shadow-lg shadow-black/5">
-                            <Image 
-                                src="/images/Udyoga pramoda/Udyoga Pramoda Landing.png" 
-                                alt="Hero composite showing Redesigned Dashboards" 
-                                fill 
-                                className="object-cover object-top" 
-                                priority 
-                            />
-                            {/* Subtle noise overlay */}
-                            <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* 2. Challenge & Role */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[720px] space-y-16">
-                    <div className="space-y-8">
-                        <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-8 tracking-tight leading-[1.1]">The Context & Challenge</h2>
-                        <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                            Udyoga Pramoda scaled from a small group to over 1,046 active users. While the mentorship was impactful, the manual operations—coordinated largely via WhatsApp—collapsed under the scale. The challenge was to structure this informal process into a scalable digital product without turning it into a bureaucratic burden for busy volunteer mentors.
-                        </p>
-                    </div>
-
-                    <div className="bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] p-8 rounded-r-2xl my-16 shadow-sm relative overflow-hidden backdrop-blur-sm border-t border-r border-b border-[var(--surface-border)]">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[var(--bg-surface)] to-transparent opacity-50"></div>
-                        <div className="relative z-10">
-                            <p className="font-serif text-[1.563rem] text-[var(--text-primary)] leading-[1.2] mb-8">
-                                The fragility of trust at scale.
-                            </p>
-                            <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                                The core operation relied on a high-trust model: mentors validating an aspirant&apos;s &quot;readiness&quot; before they applied for jobs. As numbers grew, this validation lived in siloed chat logs, and overall funnel visibility vanished.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 3. Discovery & MVP Audit */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[720px] space-y-16">
-                    <div className="space-y-8">
-                        <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-8 tracking-tight leading-[1.1]">Auditing the MVP</h2>
-                        <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                            Instead of starting from scratch, we analyzed data from the initial users and conducted a heuristic audit of a functional MVP shipped to solve immediate database needs.
-                        </p>
-                    </div>
-
-                    <div className="space-y-16">
-                        <div className="space-y-8">
-                            <p className="text-[1rem] font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)]">Insight 1: The Funnel Reality</p>
-                            <ul className="space-y-4 font-medium text-[var(--text-primary)] pl-8 border-l border-[var(--surface-border)]">
-                                <li className="flex items-center gap-4 text-[1.25rem]">150 <span className="font-normal text-[var(--text-secondary)] opacity-[0.87]">Active Aspirants</span></li>
-                                <li className="flex items-center gap-4 text-[1.25rem]">50 <span className="font-normal text-[var(--text-secondary)] opacity-[0.87]">Mentor-validated as &quot;Job-Ready&quot;</span></li>
-                                <li className="flex items-center gap-4 text-[1.25rem] text-[var(--accent-gold)]">25+ <span className="font-normal text-[var(--text-secondary)] opacity-[0.87]">Secured Placements</span></li>
-                            </ul>
-                            <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                                This revealed a <strong className="text-[var(--text-primary)] opacity-100">50% placement conversion rate</strong> from validated aspirants. The bottleneck wasn&apos;t placement matching—it was the operational friction of getting users validated.
-                            </p>
-                        </div>
-
-                        <div className="space-y-8">
-                            <p className="text-[1rem] font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)]">Insight 2: Cognitive Overload</p>
-                            <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                                The MVP functions as a database viewer rather than a guided journey. It stacked eight widgets with equal visual weight. Aspirants lacked &quot;visibility of system status&quot;—they could not see their current stage or the next required action.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* 4. Strategy & Principles */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="space-y-16 max-w-[900px]">
-                    <div className="border-b border-[var(--surface-border)] pb-8 mb-16">
-                        <p className="text-[1rem] font-bold tracking-[0.12em] uppercase text-[var(--accent-gold)] mb-8">The Pivot</p>
-                        <p className="font-serif text-[1.953rem] md:text-[3.052rem] text-[var(--text-primary)] leading-[1.1] tracking-tight text-balance">
-                            From a <em className="text-[var(--text-secondary)] not-italic line-through mr-2">Passive Content Platform</em> to an <em className="text-[var(--accent-gold)] not-italic">Active Progression System.</em>
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        {[
-                            { title: "Respect Volunteer Capacity", desc: "Validation must be lightweight (one-click actions), not complex manual forms.", closing: "This held in production: 25+ placements processed through the system without mentors reporting form-completion burden." },
-                            { title: "Progression Over Options", desc: "Guide sequentially. Don't distract un-validated aspirants with jobs they aren't ready for.", closing: "The sequenced flow supported 1k+ users reaching the appropriate stage without premature job application drop-offs." },
-                            { title: "Unambiguous State", desc: "Strict visual indicators for status (Pending vs. Validated) to eliminate chaos.", closing: "The Pending / Validated distinction eliminated the WhatsApp back-channel disambiguation that preceded this system." },
-                            { title: "Build for the Stack", desc: "Design using atomic, reproducible components mapped directly to shadcn.", closing: "Live production with 1k+ users validated that atomic shadcn-mapped components scaled without accumulated technical debt." }
-                        ].map((item, idx) => (
-                            <div key={idx} className="space-y-4">
-                                <span className="text-[var(--accent-gold)] font-bold text-[1rem] tracking-widest uppercase mb-4 block opacity-[0.87]">Rule 0{idx + 1}</span>
-                                <h3 className="text-[1.563rem] font-bold font-serif text-[var(--text-primary)] leading-[1.2]">{item.title}</h3>
-                                <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">{item.desc}</p>
-                                <p className="text-[0.875rem] text-[var(--accent-gold)]/70 mt-2 italic leading-[1.5]">{item.closing}</p>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-
-                {/* 5. Execution (Images) */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="space-y-32 pt-16 border-t border-[var(--surface-border)]/50">
-                    <div className="max-w-[720px] space-y-8">
-                        <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] tracking-tight leading-[1.1]">Design Execution</h2>
-                        <p className="text-[1.25rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87] max-w-[680px]">Information Architecture & Dashboard Unification.</p>
-                    </div>
-
-                    {/* Stack 1 */}
-                    <div className="flex flex-col md:flex-row items-center gap-16 md:gap-32">
-                        <div className="flex-1 space-y-8">
-                            <h3 className="font-serif text-[1.953rem] text-[var(--text-primary)] leading-[1.2]">Restructuring Portals</h3>
-                            <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                                The ecosystem was split by user role: <strong className="text-[var(--text-primary)] opacity-100">Aspirant Portal</strong> (Stage Tracker & Tasks), <strong className="text-[var(--text-primary)] opacity-100">Mentor Portal</strong> (Roster & Validation Center), and <strong className="text-[var(--text-primary)] opacity-100">Admin Portal</strong> (Funnel Analytics).
-                            </p>
-                        </div>
-                        <div className="flex-1 w-full bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-2xl p-8 flex justify-center items-center shadow-sm relative overflow-hidden backdrop-blur-md">
-                            <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
-                            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg shadow-black/5 border border-[var(--surface-border)]">
-                                <Image src="/images/Udyoga pramoda/Udyoga Pramoda Landing (Flow Step).png" alt="Information Architecture Flow" fill className="object-cover object-top" />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Stack 2 */}
-                    <div className="flex flex-col md:flex-row-reverse items-center gap-16 md:gap-32 border-t border-[var(--surface-border)]/50 pt-24">
-                        <div className="flex-1 space-y-8">
-                            <h3 className="font-serif text-[1.953rem] text-[var(--text-primary)] leading-[1.2]">The Journey-First Dashboard</h3>
-                            <p className="text-[1rem] text-[var(--text-secondary)] leading-[1.5] opacity-[0.87]">
-                                The new Aspirant Dashboard immediately orients the user to their current stage (e.g., &quot;Stage 2: Skill Building&quot;) and presents the primary &quot;Next Task&quot; above all other content. Content is gated to prevent premature applications.
-                            </p>
-                        </div>
-                        <div className="flex-1 w-full bg-[var(--bg-surface)] border border-[var(--surface-border)] rounded-2xl p-8 flex justify-center items-center shadow-sm relative overflow-hidden backdrop-blur-md">
-                            <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
-                            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-lg shadow-black/5 border border-[var(--surface-border)]">
-                                <Image src="/images/Udyoga pramoda/Udyoga Pramoda Landing (Flow Step) (1).png" alt="Journey-First Dashboard Flow" fill className="object-cover object-top" />
-                            </div>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* COMPONENT ANNOTATION — Mentor Validation Gate */}
+            <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24">
+                
+                {/* ========================================================================= */}
+                {/* 1. HERO — CONTINUOUS STORY OPENING                                        */}
+                {/* ========================================================================= */}
                 <motion.section
+                    variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    variants={sectionVariants}
-                    className="max-w-[720px] space-y-8"
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="relative pt-8 md:pt-16"
                 >
-                    <div className="bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] p-8 rounded-r-2xl border-t border-r border-b border-[var(--surface-border)]">
-                        <div className="flex items-center gap-4 mb-8">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--accent-gold)]">
-                                Component Breakdown
-                            </span>
-                            <span className="font-serif text-xl text-[var(--text-primary)]">Mentor Validation Gate</span>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                        {/* 40% Text Column */}
+                        <div className="lg:col-span-5 space-y-5">
+                            <div className="inline-flex items-center gap-3">
+                                <span className="h-px w-6 bg-[var(--accent-gold)]" />
+                                <span className="text-[var(--accent-gold)] font-sans text-xs md:text-sm tracking-widest uppercase font-bold">
+                                    Case Study · Career Community &amp; EdTech
+                                </span>
+                            </div>
+                            
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-primary)] tracking-tight font-serif leading-[1.05]">
+                                Udyoga <em className="italic text-[var(--accent-gold)] font-serif font-normal">Pramoda</em>
+                            </h1>
+                            
+                            <p className="font-serif text-xl sm:text-2xl text-[var(--text-primary)] leading-[1.3] italic font-normal">
+                                Making progress visible in a volunteer-driven career community
+                            </p>
+
+                            <div className="space-y-3.5 text-[var(--text-secondary)] font-sans text-base md:text-lg leading-relaxed pt-1">
+                                <p>
+                                    Udyoga Pramoda started as a community platform for <strong className="text-[var(--text-primary)] font-medium">jobs, events, classes and mentors</strong>.
+                                </p>
+                                <p>
+                                    The platform could help young people discover opportunities and connect with working professionals. But I noticed a problem after people joined: <strong className="text-[var(--text-primary)] font-medium">many participants did not consistently attend classes or complete the work given to them.</strong>
+                                </p>
+                                <p>
+                                    For a volunteer-driven mentor community, that created a bigger problem. Mentors were giving their time to help people grow, but there was little visibility into who was actually learning, who was putting in consistent effort, and who needed attention.
+                                </p>
+                            </div>
                         </div>
-                        <div className="space-y-0">
-                            {[
-                                { label: "Locked state", rationale: "Aspirants see job listings exist but can't access — motivational, not punitive." },
-                                { label: "Validation badge", rationale: "Persistent on profile — signals readiness to mentors and peers." },
-                                { label: "Progress tracker", rationale: "Shows aspirant's position in the readiness arc — reduces uncertainty about readiness." },
-                                { label: "Mentor counter", rationale: "25+ mentors visible — establishes trust before first session." },
-                                { label: "Gate messaging", rationale: "Framed as readiness, not rejection — language tested against user frustration patterns." },
-                            ].map((item, i) => (
-                                <div key={i} className="flex flex-col sm:flex-row sm:items-start gap-4 border-b border-[var(--surface-border)] py-6 last:border-0 last:pb-0">
-                                    <span className="shrink-0 font-mono text-[var(--text-tertiary)] text-xs w-6">{String(i + 1).padStart(2, "0")}</span>
-                                    <span className="shrink-0 font-bold text-[var(--text-primary)] text-sm min-w-[180px]">{item.label}</span>
-                                    <span className="text-[var(--text-secondary)] text-sm leading-[1.6]">{item.rationale}</span>
-                                </div>
-                            ))}
+
+                        {/* 60% Visual Column (Desktop Mockup) */}
+                        <div className="lg:col-span-7 flex justify-center lg:justify-end">
+                            <div className="w-full max-w-[760px] shadow-2xl">
+                                <DesktopMockup className="max-w-none w-full shadow-2xl">
+                                    <img 
+                                        src="/images/thumbnails/Udyoga Pramoda Landing.png" 
+                                        alt="Udyoga Pramoda Community Platform Landing & Progression View" 
+                                        className="w-full h-auto block" 
+                                    />
+                                </DesktopMockup>
+                                <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-3">
+                                    Udyoga Pramoda · Making Learner Progression Visible
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Metadata Row (Clean Editorial Grid, No Cards) */}
+                    <div className="mt-12 pt-6 border-t border-[var(--surface-border)]">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 gap-x-6 text-xs md:text-sm font-sans">
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Role</span>
+                                <span className="text-[var(--text-primary)] font-medium">Product Designer — UX, UI &amp; Product</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Timeline</span>
+                                <span className="text-[var(--text-secondary)]">May–July 2025</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Team</span>
+                                <span className="text-[var(--text-secondary)]">1 Designer + 1 Developer</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Platform</span>
+                                <span className="text-[var(--text-secondary)]">Web</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Involvement</span>
+                                <span className="text-[var(--text-secondary)]">Product, UX/UI, Flows, Deployment</span>
+                            </div>
+                            <div>
+                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Outcome</span>
+                                <span className="text-[var(--text-primary)] font-medium">1,247 Users · 25 Placements</span>
+                            </div>
                         </div>
                     </div>
                 </motion.section>
 
-                {/* 6. Results */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={sectionVariants} className="max-w-[1100px] pt-16 border-t border-[var(--surface-border)] mt-16">
-                    <div className="mb-16">
-                        <h2 className="font-serif text-[1.953rem] md:text-[2.441rem] text-[var(--text-primary)] tracking-tight leading-[1.1]">Real World Impact</h2>
+                {/* ========================================================================= */}
+                {/* 2. THE CORE IDEA & 01 — WHERE IT STARTED                                  */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="py-4 md:py-8"
+                >
+                    <div className="border-y border-[var(--surface-border)] py-14 md:py-20 max-w-4xl mx-auto text-center space-y-6">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-bold">
+                            Core Redesign Thesis
+                        </span>
+
+                        <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl text-[var(--text-primary)] leading-[1.3] tracking-tight">
+                            &ldquo;Make progress visible to the people who can act on it.&rdquo;
+                        </blockquote>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-8 relative z-10 p-8 md:p-16 rounded-[2rem] bg-[var(--text-primary)] text-[var(--bg-sage)] overflow-hidden shadow-2xl">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--accent-gold)]/10 rounded-full blur-[80px]"></div>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-12">
+                        <div className="lg:col-span-5 space-y-4">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                01 — Where It Started
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Udyoga Pramoda already had the pieces of a career ecosystem
+                            </h2>
+                            <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                The first version wasn&apos;t trying to compete with every career platform. It brought together things that were already happening within the community.
+                            </p>
+                        </div>
 
-                        <div className="space-y-4">
-                            <span className="block text-[2.441rem] md:text-[3.052rem] font-black font-heading text-[var(--accent-gold)] leading-[1.1]">1k+</span>
-                            <span className="text-[1rem] font-bold uppercase tracking-widest block opacity-70">Active Users</span>
-                            <p className="text-[1rem] font-medium mt-4 leading-[1.5] opacity-[0.87]">managed on the platform without friction</p>
-                        </div>
-                        <div className="space-y-4">
-                            <span className="block text-[2.441rem] md:text-[3.052rem] font-black font-heading text-[var(--accent-gold)] leading-[1.1]">50%</span>
-                            <span className="text-[1rem] font-bold uppercase tracking-widest block opacity-70">Conversion</span>
-                            <p className="text-[1rem] font-medium mt-4 leading-[1.5] opacity-[0.87]">for mentor-validated aspirants holding steady</p>
-                        </div>
-                        <div className="space-y-4">
-                            <span className="block text-[2.441rem] md:text-[3.052rem] font-black font-heading text-[var(--accent-gold)] leading-[1.1]">25+</span>
-                            <span className="text-[1rem] font-bold uppercase tracking-widest block opacity-70">Placements</span>
-                            <p className="text-[1rem] font-medium mt-4 leading-[1.5] opacity-[0.87]">successfully secured roles through the system</p>
-                        </div>
-                        <div className="space-y-4">
-                            <span className="block text-[2.441rem] md:text-[3.052rem] font-black font-heading text-[var(--accent-gold)] leading-[1.1]">₹7.5L</span>
-                            <span className="text-[1rem] font-bold uppercase tracking-widest block opacity-70">Average Salary</span>
-                            <p className="text-[1rem] font-medium mt-4 leading-[1.5] opacity-[0.87]">achieved across all verified placements</p>
+                        <div className="lg:col-span-7 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed lg:border-l lg:border-[var(--surface-border)] lg:pl-12">
+                            <ul className="space-y-2.5 text-sm md:text-base text-[var(--text-primary)]">
+                                <li className="flex items-start gap-2.5">
+                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Jobs</strong>
+                                    <span>People could discover opportunities.</span>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Events &amp; classes</strong>
+                                    <span>The community could conduct sessions, hackathons and skill-building programs.</span>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Mentors</strong>
+                                    <span>Young people could browse working professionals and send connection requests.</span>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Community communication</strong>
+                                    <span>WhatsApp groups helped people communicate outside the product.</span>
+                                </li>
+                            </ul>
+
+                            <p className="pt-2">
+                                Mentors were professionals volunteering their time to help younger people develop skills. They could accept or reject connection requests, guide mentees and share relevant opportunities from their professional networks.
+                            </p>
+
+                            <div className="pt-2">
+                                <span className="font-mono text-xs text-[var(--text-tertiary)] uppercase tracking-wider block mb-1">
+                                    The Basic Journey Existed:
+                                </span>
+                                <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                                    <span>Discover</span>
+                                    <span className="text-[var(--accent-gold)]">→</span>
+                                    <span>Connect</span>
+                                    <span className="text-[var(--accent-gold)]">→</span>
+                                    <span>Learn</span>
+                                    <span className="text-[var(--accent-gold)]">→</span>
+                                    <span className="text-[var(--accent-gold)] font-bold">Find opportunities</span>
+                                </div>
+                            </div>
+
+                            <p className="font-serif text-xl text-[var(--text-primary)] italic pt-2">
+                                The problem wasn&apos;t access. It was what happened after someone joined.
+                            </p>
                         </div>
                     </div>
+                </motion.section>
 
-                    <div className="max-w-[720px] mx-auto mt-12">
-                        <p className="text-[1.25rem] md:text-[1.563rem] font-serif text-[var(--text-primary)] leading-[1.5] italic text-center opacity-[0.87]">
-                            &quot;This project reinforced that meaningful product design often isn&apos;t about inventing new features, but about designing the <strong className="text-[var(--accent-gold)] opacity-100">governance structure</strong> that makes a complex system work.&quot;
+                {/* ========================================================================= */}
+                {/* 3. 02 — THE PROBLEM I NOTICED & 03 — THE OPPORTUNITY                       */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+                        {/* 02 Problem */}
+                        <div className="space-y-4">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[#ef4444] font-semibold">
+                                02 — The Problem I Noticed
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Participation was visible. Commitment wasn&apos;t.
+                            </h2>
+                            <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    Through my involvement in the community, I noticed that people would often join classes or programs but stop participating midway.
+                                </p>
+                                <p>
+                                    Some attended regularly. Some completed the work. Others joined but gradually disappeared.
+                                </p>
+                                <p>
+                                    For a normal content platform, that might simply look like low engagement. But Udyoga Pramoda was different because the people providing the guidance were <strong className="text-[var(--text-primary)] font-medium">volunteers</strong>.
+                                </p>
+                                <p>
+                                    A mentor might spend their limited free time teaching a class or helping a mentee. If the mentee wasn&apos;t following through, the mentor had little evidence that their effort was translating into progress.
+                                </p>
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic pl-3 border-l-2 border-[#ef4444]">
+                                    &ldquo;Who is actually progressing?&rdquo;
+                                </p>
+                                <p className="text-sm">
+                                    A registration told them someone joined. A WhatsApp group told them someone was present. Neither necessarily showed consistent effort.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 03 Opportunity */}
+                        <div className="space-y-4 md:border-l md:border-[var(--surface-border)] md:pl-10">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-emerald-400 font-semibold">
+                                03 — The Opportunity
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                What if the platform could show the work happening between connection and opportunity?
+                            </h2>
+                            <div className="space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    I didn&apos;t want to turn Udyoga Pramoda into another learning-management system. The goal was to add a lightweight progression layer to the community that already existed.
+                                </p>
+
+                                <div className="space-y-2 pt-1">
+                                    <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold">
+                                        The Core Loop:
+                                    </span>
+                                    <div className="flex flex-col gap-1.5 font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-lg border border-emerald-500/40">
+                                        <div>1. Mentor gives guidance</div>
+                                        <div className="text-[var(--accent-gold)]">↓</div>
+                                        <div>2. Mentor assigns a task</div>
+                                        <div className="text-[var(--accent-gold)]">↓</div>
+                                        <div>3. Mentee completes the task</div>
+                                        <div className="text-[var(--accent-gold)]">↓</div>
+                                        <div>4. Mentee submits the work</div>
+                                        <div className="text-[var(--accent-gold)]">↓</div>
+                                        <div>5. Mentor reviews it</div>
+                                        <div className="text-emerald-400 font-bold">↓</div>
+                                        <div className="text-emerald-400 font-bold">6. Progress becomes visible</div>
+                                    </div>
+                                </div>
+
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic pt-1">
+                                    Not just &ldquo;Did this person join?&rdquo; but &ldquo;Are they actually putting in the effort?&rdquo;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 4. 04 — WHY VISIBLE PROGRESS MATTERS & 05 — DIFFERENTIATION                */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-3">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            04 — Multi-Sided Signal
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            The same progress signal helps three sides of the community
+                        </h2>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            The redesign wasn&apos;t just about giving mentees a task list. It made progress useful to everyone involved.
                         </p>
                     </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-2 text-[var(--accent-gold)] font-mono text-xs font-bold uppercase">
+                                <GraduationCap className="w-4 h-4" /> Mentee
+                            </div>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] italic">
+                                &ldquo;What should I do next?&rdquo;
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Tasks turn vague mentoring into concrete action.
+                            </p>
+                        </div>
+
+                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                            <div className="flex items-center gap-2 text-[#60a5fa] font-mono text-xs font-bold uppercase">
+                                <UserCheck className="w-4 h-4" /> Mentor
+                            </div>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] italic">
+                                &ldquo;Is this person actually progressing?&rdquo;
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Completed work gives mentors evidence they can use when deciding how to guide the mentee, what to teach next, and whether they are ready to recommend an opportunity.
+                            </p>
+                        </div>
+
+                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                            <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase">
+                                <ShieldCheck className="w-4 h-4" /> Admin
+                            </div>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] italic">
+                                &ldquo;Where is the community actually moving?&rdquo;
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Admins can see more than registrations and identify people who are consistently putting in effort, even before a placement happens.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* 05 — Why this makes Udyoga Pramoda different */}
+                    <div className="space-y-5 pt-8 border-t border-[var(--surface-border)] max-w-3xl">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            05 — Positioning
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            A job board measures opportunities. Udyoga Pramoda can represent the journey toward them.
+                        </h2>
+                        <div className="space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            <p>
+                                Platforms such as LinkedIn or Naukri are primarily designed around:
+                            </p>
+                            <p className="font-mono text-xs sm:text-sm text-[var(--text-tertiary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                                Profile → Job → Application → Hiring
+                            </p>
+                            <p>
+                                Udyoga Pramoda serves a different part of the journey. Its value is in the space between:
+                            </p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-serif text-xl text-[var(--text-primary)] italic">
+                                <div className="p-3 border-l-2 border-[var(--surface-border)]">&ldquo;I want a job.&rdquo;</div>
+                                <div className="p-3 border-l-2 border-[var(--accent-gold)]">&ldquo;I&apos;m ready for this opportunity.&rdquo;</div>
+                            </div>
+                            <p>
+                                The platform brings together: <strong className="text-[var(--text-primary)] font-medium">Learning + Mentorship + Effort + Progress + Opportunities</strong>.
+                            </p>
+                            <p>
+                                Someone doesn&apos;t need to already have a strong professional profile to get value from the platform. They can <strong className="text-[var(--text-primary)] font-medium">build evidence of their effort inside the community.</strong>
+                            </p>
+                            <p>
+                                And importantly, <strong className="text-[var(--text-primary)] font-medium">placement isn&apos;t the only measure of progress.</strong> Someone might not get placed immediately. But if they attend sessions, connect with mentors, complete tasks, improve their skills and consistently participate, the platform can make that effort visible.
+                            </p>
+                            <p className="font-serif text-xl text-[var(--accent-gold)] italic pt-2">
+                                &ldquo;Udyoga Pramoda helps a community recognise people who are actively becoming opportunity-ready.&rdquo;
+                            </p>
+                        </div>
+                    </div>
                 </motion.section>
 
-                {/* CASE STUDY FOOTER */}
-                <motion.section initial="hidden" whileInView="visible" viewport={{ once: true }} variants={sectionVariants} className="w-full border-t border-[var(--surface-border)] pt-16 pb-8">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
-                        <div>
-                            <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-3">Next Case Study</p>
-                            <h3 className="font-serif text-[1.75rem] text-[var(--text-primary)] leading-[1.2]">Emergency Response</h3>
+                {/* ========================================================================= */}
+                {/* 5. 06 MENTEE, 07 MENTOR, 08 ADMIN & 09 SYSTEM FLOW                         */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-2">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            06, 07 &amp; 08 — Role-Specific Experiences
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            Designing for each participant&apos;s mental model
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        {/* Mentee */}
+                        <div className="space-y-3">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">
+                                06 / MENTEE EXPERIENCE
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Progress first. Opportunity alongside it.
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                The redesigned mentee dashboard brings the user&apos;s current activity into one place: Progress, Tasks, Mentor connections, Upcoming sessions, Events, and Job opportunities.
+                            </p>
+                            <div className="space-y-1 font-mono text-xs text-[var(--text-primary)] pt-1">
+                                <div>1. Mentor assigns a task</div>
+                                <div>2. Mentee receives it in My Tasks</div>
+                                <div>3. Mentee completes and submits work</div>
+                                <div>4. Mentor reviews it</div>
+                                <div>5. Mentor validates or provides direction</div>
+                            </div>
                         </div>
-                        <a
-                            href="/emergency-app"
+
+                        {/* Mentor */}
+                        <div className="space-y-3 lg:border-l lg:border-[var(--surface-border)] lg:pl-8">
+                            <span className="font-mono text-xs font-bold text-[#60a5fa] uppercase tracking-wider block">
+                                07 / MENTOR EXPERIENCE
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Don&apos;t turn volunteering into administration.
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Mentors are volunteers. The mentor dashboard was designed around the things mentors actually need to act on:
+                            </p>
+                            <ul className="space-y-1.5 font-sans text-xs text-[var(--text-secondary)]">
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Mentees needing attention</strong> — work needing review</li>
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Progress</strong> — where each mentee stands</li>
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Sessions</strong> — upcoming mentoring activity</li>
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Opportunities</strong> — contribute jobs to community</li>
+                            </ul>
+                        </div>
+
+                        {/* Admin */}
+                        <div className="space-y-3 lg:border-l lg:border-[var(--surface-border)] lg:pl-8">
+                            <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+                                08 / ADMIN EXPERIENCE
+                            </span>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Visibility across the community, not a spreadsheet.
+                            </h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Changes the admin&apos;s role from tracking registrations to understanding community progression:
+                            </p>
+                            <ul className="space-y-1 font-sans text-xs text-[var(--text-secondary)]">
+                                <li>• Who is actively participating?</li>
+                                <li>• Who is completing assigned work?</li>
+                                <li>• Who may need additional support?</li>
+                                <li>• Which participants are consistently engaged?</li>
+                                <li>• Who is progressing before placement?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* 09 — The System & 10 — Mental Models */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 border-t border-[var(--surface-border)]">
+                        <div className="lg:col-span-6 space-y-4">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                09 — The System Loop
+                            </span>
+                            <div className="font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-lg border border-[var(--surface-border)] space-y-1">
+                                <div>DISCOVER (Jobs / Events)</div>
+                                <div className="text-[var(--text-tertiary)]">↓</div>
+                                <div>CONNECT (Mentor)</div>
+                                <div className="text-[var(--text-tertiary)]">↓</div>
+                                <div>LEARN (Guidance / Classes)</div>
+                                <div className="text-[var(--text-tertiary)]">↓</div>
+                                <div>ACT (Mentor-assigned task)</div>
+                                <div className="text-[var(--text-tertiary)]">↓</div>
+                                <div>COMPLETE (Submit work)</div>
+                                <div className="text-[var(--text-tertiary)]">↓</div>
+                                <div>REVIEW (Mentor validates)</div>
+                                <div className="text-emerald-400 font-bold">↓</div>
+                                <div className="text-emerald-400 font-bold">PROGRESS (Effort becomes visible)</div>
+                                <div className="text-emerald-400 font-bold">↓</div>
+                                <div className="text-[var(--accent-gold)] font-bold">OPPORTUNITY (Jobs / Referrals)</div>
+                            </div>
+                        </div>
+
+                        <div className="lg:col-span-6 space-y-4 lg:pl-6">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                10 — Why I Chose Role-Specific Experiences
+                            </span>
+                            <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed">
+                                The three users weren&apos;t solving the same problem:
+                            </p>
+                            <div className="space-y-3 font-serif text-lg text-[var(--text-primary)]">
+                                <div className="pl-3 border-l-2 border-[var(--accent-gold)]">
+                                    <strong>Mentee:</strong> &ldquo;What do I need to do next?&rdquo;
+                                </div>
+                                <div className="pl-3 border-l-2 border-[#60a5fa]">
+                                    <strong>Mentor:</strong> &ldquo;Who needs my attention?&rdquo;
+                                </div>
+                                <div className="pl-3 border-l-2 border-emerald-400">
+                                    <strong>Admin:</strong> &ldquo;Who is progressing?&rdquo;
+                                </div>
+                            </div>
+                            <p className="font-sans text-sm text-[var(--text-secondary)]">
+                                Instead of giving everyone the same dashboard, I designed around these different mental models.
+                            </p>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 6. 11 SHIPPED, 12 OUTCOMES, 13 WHAT CHANGED & 14 LEARNINGS               */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-2">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            11 &amp; 12 — Delivery &amp; Results
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
+                            What we shipped &amp; what the product achieved
+                        </h2>
+                    </div>
+
+                    {/* Delivery Clarification */}
+                    <div className="max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed space-y-2">
+                        <p>
+                            This wasn&apos;t a large product team. I worked with <strong className="text-[var(--text-primary)] font-medium">one developer</strong> to build the initial V1 product and then redesigned the experience based on what I observed in the community.
+                        </p>
+                        <p>
+                            The redesign was developed and shipped as the next product direction. However, <strong className="text-[var(--text-primary)] font-medium">the redesigned UI had not yet been updated on the public website</strong>. The product work, flows and implementation were completed, while the public-facing website still showed the earlier visual experience.
+                        </p>
+                    </div>
+
+                    {/* Stats Grid (No Cards, Clean Typographic Hierarchy) */}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-6 pt-4 border-t border-[var(--surface-border)]">
+                        <div>
+                            <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">1,247</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">active users</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">156</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">mentors</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">25</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">placements</div>
+                        </div>
+                        <div>
+                            <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">60+</div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">connections</div>
+                        </div>
+                        <div className="col-span-2 md:col-span-1">
+                            <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">₹7.5<span className="text-2xl">L</span></div>
+                            <div className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider mt-1">avg LPA package</div>
+                        </div>
+                    </div>
+
+                    <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] italic pt-1">
+                        I don&apos;t attribute all of these outcomes to the redesign itself. The contribution of the redesign was creating a stronger product structure around the learning, mentoring and progression that already existed in the community.
+                    </p>
+
+                    {/* 13 What Changed (Before / After) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[var(--surface-border)]">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs font-bold text-[#ef4444] uppercase tracking-wider">Before</span>
+                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                                Jobs + Events + Mentors + Community
+                            </div>
+                            <p className="font-sans text-sm text-[var(--text-secondary)]">The platform helped people find and connect.</p>
+                        </div>
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider">After the Redesign</span>
+                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-emerald-500/40">
+                                Jobs + Events + Mentors + Tasks + Progress
+                            </div>
+                            <p className="font-sans text-sm text-[var(--text-secondary)]">The platform could also represent what happened after the connection.</p>
+                        </div>
+                    </div>
+
+                    {/* 14 What I Learned */}
+                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)] max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            14 — What I Learned
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            Engagement is not the same as progress
+                        </h2>
+                        <p>
+                            A person joining an event is an activity. A person completing the work, returning to their mentor, improving their skills and continuing the journey is progress.
+                        </p>
+                        <p>
+                            That distinction changed how I thought about the product. I stopped looking at the platform as: <em>&ldquo;How do we give people more opportunities?&rdquo;</em> and started looking at it as: <em>&ldquo;How do we help the community recognise and support the people who are actually working toward those opportunities?&rdquo;</em>
+                        </p>
+
+                        <div className="pt-4 border-l-2 border-[var(--accent-gold)] pl-4 font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                            &ldquo;Udyoga Pramoda doesn&apos;t just connect young people to opportunities. It makes the effort between learning and opportunity visible.&rdquo;
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 7. NEXT CASE STUDY NAVIGATION                                             */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="border-t border-[var(--surface-border)] pt-12 pb-6 space-y-8"
+                >
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div>
+                            <p className="font-mono text-xs uppercase tracking-widest text-[var(--text-tertiary)] mb-1">Next Case Study</p>
+                            <h3 className="font-serif text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight">RupeeRise</h3>
+                        </div>
+                        <Link
+                            href="/rupeerise"
                             className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
                         >
-                            <span className="font-sans text-sm tracking-widest uppercase font-bold text-[var(--text-primary)]">View Case Study →</span>
-                        </a>
+                            <span className="font-sans text-sm md:text-base tracking-widest uppercase font-bold text-[var(--text-primary)]">
+                                View Case Study
+                            </span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
+                        </Link>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-6 mt-12">
-                        <a href="/#work" className="font-mono text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">← Back to Selected Work</a>
-                        <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-5">
+                        <Link href="/#work" className="font-mono text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
+                            ← Back to Selected Work
+                        </Link>
+                        <span className="font-mono text-xs text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
                     </div>
                 </motion.section>
 
