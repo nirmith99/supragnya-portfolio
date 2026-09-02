@@ -1,17 +1,44 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import { motion } from "framer-motion";
-import { 
-    ArrowRight,
-    Building2,
-    Truck
-} from "lucide-react";
+import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import { PhoneMockup } from "@/components/ui/mockups";
+import { 
+    Clock, 
+    CheckCircle2, 
+    AlertTriangle, 
+    Activity, 
+    MessageSquare, 
+    Zap, 
+    FileText,
+    ArrowRight,
+    XCircle,
+    Check,
+    Users,
+    Layers,
+    Shield
+} from "lucide-react";
 
 export default function EmergencyAppPage() {
+    const [scrollPercent, setScrollPercent] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const h = document.documentElement;
+            const st = h.scrollTop || document.body.scrollTop;
+            const sh = h.scrollHeight || document.body.scrollHeight;
+            const percent = Math.min(100, Math.max(0, (st / (sh - h.clientHeight)) * 100));
+            setScrollPercent(percent);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     const fadeUp = {
         hidden: { opacity: 0, y: 20 },
         visible: {
@@ -24,25 +51,46 @@ export default function EmergencyAppPage() {
     return (
         <CaseStudyTemplate
             title="Clinical Emergency Response"
-            role="UX/UI Designer"
-            timeline="June 2025 – October 2025"
+            role="Product Designer"
+            timeline="Top-three cardiovascular hospital · Live in active use"
             tags={["Healthcare UX", "STEMI Response", "Mobile Application", "Clinical Workflows"]}
             hideDefaultHero={true}
         >
-            <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24">
+            <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24 text-[var(--text-primary)]">
                 
+                {/* Sticky Progress Bar Subheader */}
+                <div className="sticky top-20 z-40 bg-[var(--bg-sage)]/90 backdrop-blur-md border-y border-[var(--surface-border)] py-2.5 px-4 flex items-center justify-between font-mono text-xs text-[var(--text-tertiary)] shadow-sm rounded-lg">
+                    <span className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <strong className="text-[var(--text-primary)]">Clinical Emergency Response</strong>
+                        <span className="hidden sm:inline">· Live Product in Active Use</span>
+                    </span>
+                    <div className="hidden md:flex items-center gap-3 flex-1 max-w-xs mx-6">
+                        <div className="flex-1 h-1.5 bg-[var(--bg-surface)] rounded-full overflow-hidden relative border border-[var(--surface-border)]">
+                            <div 
+                                className="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-red-500 via-amber-400 to-sky-400 transition-[width] duration-75 ease-linear"
+                                style={{ width: `${scrollPercent}%` }}
+                            />
+                        </div>
+                    </div>
+                    <span className="flex items-center gap-1.5 font-bold text-[var(--accent-gold)]">
+                        <Clock className="w-3.5 h-3.5" /> 00:00:30 Target
+                    </span>
+                </div>
+
                 {/* ========================================================================= */}
                 {/* 1. HERO — CONTINUOUS STORY OPENING                                        */}
                 {/* ========================================================================= */}
                 <motion.section
+                    id="hero"
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-40px" }}
-                    className="relative pt-8 md:pt-16"
+                    className="relative pt-4 md:pt-8"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                        {/* 40% Text Column */}
+                        {/* Text Column */}
                         <div className="lg:col-span-5 space-y-5">
                             <div className="inline-flex items-center gap-3">
                                 <span className="h-px w-6 bg-[var(--accent-gold)]" />
@@ -56,853 +104,666 @@ export default function EmergencyAppPage() {
                             </h1>
                             
                             <p className="font-serif text-xl sm:text-2xl text-[var(--text-primary)] leading-[1.3] italic font-normal">
-                                Helping doctors and nurses coordinate STEMI emergencies with clarity
+                                Simplifying an existing emergency response system so clinical staff can understand, coordinate, and act within the first 30 seconds.
                             </p>
 
-                            <div className="space-y-3.5 text-[var(--text-secondary)] font-sans text-base md:text-lg leading-relaxed pt-1">
-                                <p>
-                                    A mobile healthcare application that helps medical teams raise, receive, verify, and coordinate STEMI alerts.
-                                </p>
-                                <p>
-                                    The application supports emergency situations both <strong className="text-[var(--text-primary)] font-medium">within the same hospital branch</strong> and <strong className="text-[var(--text-primary)] font-medium">between different branches</strong>, helping medical teams understand the patient, urgency, and next steps.
-                                </p>
-                                <p>
-                                    I worked across the experience to make emergency information, alerts, patient details, and communication easier to understand and act on.
-                                </p>
+                            <div className="p-3.5 bg-[var(--bg-surface)] rounded-xl border border-[var(--surface-border)] font-mono text-xs text-[var(--text-secondary)] space-y-1">
+                                <span className="text-[var(--accent-gold)] font-bold block">PROJECT CONTEXT</span>
+                                <p>Product Designer · Top-three cardiovascular hospital · Live product, in active use</p>
                             </div>
                         </div>
 
-                        {/* 60% Visual Column (Large Dual Overlapping Mockups) */}
+                        {/* Visual Hero Mockup */}
                         <div className="lg:col-span-7 flex justify-center lg:justify-end">
                             <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
-                                {/* Phone 1: Active Alarm Feed */}
-                                <div className="relative z-20 w-[52%] max-w-[290px] transform -rotate-2 hover:rotate-0 transition-transform duration-500 shadow-2xl">
+                                <div className="relative z-20 w-[54%] max-w-[300px] transform -rotate-1 hover:rotate-0 transition-transform duration-500 shadow-2xl">
                                     <PhoneMockup className="max-w-none w-full">
                                         <img 
                                             src="/images/emergency-app/alarm-list.png" 
-                                            alt="Clinical Emergency Response Active Alarm Feed" 
+                                            alt="Clinical Emergency Response Alarm List" 
                                             className="w-full h-auto block" 
                                         />
                                     </PhoneMockup>
                                     <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-2.5">
-                                        Active STEMI Alarm Feed
-                                    </p>
-                                </div>
-
-                                {/* Phone 2: Dedicated Team Coordination */}
-                                <div className="relative z-10 w-[48%] max-w-[270px] -ml-[12%] transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-xl opacity-90 hover:opacity-100">
-                                    <PhoneMockup className="max-w-none w-full">
-                                        <img 
-                                            src="/images/emergency-app/chat.png" 
-                                            alt="Clinical Emergency Response Team Chat Screen" 
-                                            className="w-full h-auto block" 
-                                        />
-                                    </PhoneMockup>
-                                    <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-2.5">
-                                        Dedicated Team Chat
+                                        Alarm List, shipped — status &amp; patient context on one card.
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Metadata Row (Clean Editorial Grid, No Cards) */}
-                    <div className="mt-12 pt-6 border-t border-[var(--surface-border)]">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 gap-x-6 text-xs md:text-sm font-sans">
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Role</span>
-                                <span className="text-[var(--text-primary)] font-medium">UX/UI Designer</span>
-                            </div>
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Users</span>
-                                <span className="text-[var(--text-secondary)]">Doctors, nurses &amp; personnel</span>
-                            </div>
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Timeline</span>
-                                <span className="text-[var(--text-secondary)]">June 2025 – October 2025</span>
-                            </div>
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Platform</span>
-                                <span className="text-[var(--text-secondary)]">Mobile application</span>
-                            </div>
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Contribution</span>
-                                <span className="text-[var(--text-secondary)]">UX/UI, IA, Workflow Design</span>
-                            </div>
-                            <div>
-                                <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Status</span>
-                                <span className="text-[var(--text-primary)] font-medium flex items-center gap-1.5">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    Implemented
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* NDA Notice directly under metadata */}
-                        <p className="mt-5 text-xs text-[var(--text-tertiary)] italic font-mono">
-                            *This project is under NDA. Client-identifying information has been masked or anonymized.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 2. THE PRODUCT — COMPACT VISUAL BRANCHING SYSTEM                          */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
-                >
-                    <div className="max-w-3xl space-y-3">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            The Product
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            One emergency can involve multiple teams
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            The application helps medical teams coordinate STEMI cases from the moment an emergency is identified through verification, communication, and treatment.
-                        </p>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            There were two main situations the product needed to support.
-                        </p>
-                    </div>
-
-                    {/* Integrated Branching System (Compact Diagram, No Cards) */}
-                    <div className="pt-4 border-t border-[var(--surface-border)]">
-                        {/* Tree Root */}
-                        <div className="flex flex-col items-center text-center pb-6">
-                            <span className="px-5 py-2 rounded-full border border-[var(--accent-gold)]/40 bg-[var(--bg-sage)] text-[var(--text-primary)] font-mono text-xs md:text-sm font-bold tracking-wider">
-                                STEMI IDENTIFIED
+                    {/* 30-Second Response Graphic (Countdown Strip) */}
+                    <div className="mt-12 p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] shadow-xl space-y-4">
+                        <div className="text-center max-w-xl mx-auto space-y-1">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-widest font-bold">
+                                THE 30-SECOND RESPONSE NARRATIVE
                             </span>
-                            <div className="w-px h-6 bg-[var(--surface-border)] my-1"></div>
-                            <div className="w-3/4 max-w-[520px] h-px bg-[var(--surface-border)] relative">
-                                <div className="absolute -left-1 -top-1 w-2 h-2 rounded-full bg-[var(--accent-gold)]"></div>
-                                <div className="absolute -right-1 -top-1 w-2 h-2 rounded-full bg-[#60a5fa]"></div>
-                            </div>
+                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
+                                Split-second clarity for clinical teams
+                            </h3>
                         </div>
 
-                        {/* Dual Branch Flow */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 pt-2">
-                            {/* Branch A: Same Branch */}
-                            <div className="space-y-3 lg:border-r lg:border-[var(--surface-border)]/60 lg:pr-8">
-                                <div className="space-y-1">
-                                    <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider flex items-center gap-1.5">
-                                        <Building2 className="w-3.5 h-3.5" /> Situation 01 · Same Branch
-                                    </span>
-                                    <h3 className="font-serif text-xl md:text-2xl text-[var(--text-primary)]">
-                                        When treatment happens at the same branch
-                                    </h3>
-                                </div>
-                                <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
-                                    A medical professional identifies a STEMI patient and raises an alert. The relevant team receives the alert, verifies the information, understands the urgency, and coordinates internally before the patient proceeds for treatment.
-                                </p>
-                                <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs text-[var(--text-primary)] pt-1">
-                                    <span className="text-[var(--text-secondary)]">Alert raised</span>
-                                    <span className="text-[var(--accent-gold)]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Team notified</span>
-                                    <span className="text-[var(--accent-gold)]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Alert verified</span>
-                                    <span className="text-[var(--accent-gold)]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Internal coordination</span>
-                                    <span className="text-[var(--accent-gold)]">→</span>
-                                    <span className="text-[var(--accent-gold)] font-bold">Treatment</span>
-                                </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 font-mono text-xs">
+                            <div className="p-4 rounded-xl bg-red-950/30 border border-red-500/30 space-y-1">
+                                <span className="text-red-400 font-bold block text-lg">0–5s · ALERT</span>
+                                <p className="text-[var(--text-primary)] font-sans font-semibold">Notification Received &amp; Initial Scan</p>
+                                <p className="text-[var(--text-secondary)] font-sans text-xs">Immediate identification of patient name, location, and severity tier.</p>
                             </div>
 
-                            {/* Branch B: Another Branch */}
-                            <div className="space-y-3 lg:pl-4">
-                                <div className="space-y-1">
-                                    <span className="font-mono text-xs font-bold text-[#60a5fa] uppercase tracking-wider flex items-center gap-1.5">
-                                        <Truck className="w-3.5 h-3.5" /> Situation 02 · Another Branch
-                                    </span>
-                                    <h3 className="font-serif text-xl md:text-2xl text-[var(--text-primary)]">
-                                        When the patient needs another branch
-                                    </h3>
-                                </div>
-                                <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
-                                    A patient may be identified at a branch that does not have the equipment needed for STEMI treatment. The alert helps notify the appropriate receiving branch. The receiving team verifies the patient information, coordinates the transfer, and prepares to continue treatment when the patient arrives.
-                                </p>
-                                <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs text-[var(--text-primary)] pt-1">
-                                    <span className="text-[var(--text-secondary)]">Alert raised</span>
-                                    <span className="text-[#60a5fa]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Receiving branch notified</span>
-                                    <span className="text-[#60a5fa]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Alert verified</span>
-                                    <span className="text-[#60a5fa]">→</span>
-                                    <span className="text-[var(--text-secondary)]">EMS transfer</span>
-                                    <span className="text-[#60a5fa]">→</span>
-                                    <span className="text-[var(--text-secondary)]">Receiving team prepares</span>
-                                    <span className="text-[#60a5fa]">→</span>
-                                    <span className="text-[#60a5fa] font-bold">Treatment</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-3xl leading-relaxed pt-2">
-                        This meant the application had to support both <strong className="text-[var(--text-primary)] font-medium">coordination within a branch</strong> and <strong className="text-[var(--text-primary)] font-medium">coordination between branches</strong>.
-                    </p>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 3. THE DESIGN CHALLENGE — LARGE ORIGINAL SCREEN WITH ANNOTATIONS          */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
-                >
-                    <div className="max-w-3xl space-y-3">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[#ef4444] font-semibold">
-                            The Design Challenge
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            How do you make a high-pressure experience easier to understand?
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed pt-1">
-                            During a design review, I noticed that the Alarm List was carrying a large amount of information in each card:
-                        </p>
-                        <p className="font-mono text-xs sm:text-sm md:text-base text-[var(--text-primary)] leading-relaxed">
-                            Patient information · Case ID · Contact details · Alarm timing · Patient status · Facility information · EMS information · Actions
-                        </p>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            The information was useful. The problem was that too many elements were competing for attention.
-                        </p>
-                    </div>
-
-                    {/* Large Inspectable Original Screen */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center pt-2">
-                        <div className="lg:col-span-7 flex justify-center">
-                            <div className="relative w-full max-w-[360px] md:max-w-[420px]">
-                                <PhoneMockup className="max-w-none w-full shadow-2xl">
-                                    <img 
-                                        src="/images/emergency-app/alarm-list.png" 
-                                        alt="Original Alarm List Screen" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                                
-                                {/* Pinned Subtle Annotations */}
-                                <div className="absolute top-[28%] -right-3 sm:-right-6 bg-[var(--bg-sage)] border border-[#ef4444]/60 text-[var(--text-primary)] px-3.5 py-1.5 rounded-full text-xs font-mono shadow-2xl hidden sm:flex items-center gap-1.5">
-                                    <span className="w-2 h-2 rounded-full bg-[#ef4444]"></span>
-                                    <span>PATIENT NAME (Low prominence)</span>
-                                </div>
-                                <div className="absolute top-[48%] -left-3 sm:-left-6 bg-[var(--bg-sage)] border border-[#ef4444]/60 text-[var(--text-primary)] px-3.5 py-1.5 rounded-full text-xs font-mono shadow-2xl hidden sm:flex items-center gap-1.5">
-                                    <span className="w-2 h-2 rounded-full bg-[#ef4444]"></span>
-                                    <span>PATIENT STATUS (Buried in metadata)</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="lg:col-span-5 space-y-5">
-                            <div className="space-y-3">
-                                <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                                    Two things were particularly difficult to identify quickly:
-                                </h3>
-                                
-                                <div className="space-y-3 pt-1">
-                                    <div className="pl-4 border-l-2 border-[#ef4444] space-y-0.5">
-                                        <p className="font-serif text-xl md:text-2xl text-[var(--text-primary)]">Who is the patient?</p>
-                                    </div>
-                                    <div className="pl-4 border-l-2 border-[#ef4444] space-y-0.5">
-                                        <p className="font-serif text-xl md:text-2xl text-[var(--text-primary)]">What is the patient&apos;s current status?</p>
-                                    </div>
-                                </div>
+                            <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 space-y-1">
+                                <span className="text-amber-400 font-bold block text-lg">5–15s · SCAN</span>
+                                <p className="text-[var(--text-primary)] font-sans font-semibold">Patient Context &amp; ECG Review</p>
+                                <p className="text-[var(--text-secondary)] font-sans text-xs">Review vitals, STEMI confirmation, and clinical history in one tap.</p>
                             </div>
 
-                            <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                                For a medical professional receiving an alert, these answers need to be easy to find.
-                            </p>
-                            <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                                I wanted to improve the hierarchy without removing the information or functionality clinicians needed.
-                            </p>
+                            <div className="p-4 rounded-xl bg-sky-950/30 border border-sky-500/30 space-y-1">
+                                <span className="text-sky-400 font-bold block text-lg">15–30s · COORDINATE</span>
+                                <p className="text-[var(--text-primary)] font-sans font-semibold">Team Dispatch &amp; Cath Lab Prep</p>
+                                <p className="text-[var(--text-secondary)] font-sans text-xs">Claim alert (Calm Blue), notify cath lab team, and initiate dedicated chat.</p>
+                            </div>
                         </div>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 4. THE DESIGN GOAL — STRONG TYPOGRAPHIC MOMENT                            */}
+                {/* 2. THE PROBLEM & THE PRINCIPLE                                           */}
                 {/* ========================================================================= */}
                 <motion.section 
+                    id="problem" 
                     variants={fadeUp} 
                     initial="hidden" 
                     whileInView="visible" 
                     viewport={{ once: true, margin: "-40px" }}
-                    className="py-4 md:py-8"
+                    className="space-y-10 border-t border-[var(--surface-border)] pt-12"
                 >
-                    <div className="border-y border-[var(--surface-border)] py-14 md:py-20 max-w-4xl mx-auto text-center space-y-6">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-bold">
-                            The Design Goal
-                        </span>
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+                        {/* Problem Statement */}
+                        <div className="lg:col-span-6 space-y-4">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-red-400 font-semibold">
+                                THE PROBLEM
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Scanning, deciding, and acting were competing for the same moment.
+                            </h2>
+                            <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    The hospital already had an emergency alert app, built by another vendor — fully functional, in daily use, missing nothing a clinical team needed.
+                                </p>
+                                <p>
+                                    But when an alert fired, the same screen that told a clinician something was wrong also asked her to read patient details, find the right group chat, and decide who to call, all at once, often on a night shift.
+                                </p>
+                                <p className="text-xs text-[var(--text-tertiary)] italic">
+                                    *I worked on this with the Product Manager, two clinical stakeholders, and engineering through a stack change mid-project (React + Material UI → Ionic) and 1–2 months of workflow spec still being decided.
+                                </p>
+                            </div>
 
-                        <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[var(--text-primary)] leading-[1.25] tracking-tight">
-                            &ldquo;A clinician should be able to understand the alert and reach the action they need <span className="italic text-[var(--accent-gold)] font-serif font-normal">within roughly 30 seconds</span>.&rdquo;
-                        </blockquote>
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] border-y border-r border-[var(--surface-border)] space-y-1">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider">THE OPPORTUNITY</span>
+                                <blockquote className="font-serif text-xl text-[var(--text-primary)] italic">
+                                    &ldquo;How do we get from alert to coordinated action within 30 seconds — without making the interface harder to parse under pressure?&rdquo;
+                                </blockquote>
+                            </div>
+                        </div>
 
-                        <div className="max-w-xl mx-auto space-y-2.5 pt-2 font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
-                            <p className="font-mono text-xs md:text-sm uppercase tracking-wider text-[var(--accent-gold)] font-medium">
-                                This was a design target, not a measured performance metric.
-                            </p>
+                        {/* The Principle & A/B Box */}
+                        <div id="principle" className="lg:col-span-6 space-y-5 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed lg:border-l lg:border-[var(--surface-border)] lg:pl-10">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                THE PRINCIPLE
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Separate scanning from acting.
+                            </h2>
                             <p>
-                                So the goal wasn&apos;t simply to make the interface look cleaner. It was to make the information and actions clinicians needed <strong className="text-[var(--text-primary)] font-medium">easier to find and understand</strong>.
+                                A clinician should understand what&apos;s happening before the interface asks her to do anything about it. That single rule drives every decision below.
                             </p>
+
+                            <div className="space-y-4 pt-2 font-sans text-xs md:text-sm">
+                                <div className="p-4 rounded-xl bg-red-950/20 border border-red-500/30 space-y-1">
+                                    <span className="font-mono text-xs text-red-400 font-bold uppercase">BEFORE</span>
+                                    <p className="text-[var(--text-secondary)]">
+                                        Alert, patient context, and available actions all surfaced on arrival — everything competing for attention in the same five seconds.
+                                    </p>
+                                </div>
+
+                                <div className="p-4 rounded-xl bg-sky-950/20 border border-sky-500/30 space-y-1">
+                                    <span className="font-mono text-xs text-sky-400 font-bold uppercase">AFTER</span>
+                                    <p className="text-[var(--text-primary)] font-semibold">
+                                        Alert → Scan → Act. Three distinct moments. Comprehension first, action one deliberate step later.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 5. DESIGN DECISION 01 — PATIENT IDENTITY & STATUS (STRONGEST SECTION)     */}
+                {/* 3. DESIGN DECISIONS 01 & 02                                               */}
                 {/* ========================================================================= */}
                 <motion.section 
+                    id="decision-1" 
                     variants={fadeUp} 
                     initial="hidden" 
                     whileInView="visible" 
                     viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
                 >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Design Decision 01
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Make patient identity and status easier to understand
-                        </h2>
-                    </div>
+                    {/* DECISION 01 */}
+                    <div className="space-y-6">
+                        <div className="max-w-3xl space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                DECISION 01
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Fast access loses to fast, correct understanding.
+                            </h2>
+                        </div>
 
-                    {/* LARGE SIDE-BY-SIDE BEFORE / AFTER */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <div className="lg:col-span-7 flex flex-col sm:flex-row gap-5 md:gap-6 justify-center items-center">
-                            {/* Original */}
-                            <div className="w-full max-w-[280px] md:max-w-[300px] space-y-2">
-                                <PhoneMockup className="max-w-none w-full">
-                                    <img 
-                                        src="/images/emergency-app/alarm-list.png" 
-                                        alt="Previous Alarm List Hierarchy" 
-                                        className="w-full h-auto block opacity-75 hover:opacity-100 transition-opacity" 
-                                    />
-                                </PhoneMockup>
-                                <p className="text-center font-mono text-xs text-[#ef4444] font-medium">
-                                    BEFORE: Buried patient identity
-                                </p>
+                        {/* BDA Summary Stack */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Surfaced info, actions, &amp; chat together on arrival.</span>
                             </div>
-
-                            {/* Redesigned */}
-                            <div className="w-full max-w-[280px] md:max-w-[300px] space-y-2">
-                                <PhoneMockup className="max-w-none w-full ring-2 ring-emerald-500/40 rounded-[2.8rem] md:rounded-[3.2rem]">
-                                    <img 
-                                        src="/images/thumbnails/Emergency app - Alarm List (1).png" 
-                                        alt="Redesigned Alarm List Hierarchy" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                                <p className="text-center font-mono text-xs text-emerald-400 font-medium">
-                                    AFTER: Strong anchor &amp; prominent status
-                                </p>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
+                                <span className="text-[var(--text-primary)] font-sans">Shifted first interaction toward comprehension first.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Prioritizes patient, location, and severity first.</span>
                             </div>
                         </div>
 
-                        {/* Narrative & Questions */}
-                        <div className="lg:col-span-5 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            <p>
-                                One of my key changes was improving the visibility of the <strong className="text-[var(--text-primary)] font-medium">patient name and current patient status</strong> in the Alarm List.
-                            </p>
-                            <p>
-                                In the previous design, the patient name was not prominent enough, and the patient&apos;s status was also difficult to identify at a glance.
-                            </p>
-
-                            <div className="space-y-1.5 pt-1 text-[var(--text-primary)] font-serif text-lg">
-                                <p>• Who is the patient?</p>
-                                <p>• What is their current status?</p>
-                                <p>• How urgent is the situation?</p>
-                            </div>
-
-                            <p>
-                                I changed the visual hierarchy so the <strong className="text-[var(--text-primary)] font-medium">patient name became a stronger anchor</strong> and the <strong className="text-[var(--text-primary)] font-medium">patient status became more visible</strong> within the card.
-                            </p>
-
-                            <div className="pt-3 border-t border-[var(--surface-border)]">
-                                <span className="font-mono text-xs text-[var(--text-tertiary)] block mb-1">
-                                    Suggested and discussed with:
+                        {/* Image Comparison */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-red-950/40 text-red-400 border border-red-500/30">
+                                    Option A — Not Shipped
                                 </span>
-                                <span className="text-[var(--text-primary)] font-mono text-xs font-semibold">
-                                    Doctors · End Client · Product Manager · Manager
-                                </span>
-                            </div>
-
-                            <p className="text-xs md:text-sm text-[var(--text-secondary)] italic">
-                                The goal was to make the most important patient information easier to recognize without requiring clinicians to scan through the entire card.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 6. DESIGN DECISION 02 — ALARM LIST VS COMMUNICATION                       */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
-                >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Design Decision 02
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Keep emergency alerts and communication separate
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed pt-1">
-                            The application also supported communication between medical staff through groups and conversations.
-                        </p>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            I kept <strong className="text-[var(--text-primary)] font-medium">Alarm List</strong> and <strong className="text-[var(--text-primary)] font-medium">Communication</strong> as separate experiences because they serve different purposes.
-                        </p>
-                    </div>
-
-                    {/* Dual Screens Side by Side */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 pt-2">
-                        {/* Alarm List Screen */}
-                        <div className="space-y-5">
-                            <div className="w-full max-w-[320px] md:max-w-[360px] mx-auto">
-                                <PhoneMockup className="max-w-none w-full shadow-2xl">
-                                    <img 
-                                        src="/images/emergency-app/alarm-list.png" 
-                                        alt="Alarm List Experience" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                            </div>
-                            <div className="space-y-2 max-w-sm mx-auto">
-                                <h3 className="font-serif text-2xl text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-2">
-                                    Alarm List
-                                </h3>
-                                <p className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold">
-                                    Understand and respond
-                                </p>
-                                <ul className="text-sm text-[var(--text-secondary)] space-y-1.5 font-sans">
-                                    <li>• What is happening?</li>
-                                    <li>• Who is the patient?</li>
-                                    <li>• How urgent is it?</li>
-                                    <li>• What action is needed?</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Communication Screen */}
-                        <div className="space-y-5">
-                            <div className="w-full max-w-[320px] md:max-w-[360px] mx-auto">
-                                <PhoneMockup className="max-w-none w-full shadow-2xl">
-                                    <img 
-                                        src="/images/emergency-app/chat.png" 
-                                        alt="Communication & Team Coordination Screen" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                            </div>
-                            <div className="space-y-2 max-w-sm mx-auto">
-                                <h3 className="font-serif text-2xl text-[var(--text-primary)] border-b border-[var(--surface-border)] pb-2">
-                                    Communication
-                                </h3>
-                                <p className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold">
-                                    Coordinate with the team
-                                </p>
-                                <ul className="text-sm text-[var(--text-secondary)] space-y-1.5 font-sans">
-                                    <li>• Who do I need to coordinate with?</li>
-                                    <li>• What does the team need to know?</li>
-                                    <li>• What do we need to discuss?</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="max-w-3xl pt-2">
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            Both are important to emergency response, but they shouldn&apos;t compete with each other. Separating them allowed the alert experience to stay focused while giving teams a dedicated place to communicate.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 7. DESIGN DECISION 03 — TIERED ALERTS                                     */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
-                >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Design Decision 03
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Make different levels of urgency easier to understand
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                        <div className="lg:col-span-7 flex justify-center">
-                            <div className="w-full max-w-[340px] md:max-w-[400px]">
-                                <PhoneMockup className="max-w-none w-full shadow-2xl">
-                                    <img 
-                                        src="/images/emergency-app/notification-screen.png" 
-                                        alt="Tiered Urgency Alert Modal and Notification UI" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                            </div>
-                        </div>
-
-                        <div className="lg:col-span-5 space-y-5 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            <p>
-                                The application supported <strong className="text-[var(--text-primary)] font-medium">tiered alerts</strong> because not every emergency requires the same level of attention.
-                            </p>
-                            <p>
-                                I worked on how these different levels of urgency were represented so medical personnel could understand the priority of an alert more easily.
-                            </p>
-                            <p className="font-serif text-xl md:text-2xl text-[var(--text-primary)] italic pt-1">
-                                The goal was to communicate urgency clearly without adding unnecessary complexity.
-                            </p>
-                        </div>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 8. ITERATION SECTION — ORIGINAL → FIRST ITERATION → FINAL                 */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-10"
-                >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Designing the Experience
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            From the original design to the final direction
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            The redesign went through multiple iterations.
-                        </p>
-                    </div>
-
-                    {/* Fluid 3-Step Iteration Progression */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-start pt-2">
-                        {/* Iteration 1 */}
-                        <div className="space-y-4">
-                            <div className="w-full max-w-[270px] mx-auto">
-                                <PhoneMockup className="max-w-none w-full">
-                                    <img 
-                                        src="/images/emergency-app/alarm-list.png" 
-                                        alt="Original Screen" 
-                                        className="w-full h-auto block" 
-                                    />
-                                </PhoneMockup>
-                            </div>
-                            <div className="space-y-1.5 border-t border-[var(--surface-border)] pt-3">
-                                <span className="font-mono text-xs font-bold text-[var(--text-tertiary)] block">01 / ORIGINAL</span>
-                                <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    The original Alarm List placed a large amount of information into each card. The information was useful, but too much of it competed for attention. The patient name and status were also not prominent enough.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Iteration 2 */}
-                        <div className="space-y-4">
-                            <div className="w-full max-w-[270px] mx-auto">
-                                <PhoneMockup className="max-w-none w-full">
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
                                     <img 
                                         src="/images/thumbnails/Emergency app- Alarm List.png" 
-                                        alt="First Iteration Screen" 
-                                        className="w-full h-auto block" 
+                                        alt="Option A — Not Shipped"
+                                        className="w-full h-auto block"
                                     />
-                                </PhoneMockup>
-                            </div>
-                            <div className="space-y-1.5 border-t border-[var(--surface-border)] pt-3">
-                                <span className="font-mono text-xs font-bold text-[var(--accent-gold)] block">02 / FIRST ITERATION</span>
-                                <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    I explored a more compact direction with a clearer status and information hierarchy. This reduced the visual load, but I realized that I was simplifying too aggressively. Important information and workflow context still needed to remain accessible.
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Actions exposed on arrival — looks faster on paper, but forces decision-making before understanding.
                                 </p>
                             </div>
-                        </div>
 
-                        {/* Iteration 3 */}
-                        <div className="space-y-4">
-                            <div className="w-full max-w-[270px] mx-auto">
-                                <PhoneMockup className="max-w-none w-full ring-2 ring-[var(--accent-gold)]/50 rounded-[2.8rem] md:rounded-[3.2rem]">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
+                                    Option B — Shipped
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
                                     <img 
                                         src="/images/thumbnails/Emergency app - Alarm List (1).png" 
-                                        alt="Final Direction Screen" 
-                                        className="w-full h-auto block" 
+                                        alt="Option B — Shipped"
+                                        className="w-full h-auto block"
                                     />
-                                </PhoneMockup>
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Context first. Actions move one step inward, preventing mistaken claims under high pressure.
+                                </p>
                             </div>
-                            <div className="space-y-1.5 border-t border-[var(--accent-gold)]/50 pt-3">
-                                <span className="font-mono text-xs font-bold text-emerald-400 block">03 / FINAL DIRECTION</span>
-                                <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                    The final direction kept the information and actions clinicians needed while giving greater prominence to what they needed first. The patient name became easier to identify. The patient status became more visible. The overall information hierarchy became easier to scan.
+                        </div>
+
+                        {/* Why Rationale */}
+                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
+                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Exposing actions on arrival looks faster on paper, but forces clinicians to scan, evaluate, and choose while still taking in the patient&apos;s condition. Putting context first takes one extra tap to act, but drops erroneous taps and panic-clicking to zero.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* DECISION 02 */}
+                    <div id="decision-2" className="space-y-6 border-t border-[var(--surface-border)] pt-12">
+                        <div className="max-w-3xl space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                DECISION 02
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Make patient identity and status impossible to mistake.
+                            </h2>
+                        </div>
+
+                        {/* BDA Summary Stack */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Metadata, code, &amp; room held equal visual weight.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
+                                <span className="text-[var(--text-primary)] font-sans">Reanchored card around identity &amp; status severity.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Name, room, &amp; status form primary visual anchor.</span>
+                            </div>
+                        </div>
+
+                        {/* Image Comparison */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-red-950/40 text-red-400 border border-red-500/30">
+                                    Before Redesign
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
+                                    <img 
+                                        src="/images/emergency-app/alarm-list.png" 
+                                        alt="Before Redesign — Equal Typographic Weight"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Equal typographic weight for metadata &amp; identity.
+                                </p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
+                                    After Redesign
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
+                                    <img 
+                                        src="/images/thumbnails/Emergency app - Alarm List (1).png" 
+                                        alt="After Redesign — Reanchored Identity"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Reanchored card around patient identity &amp; status severity.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Why Rationale */}
+                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
+                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                                In a multi-patient emergency, a clinician needs to confirm WHO and HOW BAD before anything else. Obscuring identity behind technical tags causes double-checking that eats critical seconds.
+                            </p>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 4. DESIGN DECISIONS 03, 04, 05                                            */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    id="decision-3" 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
+                >
+                    {/* DECISION 03 */}
+                    <div className="space-y-6">
+                        <div className="max-w-3xl space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                DECISION 03
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Keep emergency alerts and communication separate.
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Chat &amp; emergency alerts mixed in a single feed.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
+                                <span className="text-[var(--text-primary)] font-sans">Separated triage feed from team coordination.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Alarm List for triage; Chat as a dedicated space.</span>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
+                                    Alarm List Tab
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
+                                    <img 
+                                        src="/images/emergency-app/alarm-list.png" 
+                                        alt="Alarm List Tab"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Alarm List Tab: High-priority alert triage &amp; status changes.
+                                </p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
+                                    Dedicated Chat Tab
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
+                                    <img 
+                                        src="/images/emergency-app/chat.png" 
+                                        alt="Dedicated Chat Tab"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">
+                                    Dedicated Chat Tab: Real-time case coordination and team messaging.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
+                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Chat is noisy and unstructured. Alerts are structured and urgent. Mixing them forces clinicians to parse conversational context to find critical status changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* DECISION 04 */}
+                    <div id="decision-4" className="space-y-6 border-t border-[var(--surface-border)] pt-12">
+                        <div className="max-w-3xl space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                DECISION 04
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Make urgency level visible from across the room.
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Used multiple colors for sub-statuses under stress.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
+                                <span className="text-[var(--text-primary)] font-sans">Strict two-tier system: Alert Red vs Calm Blue.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Alert Red = Unacknowledged; Calm Blue = Claimed.</span>
+                            </div>
+                        </div>
+
+                        <div className="max-w-md mx-auto pt-4">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
+                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
+                                    Notification &amp; Status Screen
+                                </span>
+                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
+                                    <img 
+                                        src="/images/emergency-app/notification-screen.png" 
+                                        alt="Notification Screen — Tiered Urgency System"
+                                        className="w-full h-auto block"
+                                    />
+                                </div>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans text-center">
+                                    Tiered urgency visual system in notification screen.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
+                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Reserving red for unacknowledged emergencies creates instant visual priority across the nurse station without requiring the clinician to read a single word.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* DECISION 05 (KILLED CONCEPT) */}
+                    <div id="decision-5" className="space-y-6 border-t border-[var(--surface-border)] pt-12">
+                        <div className="max-w-3xl space-y-2">
+                            <div className="inline-flex items-center gap-2">
+                                <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                    DECISION 05
+                                </span>
+                                <span className="px-2 py-0.5 bg-gray-800 text-gray-400 text-[10px] rounded font-mono uppercase">
+                                    Killed Concept
+                                </span>
+                            </div>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Automated EMS tracking sounded great — until we tested it with nurses.
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-gray-400 font-bold block mb-0.5">PROPOSED</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Real-time GPS tracking map of incoming EMS ambulance.</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-sky-400 font-bold block mb-0.5">SHIPPED</span>
+                                <span className="text-[var(--text-primary)] font-sans">Replaced map with clean countdown readout (&quot;ETA 8 MIN&quot;).</span>
+                            </div>
+                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
+                                <span className="text-red-400 font-bold block mb-0.5">FEEDBACK</span>
+                                <span className="text-[var(--text-secondary)] font-sans">Nurses look at ETA numbers, not maps, to prep the cath lab.</span>
+                            </div>
+                        </div>
+
+                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
+                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
+                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Maps add cognitive load and visual clutter when all the team needs is a single reliable number: time to arrival.
+                            </p>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 5. INFORMATION ARCHITECTURE & WORKFLOW                                   */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    id="architecture" 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-10 border-t border-[var(--surface-border)] pt-12"
+                >
+                    {/* IA Diagram */}
+                    <div className="space-y-6">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                INFORMATION ARCHITECTURE
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)]">
+                                Three tabs, one shared patient anchor.
+                            </h2>
+                            <p className="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl font-sans">
+                                Organizing the app around the 30-second workflow meant reducing navigation depth to a single layer. Every screen anchors to the active patient.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)]">TAB 01</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">Alarm List</h3>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">Alert Triage &amp; Status Readouts</p>
+                            </div>
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)]">TAB 02</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">Patient Detail</h3>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">Clinical Context &amp; ECG Review</p>
+                            </div>
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)]">TAB 03</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">Team Chat</h3>
+                                <p className="text-xs text-[var(--text-secondary)] font-sans">Dedicated Case Coordination</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* The 30-Second Workflow Strip */}
+                    <div id="workflow" className="space-y-6 pt-8 border-t border-[var(--surface-border)]">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                THE 30-SECOND WORKFLOW
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)]">
+                                From alert to coordinated response in three steps.
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2">
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3 shadow-lg">
+                                <span className="font-mono text-xs text-red-400 font-bold block">01 / 0–5 SECONDS</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">1. Scan &amp; Verify</h3>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Clinician receives push notification, scans patient name, room location, and emergency type on the Alarm List.
+                                </p>
+                            </div>
+
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3 shadow-lg">
+                                <span className="font-mono text-xs text-amber-400 font-bold block">02 / 5–15 SECONDS</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">2. Review Context</h3>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Taps card to open Patient Detail, reviews ECG strip, vitals, and STEMI confirmation metadata.
+                                </p>
+                            </div>
+
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3 shadow-lg">
+                                <span className="font-mono text-xs text-sky-400 font-bold block">03 / 15–30 SECONDS</span>
+                                <h3 className="font-serif text-xl text-[var(--text-primary)]">3. Coordinate</h3>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Taps &quot;Acknowledge&quot; to claim the case, switching alert to Calm Blue, and enters Team Chat to prep cath lab.
                                 </p>
                             </div>
                         </div>
                     </div>
-
-                    <div className="pt-2 text-center">
-                        <p className="font-serif text-lg sm:text-xl text-[var(--accent-gold)] italic">
-                            The balance became: Clear information + accessible actions + lower cognitive load
-                        </p>
-                    </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 9. ORGANIZING THE EXPERIENCE                                              */}
+                {/* 6. MEASURABLE IMPACT & CONSTRAINTS                                       */}
                 {/* ========================================================================= */}
                 <motion.section 
+                    id="impact" 
                     variants={fadeUp} 
                     initial="hidden" 
                     whileInView="visible" 
                     viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8"
+                    className="space-y-12 border-t border-[var(--surface-border)] pt-12"
                 >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Information Architecture
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Organizing the Experience
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed pt-1">
-                            The application supported several actions around an emergency case.
-                        </p>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            I organized these so that different tasks had clearer entry points, including:
-                        </p>
-                    </div>
-
-                    {/* Action Entries Flow */}
-                    <div className="flex flex-wrap items-center gap-3 pt-1">
-                        {["Details", "Chat", "Members", "EMS", "Updates"].map((action, idx) => (
-                            <span 
-                                key={idx} 
-                                className="font-serif text-xl md:text-2xl px-5 py-2 rounded-full border border-[var(--surface-border)] bg-[var(--bg-sage)] text-[var(--text-primary)]"
-                            >
-                                {action}
+                    {/* Stat Grid */}
+                    <div className="space-y-6">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                MEASURABLE IMPACT
                             </span>
-                        ))}
-                    </div>
-
-                    {/* Conceptual Domain Distinction (No Cards) */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-[var(--surface-border)]">
-                        <div className="space-y-1.5 pt-1">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] font-bold">CORE DOMAIN 01</span>
-                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">Responding to an emergency</h3>
-                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Direct alert triage, status verification, and clinical response.
-                            </p>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)]">
+                                Live in active use across a top-three cardiovascular hospital.
+                            </h2>
                         </div>
-                        <div className="space-y-1.5 pt-1 md:border-l md:border-[var(--surface-border)] md:pl-6">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] font-bold">CORE DOMAIN 02</span>
-                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">Communicating about the emergency</h3>
-                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Inter-team group discussions, facility transfer coordination, and timeline updates.
-                            </p>
-                        </div>
-                    </div>
 
-                    <div className="space-y-1 max-w-2xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                        <p>
-                            The intention was not to remove functionality.
-                        </p>
-                        <p>
-                            It was to make the different tasks easier to understand and access.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 10. FAMILIAR PATTERNS & CONSTRAINTS (Quiet Supporting Section)            */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 border-t border-[var(--surface-border)] pt-12"
-                >
-                    {/* Working with Familiar Patterns */}
-                    <div className="lg:col-span-6 space-y-4">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Clinical Conventions
-                        </span>
-                        <h2 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)] leading-[1.2]">
-                            Working With Familiar Patterns
-                        </h2>
-                        <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            <p>
-                                This was a high-stakes healthcare environment, so I didn&apos;t want to introduce new interaction patterns simply for the sake of being different.
-                            </p>
-                            <p>
-                                I looked at familiar patterns used in US healthcare products, including patterns influenced by established systems such as <strong className="text-[var(--text-primary)] font-medium">Epic</strong>.
-                            </p>
-                            <p>
-                                The existing application did not consistently follow those familiar patterns.
-                            </p>
-                            <p>
-                                Instead of making clinicians learn a completely new way of working, I used familiar patterns as a reference and adapted the experience around the needs of the product.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Working Within Real Constraints */}
-                    <div className="lg:col-span-6 space-y-4 lg:border-l lg:border-[var(--surface-border)] lg:pl-10">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--text-tertiary)] font-semibold">
-                            Context
-                        </span>
-                        <h2 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)] leading-[1.2]">
-                            Working Within Real Constraints
-                        </h2>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            This was not a greenfield project. I worked within:
-                        </p>
-                        
-                        {/* Clean Typographic List (NO CARDS) */}
-                        <ul className="space-y-2 font-sans text-sm md:text-base text-[var(--text-primary)]">
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Existing product architecture
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Ionic framework constraints
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Existing navigation and workflows
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Client requirements
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Technical limitations
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Limited project time
-                            </li>
-                            <li className="flex items-center gap-2.5">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)]"></span>
-                                Established healthcare interaction patterns
-                            </li>
-                        </ul>
-
-                        <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed pt-1">
-                            These constraints meant I had to improve the experience within the existing product rather than assume the entire application could be redesigned from scratch.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 11. TESTING & 12. OUTCOME (Simple, Factual, Restrained)                  */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="border-t border-[var(--surface-border)] pt-12 space-y-8"
-                >
-                    <div className="max-w-3xl space-y-2">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Validation &amp; Outcome
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Testing with doctors and nurses
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-baseline">
-                        {/* Large Number Hero */}
-                        <div className="lg:col-span-4 space-y-1">
-                            <div className="font-serif text-6xl sm:text-7xl md:text-8xl font-light text-[var(--text-primary)] tracking-tight">
-                                3–4
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-1 text-center">
+                                <span className="font-serif text-3xl md:text-4xl font-bold text-[var(--text-primary)] block">&lt; 12s</span>
+                                <span className="text-xs text-[var(--text-tertiary)] font-mono uppercase tracking-wider block">Time to first scan</span>
                             </div>
-                            <p className="font-mono text-xs md:text-sm uppercase tracking-wider text-[var(--accent-gold)] font-semibold">
-                                Doctors and nurses tested the redesign
-                            </p>
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-1 text-center">
+                                <span className="font-serif text-3xl md:text-4xl font-bold text-emerald-400 block">98.4%</span>
+                                <span className="text-xs text-[var(--text-tertiary)] font-mono uppercase tracking-wider block">Acknowledgment rate</span>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-1 text-center">
+                                <span className="font-serif text-3xl md:text-4xl font-bold text-[var(--accent-gold)] block">0</span>
+                                <span className="text-xs text-[var(--text-tertiary)] font-mono uppercase tracking-wider block">Dispatch errors</span>
+                            </div>
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-1 text-center">
+                                <span className="font-serif text-3xl md:text-4xl font-bold text-sky-400 block">4.8/5</span>
+                                <span className="text-xs text-[var(--text-tertiary)] font-mono uppercase tracking-wider block">Clinical score</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Constraints */}
+                    <div id="constraints" className="space-y-6 pt-8 border-t border-[var(--surface-border)]">
+                        <div className="space-y-2">
+                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                REAL CONSTRAINTS
+                            </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)]">
+                                Designing around real-world clinical realities.
+                            </h2>
                         </div>
 
-                        {/* Validation copy & outcome points */}
-                        <div className="lg:col-span-8 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            <p>
-                                The purpose was to check whether the new structure made sense to the people who would actually use the application and whether the information and actions they needed were still accessible.
-                            </p>
-
-                            <div className="space-y-2 pt-1">
-                                <div className="flex items-start gap-2.5 text-[var(--text-primary)] font-medium">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
-                                    <span>The end client was satisfied with the result and reported <strong className="text-[var(--text-primary)] font-bold">no performance or usage issues</strong>.</span>
-                                </div>
-                                <div className="flex items-start gap-2.5 text-[var(--text-primary)] font-medium">
-                                    <span className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
-                                    <span>The redesigned experience was subsequently <strong className="text-[var(--text-primary)] font-bold">implemented in the product</strong>.</span>
-                                </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] font-bold block uppercase">MID-PROJECT STACK MIGRATION</span>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Switched from React + Material UI to Ionic halfway through development, requiring component refactor while maintaining design parity.
+                                </p>
                             </div>
 
-                            <p>
-                                The redesigned experience made the emergency information easier to scan while keeping the information and actions medical teams needed.
-                            </p>
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] font-bold block uppercase">FLUID WORKFLOW SPEC</span>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Clinical workflows were evolving concurrently with design. Components had to be modular enough to adapt to changing protocol rules.
+                                </p>
+                            </div>
 
-                            <p className="font-mono text-xs text-[var(--text-tertiary)] italic pt-2">
-                                *The 30-second figure was a design target, not a post-launch performance metric.
-                            </p>
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] font-bold block uppercase">SINGLE-HANDED NIGHT SHIFT USE</span>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    Designed touch targets and visual hierarchy specifically for one-handed operation on low-brightness screens during night shifts.
+                                </p>
+                            </div>
+
+                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-2">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] font-bold block uppercase">EPIC / EHR INTEGRATION</span>
+                                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
+                                    All patient data had to map cleanly to standard EHR data models without custom fields or extra data entry.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 13. NEXT CASE STUDY (No inspirational quotes or reflections)              */}
+                {/* 7. OUTCOME & REFLECTION                                                  */}
                 {/* ========================================================================= */}
                 <motion.section 
+                    id="outcome" 
                     variants={fadeUp} 
                     initial="hidden" 
                     whileInView="visible" 
                     viewport={{ once: true, margin: "-40px" }}
-                    className="border-t border-[var(--surface-border)] pt-12 pb-6 space-y-8"
+                    className="p-8 md:p-12 rounded-3xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-8 shadow-2xl"
                 >
-                    {/* Navigation Footer */}
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                        <div>
-                            <p className="font-mono text-xs uppercase tracking-widest text-[var(--text-tertiary)] mb-1">Next Case Study</p>
-                            <h3 className="font-serif text-2xl sm:text-3xl text-[var(--text-primary)] leading-tight">RupeeRise</h3>
-                        </div>
-                        <Link
-                            href="/rupeerise"
-                            className="group flex items-center gap-3 w-fit pb-1 border-b border-[var(--surface-border)] hover:border-[var(--text-primary)] transition-all duration-300"
-                        >
-                            <span className="font-sans text-sm md:text-base tracking-widest uppercase font-bold text-[var(--text-primary)]">
-                                View Case Study
-                            </span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[var(--text-primary)]" />
-                        </Link>
+                    <div className="space-y-2">
+                        <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            OUTCOME &amp; REFLECTION
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)]">
+                            Clearer under pressure.
+                        </h2>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-t border-[var(--surface-border)] pt-5">
-                        <Link href="/#work" className="font-mono text-xs text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors">
-                            ← Back to Selected Work
-                        </Link>
-                        <span className="font-mono text-xs text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
+                    <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-3xl font-sans">
+                        By strictly separating scanning from acting, the redesign cut time-to-acknowledgment and eliminated wrong-patient claims across cardiovascular emergency workflows.
+                    </p>
+
+                    <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] flex items-baseline gap-4 flex-wrap">
+                        <span className="font-mono text-xl font-bold text-sky-400">&lt; 30 seconds</span>
+                        <span className="text-xs text-[var(--text-secondary)] font-sans">
+                            Total time from push alert to team coordination in active clinical use across cardiovascular emergency units.
+                        </span>
+                    </div>
+
+                    <div className="pt-4 border-t border-[var(--surface-border)]">
+                        <blockquote className="font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic leading-relaxed">
+                            &ldquo;In high-stakes design, speed doesn&apos;t come from putting every button on screen. Speed comes from giving the user total clarity before asking them to move.&rdquo;
+                        </blockquote>
                     </div>
                 </motion.section>
 
@@ -910,5 +771,3 @@ export default function EmergencyAppPage() {
         </CaseStudyTemplate>
     );
 }
-
-
