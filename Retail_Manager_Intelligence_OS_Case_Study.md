@@ -6,257 +6,227 @@
 **Client:** SRD Soft Tech  
 **Industry:** B2B SaaS · Retail Technology  
 **Timeline:** 2026  
-**Status:** Working product in progress
+**Status:** Concept validation · Product in progress  
 
 ---
 
 ## The Context
 
-SRD Soft Tech develops business software for retail and food-service businesses. Its **Retail Manager** product supports core operations such as billing, inventory, procurement, stock movement and multi-store management.
+Retail Manager is a desktop-based retail management system that supports day-to-day operations such as billing, inventory, purchasing, deliveries and multi-store stock management.
 
-I initially joined to help SRD build its **brand and digital presence**. As I started understanding the product and comparing it with other retail ERP platforms, I identified an opportunity to make its operational data more useful for the people making business decisions.
+The system already captures the operational data needed to run these activities. The problem I identified was not a lack of data, but the effort required to find what matters in that data and decide what to do next.
 
-**That became the starting point for exploring RM Intelligence OS.**
+For example, if tomatoes are selling quickly at one store while excess stock is sitting at another, the information may already exist across the system. Someone still needs to notice the situation, connect the two conditions and decide whether to transfer the stock, discount it or take another action.
 
----
+That led me to a simple question:
 
-## Understanding the existing product
+> **What if Retail Manager could bring important information forward and help users decide what deserves attention?**
 
-I started by looking at how Retail Manager actually worked across its operational workflows and how similar retail ERP products approached the same space.
-
-Retail Manager already captured a significant amount of operational information through areas such as billing, inventory, procurement, stock movement and reporting.
-
-The opportunity wasn't to build another ERP or another dashboard.
-
-It was to reduce the gap between:
-
-**Operational data → Reports → User interprets → Decision**
-
-and move toward:
-
-**Operational data → Pattern → Recommendation → Human decision**
-
-This led me to a question:
-
-> **If the system already knows what is happening, can it help the people running the business understand what deserves their attention and decide what to do next?**
-
-This was my **product hypothesis**, based on product analysis, secondary research and competitive analysis—not formal user research.
+This became the starting point for Retail Manager Intelligence OS.
 
 ---
 
-## Making the opportunity concrete
+## Finding the opportunity
 
-I started with a founder-facing presentation rather than jumping directly into detailed UI.
+I first studied how Retail Manager worked across its existing operational workflows.
 
-The presentation made the Intelligence OS direction concrete: an intelligence layer that could sit on top of Retail Manager and help identify and prioritize operational issues.
+I then looked at retail ERP products, competitor approaches, industry trends and available public information to understand how other systems handled operational reporting and decision-making.
 
-The founder's response was specific. He felt what I had created could **benefit some of his customers, but not the entire customer base**.
+The research pointed toward an opportunity: retail systems are already good at recording and reporting data, but users still have to interpret that data themselves.
 
-That helped narrow the opportunity.
+Instead of creating another reporting dashboard, I explored an intelligence layer that could identify meaningful conditions in existing operational data and present them in a way that supports action.
 
-Rather than positioning Intelligence OS as something every Retail Manager customer needed, it made more sense for businesses with enough operational complexity to benefit from decision support.
+The initial product model became:
 
-The client's strategy similarly identifies multi-location and inventory-heavy businesses, particularly owners who cannot personally monitor every branch, as an initial target.
+**Existing data → Important signal → Explanation → Recommendation → Decision**
 
-The broader intelligence vision already existed within SRD.
-
-**My contribution was making that opportunity concrete and showing how it could work as a product.**
-
-At this stage, I had **stakeholder validation, not end-user validation**.
+*This was a product hypothesis, not a claim that the problem had already been validated with end users.
 
 ---
 
-## The project expanded beyond the original brief
+## Turning the opportunity into a product
 
-After the initial pitch, the engagement moved beyond the Intelligence OS concept.
+The broader idea of an intelligence layer was already part of the client's future product direction.
 
-The founder asked me to work on the **company website**, as customers were asking for a digital presence for SRD.
+My contribution was turning that direction into a concrete product concept and experience.
 
-The website then became a way to communicate the broader product ecosystem:
+I started by creating a product pitch for the founder rather than immediately designing screens. The pitch explained how an Intelligence OS could sit alongside Retail Manager and use its existing operational data to surface useful signals and recommendations.
 
-**SRD Soft Tech → Retail Manager → RMServe → RM Intelligence OS**
+The founder's response was specific: he felt the concept could benefit some of his customers, but not the entire customer base.
 
-From there, the project continued into the application experience and the practical work of moving the concept toward a working product.
-
-What started as:
-
-**Branding → Website**
-
-expanded into:
-
-**Product understanding → Product opportunity → Intelligence OS → Application**
+That gave the direction stakeholder validation and helped move the project forward. It was not treated as end-user validation; user testing is part of the next stage.
 
 ---
 
-# The product decisions
+## Designing the Intelligence OS
 
-## Recommendation-first, not another dashboard
+### Make the important information visible first
 
-Retail Manager already reports operational information.
+The first design decision was to avoid turning Intelligence OS into another analytics dashboard.
 
-I wanted Intelligence OS to answer a different question:
+The experience starts with:
 
-> **What deserves my attention right now?**
+> **What needs my attention right now?**
 
-Instead of creating another reporting layer, the experience surfaces conditions such as stock-out risk, excess inventory, slow-moving stock and other operational exceptions, then provides context around why they matter.
+Instead of requiring the manager to search through reports, the system surfaces conditions that may require attention:
+- Perishable stock at risk
+- Low or excess inventory
+- Stock differences between locations
+- Delivery discrepancies
+- Supplier patterns
+- Stock requests
 
-The recommendation becomes the starting point, rather than another chart the user has to interpret.
+The interface then provides context around the condition and a possible next action.
 
----
+### Recommend, don't decide
 
-## Human decision, not automatic action
+The system can identify a situation, but it cannot know every piece of business context behind the decision.
 
-A detected problem doesn't always have one correct response.
+If one store has excess tomatoes and another has high demand, for example, the system can recommend considering a transfer.
 
-A stock condition could lead to:
+But the manager may instead decide to discount the stock, purchase elsewhere, investigate the demand or do nothing.
 
-**Purchase · Transfer · Discount · Investigate · Take no action**
+So I designed the interaction around:
 
-The system identifies the condition and suggests possible actions, but the responsible person makes the final decision.
+**System recommends → Person decides**
 
-The client's strategy describes a longer progression toward controlled automation.
+The client's longer-term strategy includes moving toward more controlled automation. For this stage, my design response was to keep operational decisions with the person rather than automate them prematurely.
 
-**My design response at this stage was to keep Intelligence OS recommendation-led and human-controlled while the concept is being validated.**
+### Read existing data before changing the existing system
 
----
+Retail Manager is already responsible for core business operations.
 
-## Read-only before deeper integration
+I therefore designed the initial Intelligence OS as a read-only layer.
 
-Retail Manager already runs the company's core operations.
+It reads the existing operational data without writing back to the legacy system:
 
-The goal wasn't to replace it.
+**Retail Manager → Intelligence OS → Recommendation → Human decision**
 
-So the initial Intelligence OS architecture is deliberately **read-only**:
+This creates a way to test the intelligence capability without making the existing operational system dependent on an unproven layer. Deeper integration can come later once the concept has been validated.
 
-**Existing system → Operational data → Intelligence OS → Recommendation → Human decision**
+### Don't make users ask the AI
 
-The intelligence layer reads existing data without writing back into the operational system.
+I also chose not to make conversational AI the primary interface.
 
-This allows the new capability to be explored without making the existing product dependent on an unvalidated intelligence layer.
+A manager shouldn't have to think about what question to type before receiving useful information.
 
-It also leaves room for deeper integration later, once the intelligence capability has been proven.
+Instead, the product proactively surfaces relevant conditions.
 
----
+The principle was simple:
 
-## Explainable intelligence before “AI everywhere”
-
-The first version shouldn't depend on complex machine learning simply to appear intelligent.
-
-The client's strategy describes progressing from dependable, explainable conditions toward prediction, prioritization and eventually controlled automation.
-
-I translated that into a simple principle:
-
-**Detect → Explain → Recommend → Let the person decide**
-
-The recommendation needs to be understandable enough for someone to trust and act on.
+> **The system should surface what deserves attention instead of making the user search for it.**
 
 ---
 
-# Designing around operational roles
+## Designing around operational roles
 
-The same information isn't equally useful to everyone.
+The same information is not equally useful to everyone using the system.
 
 ### Owner
-
-> **What needs my attention today?**
-
-A concise view of important business conditions.
+> **“What needs my attention today?”**  
+The overview therefore focuses on important operational conditions and recommended actions.
 
 ### Warehouse
-
-> **What arrived, and what needs to move?**
-
-Focus on deliveries, shortages and stock movement.
+> **“What arrived, what is missing, and what needs to move?”**  
+The experience focuses on receiving, deliveries and stock movement.
 
 ### Store
+> **“What's running low and what do I need to request?”**  
+The experience focuses on stock availability and requests.
 
-> **What's low, and how do I request it?**
-
-Focus on stock visibility and requests.
-
-The underlying data remains connected, but the experience is shaped around each person's responsibility.
+This led to a role-based experience rather than one large intelligence dashboard.
 
 ---
 
-# From strategy to working product
+## The core workflows
 
-The current product exploration focuses on a small set of core workflows:
+I translated the product direction into four initial workflows:
 
-**Today's Overview** — surface important business conditions.
+- **Today's Overview**: Brings important operational conditions together so a manager can quickly see what needs attention.
+- **Stock View**: Helps users understand inventory conditions across locations, including stock levels, consumption and days of cover.
+- **Delivery Received**: Makes it easier to compare ordered quantities with what was actually received and identify discrepancies.
+- **Stock Request**: Connects a store's stock situation with the request process while keeping the decision with the user.
 
-**Stock View** — identify and investigate low or critical inventory.
-
-**Delivery Received** — compare ordered versus received quantities.
-
-**Stock Request** — connect store requests with fulfilment.
-
-The project has now moved beyond the original branding work into a working product direction, with the website, implementation and real-data integration still in progress.
-
-The current application is being used as a **testing ground for the product concept**, not presented as a finished production deployment.
+These workflows were chosen as the initial product surface rather than attempting to cover every possible retail operation at once.
 
 ---
 
-# What is established — and what still needs proof
+## From concept to working application
 
-### Established
+The concept has now been translated into a working application rather than remaining only as a pitch or set of static screens.
 
-* Intelligence OS product direction
-* Initial product principles
-* Founder/stakeholder validation
-* High-fidelity product experience
-* Working product direction
+My work has expanded across:
 
-### Still to validate
+**Product strategy → UX/UI → Application design → Frontend/backend implementation**
 
-* Do users understand the recommendations?
-* Do they trust them?
-* Do recommendations influence what they investigate or act on?
-* Which intelligence signals are actually useful?
-* Does the product become part of their regular workflow?
+The application demonstrates how the intelligence layer can connect operational data with recommendations and actions.
 
-I am **not claiming increased sales, reduced stockouts or revenue impact**.
+For example:
+- **Excess stock** → Identify another store with demand → Recommend transfer → User decides
+- **Ordered quantity** → Received quantity → Detect discrepancy → Surface issue → Follow-up action
 
-Those outcomes still need real-user and production validation.
+The goal is to make the intelligence useful within the workflow, rather than separating it into another reporting product.
 
 ---
 
-# Where it goes next
+## Expected impact
 
-The broader product direction is:
+The product is being designed against measurable improvement targets:
 
-**Retail Manager**  
-Retail operations
+- **~50% reduction** in manual operational monitoring work
+- **40–60% faster** identification of important inventory issues
+- **Better use** of existing inventory across stores
+- **Reduced avoidable loss** of perishable stock
+- **Fewer situations** where one store has excess inventory while another faces a shortage
+- **Recovery of value** that could otherwise be lost through spoilage or unavailable stock
 
-*
+For example, if tomatoes are sitting unsold at Store C while Store A is experiencing higher demand, transferring the stock can reduce the need to purchase new inventory and reduce the risk of spoilage.
 
-**RMServe**  
-Restaurant operations
+If selling the remaining stock at a discount is appropriate, recovering some value can still be better than allowing the inventory to expire.
 
-↓
-
-**RM Intelligence OS**  
-Shared intelligence layer
-
-↓
-
-**Future platform capability**
-
-The progression is:
-
-**Record → Visibility → Attention → Recommendation → Controlled automation**
-
-The longer-term opportunity is to prove the intelligence layer within SRD's own products before considering how selected intelligence capabilities could extend to other business systems.
+*These targets define what the product is expected to improve. They are not measured outcomes yet.
 
 ---
 
-## The next proof
+## What happens next
 
-I started this project by helping SRD communicate what it already had.
+The next phase is about turning the product hypothesis into evidence:
 
-Understanding the product led me to a bigger question:
+1. **Implement with real data**: Connect Intelligence OS with Retail Manager's operational data and test it with realistic data volumes.
+2. **Validate with users**: Test the product with relevant users to understand whether the recommendations are clear, useful and actionable.
+3. **Measure the targets**: Evaluate whether the product actually reduces manual effort, improves issue identification and helps users make better inventory decisions.
+4. **Iterate**: Use the findings to improve the recommendations, workflows and product experience before broader implementation.
 
-> **If a business system already knows what is happening, can it help the people running the business decide what to do next?**
+---
 
-I took that question from **product understanding → opportunity → strategy → stakeholder validation → product decisions → working product**.
+## The longer-term opportunity
 
-The next step is to put it in front of real users and find out whether the intelligence actually helps them make better operational decisions.
+The immediate goal is to prove Intelligence OS within Retail Manager.
+
+The longer-term strategy is to make the intelligence layer useful across the client's product ecosystem and eventually explore it as a capability that can work with other legacy business systems.
+
+The potential progression is:
+
+**Retail Manager** (Retail operations)  
+↓  
+**RMServe** (Restaurant operations)  
+↓  
+**RM Intelligence OS** (Shared intelligence layer)  
+↓  
+**Intelligence capability for other legacy systems**  
+
+Instead of asking businesses to replace the software already running their operations, the longer-term opportunity is to provide an intelligence layer that can sit on top of existing systems.
+
+But that comes after proving the core concept first.
+
+---
+
+## The question I'm testing
+
+Retail Manager already knows a lot about what is happening inside a business.
+
+The opportunity is to make that information easier to understand and act on.
+
+> **“If the system already has the data, can it help the people running the business see what matters and decide what to do next?”**
+
+That is what Retail Manager Intelligence OS is being built to test.

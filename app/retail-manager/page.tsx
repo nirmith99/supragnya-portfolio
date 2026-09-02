@@ -13,8 +13,16 @@ import {
     Warehouse, 
     UserCheck,
     HelpCircle,
-    Globe,
-    Sparkles
+    TrendingUp,
+    Layers,
+    Sparkles,
+    Brain,
+    Clock,
+    Target,
+    Zap,
+    ShieldCheck,
+    ArrowRightCircle,
+    Boxes
 } from "lucide-react";
 
 export default function RetailManagerPage() {
@@ -30,7 +38,7 @@ export default function RetailManagerPage() {
     return (
         <CaseStudyTemplate
             title="Retail Manager Intelligence OS"
-            role="Product Designer"
+            role="Product Designer — Product Strategy, UX/UI & Brand"
             timeline="2026"
             tags={["B2B SaaS", "Retail Technology", "Product Strategy", "UX/UI & Brand"]}
             hideDefaultHero={true}
@@ -38,7 +46,7 @@ export default function RetailManagerPage() {
             <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24">
                 
                 {/* ========================================================================= */}
-                {/* 1. HERO — CONTINUOUS STORY OPENING                                        */}
+                {/* 1. HERO — CONTINUOUS STORY OPENING & THE CONTEXT                          */}
                 {/* ========================================================================= */}
                 <motion.section
                     variants={fadeUp}
@@ -48,7 +56,7 @@ export default function RetailManagerPage() {
                     className="relative pt-8 md:pt-16"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                        {/* 40% Text Column */}
+                        {/* 45% Text Column */}
                         <div className="lg:col-span-5 space-y-5">
                             <div className="inline-flex items-center gap-3">
                                 <span className="h-px w-6 bg-[var(--accent-gold)]" />
@@ -67,31 +75,38 @@ export default function RetailManagerPage() {
 
                             <div className="space-y-3.5 text-[var(--text-secondary)] font-sans text-base md:text-lg leading-relaxed pt-1">
                                 <p>
-                                    SRD Soft Tech develops business software for retail and food-service businesses. Its <strong className="text-[var(--text-primary)] font-medium">Retail Manager</strong> product supports core operations such as billing, inventory, procurement, stock movement and multi-store management.
+                                    Retail Manager is a desktop-based retail management system that supports day-to-day operations such as billing, inventory, purchasing, deliveries and multi-store stock management.
                                 </p>
                                 <p>
-                                    I initially joined to help SRD build its <strong className="text-[var(--text-primary)] font-medium">brand and digital presence</strong>. As I started understanding the product and comparing it with other retail ERP platforms, I identified an opportunity to make its operational data more useful for the people making business decisions.
+                                    The system already captures the operational data needed to run these activities. The problem I identified was not a lack of data, but the effort required to find what matters in that data and decide what to do next.
                                 </p>
-                                <p className="font-serif text-xl text-[var(--text-primary)] italic pt-1">
-                                    That became the starting point for exploring RM Intelligence OS.
+                                <p className="text-sm md:text-base text-[var(--text-secondary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)]">
+                                    <strong className="text-[var(--text-primary)] block font-semibold mb-1 font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider">Operational Scenario:</strong>
+                                    If tomatoes are selling quickly at one store while excess stock is sitting at another, the information may already exist across the system. Someone still needs to notice the situation, connect the two conditions and decide whether to transfer the stock, discount it or take another action.
+                                </p>
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic pt-2 border-l-2 border-[var(--accent-gold)] pl-4">
+                                    That led me to a simple question: What if Retail Manager could bring important information forward and help users decide what deserves attention?
+                                </p>
+                                <p className="font-sans text-sm text-[var(--text-tertiary)] italic">
+                                    This became the starting point for Retail Manager Intelligence OS.
                                 </p>
                             </div>
                         </div>
 
-                        {/* 60% Visual Column (Interactive Desktop Preview) */}
+                        {/* 55% Visual Column (Interactive Desktop Preview) */}
                         <div className="lg:col-span-7 flex justify-center lg:justify-end">
                             <div className="w-full max-w-[760px] shadow-2xl">
                                 <DesktopMockup className="max-w-none w-full shadow-2xl">
                                     <RetailDashboardPreview />
                                 </DesktopMockup>
                                 <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-3">
-                                    RM Intelligence OS · Live Recommendation &amp; Multi-Outlet Layer
+                                    Retail Manager Intelligence OS · Live Recommendation &amp; Multi-Outlet Layer
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Metadata Row (Clean Editorial Grid, No Cards) */}
+                    {/* Metadata Row (Clean Editorial Grid) */}
                     <div className="mt-12 pt-6 border-t border-[var(--surface-border)]">
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-5 gap-x-6 text-xs md:text-sm font-sans">
                             <div>
@@ -114,7 +129,7 @@ export default function RetailManagerPage() {
                                 <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Status</span>
                                 <span className="text-[var(--text-primary)] font-medium flex items-center gap-1.5">
                                     <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse"></span>
-                                    Working product in progress
+                                    Concept validation · Product in progress
                                 </span>
                             </div>
                         </div>
@@ -122,7 +137,7 @@ export default function RetailManagerPage() {
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 2. UNDERSTANDING THE EXISTING PRODUCT & OPPORTUNITY                       */}
+                {/* 2. FINDING THE OPPORTUNITY                                                */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -135,70 +150,63 @@ export default function RetailManagerPage() {
                         {/* Section Left */}
                         <div className="lg:col-span-5 space-y-4">
                             <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                                Operational Workflows
+                                Research &amp; Analysis
                             </span>
                             <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                                Understanding the existing product
+                                Finding the opportunity
                             </h2>
                             <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    I started by looking at how Retail Manager actually worked across its operational workflows and how similar retail ERP products approached the same space.
+                                    I first studied how Retail Manager worked across its existing operational workflows.
                                 </p>
                                 <p>
-                                    Retail Manager already captured a significant amount of operational information through areas such as billing, inventory, procurement, stock movement and reporting.
+                                    I then looked at retail ERP products, competitor approaches, industry trends and available public information to understand how other systems handled operational reporting and decision-making.
                                 </p>
                                 <p className="text-[var(--text-primary)] font-serif text-xl italic pt-1">
-                                    The opportunity wasn&apos;t to build another ERP or another dashboard.
+                                    The research pointed toward an opportunity: retail systems are already good at recording and reporting data, but users still have to interpret that data themselves.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Section Right: Opportunity Paradigm */}
+                        {/* Section Right: Product Model & Hypothesis */}
                         <div className="lg:col-span-7 space-y-5 lg:border-l lg:border-[var(--surface-border)] lg:pl-12">
                             <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                                Product Insight
+                                Product Model
                             </span>
                             <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                                Reducing the gap from data to decision
+                                An intelligence layer for actionable signals
                             </h2>
                             <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                                It was to reduce the gap between:
+                                Instead of creating another reporting dashboard, I explored an intelligence layer that could identify meaningful conditions in existing operational data and present them in a way that supports action.
                             </p>
 
-                            {/* Paradigm Shift Flow (Compact Diagram, No Cards) */}
+                            {/* Product Model Flow Diagram */}
                             <div className="space-y-4 py-2">
                                 <div className="space-y-1.5">
-                                    <span className="font-mono text-xs text-[#ef4444] uppercase tracking-wider font-bold">The Existing Gap:</span>
-                                    <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-secondary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
-                                        <span>Operational data</span>
-                                        <span className="text-[var(--text-tertiary)]">→</span>
-                                        <span>Reports</span>
-                                        <span className="text-[var(--text-tertiary)]">→</span>
-                                        <span>User interprets</span>
-                                        <span className="text-[#ef4444]">→</span>
+                                    <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold">The Initial Product Model:</span>
+                                    <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)]">
+                                        <span>Existing data</span>
+                                        <span className="text-[var(--accent-gold)]">→</span>
+                                        <span>Important signal</span>
+                                        <span className="text-[var(--accent-gold)]">→</span>
+                                        <span>Explanation</span>
+                                        <span className="text-[var(--accent-gold)]">→</span>
+                                        <span className="text-emerald-400 font-semibold">Recommendation</span>
+                                        <span className="text-[var(--accent-gold)]">→</span>
                                         <span className="text-[var(--text-primary)] font-bold">Decision</span>
                                     </div>
                                 </div>
-
-                                <div className="space-y-1.5">
-                                    <span className="font-mono text-xs text-emerald-400 uppercase tracking-wider font-bold">And Move Toward:</span>
-                                    <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-emerald-500/40">
-                                        <span className="text-emerald-400 font-semibold">Operational data</span>
-                                        <span className="text-emerald-400">→</span>
-                                        <span>Pattern</span>
-                                        <span className="text-emerald-400">→</span>
-                                        <span className="text-[var(--accent-gold)] font-bold">Recommendation</span>
-                                        <span className="text-emerald-400">→</span>
-                                        <span className="text-emerald-400 font-bold">Human decision</span>
-                                    </div>
-                                </div>
                             </div>
+
+                            <p className="font-mono text-xs md:text-sm text-[var(--text-tertiary)] italic pt-1">
+                                *This was a product hypothesis, not a claim that the problem had already been validated with end users.
+                            </p>
                         </div>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 3. PRODUCT HYPOTHESIS & MAKING THE OPPORTUNITY CONCRETE                    */}
+                {/* 3. TURNING THE OPPORTUNITY INTO A PRODUCT                                 */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -207,111 +215,46 @@ export default function RetailManagerPage() {
                     viewport={{ once: true, margin: "-40px" }}
                     className="py-4 md:py-8"
                 >
-                    <div className="border-y border-[var(--surface-border)] py-14 md:py-20 max-w-4xl mx-auto text-center space-y-6">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-bold">
-                            Product Hypothesis
-                        </span>
-
-                        <blockquote className="font-serif text-2xl sm:text-3xl md:text-4xl text-[var(--text-primary)] leading-[1.3] tracking-tight">
-                            &ldquo;If the system already knows what is happening, can it help the people running the business understand what deserves their attention and decide what to do next?&rdquo;
-                        </blockquote>
-
-                        <div className="max-w-2xl mx-auto space-y-2.5 pt-2 font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed">
-                            <p className="font-mono text-xs md:text-sm uppercase tracking-wider text-[var(--accent-gold)] font-medium">
-                                This was my product hypothesis, based on product analysis, secondary research and competitive analysis—not formal user research.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="max-w-3xl mx-auto space-y-4 pt-10 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold block">
-                            Strategy &amp; Pitch
-                        </span>
-                        <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                            Making the opportunity concrete
-                        </h3>
-                        <p>
-                            I started with a founder-facing presentation rather than jumping directly into detailed UI.
-                        </p>
-                        <p>
-                            The presentation made the Intelligence OS direction concrete: an intelligence layer that could sit on top of Retail Manager and help identify and prioritize operational issues.
-                        </p>
-                        <p>
-                            The founder&apos;s response was specific. He felt what I had created could <strong className="text-[var(--text-primary)] font-medium">benefit some of his customers, but not the entire customer base</strong>.
-                        </p>
-                        <p>
-                            That helped narrow the opportunity.
-                        </p>
-                        <p>
-                            Rather than positioning Intelligence OS as something every Retail Manager customer needed, it made more sense for businesses with enough operational complexity to benefit from decision support.
-                        </p>
-                        <p>
-                            The client&apos;s strategy similarly identifies multi-location and inventory-heavy businesses, particularly owners who cannot personally monitor every branch, as an initial target.
-                        </p>
-                        <p>
-                            The broader intelligence vision already existed within SRD. <strong className="text-[var(--text-primary)] font-medium">My contribution was making that opportunity concrete and showing how it could work as a product.</strong>
-                        </p>
-                        <p className="font-mono text-xs md:text-sm text-[var(--text-tertiary)] italic pt-2">
-                            *At this stage, I had stakeholder validation, not end-user validation.
-                        </p>
-                    </div>
-                </motion.section>
-
-                {/* ========================================================================= */}
-                {/* 4. THE PROJECT EXPANDED BEYOND THE ORIGINAL BRIEF                         */}
-                {/* ========================================================================= */}
-                <motion.section 
-                    variants={fadeUp} 
-                    initial="hidden" 
-                    whileInView="visible" 
-                    viewport={{ once: true, margin: "-40px" }}
-                    className="space-y-8 border-t border-[var(--surface-border)] pt-12"
-                >
-                    <div className="max-w-3xl space-y-3">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Scope Expansion
-                        </span>
-                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            The project expanded beyond the original brief
-                        </h2>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-                        <div className="lg:col-span-7 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                            <p>
-                                After the initial pitch, the engagement moved beyond the Intelligence OS concept.
-                            </p>
-                            <p>
-                                The founder asked me to work on the <strong className="text-[var(--text-primary)] font-medium">company website</strong>, as customers were asking for a digital presence for SRD.
-                            </p>
-                            <p>
-                                The website then became a way to communicate the broader product ecosystem:
-                            </p>
-                            
-                            <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-[var(--surface-border)] font-mono text-xs sm:text-sm text-[var(--text-primary)]">
-                                SRD Soft Tech → Retail Manager → RMServe → RM Intelligence OS
-                            </div>
-
-                            <p className="pt-2">
-                                From there, the project continued into the application experience and the practical work of moving the concept toward a working product.
-                            </p>
-                        </div>
-
-                        <div className="lg:col-span-5 space-y-3 p-6 bg-[var(--bg-sage)] rounded-xl border border-[var(--surface-border)]">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-1">
-                                Evolution of the Engagement
+                    <div className="border-t border-[var(--surface-border)] pt-12 space-y-8">
+                        <div className="max-w-3xl space-y-3">
+                            <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                                Strategy &amp; Stakeholder Validation
                             </span>
-                            <div className="space-y-3 font-mono text-xs sm:text-sm">
-                                <div>
-                                    <span className="text-[var(--text-tertiary)] block text-xs">What started as:</span>
-                                    <span className="text-[var(--text-primary)] font-semibold">Branding → Website</span>
-                                </div>
-                                <div className="h-px bg-[var(--surface-border)] my-1"></div>
-                                <div>
-                                    <span className="text-[var(--accent-gold)] block text-xs">Expanded into:</span>
-                                    <span className="text-emerald-400 font-semibold leading-relaxed">
-                                        Product understanding → Product opportunity → Intelligence OS → Application
-                                    </span>
+                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                                Turning the opportunity into a product
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+                            <div className="lg:col-span-7 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                                <p>
+                                    The broader idea of an intelligence layer was already part of the client&apos;s future product direction.
+                                </p>
+                                <p>
+                                    <strong className="text-[var(--text-primary)] font-medium">My contribution was turning that direction into a concrete product concept and experience.</strong>
+                                </p>
+                                <p>
+                                    I started by creating a product pitch for the founder rather than immediately designing screens. The pitch explained how an Intelligence OS could sit alongside Retail Manager and use its existing operational data to surface useful signals and recommendations.
+                                </p>
+                                <p>
+                                    The founder&apos;s response was specific: he felt the concept could benefit <strong className="text-[var(--text-primary)] font-medium">some of his customers, but not the entire customer base</strong>.
+                                </p>
+                                <p>
+                                    That gave the direction stakeholder validation and helped move the project forward. It was not treated as end-user validation; user testing is part of the next stage.
+                                </p>
+                            </div>
+
+                            <div className="lg:col-span-5 space-y-4 p-6 bg-[var(--bg-sage)] rounded-xl border border-[var(--surface-border)]">
+                                <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-1">
+                                    Key Milestone
+                                </span>
+                                <div className="space-y-3 font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                    <div className="font-serif text-xl text-[var(--text-primary)] italic">
+                                        &ldquo;Benefits specific customers with operational complexity, not necessarily the entire base.&rdquo;
+                                    </div>
+                                    <p className="text-xs font-mono text-[var(--text-tertiary)] pt-1">
+                                        Focusing the initial target on multi-location and inventory-heavy businesses where owners cannot personally monitor every branch.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -319,7 +262,7 @@ export default function RetailManagerPage() {
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 5. THE PRODUCT DECISIONS                                                  */}
+                {/* 4. DESIGNING THE INTELLIGENCE OS (FOUR PRINCIPLES)                        */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -330,112 +273,111 @@ export default function RetailManagerPage() {
                 >
                     <div className="max-w-3xl space-y-2">
                         <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Core Architecture
+                            Design Principles
                         </span>
                         <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[var(--text-primary)] leading-[1.15]">
-                            The product decisions
+                            Designing the Intelligence OS
                         </h2>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 pt-4 border-t border-[var(--surface-border)]">
-                        {/* Decision 01 */}
+                        {/* Principle 01 */}
                         <div className="space-y-3">
                             <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">
-                                Decision 01
+                                Principle 01
                             </span>
                             <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                                Recommendation-first, not another dashboard
+                                Make the important information visible first
                             </h3>
                             <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    Retail Manager already reports operational information. I wanted Intelligence OS to answer a different question:
+                                    The first design decision was to avoid turning Intelligence OS into another analytics dashboard.
                                 </p>
                                 <p className="font-serif text-xl text-[var(--text-primary)] italic pl-3 border-l-2 border-[var(--accent-gold)]">
-                                    &ldquo;What deserves my attention right now?&rdquo;
+                                    The experience starts with: &ldquo;What needs my attention right now?&rdquo;
                                 </p>
                                 <p>
-                                    Instead of creating another reporting layer, the experience surfaces conditions such as stock-out risk, excess inventory, slow-moving stock and other operational exceptions, then provides context around why they matter.
+                                    Instead of requiring the manager to search through reports, the system surfaces conditions that may require attention:
                                 </p>
-                                <p>
-                                    The recommendation becomes the starting point, rather than another chart the user has to interpret.
+                                <div className="grid grid-cols-2 gap-2 text-xs font-mono pt-1 text-[var(--text-primary)]">
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Perishable stock at risk</div>
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Low or excess inventory</div>
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Location stock differences</div>
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Delivery discrepancies</div>
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Supplier patterns</div>
+                                    <div className="p-2.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)]">• Stock requests</div>
+                                </div>
+                                <p className="pt-1">
+                                    The interface then provides context around the condition and a possible next action.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Decision 02 */}
+                        {/* Principle 02 */}
                         <div className="space-y-3 md:border-l md:border-[var(--surface-border)] md:pl-10">
                             <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">
-                                Decision 02
+                                Principle 02
                             </span>
                             <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                                Human decision, not automatic action
+                                Recommend, don&apos;t decide
                             </h3>
                             <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    A detected problem doesn&apos;t always have one correct response. A stock condition could lead to:
-                                </p>
-                                <p className="font-mono text-xs sm:text-sm text-[var(--text-primary)] font-semibold">
-                                    Purchase · Transfer · Discount · Investigate · Take no action
+                                    The system can identify a situation, but it cannot know every piece of business context behind the decision.
                                 </p>
                                 <p>
-                                    The system identifies the condition and suggests possible actions, but the responsible person makes the final decision.
+                                    If one store has excess tomatoes and another has high demand, for example, the system can recommend considering a transfer. But the manager may instead decide to discount the stock, purchase elsewhere, investigate the demand or do nothing.
                                 </p>
+                                <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-emerald-500/30 font-mono text-xs text-emerald-400 font-bold">
+                                    System recommends → Person decides
+                                </div>
                                 <p>
-                                    The client&apos;s strategy describes a longer progression toward controlled automation. <strong className="text-[var(--text-primary)] font-medium">My design response at this stage was to keep Intelligence OS recommendation-led and human-controlled while the concept is being validated.</strong>
+                                    The client&apos;s longer-term strategy includes moving toward more controlled automation. For this stage, my design response was to keep operational decisions with the person rather than automate them prematurely.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Decision 03 */}
+                        {/* Principle 03 */}
                         <div className="space-y-3 pt-6 border-t border-[var(--surface-border)]">
                             <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">
-                                Decision 03
+                                Principle 03
                             </span>
                             <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                                Read-only before deeper integration
+                                Read existing data before changing the existing system
                             </h3>
                             <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    Retail Manager already runs the company&apos;s core operations. The goal wasn&apos;t to replace it.
+                                    Retail Manager is already responsible for core business operations.
                                 </p>
                                 <p>
-                                    So the initial Intelligence OS architecture is deliberately <strong className="text-[var(--text-primary)] font-medium">read-only</strong>:
+                                    I therefore designed the initial Intelligence OS as a <strong className="text-[var(--text-primary)] font-medium">read-only layer</strong>. It reads existing operational data without writing back to the legacy system:
                                 </p>
                                 <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-[var(--surface-border)] font-mono text-xs text-[var(--text-primary)]">
-                                    Existing system → Operational data → Intelligence OS → Recommendation → Human decision
+                                    Retail Manager → Intelligence OS → Recommendation → Human decision
                                 </div>
                                 <p>
-                                    The intelligence layer reads existing data without writing back into the operational system.
-                                </p>
-                                <p>
-                                    This allows the new capability to be explored without making the existing product dependent on an unvalidated intelligence layer. It also leaves room for deeper integration later, once the intelligence capability has been proven.
+                                    This creates a way to test the intelligence capability without making the existing operational system dependent on an unproven layer. Deeper integration can come later once the concept has been validated.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Decision 04 */}
+                        {/* Principle 04 */}
                         <div className="space-y-3 pt-6 border-t border-[var(--surface-border)] md:border-l md:border-[var(--surface-border)] md:pl-10">
                             <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">
-                                Decision 04
+                                Principle 04
                             </span>
                             <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                                Explainable intelligence before &ldquo;AI everywhere&rdquo;
+                                Don&apos;t make users ask the AI
                             </h3>
                             <div className="space-y-3 font-sans text-base text-[var(--text-secondary)] leading-relaxed">
                                 <p>
-                                    The first version shouldn&apos;t depend on complex machine learning simply to appear intelligent.
+                                    I also chose not to make conversational AI the primary interface.
                                 </p>
                                 <p>
-                                    The client&apos;s strategy describes progressing from dependable, explainable conditions toward prediction, prioritization and eventually controlled automation.
+                                    A manager shouldn&apos;t have to think about what question to type before receiving useful information. Instead, the product proactively surfaces relevant conditions.
                                 </p>
-                                <p>
-                                    I translated that into a simple principle:
-                                </p>
-                                <div className="p-3 bg-[var(--bg-sage)] rounded-lg border border-[var(--surface-border)] font-mono text-xs text-emerald-400 font-bold">
-                                    Detect → Explain → Recommend → Let the person decide
-                                </div>
-                                <p>
-                                    The recommendation needs to be understandable enough for someone to trust and act on.
+                                <p className="font-serif text-lg text-[var(--text-primary)] italic pl-3 border-l-2 border-[var(--accent-gold)]">
+                                    The principle was simple: The system should surface what deserves attention instead of making the user search for it.
                                 </p>
                             </div>
                         </div>
@@ -443,7 +385,7 @@ export default function RetailManagerPage() {
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 6. DESIGNING AROUND OPERATIONAL ROLES & WORKFLOWS                          */}
+                {/* 5. DESIGNING AROUND OPERATIONAL ROLES & WORKFLOWS                          */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -460,13 +402,13 @@ export default function RetailManagerPage() {
                             Designing around operational roles
                         </h2>
                         <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            The same information isn&apos;t equally useful to everyone.
+                            The same information is not equally useful to everyone using the system.
                         </p>
                     </div>
 
                     {/* Three Operational Roles */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4 border-t border-[var(--surface-border)]">
-                        <div className="space-y-2">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-[var(--accent-gold)] font-mono text-xs font-bold uppercase">
                                 <UserCheck className="w-4 h-4" /> Owner
                             </div>
@@ -474,82 +416,150 @@ export default function RetailManagerPage() {
                                 &ldquo;What needs my attention today?&rdquo;
                             </p>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                A concise view of important business conditions.
+                                The overview focuses on important operational conditions and recommended actions.
                             </p>
                         </div>
 
-                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-[#60a5fa] font-mono text-xs font-bold uppercase">
                                 <Warehouse className="w-4 h-4" /> Warehouse
                             </div>
                             <p className="font-serif text-xl text-[var(--text-primary)] italic">
-                                &ldquo;What arrived, and what needs to move?&rdquo;
+                                &ldquo;What arrived, what is missing, and what needs to move?&rdquo;
                             </p>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Focus on deliveries, shortages and stock movement.
+                                The experience focuses on receiving, deliveries and stock movement.
                             </p>
                         </div>
 
-                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase">
                                 <Store className="w-4 h-4" /> Store
                             </div>
                             <p className="font-serif text-xl text-[var(--text-primary)] italic">
-                                &ldquo;What&apos;s low, and how do I request it?&rdquo;
+                                &ldquo;What&apos;s running low and what do I need to request?&rdquo;
                             </p>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Focus on stock visibility and requests.
+                                The experience focuses on stock availability and requests.
                             </p>
                         </div>
                     </div>
 
                     <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-                        The underlying data remains connected, but the experience is shaped around each person&apos;s responsibility.
+                        This led to a role-based experience rather than one large intelligence dashboard.
                     </p>
 
-                    {/* From Strategy to Working Product Workflows */}
-                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)]">
+                    {/* Core Workflows Section */}
+                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)]">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold block">
+                            Initial Scope
+                        </span>
                         <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                            From strategy to working product
+                            The core workflows
                         </h3>
                         <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            The current product exploration focuses on a small set of core workflows:
+                            I translated the product direction into four initial workflows:
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
                                 <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 01</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)]">Today&apos;s Overview</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)]">Surface important business conditions.</p>
+                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Today&apos;s Overview</div>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
+                                    Brings important operational conditions together so a manager can quickly see what needs attention.
+                                </p>
                             </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
                                 <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 02</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)]">Stock View</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)]">Identify and investigate low or critical inventory.</p>
+                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Stock View</div>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
+                                    Helps users understand inventory conditions across locations, including stock levels, consumption and days of cover.
+                                </p>
                             </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
                                 <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 03</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)]">Delivery Received</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)]">Compare ordered versus received quantities.</p>
+                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Delivery Received</div>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
+                                    Makes it easier to compare ordered quantities with what was actually received and identify discrepancies.
+                                </p>
                             </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
                                 <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 04</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)]">Stock Request</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)]">Connect store requests with fulfilment.</p>
+                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Stock Request</div>
+                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
+                                    Connects a store&apos;s stock situation with the request process while keeping the decision with the user.
+                                </p>
                             </div>
                         </div>
 
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed pt-2">
-                            The project has now moved beyond the original branding work into a working product direction, with the website, implementation and real-data integration still in progress.
-                        </p>
-                        <p className="font-sans text-sm md:text-base text-[var(--text-tertiary)] italic">
-                            The current application is being used as a <strong className="text-[var(--text-secondary)] font-medium">testing ground for the product concept</strong>, not presented as a finished production deployment.
+                        <p className="font-sans text-sm md:text-base text-[var(--text-tertiary)] italic pt-2">
+                            These workflows were chosen as the initial product surface rather than attempting to cover every possible retail operation at once.
                         </p>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 7. WHAT IS ESTABLISHED — AND WHAT STILL NEEDS PROOF                       */}
+                {/* 6. FROM CONCEPT TO WORKING APPLICATION                                    */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-8 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-3">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            Implementation Scope
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            From concept to working application
+                        </h2>
+                    </div>
+
+                    <div className="space-y-6 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed max-w-4xl">
+                        <p>
+                            The concept has now been translated into a working application rather than remaining only as a pitch or set of static screens.
+                        </p>
+                        
+                        <div className="p-4 bg-[var(--bg-sage)] rounded-xl border border-[var(--surface-border)] font-mono text-xs sm:text-sm text-[var(--text-primary)] flex items-center gap-2 flex-wrap">
+                            <span className="text-[var(--accent-gold)] font-bold uppercase">My Work Expansion:</span>
+                            <span>Product strategy</span>
+                            <span className="text-[var(--accent-gold)]">→</span>
+                            <span>UX/UI</span>
+                            <span className="text-[var(--accent-gold)]">→</span>
+                            <span>Application design</span>
+                            <span className="text-[var(--accent-gold)]">→</span>
+                            <span className="text-emerald-400 font-bold">Frontend/backend implementation</span>
+                        </div>
+
+                        <p>
+                            The application demonstrates how the intelligence layer can connect operational data with recommendations and actions.
+                        </p>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono pt-2">
+                            <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1.5">
+                                <span className="text-[var(--accent-gold)] font-bold block">INVENTORY TRANSFER LOGIC</span>
+                                <p className="text-[var(--text-secondary)] font-sans text-sm">
+                                    Excess stock → Identify another store with demand → Recommend transfer → User decides
+                                </p>
+                            </div>
+                            <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1.5">
+                                <span className="text-[var(--accent-gold)] font-bold block">DELIVERY DISCREPANCY LOGIC</span>
+                                <p className="text-[var(--text-secondary)] font-sans text-sm">
+                                    Ordered quantity → Received quantity → Detect discrepancy → Surface issue → Follow-up action
+                                </p>
+                            </div>
+                        </div>
+
+                        <p className="pt-2">
+                            The goal is to make the intelligence useful within the workflow, rather than separating it into another reporting product.
+                        </p>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 7. EXPECTED IMPACT                                                        */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -560,80 +570,115 @@ export default function RetailManagerPage() {
                 >
                     <div className="max-w-3xl space-y-2">
                         <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Validation Status
+                            Measurable Objectives
                         </span>
                         <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            What is established — and what still needs proof
+                            Expected impact
                         </h2>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
+                            The product is being designed against measurable improvement targets.
+                        </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        {/* Established */}
-                        <div className="space-y-3">
-                            <h3 className="font-mono text-xs sm:text-sm font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4" /> Established
-                            </h3>
-                            <ul className="space-y-2.5 font-sans text-sm md:text-base text-[var(--text-primary)]">
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                                    Intelligence OS product direction
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                                    Initial product principles
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                                    Founder/stakeholder validation
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                                    High-fidelity product experience
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
-                                    Working product direction
-                                </li>
-                            </ul>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t border-[var(--surface-border)]">
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-serif text-3xl md:text-4xl font-bold text-[var(--accent-gold)]">~50%</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Reduction in manual operational monitoring work</p>
                         </div>
-
-                        {/* Still to validate */}
-                        <div className="space-y-3 md:border-l md:border-[var(--surface-border)] md:pl-10">
-                            <h3 className="font-mono text-xs sm:text-sm font-bold text-[var(--accent-gold)] uppercase tracking-wider flex items-center gap-2">
-                                <HelpCircle className="w-4 h-4" /> Still to validate
-                            </h3>
-                            <ul className="space-y-2.5 font-sans text-sm md:text-base text-[var(--text-secondary)]">
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                                    Do users understand the recommendations?
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                                    Do they trust them?
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                                    Do recommendations influence what they investigate or act on?
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                                    Which intelligence signals are actually useful?
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] shrink-0"></span>
-                                    Does the product become part of their regular workflow?
-                                </li>
-                            </ul>
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-serif text-3xl md:text-4xl font-bold text-emerald-400">40–60%</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Faster identification of important inventory issues</p>
+                        </div>
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">INVENTORY UTILIZATION</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Better use of existing inventory across stores</p>
+                        </div>
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">PERISHABLE CONTROL</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Reduced avoidable loss of perishable stock</p>
+                        </div>
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">BALANCED STOCK</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Fewer situations where one store has excess while another faces shortage</p>
+                        </div>
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">VALUE RECOVERY</span>
+                            <p className="font-sans text-sm text-[var(--text-primary)] font-medium">Recovery of value that could otherwise be lost through spoilage</p>
                         </div>
                     </div>
 
-                    <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] leading-relaxed italic pt-2">
-                        I am <strong className="text-[var(--text-primary)] font-medium">not claiming increased sales, reduced stockouts or revenue impact</strong>. Those outcomes still need real-user and production validation.
-                    </p>
+                    <div className="max-w-3xl space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed pt-2">
+                        <p>
+                            For example, if tomatoes are sitting unsold at Store C while Store A is experiencing higher demand, transferring the stock can reduce the need to purchase new inventory and reduce the risk of spoilage.
+                        </p>
+                        <p>
+                            If selling the remaining stock at a discount is appropriate, recovering some value can still be better than allowing the inventory to expire.
+                        </p>
+                        <p className="font-mono text-xs md:text-sm text-[var(--text-tertiary)] italic pt-1">
+                            *These targets define what the product is expected to improve. They are not measured outcomes yet.
+                        </p>
+                    </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 8. WHERE IT GOES NEXT & THE NEXT PROOF                                     */}
+                {/* 8. WHAT HAPPENS NEXT                                                      */}
+                {/* ========================================================================= */}
+                <motion.section 
+                    variants={fadeUp} 
+                    initial="hidden" 
+                    whileInView="visible" 
+                    viewport={{ once: true, margin: "-40px" }}
+                    className="space-y-8 border-t border-[var(--surface-border)] pt-12"
+                >
+                    <div className="max-w-3xl space-y-2">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
+                            Next Phase
+                        </span>
+                        <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
+                            What happens next
+                        </h2>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
+                            The next phase is about turning the product hypothesis into evidence.
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">STEP 01</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] font-bold">Implement with real data</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Connect Intelligence OS with Retail Manager&apos;s operational data and test it with realistic data volumes.
+                            </p>
+                        </div>
+
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">STEP 02</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] font-bold">Validate with users</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Test the product with relevant users to understand whether the recommendations are clear, useful and actionable.
+                            </p>
+                        </div>
+
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">STEP 03</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] font-bold">Measure the targets</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Evaluate whether the product actually reduces manual effort, improves issue identification and helps users make better inventory decisions.
+                            </p>
+                        </div>
+
+                        <div className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-2">
+                            <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider">STEP 04</span>
+                            <h3 className="font-serif text-xl text-[var(--text-primary)] font-bold">Iterate</h3>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
+                                Use the findings to improve the recommendations, workflows and product experience before broader implementation.
+                            </p>
+                        </div>
+                    </div>
+                </motion.section>
+
+                {/* ========================================================================= */}
+                {/* 9. THE LONGER-TERM OPPORTUNITY                                            */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
@@ -644,75 +689,74 @@ export default function RetailManagerPage() {
                 >
                     <div className="max-w-3xl space-y-3">
                         <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            Platform Roadmap
+                            Ecosystem Strategy
                         </span>
                         <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                            Where it goes next
+                            The longer-term opportunity
                         </h2>
                         <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            The broader product direction is:
+                            The immediate goal is to prove Intelligence OS within Retail Manager.
+                        </p>
+                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
+                            The longer-term strategy is to make the intelligence layer useful across the client&apos;s product ecosystem and eventually explore it as a capability that can work with other legacy business systems.
                         </p>
                     </div>
 
                     {/* Progression flow */}
                     <div className="space-y-6">
                         <div className="flex flex-wrap items-center gap-3 font-mono text-xs sm:text-sm">
-                            <span className="px-3.5 py-1.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)] text-[var(--text-primary)]">
-                                Retail Manager (Retail operations)
-                            </span>
-                            <span className="text-[var(--accent-gold)] font-bold">*</span>
-                            <span className="px-3.5 py-1.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)] text-[var(--text-primary)]">
-                                RMServe (Restaurant operations)
+                            <span className="px-3.5 py-2 rounded-lg bg-[var(--bg-sage)] border border-[var(--surface-border)] text-[var(--text-primary)]">
+                                Retail Manager <span className="text-[var(--text-tertiary)] text-xs block font-sans">Retail operations</span>
                             </span>
                             <span className="text-[var(--accent-gold)] font-bold">↓</span>
-                            <span className="px-3.5 py-1.5 rounded bg-[var(--accent-gold)]/20 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] font-bold">
-                                RM Intelligence OS (Shared intelligence layer)
+                            <span className="px-3.5 py-2 rounded-lg bg-[var(--bg-sage)] border border-[var(--surface-border)] text-[var(--text-primary)]">
+                                RMServe <span className="text-[var(--text-tertiary)] text-xs block font-sans">Restaurant operations</span>
                             </span>
                             <span className="text-[var(--accent-gold)] font-bold">↓</span>
-                            <span className="px-3.5 py-1.5 rounded bg-[var(--bg-sage)] border border-[var(--surface-border)] text-emerald-400">
-                                Future platform capability
+                            <span className="px-3.5 py-2 rounded-lg bg-[var(--accent-gold)]/20 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)] font-bold">
+                                RM Intelligence OS <span className="text-[var(--accent-gold)]/80 text-xs block font-sans">Shared intelligence layer</span>
+                            </span>
+                            <span className="text-[var(--accent-gold)] font-bold">↓</span>
+                            <span className="px-3.5 py-2 rounded-lg bg-[var(--bg-sage)] border border-[var(--surface-border)] text-emerald-400 font-semibold">
+                                Legacy Capability <span className="text-[var(--text-tertiary)] text-xs block font-sans">Other legacy business systems</span>
                             </span>
                         </div>
 
-                        <div className="pt-2">
-                            <span className="font-mono text-xs text-[var(--text-tertiary)] uppercase tracking-wider block mb-1.5">
-                                The Progression is:
-                            </span>
-                            <p className="font-mono text-xs sm:text-sm text-[var(--text-primary)]">
-                                Record → Visibility → Attention → Recommendation → Controlled automation
+                        <div className="max-w-3xl space-y-4 pt-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            <p>
+                                Instead of asking businesses to replace the software already running their operations, the longer-term opportunity is to provide an intelligence layer that can sit on top of existing systems.
+                            </p>
+                            <p className="font-mono text-xs md:text-sm text-[var(--text-tertiary)] italic">
+                                But that comes after proving the core concept first.
                             </p>
                         </div>
-
-                        <p className="font-sans text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
-                            The longer-term opportunity is to prove the intelligence layer within SRD&apos;s own products before considering how selected intelligence capabilities could extend to other business systems.
-                        </p>
                     </div>
 
-                    {/* The Next Proof */}
-                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)] max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                    {/* The Question I'm Testing */}
+                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)] max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold block">
+                            Conclusion
+                        </span>
                         <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                            The next proof
+                            The question I&apos;m testing
                         </h3>
                         <p>
-                            I started this project by helping SRD communicate what it already had.
+                            Retail Manager already knows a lot about what is happening inside a business.
                         </p>
                         <p>
-                            Understanding the product led me to a bigger question:
+                            The opportunity is to make that information easier to understand and act on.
                         </p>
-                        <p className="font-serif text-xl text-[var(--text-primary)] italic pl-4 border-l-2 border-[var(--accent-gold)]">
-                            &ldquo;If a business system already knows what is happening, can it help the people running the business decide what to do next?&rdquo;
-                        </p>
-                        <p>
-                            I took that question from <strong className="text-[var(--text-primary)] font-medium">product understanding → opportunity → strategy → stakeholder validation → product decisions → working product</strong>.
-                        </p>
-                        <p>
-                            The next step is to put it in front of real users and find out whether the intelligence actually helps them make better operational decisions.
+                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                            &ldquo;If the system already has the data, can it help the people running the business see what matters and decide what to do next?&rdquo;
+                        </blockquote>
+                        <p className="font-serif text-xl text-[var(--text-primary)] font-bold italic pt-2">
+                            That is what Retail Manager Intelligence OS is being built to test.
                         </p>
                     </div>
                 </motion.section>
 
                 {/* ========================================================================= */}
-                {/* 9. NEXT CASE STUDY NAVIGATION                                             */}
+                {/* 10. NEXT CASE STUDY NAVIGATION                                            */}
                 {/* ========================================================================= */}
                 <motion.section 
                     variants={fadeUp} 
