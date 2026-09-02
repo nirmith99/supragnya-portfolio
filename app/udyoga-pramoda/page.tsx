@@ -15,11 +15,12 @@ import {
     Briefcase,
     Calendar,
     GraduationCap,
-    MessageSquare,
     TrendingUp,
     Layers,
-    Clock,
-    Sparkles
+    Sparkles,
+    CheckSquare,
+    Award,
+    HeartHandshake
 } from "lucide-react";
 
 export default function UdyogaPramodaPage() {
@@ -53,7 +54,7 @@ export default function UdyogaPramodaPage() {
                     className="relative pt-8 md:pt-16"
                 >
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-                        {/* 40% Text Column */}
+                        {/* 45% Text Column */}
                         <div className="lg:col-span-5 space-y-5">
                             <div className="inline-flex items-center gap-3">
                                 <span className="h-px w-6 bg-[var(--accent-gold)]" />
@@ -83,24 +84,27 @@ export default function UdyogaPramodaPage() {
                             </div>
                         </div>
 
-                        {/* 60% Visual Column (Desktop Mockup) */}
+                        {/* 55% Visual Column (Desktop Mockup using Next Image) */}
                         <div className="lg:col-span-7 flex justify-center lg:justify-end">
                             <div className="w-full max-w-[760px] shadow-2xl">
                                 <DesktopMockup className="max-w-none w-full shadow-2xl">
-                                    <img 
+                                    <Image 
                                         src="/images/thumbnails/Udyoga Pramoda Landing.png" 
                                         alt="Udyoga Pramoda Community Platform Landing & Progression View" 
+                                        width={1200}
+                                        height={750}
+                                        priority
                                         className="w-full h-auto block" 
                                     />
                                 </DesktopMockup>
                                 <p className="text-center font-mono text-xs text-[var(--text-tertiary)] mt-3">
-                                    Udyoga Pramoda · Making Learner Progression Visible
+                                    Udyoga Pramoda · Making Learner Progression &amp; Effort Visible
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Metadata Row (Clean Editorial Grid, No Cards) */}
+                    {/* Project Snapshot / Metadata Grid */}
                     <div className="mt-12 pt-6 border-t border-[var(--surface-border)]">
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-5 gap-x-6 text-xs md:text-sm font-sans">
                             <div>
@@ -121,7 +125,7 @@ export default function UdyogaPramodaPage() {
                             </div>
                             <div>
                                 <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Involvement</span>
-                                <span className="text-[var(--text-secondary)]">Product, UX/UI, Flows, Deployment</span>
+                                <span className="text-[var(--text-secondary)]">UX/UI, Product Thinking, Flows, Deployment</span>
                             </div>
                             <div>
                                 <span className="text-[var(--text-tertiary)] uppercase tracking-wider block mb-1 font-mono text-xs">Outcome</span>
@@ -160,39 +164,39 @@ export default function UdyogaPramodaPage() {
                                 Udyoga Pramoda already had the pieces of a career ecosystem
                             </h2>
                             <p className="font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
-                                The first version wasn&apos;t trying to compete with every career platform. It brought together things that were already happening within the community.
+                                The first version wasn&apos;t trying to compete with every career platform. It brought together things that were already happening within the community:
                             </p>
                         </div>
 
-                        <div className="lg:col-span-7 space-y-4 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed lg:border-l lg:border-[var(--surface-border)] lg:pl-12">
-                            <ul className="space-y-2.5 text-sm md:text-base text-[var(--text-primary)]">
-                                <li className="flex items-start gap-2.5">
-                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Jobs</strong>
-                                    <span>People could discover opportunities.</span>
-                                </li>
-                                <li className="flex items-start gap-2.5">
-                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Events &amp; classes</strong>
-                                    <span>The community could conduct sessions, hackathons and skill-building programs.</span>
-                                </li>
-                                <li className="flex items-start gap-2.5">
-                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Mentors</strong>
-                                    <span>Young people could browse working professionals and send connection requests.</span>
-                                </li>
-                                <li className="flex items-start gap-2.5">
-                                    <strong className="text-[var(--accent-gold)] font-mono text-xs uppercase pt-1 shrink-0">Community communication</strong>
-                                    <span>WhatsApp groups helped people communicate outside the product.</span>
-                                </li>
-                            </ul>
+                        <div className="lg:col-span-7 space-y-5 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed lg:border-l lg:border-[var(--surface-border)] lg:pl-12">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono text-[var(--text-primary)]">
+                                <div className="p-3.5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="text-[var(--accent-gold)] font-bold block uppercase">Jobs</span>
+                                    <p className="font-sans text-xs text-[var(--text-secondary)]">People could discover opportunities.</p>
+                                </div>
+                                <div className="p-3.5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="text-[var(--accent-gold)] font-bold block uppercase">Events &amp; Classes</span>
+                                    <p className="font-sans text-xs text-[var(--text-secondary)]">Community conducted sessions, hackathons and skill programs.</p>
+                                </div>
+                                <div className="p-3.5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="text-[var(--accent-gold)] font-bold block uppercase">Mentors</span>
+                                    <p className="font-sans text-xs text-[var(--text-secondary)]">Browse working professionals and send connection requests.</p>
+                                </div>
+                                <div className="p-3.5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="text-[var(--accent-gold)] font-bold block uppercase">Community Communication</span>
+                                    <p className="font-sans text-xs text-[var(--text-secondary)]">WhatsApp groups helped communication outside the product.</p>
+                                </div>
+                            </div>
 
-                            <p className="pt-2">
+                            <p>
                                 Mentors were professionals volunteering their time to help younger people develop skills. They could accept or reject connection requests, guide mentees and share relevant opportunities from their professional networks.
                             </p>
 
                             <div className="pt-2">
-                                <span className="font-mono text-xs text-[var(--text-tertiary)] uppercase tracking-wider block mb-1">
+                                <span className="font-mono text-xs text-[var(--text-tertiary)] uppercase tracking-wider block mb-1.5">
                                     The Basic Journey Existed:
                                 </span>
-                                <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                                <div className="flex flex-wrap items-center gap-2 font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)]">
                                     <span>Discover</span>
                                     <span className="text-[var(--accent-gold)]">→</span>
                                     <span>Connect</span>
@@ -229,7 +233,7 @@ export default function UdyogaPramodaPage() {
                             <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
                                 Participation was visible. Commitment wasn&apos;t.
                             </h2>
-                            <div className="space-y-3 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                            <div className="space-y-3.5 font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
                                 <p>
                                     Through my involvement in the community, I noticed that people would often join classes or programs but stop participating midway.
                                 </p>
@@ -242,10 +246,10 @@ export default function UdyogaPramodaPage() {
                                 <p>
                                     A mentor might spend their limited free time teaching a class or helping a mentee. If the mentee wasn&apos;t following through, the mentor had little evidence that their effort was translating into progress.
                                 </p>
-                                <p className="font-serif text-xl text-[var(--text-primary)] italic pl-3 border-l-2 border-[#ef4444]">
+                                <p className="font-serif text-xl text-[var(--text-primary)] italic pl-4 border-l-2 border-[#ef4444]">
                                     &ldquo;Who is actually progressing?&rdquo;
                                 </p>
-                                <p className="text-sm">
+                                <p className="text-sm text-[var(--text-tertiary)] italic">
                                     A registration told them someone joined. A WhatsApp group told them someone was present. Neither necessarily showed consistent effort.
                                 </p>
                             </div>
@@ -268,7 +272,7 @@ export default function UdyogaPramodaPage() {
                                     <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-wider font-bold">
                                         The Core Loop:
                                     </span>
-                                    <div className="flex flex-col gap-1.5 font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-lg border border-emerald-500/40">
+                                    <div className="flex flex-col gap-1.5 font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-emerald-500/40">
                                         <div>1. Mentor gives guidance</div>
                                         <div className="text-[var(--accent-gold)]">↓</div>
                                         <div>2. Mentor assigns a task</div>
@@ -314,7 +318,7 @@ export default function UdyogaPramodaPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
-                        <div className="space-y-2">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-[var(--accent-gold)] font-mono text-xs font-bold uppercase">
                                 <GraduationCap className="w-4 h-4" /> Mentee
                             </div>
@@ -326,7 +330,7 @@ export default function UdyogaPramodaPage() {
                             </p>
                         </div>
 
-                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-[#60a5fa] font-mono text-xs font-bold uppercase">
                                 <UserCheck className="w-4 h-4" /> Mentor
                             </div>
@@ -338,7 +342,7 @@ export default function UdyogaPramodaPage() {
                             </p>
                         </div>
 
-                        <div className="space-y-2 md:border-l md:border-[var(--surface-border)] md:pl-6">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase">
                                 <ShieldCheck className="w-4 h-4" /> Admin
                             </div>
@@ -352,9 +356,9 @@ export default function UdyogaPramodaPage() {
                     </div>
 
                     {/* 05 — Why this makes Udyoga Pramoda different */}
-                    <div className="space-y-5 pt-8 border-t border-[var(--surface-border)] max-w-3xl">
+                    <div className="space-y-5 pt-8 border-t border-[var(--surface-border)] max-w-4xl">
                         <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                            05 — Positioning
+                            05 — Positioning &amp; Differentiation
                         </span>
                         <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
                             A job board measures opportunities. Udyoga Pramoda can represent the journey toward them.
@@ -363,15 +367,15 @@ export default function UdyogaPramodaPage() {
                             <p>
                                 Platforms such as LinkedIn or Naukri are primarily designed around:
                             </p>
-                            <p className="font-mono text-xs sm:text-sm text-[var(--text-tertiary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                            <div className="font-mono text-xs sm:text-sm text-[var(--text-tertiary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)] inline-block">
                                 Profile → Job → Application → Hiring
-                            </p>
+                            </div>
                             <p>
                                 Udyoga Pramoda serves a different part of the journey. Its value is in the space between:
                             </p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-serif text-xl text-[var(--text-primary)] italic">
-                                <div className="p-3 border-l-2 border-[var(--surface-border)]">&ldquo;I want a job.&rdquo;</div>
-                                <div className="p-3 border-l-2 border-[var(--accent-gold)]">&ldquo;I&apos;m ready for this opportunity.&rdquo;</div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-serif text-xl text-[var(--text-primary)] italic">
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--surface-border)]">&ldquo;I want a job.&rdquo;</div>
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)]">&ldquo;I&apos;m ready for this opportunity.&rdquo;</div>
                             </div>
                             <p>
                                 The platform brings together: <strong className="text-[var(--text-primary)] font-medium">Learning + Mentorship + Effort + Progress + Opportunities</strong>.
@@ -382,9 +386,9 @@ export default function UdyogaPramodaPage() {
                             <p>
                                 And importantly, <strong className="text-[var(--text-primary)] font-medium">placement isn&apos;t the only measure of progress.</strong> Someone might not get placed immediately. But if they attend sessions, connect with mentors, complete tasks, improve their skills and consistently participate, the platform can make that effort visible.
                             </p>
-                            <p className="font-serif text-xl text-[var(--accent-gold)] italic pt-2">
+                            <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
                                 &ldquo;Udyoga Pramoda helps a community recognise people who are actively becoming opportunity-ready.&rdquo;
-                            </p>
+                            </blockquote>
                         </div>
                     </div>
                 </motion.section>
@@ -410,7 +414,7 @@ export default function UdyogaPramodaPage() {
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {/* Mentee */}
-                        <div className="space-y-3">
+                        <div className="space-y-3 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">
                                 06 / MENTEE EXPERIENCE
                             </span>
@@ -418,19 +422,20 @@ export default function UdyogaPramodaPage() {
                                 Progress first. Opportunity alongside it.
                             </h3>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                The redesigned mentee dashboard brings the user&apos;s current activity into one place: Progress, Tasks, Mentor connections, Upcoming sessions, Events, and Job opportunities.
+                                The redesigned mentee dashboard brings current activity into one place: Progress, Tasks, Mentor connections, Upcoming sessions, Events, and Job opportunities.
                             </p>
-                            <div className="space-y-1 font-mono text-xs text-[var(--text-primary)] pt-1">
+                            <div className="space-y-1 font-mono text-xs text-[var(--text-primary)] pt-1 border-t border-[var(--surface-border)]">
+                                <div className="text-[var(--accent-gold)] font-bold mb-1 pt-1 uppercase">Task Flow:</div>
                                 <div>1. Mentor assigns a task</div>
-                                <div>2. Mentee receives it in My Tasks</div>
-                                <div>3. Mentee completes and submits work</div>
-                                <div>4. Mentor reviews it</div>
-                                <div>5. Mentor validates or provides direction</div>
+                                <div>2. Mentee receives in My Tasks</div>
+                                <div>3. Mentee completes &amp; submits</div>
+                                <div>4. Mentor reviews work</div>
+                                <div>5. Mentor validates / directs</div>
                             </div>
                         </div>
 
                         {/* Mentor */}
-                        <div className="space-y-3 lg:border-l lg:border-[var(--surface-border)] lg:pl-8">
+                        <div className="space-y-3 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <span className="font-mono text-xs font-bold text-[#60a5fa] uppercase tracking-wider block">
                                 07 / MENTOR EXPERIENCE
                             </span>
@@ -438,32 +443,32 @@ export default function UdyogaPramodaPage() {
                                 Don&apos;t turn volunteering into administration.
                             </h3>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Mentors are volunteers. The mentor dashboard was designed around the things mentors actually need to act on:
+                                Mentors are volunteers. The dashboard surfaces decisions that matter:
                             </p>
-                            <ul className="space-y-1.5 font-sans text-xs text-[var(--text-secondary)]">
+                            <ul className="space-y-1.5 font-sans text-xs text-[var(--text-secondary)] pt-1 border-t border-[var(--surface-border)]">
                                 <li>• <strong className="text-[var(--text-primary)] font-medium">Mentees needing attention</strong> — work needing review</li>
-                                <li>• <strong className="text-[var(--text-primary)] font-medium">Progress</strong> — where each mentee stands</li>
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Progress</strong> — clear standing per mentee</li>
                                 <li>• <strong className="text-[var(--text-primary)] font-medium">Sessions</strong> — upcoming mentoring activity</li>
-                                <li>• <strong className="text-[var(--text-primary)] font-medium">Opportunities</strong> — contribute jobs to community</li>
+                                <li>• <strong className="text-[var(--text-primary)] font-medium">Opportunities</strong> — share jobs with community</li>
                             </ul>
                         </div>
 
                         {/* Admin */}
-                        <div className="space-y-3 lg:border-l lg:border-[var(--surface-border)] lg:pl-8">
+                        <div className="space-y-3 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider block">
                                 08 / ADMIN EXPERIENCE
                             </span>
                             <h3 className="font-serif text-2xl text-[var(--text-primary)]">
-                                Visibility across the community, not a spreadsheet.
+                                Visibility across the community, not spreadsheets.
                             </h3>
                             <p className="font-sans text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Changes the admin&apos;s role from tracking registrations to understanding community progression:
+                                Changes admin role from tracking registrations to understanding community progression:
                             </p>
-                            <ul className="space-y-1 font-sans text-xs text-[var(--text-secondary)]">
+                            <ul className="space-y-1 font-sans text-xs text-[var(--text-secondary)] pt-1 border-t border-[var(--surface-border)]">
                                 <li>• Who is actively participating?</li>
                                 <li>• Who is completing assigned work?</li>
                                 <li>• Who may need additional support?</li>
-                                <li>• Which participants are consistently engaged?</li>
+                                <li>• Who is consistently engaged?</li>
                                 <li>• Who is progressing before placement?</li>
                             </ul>
                         </div>
@@ -475,7 +480,7 @@ export default function UdyogaPramodaPage() {
                             <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
                                 09 — The System Loop
                             </span>
-                            <div className="font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-lg border border-[var(--surface-border)] space-y-1">
+                            <div className="font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)] space-y-1">
                                 <div>DISCOVER (Jobs / Events)</div>
                                 <div className="text-[var(--text-tertiary)]">↓</div>
                                 <div>CONNECT (Mentor)</div>
@@ -502,13 +507,13 @@ export default function UdyogaPramodaPage() {
                                 The three users weren&apos;t solving the same problem:
                             </p>
                             <div className="space-y-3 font-serif text-lg text-[var(--text-primary)]">
-                                <div className="pl-3 border-l-2 border-[var(--accent-gold)]">
+                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)]">
                                     <strong>Mentee:</strong> &ldquo;What do I need to do next?&rdquo;
                                 </div>
-                                <div className="pl-3 border-l-2 border-[#60a5fa]">
+                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-[#60a5fa]">
                                     <strong>Mentor:</strong> &ldquo;Who needs my attention?&rdquo;
                                 </div>
-                                <div className="pl-3 border-l-2 border-emerald-400">
+                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-emerald-400">
                                     <strong>Admin:</strong> &ldquo;Who is progressing?&rdquo;
                                 </div>
                             </div>
@@ -539,7 +544,7 @@ export default function UdyogaPramodaPage() {
                     </div>
 
                     {/* Delivery Clarification */}
-                    <div className="max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed space-y-2">
+                    <div className="max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed space-y-3">
                         <p>
                             This wasn&apos;t a large product team. I worked with <strong className="text-[var(--text-primary)] font-medium">one developer</strong> to build the initial V1 product and then redesigned the experience based on what I observed in the community.
                         </p>
@@ -548,7 +553,7 @@ export default function UdyogaPramodaPage() {
                         </p>
                     </div>
 
-                    {/* Stats Grid (No Cards, Clean Typographic Hierarchy) */}
+                    {/* Stats Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-6 pt-4 border-t border-[var(--surface-border)]">
                         <div>
                             <div className="font-serif text-5xl md:text-6xl text-[var(--text-primary)] font-light">1,247</div>
@@ -572,30 +577,30 @@ export default function UdyogaPramodaPage() {
                         </div>
                     </div>
 
-                    <p className="font-sans text-sm md:text-base text-[var(--text-secondary)] italic pt-1">
+                    <p className="font-sans text-sm md:text-base text-[var(--text-tertiary)] italic pt-1">
                         I don&apos;t attribute all of these outcomes to the redesign itself. The contribution of the redesign was creating a stronger product structure around the learning, mentoring and progression that already existed in the community.
                     </p>
 
                     {/* 13 What Changed (Before / After) */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-[var(--surface-border)]">
-                        <div className="space-y-2">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">
                             <span className="font-mono text-xs font-bold text-[#ef4444] uppercase tracking-wider">Before</span>
-                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-[var(--surface-border)]">
+                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)]">
                                 Jobs + Events + Mentors + Community
                             </div>
-                            <p className="font-sans text-sm text-[var(--text-secondary)]">The platform helped people find and connect.</p>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] pt-1">The platform helped people find and connect.</p>
                         </div>
-                        <div className="space-y-2">
+                        <div className="space-y-2 p-5 rounded-xl bg-[var(--bg-sage)] border border-emerald-500/40">
                             <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider">After the Redesign</span>
-                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)] bg-[var(--bg-sage)] p-3 rounded-lg border border-emerald-500/40">
+                            <div className="font-mono text-xs sm:text-sm text-[var(--text-primary)] font-bold">
                                 Jobs + Events + Mentors + Tasks + Progress
                             </div>
-                            <p className="font-sans text-sm text-[var(--text-secondary)]">The platform could also represent what happened after the connection.</p>
+                            <p className="font-sans text-sm text-[var(--text-secondary)] pt-1">The platform could also represent what happened after the connection.</p>
                         </div>
                     </div>
 
                     {/* 14 What I Learned */}
-                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)] max-w-3xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
+                    <div className="space-y-4 pt-6 border-t border-[var(--surface-border)] max-w-4xl font-sans text-base md:text-lg text-[var(--text-secondary)] leading-relaxed">
                         <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
                             14 — What I Learned
                         </span>
@@ -609,9 +614,9 @@ export default function UdyogaPramodaPage() {
                             That distinction changed how I thought about the product. I stopped looking at the platform as: <em>&ldquo;How do we give people more opportunities?&rdquo;</em> and started looking at it as: <em>&ldquo;How do we help the community recognise and support the people who are actually working toward those opportunities?&rdquo;</em>
                         </p>
 
-                        <div className="pt-4 border-l-2 border-[var(--accent-gold)] pl-4 font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
                             &ldquo;Udyoga Pramoda doesn&apos;t just connect young people to opportunities. It makes the effort between learning and opportunity visible.&rdquo;
-                        </div>
+                        </blockquote>
                     </div>
                 </motion.section>
 

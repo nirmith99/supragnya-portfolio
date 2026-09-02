@@ -37,13 +37,10 @@ The first version wasn't trying to compete with every career platform.
 
 It brought together things that were already happening within the community:
 
-**Jobs** — People could discover opportunities.
-
-**Events & classes** — The community could conduct sessions, hackathons and skill-building programs.
-
-**Mentors** — Young people could browse working professionals and send connection requests.
-
-**Community communication** — WhatsApp groups helped people communicate outside the product.
+- **Jobs** — People could discover opportunities.
+- **Events & classes** — The community could conduct sessions, hackathons and skill-building programs.
+- **Mentors** — Young people could browse working professionals and send connection requests.
+- **Community communication** — WhatsApp groups helped people communicate outside the product.
 
 Mentors were professionals volunteering their time to help younger people develop skills. They could accept or reject connection requests, guide mentees and share relevant opportunities from their professional networks.
 
@@ -108,21 +105,15 @@ This created a new signal:
 The redesign wasn't just about giving mentees a task list. It made progress useful to **everyone involved**.
 
 ### Mentee
-
-**“What should I do next?”**
-
+**“What should I do next?”**  
 Tasks turn vague mentoring into concrete action.
 
 ### Mentor
-
-**“Is this person actually progressing?”**
-
+**“Is this person actually progressing?”**  
 Completed work gives mentors evidence they can use when deciding how to guide the mentee, what to teach next, and whether they are ready to recommend an opportunity.
 
 ### Admin
-
-**“Where is the community actually moving?”**
-
+**“Where is the community actually moving?”**  
 Admins can see more than registrations and identify people who are consistently putting in effort, even before a placement happens.
 
 ---
@@ -139,10 +130,8 @@ Udyoga Pramoda serves a different part of the journey.
 
 Its value is in the space between:
 
-**“I want a job.”**
-
-and
-
+**“I want a job.”**  
+and  
 **“I'm ready for this opportunity.”**
 
 The platform brings together:
@@ -168,7 +157,6 @@ Someone might not get placed immediately. But if they attend sessions, connect w
 The redesigned mentee dashboard brings the user's current activity into one place.
 
 The experience surfaces:
-
 - Progress
 - Tasks
 - Mentor connections
@@ -183,7 +171,6 @@ It was to establish a clearer hierarchy:
 > **Progress first. Opportunity alongside it.**
 
 ### The task flow
-
 1. **Mentor assigns a task**
 2. **Mentee receives it in My Tasks**
 3. **Mentee completes and submits the work**
@@ -201,19 +188,15 @@ This creates a shared state between the two people instead of leaving the entire
 The mentor dashboard was designed around the things mentors actually need to act on.
 
 ### Mentees needing attention
-
 Mentors can see people whose work needs review or validation.
 
 ### Progress
-
 They can understand where a mentee currently stands instead of reconstructing the journey from conversations.
 
 ### Sessions
-
 Upcoming mentoring activity stays visible.
 
 ### Opportunities
-
 Mentors can contribute relevant job opportunities to the wider community.
 
 The design principle was:
@@ -233,7 +216,6 @@ Their challenge isn't simply publishing an event. It's understanding what happen
 The redesigned system gives them a way to see participation through activity and progress.
 
 That helps answer:
-
 - Who is actively participating?
 - Who is completing assigned work?
 - Who may need additional support?
@@ -282,14 +264,9 @@ It helps the mentor decide where to invest time and helps the admin understand w
 
 The three users weren't solving the same problem.
 
-### Mentee
-**“What do I need to do next?”**
-
-### Mentor
-**“Who needs my attention?”**
-
-### Admin
-**“Who is progressing?”**
+- **Mentee:** “What do I need to do next?”
+- **Mentor:** “Who needs my attention?”
+- **Admin:** “Who is progressing?”
 
 Instead of giving everyone the same dashboard, I designed around these different mental models.
 
@@ -317,21 +294,11 @@ The product work, flows and implementation were completed, while the public-faci
 
 By the time of the redesign, Udyoga Pramoda had meaningful community traction:
 
-### 1,247
-**active users**
-
-### 156
-**mentors**
-
-### 25
-**placements**
-
-### 60+
-**mentor–mentee connections**
-
-The placements averaged approximately:
-
-### ₹7.5 LPA
+- **1,247** active users
+- **156** mentors
+- **25** placements
+- **60+** mentor–mentee connections
+- **₹7.5 LPA** average placement package
 
 I don't attribute all of these outcomes to the redesign itself.
 
@@ -342,15 +309,11 @@ The contribution of the redesign was creating a stronger product structure aroun
 # 13 — What changed
 
 ### Before
-
-**Jobs + Events + Mentors + Community**
-
+**Jobs + Events + Mentors + Community**  
 The platform helped people find and connect.
 
 ### After the redesign
-
-**Jobs + Events + Mentors + Tasks + Progress**
-
+**Jobs + Events + Mentors + Tasks + Progress**  
 The platform could also represent what happened **after the connection**.
 
 > **From being a place where opportunities were posted to a place where a community could see people moving toward those opportunities.**
