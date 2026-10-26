@@ -13,3 +13,6 @@ lint.json
 lint_log.txt
 tsconfig.tsbuildinfo
 .claude/
+.agents/
+.agent/
+skills-lock.json

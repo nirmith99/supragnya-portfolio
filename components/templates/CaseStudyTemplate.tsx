@@ -12,13 +12,13 @@ function CaseStudyFooter() {
                     <span className="font-mono text-[11px] text-[var(--text-tertiary)]">© 2025 Supragnya Purohith</span>
                     <div className="flex items-center gap-6 font-mono text-[11px] text-[var(--text-tertiary)]">
                         <a
-                            href="mailto:supragnyapurohith@gmail.com"
+                            href="mailto:99supragnya@gmail.com"
                             className="hover:text-[var(--accent-gold)] transition-colors"
                         >
                             Email
                         </a>
                         <a
-                            href="https://linkedin.com/in/supragnya"
+                            href="https://www.linkedin.com/in/supragnya-purohith/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-[var(--accent-gold)] transition-colors"

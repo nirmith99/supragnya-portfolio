@@ -28,7 +28,7 @@ export default function FooterSection() {
             Work
           </Link>
           <a
-            href="mailto:hello@supragnyapurohith.com"
+            href="mailto:99supragnya@gmail.com"
             className="transition-colors duration-250 hover:text-[#8B5E3C]"
           >
             Contact

@@ -305,21 +305,21 @@ export default function Home() {
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-2">Email</p>
                 <a
-                  href="mailto:supragnyapurohith@gmail.com"
+                  href="mailto:99supragnya@gmail.com"
                   className="font-sans text-[15px] text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors"
                 >
-                  supragnyapurohith@gmail.com
+                  99supragnya@gmail.com
                 </a>
               </div>
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-[var(--text-tertiary)] mb-2">LinkedIn</p>
                 <a
-                  href="https://linkedin.com/in/supragnya"
+                  href="https://www.linkedin.com/in/supragnya-purohith/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-sans text-[15px] text-[var(--text-primary)] hover:text-[var(--accent-gold)] transition-colors"
                 >
-                  linkedin.com/in/supragnya
+                  linkedin.com/in/supragnya-purohith
                 </a>
               </div>
             </div>

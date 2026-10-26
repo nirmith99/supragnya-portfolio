@@ -119,13 +119,13 @@ export default function Modal({ isOpen, onClose }: ModalProps) {
         </p>
         <div className="space-y-3 text-sm">
           <a
-            href="mailto:hello@supragnyapurohith.com"
+            href="mailto:99supragnya@gmail.com"
             className="block text-[#E9E9E9] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            hello@supragnyapurohith.com
+            99supragnya@gmail.com
           </a>
           <a
-            href="https://www.linkedin.com/"
+            href="https://www.linkedin.com/in/supragnya-purohith/"
             target="_blank"
             rel="noreferrer"
             className="block text-[#E9E9E9] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"

@@ -24,7 +24,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
     }, [isOpen, onClose]);
 
     const handleCopy = () => {
-        navigator.clipboard.writeText("supragnyapurohith@gmail.com");
+        navigator.clipboard.writeText("99supragnya@gmail.com");
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -75,7 +75,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                                             </div>
                                             <div>
                                                 <p className="text-xs uppercase tracking-widest font-bold text-[var(--text-tertiary)] mb-0.5">Email</p>
-                                                <span className="font-medium text-[var(--text-primary)] text-sm group-hover:text-[var(--accent-gold)] transition-colors">supragnyapurohith@gmail.com</span>
+                                                <span className="font-medium text-[var(--text-primary)] text-sm group-hover:text-[var(--accent-gold)] transition-colors">99supragnya@gmail.com</span>
                                             </div>
                                         </div>
                                         <button onClick={handleCopy} className="p-2 text-[var(--text-tertiary)] hover:text-[var(--accent-gold)] transition-colors" title={copied ? "Copied!" : "Copy email"}>
@@ -85,7 +85,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
 
                                     {/* LinkedIn row */}
                                     <a
-                                        href="https://linkedin.com/in/supragnya"
+                                        href="https://www.linkedin.com/in/supragnya-purohith/"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-between p-4 rounded-xl border border-[var(--surface-border)] bg-[var(--bg-sage)] group transition-colors hover:border-[var(--accent-gold)]/30"
@@ -96,7 +96,7 @@ export default function ContactModal({ isOpen, onClose }: { isOpen: boolean; onC
                                             </div>
                                             <div>
                                                 <p className="text-xs uppercase tracking-widest font-bold text-[var(--text-tertiary)] mb-0.5">LinkedIn</p>
-                                                <span className="font-medium text-[var(--text-primary)] text-sm group-hover:text-[var(--accent-gold)] transition-colors">linkedin.com/in/supragnya</span>
+                                                <span className="font-medium text-[var(--text-primary)] text-sm group-hover:text-[var(--accent-gold)] transition-colors">linkedin.com/in/supragnya-purohith</span>
                                             </div>
                                         </div>
                                         <ExternalLink className="w-4 h-4 text-[var(--text-tertiary)] group-hover:text-[var(--accent-gold)] transition-colors" />
