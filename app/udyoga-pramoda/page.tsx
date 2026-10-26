@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import { DesktopMockup } from "@/components/ui/mockups";
+import CaseStudyBentoSummary from "@/components/ui/CaseStudyBentoSummary";
+import WorkflowTimeline from "@/components/ui/WorkflowTimeline";
 import { 
     ArrowRight, 
     CheckCircle2, 
@@ -102,6 +104,40 @@ export default function UdyogaPramodaPage() {
                                 </p>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Executive Bento Summary */}
+                    <div className="mt-12">
+                        <CaseStudyBentoSummary
+                            problem={{
+                                tag: "Invisible Follow-Through",
+                                title: "Participation without verified commitment",
+                                description: "Young learners registered for free programs and joined sessions, but volunteer mentors had no signal into who was completing assigned tasks or following through.",
+                                metric: "Volunteers",
+                                metricLabel: "Mentor burnout from dropped threads",
+                            }}
+                            target={{
+                                tag: "Actionable Effort",
+                                title: "Bridge the space between connection & hiring",
+                                description: "Equip learners to build demonstrable proof of work within the community, giving mentors evidence before recommending candidates for placements.",
+                                metric: "1,247",
+                                metricLabel: "Active community members",
+                            }}
+                            principle={{
+                                tag: "Core Design Law",
+                                title: "Make progress visible to those who can act on it",
+                                description: "Placement isn't the sole measure of growth. Turning vague conversations into verifiable task milestones honors volunteer mentor time.",
+                                metric: "25",
+                                metricLabel: "Verified career placements",
+                            }}
+                            outcome={{
+                                tag: "Community Impact",
+                                title: "6-step closed progression architecture",
+                                description: "Structured ecosystem connecting discovery, mentor guidance, task completion, and hiring referrals with ₹7.5L average placement packages.",
+                                metric: "₹7.5L",
+                                metricLabel: "Average placement package",
+                            }}
+                        />
                     </div>
 
                     {/* Project Snapshot / Metadata Grid */}
@@ -374,8 +410,8 @@ export default function UdyogaPramodaPage() {
                                 Udyoga Pramoda serves a different part of the journey. Its value is in the space between:
                             </p>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-serif text-xl text-[var(--text-primary)] italic">
-                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--surface-border)]">&ldquo;I want a job.&rdquo;</div>
-                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)]">&ldquo;I&apos;m ready for this opportunity.&rdquo;</div>
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)]">&ldquo;I want a job.&rdquo;</div>
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--accent-gold)]/40">&ldquo;I&apos;m ready for this opportunity.&rdquo;</div>
                             </div>
                             <p>
                                 The platform brings together: <strong className="text-[var(--text-primary)] font-medium">Learning + Mentorship + Effort + Progress + Opportunities</strong>.
@@ -386,7 +422,7 @@ export default function UdyogaPramodaPage() {
                             <p>
                                 And importantly, <strong className="text-[var(--text-primary)] font-medium">placement isn&apos;t the only measure of progress.</strong> Someone might not get placed immediately. But if they attend sessions, connect with mentors, complete tasks, improve their skills and consistently participate, the platform can make that effort visible.
                             </p>
-                            <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                            <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
                                 &ldquo;Udyoga Pramoda helps a community recognise people who are actively becoming opportunity-ready.&rdquo;
                             </blockquote>
                         </div>
@@ -474,50 +510,74 @@ export default function UdyogaPramodaPage() {
                         </div>
                     </div>
 
-                    {/* 09 — The System & 10 — Mental Models */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-8 border-t border-[var(--surface-border)]">
-                        <div className="lg:col-span-6 space-y-4">
-                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                                09 — The System Loop
-                            </span>
-                            <div className="font-mono text-xs text-[var(--text-primary)] bg-[var(--bg-sage)] p-4 rounded-xl border border-[var(--surface-border)] space-y-1">
-                                <div>DISCOVER (Jobs / Events)</div>
-                                <div className="text-[var(--text-tertiary)]">↓</div>
-                                <div>CONNECT (Mentor)</div>
-                                <div className="text-[var(--text-tertiary)]">↓</div>
-                                <div>LEARN (Guidance / Classes)</div>
-                                <div className="text-[var(--text-tertiary)]">↓</div>
-                                <div>ACT (Mentor-assigned task)</div>
-                                <div className="text-[var(--text-tertiary)]">↓</div>
-                                <div>COMPLETE (Submit work)</div>
-                                <div className="text-[var(--text-tertiary)]">↓</div>
-                                <div>REVIEW (Mentor validates)</div>
-                                <div className="text-emerald-400 font-bold">↓</div>
-                                <div className="text-emerald-400 font-bold">PROGRESS (Effort becomes visible)</div>
-                                <div className="text-emerald-400 font-bold">↓</div>
-                                <div className="text-[var(--accent-gold)] font-bold">OPPORTUNITY (Jobs / Referrals)</div>
-                            </div>
-                        </div>
+                    {/* 09 — The System Loop: Interactive Progression Timeline */}
+                    <div className="pt-8 border-t border-[var(--surface-border)] space-y-8">
+                        <WorkflowTimeline
+                            title="The 6-Step Closed Progression Loop"
+                            subtitle="How Udyoga Pramoda turns casual networking into demonstrable proof of work before placement."
+                            steps={[
+                                {
+                                    timeWindow: "Step 01 & 02",
+                                    stage: "Discovery & Connection",
+                                    headline: "Learners explore tracks and connect with vetted mentors",
+                                    details: "Young professionals browse job categories and send personalized connection requests to volunteer industry leaders aligned with their career ambitions.",
+                                    role: "Learner & Mentor",
+                                    indicatorColor: "rgb(209, 191, 160)",
+                                    deliverable: "Targeted Connection Channel",
+                                },
+                                {
+                                    timeWindow: "Step 03 & 04",
+                                    stage: "Guidance & Task Assignment",
+                                    headline: "Mentors assign practical homework milestones",
+                                    details: "Rather than vague conversational advice, mentors assign concrete tasks (case studies, UI audits, code reviews) with explicit deliverables.",
+                                    role: "Volunteer Mentor",
+                                    indicatorColor: "rgb(56, 189, 248)",
+                                    deliverable: "Actionable Task Brief",
+                                },
+                                {
+                                    timeWindow: "Step 05",
+                                    stage: "Submission & Verification",
+                                    headline: "Mentees submit proof of work for validation",
+                                    details: "Mentees submit work artifacts directly into their dashboard. Mentors review, critique, and mark tasks as verified or needing iteration.",
+                                    role: "Active Mentee",
+                                    indicatorColor: "rgb(245, 158, 11)",
+                                    deliverable: "Verifiable Submission",
+                                },
+                                {
+                                    timeWindow: "Step 06",
+                                    stage: "Opportunity-Ready Referrals",
+                                    headline: "Demonstrated effort unlocks verified career referrals",
+                                    details: "Verified completion of multiple milestones builds an objective effort portfolio, enabling mentors and admins to refer candidates with genuine confidence.",
+                                    role: "Hiring Partner & Community Admin",
+                                    indicatorColor: "rgb(52, 211, 153)",
+                                    deliverable: "High-Confidence Job Referral",
+                                },
+                            ]}
+                        />
 
-                        <div className="lg:col-span-6 space-y-4 lg:pl-6">
+                        {/* 10 — Why I Chose Role-Specific Experiences */}
+                        <div className="pt-6 border-t border-[var(--surface-border)] space-y-4">
                             <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
                                 10 — Why I Chose Role-Specific Experiences
                             </span>
-                            <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed">
-                                The three users weren&apos;t solving the same problem:
+                            <p className="font-sans text-base text-[var(--text-secondary)] leading-relaxed max-w-3xl">
+                                The three participants weren&apos;t solving the same problem, so giving everyone the same dashboard would have failed all three:
                             </p>
-                            <div className="space-y-3 font-serif text-lg text-[var(--text-primary)]">
-                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)]">
-                                    <strong>Mentee:</strong> &ldquo;What do I need to do next?&rdquo;
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 font-serif text-lg text-[var(--text-primary)]">
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="font-mono text-xs font-bold text-[var(--accent-gold)] uppercase tracking-wider block">Mentee</span>
+                                    <p className="italic">&ldquo;What do I need to do next?&rdquo;</p>
                                 </div>
-                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-[#60a5fa]">
-                                    <strong>Mentor:</strong> &ldquo;Who needs my attention?&rdquo;
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="font-mono text-xs font-bold text-[#60a5fa] uppercase tracking-wider block">Mentor</span>
+                                    <p className="italic">&ldquo;Who needs my attention?&rdquo;</p>
                                 </div>
-                                <div className="p-3 rounded-lg bg-[var(--bg-sage)] border-l-4 border-emerald-400">
-                                    <strong>Admin:</strong> &ldquo;Who is progressing?&rdquo;
+                                <div className="p-4 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] space-y-1">
+                                    <span className="font-mono text-xs font-bold text-emerald-400 uppercase tracking-wider block">Admin</span>
+                                    <p className="italic">&ldquo;Who is progressing?&rdquo;</p>
                                 </div>
                             </div>
-                            <p className="font-sans text-sm text-[var(--text-secondary)]">
+                            <p className="font-sans text-sm text-[var(--text-secondary)] pt-2">
                                 Instead of giving everyone the same dashboard, I designed around these different mental models.
                             </p>
                         </div>
@@ -614,7 +674,7 @@ export default function UdyogaPramodaPage() {
                             That distinction changed how I thought about the product. I stopped looking at the platform as: <em>&ldquo;How do we give people more opportunities?&rdquo;</em> and started looking at it as: <em>&ldquo;How do we help the community recognise and support the people who are actually working toward those opportunities?&rdquo;</em>
                         </p>
 
-                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
                             &ldquo;Udyoga Pramoda doesn&apos;t just connect young people to opportunities. It makes the effort between learning and opportunity visible.&rdquo;
                         </blockquote>
                     </div>

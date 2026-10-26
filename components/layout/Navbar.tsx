@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import ContactModal from "@/components/ui/ContactModal";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const mobileNavLinks = [
     { label: "Home", href: "/" },
@@ -53,45 +54,33 @@ export function Navbar() {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                className="fixed top-0 left-0 right-0 z-[200] w-full px-4 sm:px-6 md:px-10"
-                style={{
-                    paddingTop: scrolled ? "12px" : "20px",
-                    paddingBottom: scrolled ? "0px" : "0px",
-                    transition: "padding 0.3s ease",
-                }}
+                className="fixed top-0 left-0 right-0 z-[200] w-full px-4 sm:px-6 md:px-10 pt-4 sm:pt-5"
             >
                 <div
-                    className="w-full max-w-[1400px] mx-auto flex items-center justify-between rounded-full px-4 sm:px-6 py-3"
-                    style={{
-                        backgroundColor: scrolled ? "rgba(43, 48, 42, 0.92)" : "transparent",
-                        border: scrolled ? "1px solid rgba(209, 191, 160, 0.2)" : "1px solid transparent",
-                        backdropFilter: scrolled ? "blur(12px)" : "none",
-                        transition: "all 0.3s ease",
-                    }}
+                    className={cn(
+                        "w-full max-w-[1400px] mx-auto flex items-center justify-between rounded-full px-5 sm:px-7 py-3 transition-all duration-300",
+                        scrolled
+                            ? "bg-[rgba(43,48,42,0.92)] border border-[rgba(209,191,160,0.22)] shadow-lg shadow-black/20 backdrop-blur-md"
+                            : "bg-[rgba(43,48,42,0.4)] border border-[rgba(209,191,160,0.1)] backdrop-blur-sm"
+                    )}
                 >
                     {/* LEFT */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-3 sm:gap-4">
                         <Link
                             href="/"
-                            className="font-serif font-bold text-lg sm:text-xl tracking-wide shrink-0"
+                            className="font-serif font-semibold text-lg sm:text-xl tracking-tight shrink-0 transition-colors hover:text-[var(--accent-gold)]"
                             style={{ color: "var(--text-primary)" }}
                         >
                             Supragnya
                         </Link>
                         <div
-                            className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full shrink-0"
-                            style={{
-                                backgroundColor: "var(--bg-surface)",
-                                border: "1px solid rgba(209, 191, 160, 0.2)",
-                            }}
+                            className="hidden md:flex items-center gap-2 px-3 py-1 rounded-full shrink-0 bg-[var(--bg-surface)]/80 border border-[rgba(209,191,160,0.2)]"
                         >
                             <span
-                                className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0"
-                                style={{ backgroundColor: "var(--accent-gold)" }}
+                                className="w-1.5 h-1.5 rounded-full animate-pulse shrink-0 bg-[var(--accent-gold)]"
                             />
                             <span
-                                className="font-sans font-bold uppercase text-[10px] tracking-widest whitespace-nowrap"
-                                style={{ color: "var(--text-secondary)" }}
+                                className="font-sans font-medium uppercase text-[10px] tracking-widest text-[var(--text-secondary)] whitespace-nowrap"
                             >
                                 Open to opportunities
                             </span>
@@ -99,39 +88,24 @@ export function Navbar() {
                     </div>
 
                     {/* CENTER - Desktop only */}
-                    <div className="hidden lg:flex items-center gap-8 font-sans text-xs font-bold uppercase tracking-widest"
-                        style={{ color: "var(--text-secondary)" }}
-                    >
-                        <Link href="/" style={{ color: "var(--text-secondary)" }}>
+                    <div className="hidden lg:flex items-center gap-8 font-sans text-xs font-semibold uppercase tracking-widest text-[var(--text-secondary)]">
+                        <Link href="/" className="transition-colors hover:text-[var(--text-primary)]">
                             Home
                         </Link>
-                        <Link href="/#work" style={{ color: "var(--text-secondary)" }}>
+                        <Link href="/#work" className="transition-colors hover:text-[var(--text-primary)]">
                             Work
                         </Link>
-                        <Link href="/#about" style={{ color: "var(--text-secondary)" }}>
+                        <Link href="/#about" className="transition-colors hover:text-[var(--text-primary)]">
                             About
                         </Link>
-                        <button
-                            onClick={() => setIsContactOpen(true)}
-                            className="font-sans text-xs font-bold uppercase tracking-widest transition-colors hover:text-[var(--accent-gold)]"
-                            style={{ color: "var(--text-secondary)", background: "none", border: "none", cursor: "pointer", padding: 0 }}
-                        >
-                            Contact Me
-                        </button>
                     </div>
 
                     {/* RIGHT */}
                     <div className="flex items-center gap-3">
-                        {/* Contact Button - hidden on small mobile, visible from sm up */}
+                        {/* Contact Button */}
                         <button
                             onClick={() => setIsContactOpen(true)}
-                            className="hidden sm:block shrink-0 font-sans font-bold uppercase text-[11px] tracking-widest px-6 py-2.5 rounded-full shadow-lg transition-transform hover:scale-105"
-                            style={{
-                                backgroundColor: "var(--accent-gold)",
-                                color: "var(--bg-sage)",
-                                border: "none",
-                                cursor: "pointer",
-                            }}
+                            className="hidden sm:inline-flex items-center justify-center shrink-0 font-sans font-semibold uppercase text-[11px] tracking-widest px-6 py-2.5 rounded-full shadow-md bg-[var(--accent-gold)] text-[var(--bg-sage)] hover:bg-[var(--accent-gold-hover)] active:scale-[0.98] transition-all duration-200"
                         >
                             Contact Me
                         </button>
@@ -139,11 +113,10 @@ export function Navbar() {
                         {/* Hamburger Button - visible below lg */}
                         <button
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="lg:hidden relative z-[210] p-2 rounded-full transition-colors"
-                            style={{ color: "var(--text-primary)" }}
+                            className="lg:hidden relative z-[210] p-2 rounded-full transition-colors text-[var(--text-primary)] hover:bg-[var(--bg-surface)]"
                             aria-label="Toggle mobile menu"
                         >
-                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
                         </button>
                     </div>
                 </div>

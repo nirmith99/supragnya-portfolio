@@ -6,6 +6,8 @@ import Link from "next/link";
 import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import { DesktopMockup } from "@/components/ui/mockups";
 import RetailDashboardPreview from "@/components/ui/RetailDashboardPreview";
+import CaseStudyBentoSummary from "@/components/ui/CaseStudyBentoSummary";
+import WorkflowTimeline from "@/components/ui/WorkflowTimeline";
 import { 
     ArrowRight, 
     CheckCircle2, 
@@ -104,6 +106,40 @@ export default function RetailManagerPage() {
                                 </p>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Executive Bento Summary */}
+                    <div className="mt-12">
+                        <CaseStudyBentoSummary
+                            problem={{
+                                tag: "Operational Blindspot",
+                                title: "Operational data without operational clarity",
+                                description: "Retail ERPs capture enormous transaction and stock logs, but managers must manually scan dozens of spreadsheets to spot perishable risks and branch imbalances.",
+                                metric: "Multi-Store",
+                                metricLabel: "Cross-branch inventory blindspots",
+                            }}
+                            target={{
+                                tag: "Actionable Intelligence",
+                                title: "Surfacing conditions that demand attention",
+                                description: "Proactively identify expiring stock, outlet supply disparities, and supplier shortfalls before costly waste and revenue loss occur.",
+                                metric: "Read-Only",
+                                metricLabel: "Non-disruptive integration",
+                            }}
+                            principle={{
+                                tag: "Supervised Agency",
+                                title: "Recommend, don't decide prematurely",
+                                description: "The system surfaces anomalies and suggests rebalancing transfers or targeted markdowns; the human operator retains final operational decision authority.",
+                                metric: "100%",
+                                metricLabel: "Operator agency preserved",
+                            }}
+                            outcome={{
+                                tag: "Strategic Validation",
+                                title: "Targeted at inventory-heavy multi-locations",
+                                description: "Founder validation shaped a phased rollout prioritizing multi-outlet retailers where owners cannot be physically present at every branch.",
+                                metric: "4 Workflows",
+                                metricLabel: "Core operational foundation",
+                            }}
+                        />
                     </div>
 
                     {/* Metadata Row (Clean Editorial Grid) */}
@@ -449,52 +485,50 @@ export default function RetailManagerPage() {
                         This led to a role-based experience rather than one large intelligence dashboard.
                     </p>
 
-                    {/* Core Workflows Section */}
-                    <div className="space-y-4 pt-8 border-t border-[var(--surface-border)]">
-                        <span className="font-mono text-xs md:text-sm uppercase tracking-widest text-[var(--accent-gold)] font-semibold block">
-                            Initial Scope
-                        </span>
-                        <h3 className="font-serif text-2xl md:text-3xl text-[var(--text-primary)]">
-                            The core workflows
-                        </h3>
-                        <p className="font-sans text-base md:text-lg text-[var(--text-secondary)]">
-                            I translated the product direction into four initial workflows:
-                        </p>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
-                                <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 01</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Today&apos;s Overview</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
-                                    Brings important operational conditions together so a manager can quickly see what needs attention.
-                                </p>
-                            </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
-                                <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 02</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Stock View</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
-                                    Helps users understand inventory conditions across locations, including stock levels, consumption and days of cover.
-                                </p>
-                            </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
-                                <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 03</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Delivery Received</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
-                                    Makes it easier to compare ordered quantities with what was actually received and identify discrepancies.
-                                </p>
-                            </div>
-                            <div className="p-4 bg-[var(--bg-sage)] border border-[var(--surface-border)] rounded-xl space-y-2">
-                                <div className="font-mono text-xs font-bold text-[var(--accent-gold)]">WORKFLOW 04</div>
-                                <div className="font-serif text-lg text-[var(--text-primary)] font-bold">Stock Request</div>
-                                <p className="font-sans text-xs text-[var(--text-secondary)] leading-relaxed">
-                                    Connects a store&apos;s stock situation with the request process while keeping the decision with the user.
-                                </p>
-                            </div>
-                        </div>
-
-                        <p className="font-sans text-sm md:text-base text-[var(--text-tertiary)] italic pt-2">
-                            These workflows were chosen as the initial product surface rather than attempting to cover every possible retail operation at once.
-                        </p>
+                    {/* Core Workflows: Interactive Workflow Timeline */}
+                    <div className="pt-8 border-t border-[var(--surface-border)]">
+                        <WorkflowTimeline
+                            title="The 4 Core Operational Workflows"
+                            subtitle="How Retail Manager Intelligence OS connects operational data to role-specific decisions across locations."
+                            steps={[
+                                {
+                                    timeWindow: "Workflow 01",
+                                    stage: "Today's Overview",
+                                    headline: "Proactive exception feed & morning triage",
+                                    details: "Consolidates urgent operational anomalies (expiring perishables, acute stockouts, delivery delays) into a single actionable morning queue for the business owner.",
+                                    role: "Business Owner / General Manager",
+                                    indicatorColor: "rgb(209, 191, 160)",
+                                    deliverable: "Executive Exception Feed",
+                                },
+                                {
+                                    timeWindow: "Workflow 02",
+                                    stage: "Multi-Outlet Stock Balancer",
+                                    headline: "Cross-branch inventory differences & days of cover",
+                                    details: "Detects situations where Outlet A has 3 days of cover and surging demand while Outlet B sits on 40 days of surplus, calculating suggested inter-store transfers.",
+                                    role: "Central Inventory Controller",
+                                    indicatorColor: "rgb(56, 189, 248)",
+                                    deliverable: "Cross-Location Balancer",
+                                },
+                                {
+                                    timeWindow: "Workflow 03",
+                                    stage: "Delivery Discrepancy Gate",
+                                    headline: "Compare ordered vs received quantities at the dock",
+                                    details: "Flags short-deliveries, damaged produce, and cost variance directly during intake to safeguard retail gross margins before inventory is shelved.",
+                                    role: "Receiving & Warehouse Lead",
+                                    indicatorColor: "rgb(245, 158, 11)",
+                                    deliverable: "Dock Reconciliation Log",
+                                },
+                                {
+                                    timeWindow: "Workflow 04",
+                                    stage: "Supervised Stock Request",
+                                    headline: "Contextual replenishment recommendations",
+                                    details: "Automatically drafts store replenishment requests based on real-time checkout velocity and days-of-cover targets, requiring explicit store manager approval.",
+                                    role: "Store Manager",
+                                    indicatorColor: "rgb(52, 211, 153)",
+                                    deliverable: "Supervised Order Drafter",
+                                },
+                            ]}
+                        />
                     </div>
                 </motion.section>
 
@@ -746,7 +780,7 @@ export default function RetailManagerPage() {
                         <p>
                             The opportunity is to make that information easier to understand and act on.
                         </p>
-                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border-l-4 border-[var(--accent-gold)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
+                        <blockquote className="p-5 rounded-xl bg-[var(--bg-sage)] border border-[var(--surface-border)] font-serif text-xl sm:text-2xl text-[var(--text-primary)] italic">
                             &ldquo;If the system already has the data, can it help the people running the business see what matters and decide what to do next?&rdquo;
                         </blockquote>
                         <p className="font-serif text-xl text-[var(--text-primary)] font-bold italic pt-2">

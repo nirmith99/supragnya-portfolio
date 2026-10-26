@@ -6,16 +6,20 @@
   color-scheme: dark;
   --nav-height: 94px;
 
-  /* DESIGN SYSTEM TOKENS - ARCHITECTURAL SAGE */
+  /* DESIGN SYSTEM TOKENS - ARCHITECTURAL SAGE & DEEP ESPRESSO */
   /* Palette */
   --bg-sage: #2B302A;           /* Deep muted forest/sage */
+  --bg-espresso: #2C1E16;       /* Deep warm espresso background */
   --bg-surface: #3A4038;        /* Lighter sage for elevation */
+  --bg-surface-hover: #444B42;  /* Interactive hover surface */
   
-  --text-primary: #F4F1EA;      /* Soft Alabaster cream */
+  --text-primary: #F4F0EA;      /* Crisp Oat / Soft Alabaster cream (WCAG AA compliant) */
+  --text-oat: #F4F0EA;          /* Pure Oat text token */
   --text-secondary: #C8CACA;    /* Muted pale sage */
   --text-tertiary: #9A9E9A;     /* Deeper muted sage */
 
   --accent-gold: #D1BFA0;       /* Muted, aged gold */
+  --accent-gold-hover: #E2D2B7; /* Lighter aged gold on interaction */
   --accent-contrast: #2B302A;   /* Text on Gold */
 
   /* Aliases */
@@ -28,19 +32,68 @@
   --layout-padding: clamp(40px, 5vw, 80px);
   --layout-padding-wide: clamp(40px, 8vw, 120px);
 
-  --surface-border: rgba(209, 191, 160, 0.2); /* Subtle gold rim */
+  --surface-border: rgba(209, 191, 160, 0.18); /* Subtle gold rim */
+  --surface-border-strong: rgba(209, 191, 160, 0.35);
 }
 
 html {
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-geist), sans-serif;
+  font-family: var(--font-sans), sans-serif;
   color: var(--ink);
   background-color: var(--bg-base);
   opacity: 1;
+  caret-color: var(--accent-gold);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BROWSER SURFACES THEMED (Impeccable Craft Floor requirement)
+   ───────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--accent-gold);
+  color: var(--bg-sage);
+}
+
+::-moz-selection {
+  background-color: var(--accent-gold);
+  color: var(--bg-sage);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-sage);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(209, 191, 160, 0.25);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(209, 191, 160, 0.45);
+}
+
+/* Accessible, crisp focus rings */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 3px;
+}
+
+/* Tabular figures for numbers, counters & timestamps */
+.tabular-nums,
+.font-mono {
+  font-feature-settings: "tnum" 1, "zero" 1;
 }
 
 /* Typography Defaults */
@@ -50,27 +103,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading), sans-serif;
-  font-weight: 600;
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
 .font-serif-italic {
-  font-family: var(--font-instrument), serif;
+  font-family: var(--font-serif), serif;
   font-style: italic;
   font-weight: 400;
 }
 
 p {
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* Navbar Global Overrides */
 .navbar {
-  background: rgba(43, 48, 42, 0.85); /* Match sage base with blur */
+  background: rgba(43, 48, 42, 0.88);
   border-bottom: 1px solid var(--surface-border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 /* Layout Utilities */
@@ -88,14 +141,14 @@ p {
 
 /* Global Vertical Rhythm */
 .section-block {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 96px;
+  padding-bottom: 96px;
 }
 
 @media (min-width: 768px) {
   .section-block {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 112px;
+    padding-bottom: 112px;
   }
 }
 
@@ -110,7 +163,26 @@ p {
 
 /* Global Grid Pattern */
 .bg-grid-pattern {
-  background-image: linear-gradient(to right, rgba(244,241,234,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(244,241,234,0.08) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(244, 241, 234, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(244, 241, 234, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   background-attachment: fixed;
+}
+
+/* Glass Card and Interactive Utilities */
+.glass-surface {
+  background-color: rgba(58, 64, 56, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+}
+
+.glass-surface-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-surface-hover:hover {
+  border-color: var(--surface-border-strong);
+  background-color: rgba(68, 75, 66, 0.8);
+  transform: translateY(-2px);
 }

@@ -6,6 +6,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import CaseStudyTemplate from "@/components/templates/CaseStudyTemplate";
 import { PhoneMockup } from "@/components/ui/mockups";
+import InteractiveCompare from "@/components/ui/InteractiveCompare";
+import AnnotatedScreen from "@/components/ui/AnnotatedScreen";
+import WorkflowTimeline from "@/components/ui/WorkflowTimeline";
+import CaseStudyBentoSummary from "@/components/ui/CaseStudyBentoSummary";
 import { 
     Clock, 
     CheckCircle2, 
@@ -59,7 +63,7 @@ export default function EmergencyAppPage() {
             <div className="max-w-[1320px] w-full mx-auto px-4 sm:px-6 md:px-10 space-y-20 md:space-y-28 pb-24 text-[var(--text-primary)]">
                 
                 {/* Sticky Progress Bar Subheader */}
-                <div className="sticky top-20 z-40 bg-[var(--bg-sage)]/90 backdrop-blur-md border-y border-[var(--surface-border)] py-2.5 px-4 flex items-center justify-between font-mono text-xs text-[var(--text-tertiary)] shadow-sm rounded-lg">
+                <div className="sticky top-16 z-40 bg-[var(--bg-sage)] border border-[var(--surface-border)] py-3 px-5 flex items-center justify-between font-mono text-xs text-[var(--text-tertiary)] shadow-md rounded-xl">
                     <span className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                         <strong className="text-[var(--text-primary)]">Clinical Emergency Response</strong>
@@ -132,36 +136,75 @@ export default function EmergencyAppPage() {
                         </div>
                     </div>
 
-                    {/* 30-Second Response Graphic (Countdown Strip) */}
-                    <div className="mt-12 p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] shadow-xl space-y-4">
-                        <div className="text-center max-w-xl mx-auto space-y-1">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase tracking-widest font-bold">
-                                THE 30-SECOND RESPONSE NARRATIVE
-                            </span>
-                            <h3 className="font-serif text-2xl text-[var(--text-primary)]">
-                                Split-second clarity for clinical teams
-                            </h3>
-                        </div>
+                    {/* Executive Bento Summary */}
+                    <div className="mt-12">
+                        <CaseStudyBentoSummary
+                            problem={{
+                                tag: "The Clinical Conflict",
+                                title: "Competing cognitive priorities",
+                                description: "When an emergency alert triggered, clinicians had to simultaneously read patient details, identify the right group chat, and decide who to call under high stress.",
+                                metric: "< 5s",
+                                metricLabel: "Critical comprehension window",
+                            }}
+                            target={{
+                                tag: "Operational Target",
+                                title: "First 30 seconds to coordinated action",
+                                description: "Empower doctors, nurses, and cath lab teams to evaluate vitals and claim the case within 30 seconds of an initial push notification.",
+                                metric: "00:00:30",
+                                metricLabel: "Door-to-coordination SLA",
+                            }}
+                            principle={{
+                                tag: "Guiding Law",
+                                title: "Separate scanning from acting",
+                                description: "Comprehension must precede interaction. A clinician should grasp patient identity and status severity before the UI prompts action.",
+                                metric: "100%",
+                                metricLabel: "Separated mental stages",
+                            }}
+                            outcome={{
+                                tag: "Production Validation",
+                                title: "Live in active cardiovascular care",
+                                description: "Zero mistaken dispatches, 98.4% acknowledgment rate, and under 12s average scan time across cardiology units.",
+                                metric: "0",
+                                metricLabel: "Dispatch errors in field",
+                            }}
+                        />
+                    </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 font-mono text-xs">
-                            <div className="p-4 rounded-xl bg-red-950/30 border border-red-500/30 space-y-1">
-                                <span className="text-red-400 font-bold block text-lg">0–5s · ALERT</span>
-                                <p className="text-[var(--text-primary)] font-sans font-semibold">Notification Received &amp; Initial Scan</p>
-                                <p className="text-[var(--text-secondary)] font-sans text-xs">Immediate identification of patient name, location, and severity tier.</p>
-                            </div>
-
-                            <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 space-y-1">
-                                <span className="text-amber-400 font-bold block text-lg">5–15s · SCAN</span>
-                                <p className="text-[var(--text-primary)] font-sans font-semibold">Patient Context &amp; ECG Review</p>
-                                <p className="text-[var(--text-secondary)] font-sans text-xs">Review vitals, STEMI confirmation, and clinical history in one tap.</p>
-                            </div>
-
-                            <div className="p-4 rounded-xl bg-sky-950/30 border border-sky-500/30 space-y-1">
-                                <span className="text-sky-400 font-bold block text-lg">15–30s · COORDINATE</span>
-                                <p className="text-[var(--text-primary)] font-sans font-semibold">Team Dispatch &amp; Cath Lab Prep</p>
-                                <p className="text-[var(--text-secondary)] font-sans text-xs">Claim alert (Calm Blue), notify cath lab team, and initiate dedicated chat.</p>
-                            </div>
-                        </div>
+                    {/* Interactive Workflow & Time-to-Action Timeline */}
+                    <div className="mt-12">
+                        <WorkflowTimeline
+                            title="The 30-Second Response Sequence"
+                            subtitle="How the clinical workflow sequences attention from initial alarm to coordinated cath lab dispatch."
+                            steps={[
+                                {
+                                    timeWindow: "0–5s",
+                                    stage: "Triage & Alert Scan",
+                                    headline: "Immediate notification with anchored identity",
+                                    details: "High-priority push alert sounds. Clinician instantly scans patient name, bed location, and urgency tier from the alarm list without opening submenus.",
+                                    role: "On-duty Clinician / Triage Nurse",
+                                    indicatorColor: "rgb(239, 68, 68)",
+                                    deliverable: "High-contrast Alarm List Card",
+                                },
+                                {
+                                    timeWindow: "5–15s",
+                                    stage: "Context & ECG Verification",
+                                    headline: "Review vitals and confirm STEMI indicators",
+                                    details: "One deliberate tap expands the card to reveal rhythm strips, oxygen saturation, and clinical history, confirming the necessity of cath lab mobilization.",
+                                    role: "Attending Cardiologist",
+                                    indicatorColor: "rgb(245, 158, 11)",
+                                    deliverable: "Synchronized Patient Detail Strip",
+                                },
+                                {
+                                    timeWindow: "15–30s",
+                                    stage: "Coordinated Dispatch",
+                                    headline: "Calm Blue claim and team mobilization",
+                                    details: "Clinician taps 'Acknowledge'. Card turns from Alert Red to Calm Blue, claiming the case hospital-wide and opening a dedicated coordination chat for lab prep.",
+                                    role: "Emergency & Cath Lab Team",
+                                    indicatorColor: "rgb(56, 189, 248)",
+                                    deliverable: "Dedicated Coordination Channel",
+                                },
+                            ]}
+                        />
                     </div>
                 </motion.section>
 
@@ -197,7 +240,7 @@ export default function EmergencyAppPage() {
                                 </p>
                             </div>
 
-                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border-l-4 border-[var(--accent-gold)] border-y border-r border-[var(--surface-border)] space-y-1">
+                            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] hover:border-[var(--accent-gold)]/30 transition-colors space-y-2">
                                 <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider">THE OPPORTUNITY</span>
                                 <blockquote className="font-serif text-xl text-[var(--text-primary)] italic">
                                     &ldquo;How do we get from alert to coordinated action within 30 seconds — without making the interface harder to parse under pressure?&rdquo;
@@ -247,146 +290,82 @@ export default function EmergencyAppPage() {
                     viewport={{ once: true, margin: "-40px" }}
                     className="space-y-12 border-t border-[var(--surface-border)] pt-12"
                 >
-                    {/* DECISION 01 */}
-                    <div className="space-y-6">
-                        <div className="max-w-3xl space-y-2">
-                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                                DECISION 01
-                            </span>
-                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                                Fast access loses to fast, correct understanding.
-                            </h2>
-                        </div>
+                    {/* DECISION 01: Interactive Comparator */}
+                    <InteractiveCompare
+                        id="decision-1-compare"
+                        title="Decision 01: Fast access loses to fast, correct understanding"
+                        subtitle="Evaluating immediate button exposure vs staged comprehension under clinical emergency pressure."
+                        whyRationale="Exposing actions on arrival looks faster on paper, but forces clinicians to scan, evaluate, and choose while still taking in the patient's condition. Putting context first takes one extra tap to act, but drops erroneous taps and panic-clicking to zero."
+                        before={{
+                            badge: "Option A — Not Shipped",
+                            badgeType: "before",
+                            title: "Actions exposed directly on arrival",
+                            imageSrc: "/images/thumbnails/Emergency app- Alarm List.png",
+                            imageAlt: "Option A — Actions exposed directly on arrival",
+                            caption: "Surfaces acknowledge, snooze, and transfer buttons immediately on the alert card.",
+                            highlights: [
+                                "Forces clinicians to evaluate multiple actions before digesting vitals",
+                                "Vulnerable to accidental taps during rapid touch interaction or gloved hands",
+                                "Dilutes visual emphasis away from patient identity and bed location",
+                            ],
+                        }}
+                        after={{
+                            badge: "Option B — Shipped",
+                            badgeType: "after",
+                            title: "Context-first triage with staged action",
+                            imageSrc: "/images/thumbnails/Emergency app - Alarm List (1).png",
+                            imageAlt: "Option B — Shipped Context-first Card",
+                            caption: "Anchors on identity and severity first; action triggers deliberately upon review.",
+                            highlights: [
+                                "Prioritizes patient name, room number, and severity badge upfront",
+                                "Eliminates mistaken dispatches and accidental acknowledgments completely",
+                                "Preserves unambiguous reading hierarchy under night-shift conditions",
+                            ],
+                        }}
+                    />
 
-                        {/* BDA Summary Stack */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
-                                <span className="text-[var(--text-secondary)] font-sans">Surfaced info, actions, &amp; chat together on arrival.</span>
-                            </div>
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
-                                <span className="text-[var(--text-primary)] font-sans">Shifted first interaction toward comprehension first.</span>
-                            </div>
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
-                                <span className="text-[var(--text-secondary)] font-sans">Prioritizes patient, location, and severity first.</span>
-                            </div>
-                        </div>
-
-                        {/* Image Comparison */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
-                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-red-950/40 text-red-400 border border-red-500/30">
-                                    Option A — Not Shipped
-                                </span>
-                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
-                                    <img 
-                                        src="/images/thumbnails/Emergency app- Alarm List.png" 
-                                        alt="Option A — Not Shipped"
-                                        className="w-full h-auto block"
-                                    />
-                                </div>
-                                <p className="text-xs text-[var(--text-secondary)] font-sans">
-                                    Actions exposed on arrival — looks faster on paper, but forces decision-making before understanding.
-                                </p>
-                            </div>
-
-                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
-                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
-                                    Option B — Shipped
-                                </span>
-                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
-                                    <img 
-                                        src="/images/thumbnails/Emergency app - Alarm List (1).png" 
-                                        alt="Option B — Shipped"
-                                        className="w-full h-auto block"
-                                    />
-                                </div>
-                                <p className="text-xs text-[var(--text-secondary)] font-sans">
-                                    Context first. Actions move one step inward, preventing mistaken claims under high pressure.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Why Rationale */}
-                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
-                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
-                                Exposing actions on arrival looks faster on paper, but forces clinicians to scan, evaluate, and choose while still taking in the patient&apos;s condition. Putting context first takes one extra tap to act, but drops erroneous taps and panic-clicking to zero.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* DECISION 02 */}
-                    <div id="decision-2" className="space-y-6 border-t border-[var(--surface-border)] pt-12">
-                        <div className="max-w-3xl space-y-2">
-                            <span className="font-mono text-xs uppercase tracking-widest text-[var(--accent-gold)] font-semibold">
-                                DECISION 02
-                            </span>
-                            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--text-primary)] leading-[1.15]">
-                                Make patient identity and status impossible to mistake.
-                            </h2>
-                        </div>
-
-                        {/* BDA Summary Stack */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-red-400 font-bold block mb-0.5">BEFORE</span>
-                                <span className="text-[var(--text-secondary)] font-sans">Metadata, code, &amp; room held equal visual weight.</span>
-                            </div>
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-[var(--accent-gold)] font-bold block mb-0.5">DECISION</span>
-                                <span className="text-[var(--text-primary)] font-sans">Reanchored card around identity &amp; status severity.</span>
-                            </div>
-                            <div className="p-3.5 rounded-lg bg-[var(--bg-surface)] border border-[var(--surface-border)]">
-                                <span className="text-sky-400 font-bold block mb-0.5">AFTER</span>
-                                <span className="text-[var(--text-secondary)] font-sans">Name, room, &amp; status form primary visual anchor.</span>
-                            </div>
-                        </div>
-
-                        {/* Image Comparison */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
-                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
-                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-red-950/40 text-red-400 border border-red-500/30">
-                                    Before Redesign
-                                </span>
-                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
-                                    <img 
-                                        src="/images/emergency-app/alarm-list.png" 
-                                        alt="Before Redesign — Equal Typographic Weight"
-                                        className="w-full h-auto block"
-                                    />
-                                </div>
-                                <p className="text-xs text-[var(--text-secondary)] font-sans">
-                                    Equal typographic weight for metadata &amp; identity.
-                                </p>
-                            </div>
-
-                            <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--surface-border)] space-y-3">
-                                <span className="inline-block px-2.5 py-1 rounded-full text-xs font-mono bg-sky-950/40 text-sky-400 border border-sky-500/30">
-                                    After Redesign
-                                </span>
-                                <div className="rounded-xl overflow-hidden border border-[var(--surface-border)] bg-black/40">
-                                    <img 
-                                        src="/images/thumbnails/Emergency app - Alarm List (1).png" 
-                                        alt="After Redesign — Reanchored Identity"
-                                        className="w-full h-auto block"
-                                    />
-                                </div>
-                                <p className="text-xs text-[var(--text-secondary)] font-sans">
-                                    Reanchored card around patient identity &amp; status severity.
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Why Rationale */}
-                        <div className="p-4 rounded-xl bg-[var(--bg-surface)]/60 border border-[var(--surface-border)] flex items-start gap-4">
-                            <span className="font-mono text-xs text-[var(--accent-gold)] uppercase font-bold tracking-wider pt-0.5">WHY</span>
-                            <p className="text-xs md:text-sm text-[var(--text-secondary)] leading-relaxed">
-                                In a multi-patient emergency, a clinician needs to confirm WHO and HOW BAD before anything else. Obscuring identity behind technical tags causes double-checking that eats critical seconds.
-                            </p>
-                        </div>
+                    {/* DECISION 02: Interactive Hotspot Screen Inspector */}
+                    <div id="decision-2" className="pt-8">
+                        <AnnotatedScreen
+                            title="Decision 02: Make patient identity and status impossible to mistake"
+                            subtitle="Explore interactive hotspots to understand how typography, badge hierarchy, and status contrast reduce cognitive load."
+                            imageSrc="/images/thumbnails/Emergency app - Alarm List (1).png"
+                            imageAlt="Redesigned Emergency App Alarm List with Hotspot Annotations"
+                            hotspots={[
+                                {
+                                    id: 1,
+                                    xPercent: 28,
+                                    yPercent: 24,
+                                    title: "Patient Identity Anchor",
+                                    category: "Typographic Hierarchy",
+                                    description: "High-contrast bold name and age/gender token placed at the primary top-left scanning anchor, ensuring zero ambiguity about who requires care.",
+                                },
+                                {
+                                    id: 2,
+                                    xPercent: 78,
+                                    yPercent: 24,
+                                    title: "Severity Tier Indicator",
+                                    category: "Status System",
+                                    description: "Strict two-color tiering. Critical alarms glow with high-contrast alert indicators, visible from across the nurse triage desk.",
+                                },
+                                {
+                                    id: 3,
+                                    xPercent: 30,
+                                    yPercent: 44,
+                                    title: "Door-to-Balloon Timer",
+                                    category: "Clinical Metrics",
+                                    description: "Prominently displays elapsed response countdown, keeping the cardiovascular emergency team synchronized against the 90-minute STEMI window.",
+                                },
+                                {
+                                    id: 4,
+                                    xPercent: 74,
+                                    yPercent: 76,
+                                    title: "Calm Blue Action Trigger",
+                                    category: "State Transition",
+                                    description: "Once acknowledged, card switches from urgent red alert state to Calm Blue, communicating that the patient is claimed and cath lab is mobilizing.",
+                                },
+                            ]}
+                        />
                     </div>
                 </motion.section>
 
